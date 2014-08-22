@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <phpunit
+               convertErrorsToExceptions="true"
+               convertNoticesToExceptions="true"
+               convertWarningsToExceptions="true"
+               stopOnFailure="false">
+   <testsuites>
+       <testsuite name="controllerUnitTests">
+           <directory>test\controller</directory>
+       </testsuite>
+        <testsuite name="modelUnitTests">
+           <directory>test\model</directory>
+       </testsuite>
+        <testsuite name="persistenceUnitTests">
+           <directory>test\persistence</directory>
+       </testsuite>
+   </testsuites>
+</phpunit> -->
+
+<phpunit><testsuites><testsuite name="Generated">
+<file>test\controller\CategoriaControllerTeste.php</file>
+<file>test\controller\CrimeControllerTeste.php</file>
+<file>test\controller\NaturezaControllerTeste.php</file>
+<file>test\controller\TempoControllerTeste.php</file>
+<file>test\controller\RegiaoAdministrativaControllerTeste.php</file>
+<file>test\model\CategoriaTeste.php</file>
+<file>test\model\CrimeTeste.php</file>
+<file>test\model\NaturezaTeste.php</file>
+<file>test\model\RegiaoAdministrativaTeste.php</file>
+<file>test\model\TempoTeste.php</file>
+<file>test\persistence\CategoriaDAOTeste.php</file>
+<file>test\persistence\ConexaoTeste.php</file>
+<file>test\persistence\CrimeDAOTeste.php</file>
+<file>test\persistence\NaturezaDAOTeste.php</file>
+<file>test\persistence\TempoDAOTeste.php</file>
+<file>test\persistence\RegiaoAdministrativaDAOTeste.php</file>
+<file>test\util\ParseTeste.php</file>
+</testsuite></testsuites></phpunit>

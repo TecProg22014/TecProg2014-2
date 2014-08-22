@@ -1,0 +1,11 @@
+#ignorar arquivos de um diretório
+
+#public/content/images/graphics/*
+
+#ignorar arquivos e diretórios de um diretório
+
+.sonar/**/*
+
+#ignorar arquivo
+
+#diretorio/arquivo.temp
