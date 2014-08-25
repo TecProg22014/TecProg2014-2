@@ -4,7 +4,7 @@ include_once('C:/xampp/htdocs/mds2013/exceptions/ETipoErrado.php');
 class Categoria{
 	
 	/**
-	 * Variables to specify the category of the delict
+	 * Variables to specify the category of the crime
 	 * @var idCategoria
 	 * @var nomeCategoria
 	 */
@@ -12,7 +12,7 @@ class Categoria{
 	private $nomeCategoria;
 	
 	/**
-	 * Function to set the id of the category of the delict
+	 * Function to set the id of the category of the crime
 	 * @param int $idCategoria
 	 * @throws ETipoErrado
 	 */
@@ -25,14 +25,14 @@ class Categoria{
 	}
 	
 	/**
-	 * Function to return the id of the category of the delict
+	 * Function to get the id of the category of the crime
 	 */
 	public function __getIdCategoria(){
 		return $this->idCategoria;
 	}
 	
 	/**
-	 * Function to set the name of the category of the delict
+	 * Function to set the name of the category of the crime
 	 * @param unknown $nomeCategoria
 	 * @throws ETipoErrado
 	 */
@@ -45,7 +45,7 @@ class Categoria{
 	}
 	
 	/**
-	 * Function to return the name of the category of the delict
+	 * Function to get the name of the category of the crime
 	 * @return Object Categoria var nomeCategoria 
 	 */
 	public function __getNomeCategoria(){
@@ -53,9 +53,9 @@ class Categoria{
 	}
 	
 	/**
-	 * Constructor to the object Categoria 
-	 * @param unknown $idCategoria
-	 * @param unknown $nomeCategoria
+	 * Full constructor to the object Categoria 
+	 * @param $idCategoria
+	 * @param $nomeCategoria
 	 */
 	public function __constructOverload($idCategoria,$nomeCategoria){
 		
