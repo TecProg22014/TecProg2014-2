@@ -6,12 +6,12 @@ class Crime{
 	
 	/**
 	 * Variables to that define a crime
-	 * @var idCrime
-	 * @var quantidade
-	 * @var idTempo
-	 * @var idNatureza
-	 * @var idRA
-	 * @var exceptionCrime
+	 * @var int idCrime
+	 * @var int quantidade
+	 * @var int idTempo
+	 * @var int idNatureza
+	 * @var int idRA
+	 * @var String exceptionCrime
 	 */
 	private $idCrime;
 	private $quantidade;
@@ -42,7 +42,7 @@ class Crime{
 	
 	/**
 	 * Function to set the sum of how many times one crime has occurred
-	 * @param unknown $quantidade
+	 * @param $quantidade
 	 */
 	public function __setQuantidade($quantidade){
 	
@@ -59,7 +59,7 @@ class Crime{
 	
 	/**
 	 * Function to set one array of periods of time counted to show percents of crimes
-	 * @param unknown $idTempo
+	 * @param $idTempo
 	 */
 	public function __setIdTempo($idTempo){
 		
@@ -68,7 +68,7 @@ class Crime{
 	
 	/**
 	 * Function to get the arrays of periods related to crimes
-	 * @return Ambigous <unknown, unknown>
+	 * @return Object Crime var idTempo
 	 */
 	public function __getIdTempo(){
 		return $this->idTempo;
@@ -76,7 +76,7 @@ class Crime{
 	
 	/**
 	 * Function to set the id of the nature of one crime
-	 * @param unknown $idNatureza
+	 * @param $idNatureza
 	 */
 	public function __setIdNatureza($idNatureza){
 		
@@ -85,7 +85,7 @@ class Crime{
 	
 	/**
 	 * Function to get the id of the nature of one crime
-	 * @return Ambigous <unknown, unknown>
+	 * @return Object Crime var idNatureza
 	 */
 	public function __getIdNatureza(){
 		return $this->idNatureza;
@@ -93,7 +93,7 @@ class Crime{
 	
 	/**
 	 * Function to set the Administrative Region of one crime has occurred
-	 * @param unknown $idRA
+	 * @param  $idRA
 	 */
 	public function __setIdRegiaoAdministrativa($idRA){
 		$this->idRA = $idRA;

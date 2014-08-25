@@ -5,8 +5,8 @@ class Categoria{
 	
 	/**
 	 * Variables to specify the category of the crime
-	 * @var idCategoria
-	 * @var nomeCategoria
+	 * @var int idCategoria
+	 * @var String nomeCategoria
 	 */
 	private $idCategoria;
 	private $nomeCategoria;
