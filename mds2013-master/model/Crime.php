@@ -22,8 +22,8 @@ class Crime{
 	
 	/**
 	 * Function to set the id of the crime
-	 * @param $idCrime
-	 * @throws ETipoErrado
+	 * @param int $idCrime
+	 * @throws Exception ETipoErrado
 	 */
 	public function __setIdCrime($idCrime){
 
@@ -42,7 +42,7 @@ class Crime{
 	
 	/**
 	 * Function to set the sum of how many times one crime has occurred
-	 * @param $quantidade
+	 * @param int $quantidade
 	 */
 	public function __setQuantidade($quantidade){
 	
@@ -51,7 +51,7 @@ class Crime{
 	
 	/**
 	 * Function to get the quantity of times one crime has occurred
-	 * @return Object Crime var quantidade
+	 * @return Object Crime var $quantidade
 	 */
 	public function __getQuantidade(){
 		return $this->quantidade;
@@ -59,7 +59,7 @@ class Crime{
 	
 	/**
 	 * Function to set one array of periods of time counted to show percents of crimes
-	 * @param $idTempo
+	 * @param int $idTempo
 	 */
 	public function __setIdTempo($idTempo){
 		
@@ -68,7 +68,7 @@ class Crime{
 	
 	/**
 	 * Function to get the arrays of periods related to crimes
-	 * @return Object Crime var idTempo
+	 * @return Object Crime var $idTempo
 	 */
 	public function __getIdTempo(){
 		return $this->idTempo;
@@ -76,7 +76,7 @@ class Crime{
 	
 	/**
 	 * Function to set the id of the nature of one crime
-	 * @param $idNatureza
+	 * @param int $idNatureza
 	 */
 	public function __setIdNatureza($idNatureza){
 		
@@ -85,7 +85,7 @@ class Crime{
 	
 	/**
 	 * Function to get the id of the nature of one crime
-	 * @return Object Crime var idNatureza
+	 * @return Object Crime var $idNatureza
 	 */
 	public function __getIdNatureza(){
 		return $this->idNatureza;
@@ -93,7 +93,7 @@ class Crime{
 	
 	/**
 	 * Function to set the Administrative Region of one crime has occurred
-	 * @param  $idRA
+	 * @param int $idRA
 	 */
 	public function __setIdRegiaoAdministrativa($idRA){
 		$this->idRA = $idRA;
@@ -115,10 +115,10 @@ class Crime{
 	
 	/**
 	 * Full constuctor of an object Crime
-	 * @param $idCrime
-	 * @param $idTempo
-	 * @param $idNatureza
-	 * @param $quantidade
+	 * @param int $idCrime
+	 * @param int $idTempo
+	 * @param int $idNatureza
+	 * @param int $quantidade
 	 */
 	public function __constructOverload($idCrime,$idTempo,$idNatureza,$quantidade){
 		$this->idCrime = $idCrime;

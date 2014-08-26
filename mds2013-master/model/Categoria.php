@@ -14,7 +14,7 @@ class Categoria{
 	/**
 	 * Function to set the id of the category of the crime
 	 * @param int $idCategoria
-	 * @throws ETipoErrado
+	 * @throws Exception ETipoErrado
 	 */
 	public function __setIdCategoria($idCategoria){
 		
@@ -33,8 +33,8 @@ class Categoria{
 	
 	/**
 	 * Function to set the name of the category of the crime
-	 * @param unknown $nomeCategoria
-	 * @throws ETipoErrado
+	 * @param String $nomeCategoria
+	 * @throws Exception ETipoErrado
 	 */
 	public function __setNomeCategoria($nomeCategoria){
 		
@@ -46,7 +46,7 @@ class Categoria{
 	
 	/**
 	 * Function to get the name of the category of the crime
-	 * @return Object Categoria var nomeCategoria 
+	 * @return Object Categoria var $nomeCategoria 
 	 */
 	public function __getNomeCategoria(){
 		return $this->nomeCategoria;
@@ -54,8 +54,8 @@ class Categoria{
 	
 	/**
 	 * Full constructor to the object Categoria 
-	 * @param $idCategoria
-	 * @param $nomeCategoria
+	 * @param int $idCategoria
+	 * @param String $nomeCategoria
 	 */
 	public function __constructOverload($idCategoria,$nomeCategoria){
 		
