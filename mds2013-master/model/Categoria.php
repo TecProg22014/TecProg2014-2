@@ -12,6 +12,24 @@ class Categoria{
 	private $nomeCategoria;
 	
 	/**
+	 * Null constructor to grant that no null objects will be created
+	 */
+	public function __construct(){
+	
+	}
+	
+	/**
+	 * Full constructor to the object Categoria
+	 * @param int $idCategoria
+	 * @param String $nomeCategoria
+	 */
+	public function __constructOverload($idCategoria,$nomeCategoria){
+	
+		$this->idCategoria = $idCategoria;
+		$this->nomeCategoria = $nomeCategoria;
+	}
+	
+	/**
 	 * Function to set the id of the category of the crime
 	 * @param int $idCategoria
 	 * @throws Exception ETipoErrado
@@ -52,21 +70,4 @@ class Categoria{
 		return $this->nomeCategoria;
 	}
 	
-	/**
-	 * Full constructor to the object Categoria 
-	 * @param int $idCategoria
-	 * @param String $nomeCategoria
-	 */
-	public function __constructOverload($idCategoria,$nomeCategoria){
-		
-		$this->idCategoria = $idCategoria;
-		$this->nomeCategoria = $nomeCategoria;
-	}
-	
-	/**
-	 * Null constructor to grant that no null objects will be created
-	 */
-	public function __construct(){
-		
-	}
 }

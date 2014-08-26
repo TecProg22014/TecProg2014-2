@@ -21,6 +21,27 @@ class Crime{
 	private $exceptionCrime;
 	
 	/**
+	 * Null constructor to grant that no null objects will be created
+	 */
+	public function __construct(){
+	
+	}
+	
+	/**
+	 * Full constuctor of an object Crime
+	 * @param int $idCrime
+	 * @param int $idTempo
+	 * @param int $idNatureza
+	 * @param int $quantidade
+	 */
+	public function __constructOverload($idCrime,$idTempo,$idNatureza,$quantidade){
+		$this->idCrime = $idCrime;
+		$this->idTempo = $idTempo;
+		$this->idNatureza = $idNatureza;
+		$this->quantidade = $quantidade;
+	}
+	
+	/**
 	 * Function to set the id of the crime
 	 * @param int $idCrime
 	 * @throws Exception ETipoErrado
@@ -106,24 +127,4 @@ class Crime{
 		return $this->idRA;
 	}
 	
-	/**
-	 * Null constructor to grant that no null objects will be created
-	 */
-	public function __construct(){
-		
-	}
-	
-	/**
-	 * Full constuctor of an object Crime
-	 * @param int $idCrime
-	 * @param int $idTempo
-	 * @param int $idNatureza
-	 * @param int $quantidade
-	 */
-	public function __constructOverload($idCrime,$idTempo,$idNatureza,$quantidade){
-		$this->idCrime = $idCrime;
-		$this->idTempo = $idTempo;
-		$this->idNatureza = $idNatureza;
-		$this->quantidade = $quantidade;
-	}
 }
