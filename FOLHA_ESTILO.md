@@ -219,21 +219,3 @@ Deve-se usar espaços em branco nas seguintes situações:
 * As expressões em uma declaração for deve ser separada por um espaço em branco.
 
 ## Convenções dos nomes
-
-Tipo de Identificador  | Regra para Nomeclatura    |  Exemplo
----------------------- | ------------------------- | ----------------------
-Classes e Interfaces   |  devem ser substantivos, 
-                          com a primeira letra de
-                          cada palavra, inclusive
-                          interna, maiúscula       | Os nomes de classes
-                     | class Student / interface StudentOfLaw
-Métodos                | Métodos devem ser
-verbos, iniciando a palavra
-em minúsculo e com as
-palavras internas em
-maiúsculo.                     | run(); / getBackground()
-Variáveis              | Devem iniciar com minúscula e palavras internas em maiúsculas.             | int myWidth;
-Constantes             | Devem ter todas as letras maiúsculas, e caso necessite separar por _       | int MIN_WIDTH;
-
-
-
