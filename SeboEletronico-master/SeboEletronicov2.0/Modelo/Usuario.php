@@ -8,23 +8,50 @@ include '../Utilidades/ExcessaoSenhaInvalida.php';
 include '../Dao/UsuarioDao.php';
 
 class Usuario {
-    
+    /**
+     * Variebles to define a user.
+     *
+     * @var string $nome;
+     * @var string $telefone;
+     * @var string $email;
+     * @var string $senha;
+    */
     private $nome;
     private $telefone;
     private $email;
     private $senha;
-    
+    /**
+     * Constructor function of class User.
+     * Its a full constructor of class and responsible to create a instance of class.
+     *
+     * @param string $nome;
+     * @param string $telefone;
+     * @param string $email;
+     * @param string $senha;
+     */
     public function __construct($nome, $telefone, $email, $senha) {
         $this->setNome($nome);
         $this->setTelefone($telefone);
         $this->setEmail($email);
         $this->setSenha($senha);
     }
- 
+    /**
+     * The function getNome() is the function to access the atribute with names value.
+     * @return Object User var $nome
+     *
+     */
     public function getNome() {
         return $this->nome;
     }
-        
+    /**
+     * The function setNome() is the function to modify the value of atribute name.
+     * If the names value is null
+     * Or are special characters.
+     * Or are twice spaces.
+     * The method throws the exception ExcessaoNomeInvalido().
+     * @param $nome
+     *
+     */    
     public function setNome($nome){
         
         if(!ValidaDados::validaCamposNulos($nome)){
@@ -37,11 +64,24 @@ class Usuario {
             $this->nome = $nome;
         }
     }
-
+    /**
+     * The function getTelefone() is the function to access the atribute with phones value.
+     * @return Object User var $telefone
+     *
+     */
     public function getTelefone() {
         return $this->telefone;
     }
 
+    /**
+     * The function setTelefone() is the function to modify the value of atribute phone.
+     * If the phones value is null
+     * Or are no numbers characters 
+     * Or are more of 8 characters
+     * The method throws the exception ExcessaoTelefoneInvalido().
+     * @param $telefone
+     *
+     */
     public function setTelefone($telefone) {
         if(!ValidaDados::validaCamposNulos($telefone)){
             throw new ExcessaoTelefoneInvalido("Telefone nao pode ser nulo!");
@@ -53,13 +93,24 @@ class Usuario {
             $this->telefone = $telefone;
         }
     }
-
+    /**
+     * The function getEmail() is the function to access the atribute with emails value.
+     * @return Object User var $email
+     *
+     */
     public function getEmail() {
 	return $this->email;
 	//$email = "caiquepereira@gmail.com";
 	//return $email ;
 }
-
+    /**
+     * The function setEmail() is the function to modify the value of atribute email.
+     * If the emails value is null
+     * Or the email is being used
+     * The method throws the exception ExcessaoEmailInvalido().
+     * @param $email
+     *
+     */
     public function setEmail($email) {
         if(!ValidaDados::validaCamposNulos($email)){
             throw new ExcessaoEmailInvalido("E-mail nao pode ser nulo!");
@@ -69,11 +120,24 @@ class Usuario {
             $this->email = $email;
         }
     }
-
+    /**
+     * The function getSenha() is the function to access the atribute with passwords value.
+     * @return Object User var $senha
+     *
+     */
     public function getSenha() {
         return $this->senha;
     }
-
+    /**
+     * The function setSenha() is the function to modify the value of atribute password.
+     * If the passwords value is null
+     * Or are no special characters 
+     * Or are different of 6 characters
+     * Or the password and the confirmation are differents
+     * The method throws the exception ExcessaoSenhaInvalida().
+     * @param $senha
+     *
+     */
     public function setSenha($senha) {
         $auxiliar = ValidaDados::validaSenha($senha);
         
