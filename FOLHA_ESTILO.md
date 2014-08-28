@@ -160,6 +160,7 @@ A declaração do-while deve seguir a seguinte forma:
 -------------
 
 A declaração switch deve seguir a seguinte forma:
+<br />
 <code>
   switch (condição) {
     case ABC:
@@ -184,6 +185,7 @@ A declaração switch deve seguir a seguinte forma:
 -------------
 
 A declaração try-catch deve seguir a seguinte forma:
+<br />
 <code>
   try {
     <strong>declaração;</strong>
@@ -220,14 +222,18 @@ Deve-se usar espaços em branco nas seguintes situações:
 
 Tipo de Identificador  | Regra para Nomeclatura    |  Exemplo
 ---------------------- | ------------------------- | ----------------------
-                          Classes e Interfaces     | Os nomes de classes
-                          devem ser substantivos,
-                          com a primeira letra de
-                          cada palavra, inclusive
-                          interna, maiúscula       | 
-Métodos                | R$ 25                     |
-Variáveis              | R$ 40 - R$ 55             |
-Constantes             | R$ 70 - R$ 100            |
+Classes e Interfaces   | Os nomes de classes
+devem ser substantivos,
+com a primeira letra de
+cada palavra, inclusive
+interna, maiúscula                     | class Student / interface StudentOfLaw
+Métodos                | Métodos devem ser
+verbos, iniciando a palavra
+em minúsculo e com as
+palavras internas em
+maiúsculo.                     | run(); / getBackground()
+Variáveis              | Devem iniciar com minúscula e palavras internas em maiúsculas.             | int myWidth;
+Constantes             | Devem ter todas as letras maiúsculas, e caso necessite separar por “_”     | int MIN_WIDTH;
 
 
 
