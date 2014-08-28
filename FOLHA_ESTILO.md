@@ -40,6 +40,7 @@ Evitar linhas com mais de <code>80 caracters</code>.
 
 
 ### Quebra de linha
+-------------
 
 Quando uma expressão não couber em uma linha, quebre-a com os seguintes princípios
 gerais:
