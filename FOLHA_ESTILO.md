@@ -32,7 +32,6 @@ Métodos                                                                        
 
 
 ## Indentação
--------------
 
 ### Comprimento da linha
 -------------
