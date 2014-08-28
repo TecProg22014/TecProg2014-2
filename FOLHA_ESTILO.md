@@ -222,18 +222,18 @@ Deve-se usar espaços em branco nas seguintes situações:
 
 Tipo de Identificador  | Regra para Nomeclatura    |  Exemplo
 ---------------------- | ------------------------- | ----------------------
-Classes e Interfaces   | Os nomes de classes
-devem ser substantivos,
-com a primeira letra de
-cada palavra, inclusive
-interna, maiúscula                     | class Student / interface StudentOfLaw
+Classes e Interfaces   |  devem ser substantivos, 
+                          com a primeira letra de
+                          cada palavra, inclusive
+                          interna, maiúscula       | Os nomes de classes
+                     | class Student / interface StudentOfLaw
 Métodos                | Métodos devem ser
 verbos, iniciando a palavra
 em minúsculo e com as
 palavras internas em
 maiúsculo.                     | run(); / getBackground()
 Variáveis              | Devem iniciar com minúscula e palavras internas em maiúsculas.             | int myWidth;
-Constantes             | Devem ter todas as letras maiúsculas, e caso necessite separar por “_”     | int MIN_WIDTH;
+Constantes             | Devem ter todas as letras maiúsculas, e caso necessite separar por _       | int MIN_WIDTH;
 
 
 
