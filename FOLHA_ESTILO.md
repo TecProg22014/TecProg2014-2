@@ -48,4 +48,71 @@ gerais:
 * Quebrar depois da vírgula
 * Quebrar antes do operador
 * Alinhar a nova linha com o mesmo nível do início da expressão da linha anterior
-* ´´Discutir Indentação;´´
+* Discutir Indentação;
+
+## Comentários
+
+### Da função
+-------------
+
+
+### Do bloco
+-------------
+
+
+## Declarações
+
+### Número por linha
+-------------
+
+### Localização
+-------------
+
+### Inicialização
+-------------
+
+### De classes
+-------------
+
+### Declarações simples
+-------------
+
+### Declaração return
+-------------
+
+### Declaração if-else, if-else-if-else
+-------------
+
+Deve seguir a seguinte forma:
+
+<code>
+  if(condicao){
+    declaracao;
+  }
+</code>
+
+<code>
+   if (condição) {
+
+    declaração;
+    
+    } else if (condição) {
+    
+    declaração;
+     	
+    } else if (condição) {
+    
+    declaração;
+    
+    }
+
+</code>
+
+### Declaração for
+-------------
+
+### Declaração while
+-------------
+
+### Declaração do-while
+-------------
