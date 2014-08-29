@@ -6,7 +6,7 @@ Projeto de Técnicas de Programação 2014/2 FGA-UNB
 ### Antes de começar...
 -----------
 * Solicite todas as atualizações do repositório: <code>git pull</code>
-* Ou troque de branch para verificar as atualizações: <code>git checkout -b nomeDaBranch</code>
+* Ou troque de branch para verificar as atualizações: <code>git checkout nomeDaBranch</code>
 * Dê commits locais a cada classe modificada
 * Seja feliz: <code>git push origin nomeDaBranch</code>
 
