@@ -14,20 +14,22 @@ class CategoriaDAO{
 	 * @var conexao
 	 */
 	private $conexao;
-	
+
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct(){
 		$this->conexao = new Conexao();
 	}
+	
 	/**
 	 * Specific constroctor to unit test
-	 */ 
+	 */
 	public function __constructTeste(){
 		$this->conexao = new ConexaoTeste();
-	
+
 	}
+	
 	/**
 	 * Function to list all categories of crimes
 	 * @return Array $aretornaCategoria
@@ -37,11 +39,12 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute($sql);
 		while($registro = $resultado->FetchNextObject()){
 			$dadosCategoria = new Categoria();
-			$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);	
+			$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
 			$retornaCategorias[] = $dadosCategoria;
 		}
 		return $retornaCategorias;
-	} 
+	}
+	
 	/**
 	 * Function to alphabetically list all categories of crimes
 	 * @return Array $retornaCategoria
@@ -54,7 +57,7 @@ class CategoriaDAO{
 		//}
 		/**
 	 	* While to alphabetically order of categories
-	 	* 
+	 	*
 	 	*/
 		while($registro = $resultado->FetchNextObject())
 		{
@@ -64,26 +67,28 @@ class CategoriaDAO{
 		}
 		return $retornaCategorias;
 	}
+	
 	/**
 	 * Function to select one category by the id
-	 * @param int $id        	
+	 * @param int $id
 	 * @return String $dadosCategoria
 	 */
 	public function consultarPorId($id){
 		$sql = "SELECT * FROM categoria WHERE id_categoria = '".$id."'";
 		$resultado = $this->conexao->banco->Execute($sql);
 		//if($resultado->RecordCount()== 0){
-			//throw new ECategoriaListarConsultaPorIdVazio();
+		//throw new ECategoriaListarConsultaPorIdVazio();
 		//}
 		$registro = $resultado->FetchNextObject();
 		$dadosCategoria = new Categoria();
 		$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
 		return $dadosCategoria;
-		
+
 	}
+	
 	/**
 	 * Function to select one category by the name
-	 * @param String $nomeCategoria        	
+	 * @param String $nomeCategoria
 	 * @return String $dadosCategoria
 	 */
 	public function consultarPorNome($nomeCategoria){
@@ -91,15 +96,16 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute($sql);
 		$registro = $resultado->FetchNextObject();
 		//if($resultado->RecordCount()== 0){
-			//throw new ECategoriaConsultarPorNomeVazio();
+		//throw new ECategoriaConsultarPorNomeVazio();
 		//}
 		$dadosCategoria = new Categoria();
 		$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
 		return $dadosCategoria;
 	}
+	
 	/**
 	 * Function to insert one category in the database
-	 * @param Categoria $categoria        	
+	 * @param Categoria $categoria
 	 * @return boolean $resultado
 	 */
 	public function inserirCategoria(Categoria $categoria){
@@ -107,8 +113,8 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute($sql);
 		return $resultado;
 		//if(!$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db)){
-			//	throw new EConexaoFalha();	
-			//}
+		//	throw new EConexaoFalha();
+		//}
 	}
 
 	//Somatórios de Categorias
@@ -118,7 +124,7 @@ class CategoriaDAO{
 	 * @author Eduardo Augusto
 	 * @copyright RadarCriminal 2013
 	 **/
-	
+
 	/**
 	 * Function to count the number of crimes in person
 	 * @return int $registro
@@ -129,6 +135,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
 	 * Function to count the number of police actions
 	 * @return int $registro
@@ -139,6 +146,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
 	 * Function to count the number of sexual crimes
 	 * @return int $registro
@@ -149,6 +157,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
 	 * Function to count the number of robbery crimes
 	 * @return int $registro
@@ -159,6 +168,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
 	 * Function to count the number of theft crimes
 	 * @return int $registro
@@ -169,6 +179,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
 	 * Function to count the number of crimes in patrimony
 	 * @return int $registro
@@ -179,8 +190,9 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
+	
 	/**
-	 * Function to list all the categories 
+	 * Function to list all the categories
 	 * @return String $totalCategoria
 	 */
 	public function listarTotalDeCategoria(){
@@ -194,6 +206,7 @@ class CategoriaDAO{
 		}
 		return $totalCategoria;
 	}
+	
 	/**
 	 * Function to count the number of crimes in the traffic
 	 * @return int $registro
