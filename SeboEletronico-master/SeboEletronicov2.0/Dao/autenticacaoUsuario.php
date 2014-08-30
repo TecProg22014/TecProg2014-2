@@ -33,4 +33,3 @@ if($row == $row2){
 	echo "<script>  window.location='http://localhost/SeboEletronicov2.0/Visao/entrarLogin.php'</script>";
 }
 ?>
-
