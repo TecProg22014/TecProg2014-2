@@ -11,7 +11,7 @@ class NaturezaController{
 	
 	/**
 	 * Variable to instance a object to percist in the database
-	 * @var String naturezaDAO
+	 * @var naturezaDAO
 	 */
 	private $naturezaDAO;
 	

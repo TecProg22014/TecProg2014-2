@@ -7,7 +7,7 @@ class CategoriaController{
 	
 	/**
 	 * Variable to instance a object to percist in the database
-	 * @var String categoriaDAO
+	 * @var categoriaDAO
 	 */
 	private $categoriaDAO;
 	
