@@ -30,6 +30,10 @@ class RegiaoAdministrativaDAO {
 	public function listarTodas(){
 		$sql = "SELECT * FROM regiao_administrativa";
 		$resultado = $this->conexao->banco->Execute($sql);
+		/**
+	 	* While to alphabetically order of administrative regions
+	 	*
+	 	*/
 		while($registro = $resultado->FetchNextObject())
 		{
 			$dadosRA = new RegiaoAdministrativa();
