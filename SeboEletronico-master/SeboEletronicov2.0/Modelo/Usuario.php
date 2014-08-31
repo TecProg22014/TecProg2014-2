@@ -40,24 +40,24 @@ class Usuario {
 	 */
 	
 	public function __construct($nome, $telefone, $email, $senha) {
-		$this->setNome($nome);
-		$this->setTelefone($telefone);
-		$this->setEmail($email);
-		$this->setSenha($senha);
+		$this->__setNome($nome);
+		$this->__setTelefone($telefone);
+		$this->__setEmail($email);
+		$this->__setSenha($senha);
 	}
 	
 	/**
-	 * The function getNome() is the function to access the atribute with names value.
+	 * The function __getNome() is the function to access the atribute with names value.
 	 * @return Object User var $nome
 	 *
 	 */
 	
-	public function getNome() {
+	public function __getNome() {
 		return $this->nome;
 	}
 	
 	/**
-	 * The function setNome() is the function to modify the value of atribute name.
+	 * The function __setNome() is the function to modify the value of atribute name.
 	 * If the names value is null
 	 * Or are special characters.
 	 * Or are twice spaces.
@@ -66,7 +66,7 @@ class Usuario {
 	 *
 	 */
 	
-	public function setNome($nome){
+	public function __setNome($nome){
 
 		if(!ValidaDados::validaCamposNulos($nome)){
 			throw new ExcessaoNomeInvalido("Nome nao pode ser nulo!");
@@ -80,17 +80,17 @@ class Usuario {
 	}
 	
 	/**
-	 * The function getTelefone() is the function to access the atribute with phones value.
+	 * The function __getTelefone() is the function to access the atribute with phones value.
 	 * @return Object User var $telefone
 	 *
 	 */
 	
-	public function getTelefone() {
+	public function __getTelefone() {
 		return $this->telefone;
 	}
 
 	/**
-	 * The function setTelefone() is the function to modify the value of atribute phone.
+	 * The function __setTelefone() is the function to modify the value of atribute phone.
 	 * If the phones value is null
 	 * Or are no numbers characters
 	 * Or are more of 8 characters
@@ -99,7 +99,7 @@ class Usuario {
 	 *
 	 */
 	
-	public function setTelefone($telefone) {
+	public function __setTelefone($telefone) {
 		if(!ValidaDados::validaCamposNulos($telefone)){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode ser nulo!");
 		}elseif(ValidaDados::validaTelefone($telefone) == 1){
@@ -112,19 +112,19 @@ class Usuario {
 	}
 	
 	/**
-	 * The function getEmail() is the function to access the atribute with emails value.
+	 * The function __getEmail() is the function to access the atribute with emails value.
 	 * @return Object User var $email
 	 *
 	 */
 	
-	public function getEmail() {
+	public function __getEmail() {
 		return $this->email;
 		//$email = "caiquepereira@gmail.com";
 		//return $email ;
 	}
 	
 	/**
-	 * The function setEmail() is the function to modify the value of atribute email.
+	 * The function __setEmail() is the function to modify the value of atribute email.
 	 * If the emails value is null
 	 * Or the email is being used
 	 * The method throws the exception ExcessaoEmailInvalido().
@@ -132,7 +132,7 @@ class Usuario {
 	 *
 	 */
 	
-	public function setEmail($email) {
+	public function __setEmail($email) {
 		if(!ValidaDados::validaCamposNulos($email)){
 			throw new ExcessaoEmailInvalido("E-mail nao pode ser nulo!");
 		}elseif(ValidaDados::validaEmail($email) == 1){
@@ -143,17 +143,17 @@ class Usuario {
 	}
 	
 	/**
-	 * The function getSenha() is the function to access the atribute with passwords value.
+	 * The function __getSenha() is the function to access the atribute with passwords value.
 	 * @return Object User var $senha
 	 *
 	 */
 	
-	public function getSenha() {
+	public function __getSenha() {
 		return $this->senha;
 	}
 	
 	/**
-	 * The function setSenha() is the function to modify the value of atribute password.
+	 * The function __setSenha() is the function to modify the value of atribute password.
 	 * If the passwords value is null
 	 * Or are no special characters
 	 * Or are different of 6 characters
@@ -163,7 +163,7 @@ class Usuario {
 	 *
 	 */
 	
-	public function setSenha($senha) {
+	public function __setSenha($senha) {
 		$auxiliar = ValidaDados::validaSenha($senha);
 
 		if(!ValidaDados::validaSenhaNula($senha)){
@@ -184,16 +184,16 @@ class Usuario {
 	//    }
 	//
 	//    public function checaCadastroId($id){
-	//        return UsuarioDao::getCadastradosPorId($id);
+	//        return UsuarioDao::__getCadastradosPorId($id);
 	//    }
 	//
 	//    public function checaSenhaId($idSenha){
-	//        return UsuarioDao::getSenhaPorId($idSenha);
+	//        return UsuarioDao::__getSenhaPorId($idSenha);
 	//    }
 	//
 	//    public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
 	//        $usuario = new Usuario($nome, $telefone, $email, $senha);
-	//        return UsuarioDao::alteraUsuario($usuario->getNome(), $usuario->getEmail(), $usuario->getTelefone(), $usuario->getSenha(),$id,$senhaVelha);
+	//        return UsuarioDao::alteraUsuario($usuario->__getNome(), $usuario->__getEmail(), $usuario->__getTelefone(), $usuario->__getSenha(),$id,$senhaVelha);
 	//    }
 	//
 	//    public function deletaCadastro($email, $senha){
