@@ -119,8 +119,6 @@ class Usuario {
 	
 	public function __getEmail() {
 		return $this->email;
-		//$email = "caiquepereira@gmail.com";
-		//return $email ;
 	}
 	
 	/**
