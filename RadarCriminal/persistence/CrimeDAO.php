@@ -103,7 +103,6 @@ class CrimeDAO{
 		return $registro->TOTAL;
 	}
 
-	//Metodo de somar todos homicícios por ano
 	/**
 	 * @author Lucas Andrade Ribeiro
 	 * @author Sergio Silva
@@ -130,7 +129,7 @@ class CrimeDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	//Metodo de somar todos homicícios por ano
+
 	/**
 	 * @author Lucas Andrade Ribeiro
 	 * @author Sergio Silva
@@ -169,7 +168,6 @@ class CrimeDAO{
 		return $registro->TOTAL;
 	}
 
-	//INICIO DOS MÉTODOS DE INSERÇÃO
 	/**
 	 * Function to insert one crime in the database
 	 * @param Crime $crime
@@ -177,16 +175,6 @@ class CrimeDAO{
 	public function inserirCrime(Crime $crime){
 		$sql = "INSERT INTO crime (natureza_id_natureza,tempo_id_tempo,quantidade,regiao_administrativa_id_regiao_administrativa) VALUES ('{$crime->__getIdNatureza()}','{$crime->__getIdTempo()}','{$crime->__getQuantidade()}','{$crime->__getIdRegiaoAdministrativa()}')";
 		$this->conexao->banco->Execute($sql);
-
-		//if(!$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db)){
-		//	throw new EConexaoFalha();
-		//}
-
-
-		//if(!$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db)){
-		//		throw new EConexaoFalha();
-		//}
-
 	}
 
 }

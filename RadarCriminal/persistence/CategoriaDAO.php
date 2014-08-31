@@ -95,9 +95,6 @@ class CategoriaDAO{
 		$sql = "SELECT * FROM categoria WHERE nome_categoria = '".$nomeCategoria."'";
 		$resultado = $this->conexao->banco->Execute($sql);
 		$registro = $resultado->FetchNextObject();
-		//if($resultado->RecordCount()== 0){
-		//throw new ECategoriaConsultarPorNomeVazio();
-		//}
 		$dadosCategoria = new Categoria();
 		$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
 		return $dadosCategoria;
@@ -112,12 +109,8 @@ class CategoriaDAO{
 		$sql = "INSERT INTO categoria (nome_categoria) values ('{$categoria->__getNomeCategoria()}')";
 		$resultado = $this->conexao->banco->Execute($sql);
 		return $resultado;
-		//if(!$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db)){
-		//	throw new EConexaoFalha();
-		//}
 	}
 
-	//Somatórios de Categorias
 	/**
 	 * @author Sergio Silva
 	 * @author Eliseu Egewarth
