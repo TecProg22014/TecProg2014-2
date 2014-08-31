@@ -61,6 +61,7 @@ class UsuarioControlador {
 	 *
 	 * The return is true if the user has been updated.
 	 * @return bool UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha)
+	 * The return is true if the user has been updated.
 	 */
 
 	public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
@@ -82,9 +83,9 @@ class UsuarioControlador {
 	 *
 	 * @param string $email
 	 * @param string $senha
-	 *
+	 * 
+	 * @return bool UsuarioDao::deletaUsuario($email, $senha).
 	 * The return is true if the user has been deleted.
-	 * @return bool UsuarioDao::deletaUsuario($email, $senha)
 	 */
 
 	public function deletaCadastro($email, $senha){
