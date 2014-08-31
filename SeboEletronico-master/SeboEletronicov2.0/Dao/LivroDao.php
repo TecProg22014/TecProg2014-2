@@ -7,7 +7,9 @@ include "../Utilidades/ConexaoComBanco.php";
 class LivroDao {
 	
 	public function salvaLivro($livro, $id_dono){
-
+		/**
+		 * Insertion method whose return is an object
+		 * */
 		$sql = "INSERT INTO livro (id_dono, titulo_livro, editora, autor, edicao, genero, estado_conserv, descricao_livro, venda, troca)
             VALUES ('".$id_dono."','".$livro->getTitulo()."','".$livro->getEditora()."','".$livro->getAutor()."',
                 '".$livro->getEdicao()."','".$livro->getGenero()."','".$livro->getEstado()."','".$livro->getDescricao()."','".$livro->getVenda()."',
@@ -18,6 +20,7 @@ class LivroDao {
 	
 	/**
 	 * Research methods book of the application, all variations of consulting books are concentrated in this method
+	 * Return method: Object
 	 * */
 
 	public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
