@@ -13,8 +13,8 @@ $row = mysql_num_rows($sql);
 $row2 = mysql_num_rows($sql2);
 
 /**
- * Obtendo dados para inicialização de sessão do usuário no sistema.
- * Caso $email e $senha sejam compatíveis o login é efetuado com sucesso (janela window.location)
+ * Getting data for initializing session user in the system.
+ * If $email and $senha are compatible log in is successful (window.location window)
  * */
 
 $usuario = mysql_fetch_array($sql);
