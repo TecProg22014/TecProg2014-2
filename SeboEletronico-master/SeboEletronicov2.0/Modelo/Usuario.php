@@ -178,31 +178,7 @@ class Usuario {
 			$this->senha = $senha;
 		}
 	}
-
-	//    public function checaCadastro($email, $senha){
-	//        return UsuarioDao::checaCadastro($email, $senha);
-	//    }
-	//
-	//    public function checaCadastroId($id){
-	//        return UsuarioDao::__getCadastradosPorId($id);
-	//    }
-	//
-	//    public function checaSenhaId($idSenha){
-	//        return UsuarioDao::__getSenhaPorId($idSenha);
-	//    }
-	//
-	//    public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
-	//        $usuario = new Usuario($nome, $telefone, $email, $senha);
-	//        return UsuarioDao::alteraUsuario($usuario->__getNome(), $usuario->__getEmail(), $usuario->__getTelefone(), $usuario->__getSenha(),$id,$senhaVelha);
-	//    }
-	//
-	//    public function deletaCadastro($email, $senha){
-	//        return UsuarioDao::deletaUsuario($email, $senha);
-	//    }
-	//
-	//    public function pesquisaUsuario($nome){
-	//        return UsuarioDao::pesquisaUsuario($nome);
-	//    }
+	
 }
 
 ?>
