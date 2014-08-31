@@ -13,20 +13,20 @@ class CrimeDAO{
 	 * @var Conexao conexao
 	 */
 	private $conexao;
-	
+
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct(){
 		$this->conexao = new Conexao();
 	}
-	
+
 	/**
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste(){
 		$this->conexao = new ConexaoTeste();
-	
+
 	}
 	/**
 	 * Function to list all crimes
@@ -109,7 +109,7 @@ class CrimeDAO{
 	 * @author Sergio Silva
 	 * @copyright RadarCriminal 2013
 	 **/
-	
+
 	/**
 	 * Function to count the number of homicide
 	 * @return int $registro
@@ -136,7 +136,7 @@ class CrimeDAO{
 	 * @author Sergio Silva
 	 * @copyright RadarCriminal 2013
 	 **/
-	
+
 	/**
 	 * Function to count the number of injuries
 	 * @return int $registro
@@ -157,7 +157,7 @@ class CrimeDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of crimes
 	 * @return int $registro
@@ -166,7 +166,7 @@ class CrimeDAO{
 		$sql = "SELECT SUM(total) as total FROM totalgeralcrimes ";
 		$resultado = $this->conexao->banco->Execute($sql);
 		$registro = $resultado->FetchNextObject();
-		return $registro->TOTAL;	
+		return $registro->TOTAL;
 	}
 
 	//INICIO DOS MÉTODOS DE INSERÇÃO

@@ -27,7 +27,7 @@ class NaturezaDAO{
 	 */
 	public function __constructTeste(){
 		$this->conexao = new ConexaoTeste();
-	
+
 	}
 	/**
 	 * Function to list all nature of crimes
@@ -39,7 +39,7 @@ class NaturezaDAO{
 		while($registro = $resultado->FetchNextObject())
 		{
 			$dadosNatureza = new Natureza();
-			$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);				
+			$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);
 			$retornaNaturezas[] = $dadosNatureza;
 		}
 		return $retornaNaturezas;
@@ -73,7 +73,7 @@ class NaturezaDAO{
 		$resultado = $this->conexao->banco->Execute($sql);
 		$registro = $resultado->FetchNextObject();
 		$dadosNatureza = new Natureza();
-		$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);				
+		$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);
 		return $dadosNatureza;
 
 	}
@@ -83,24 +83,24 @@ class NaturezaDAO{
 	 * @return String $dadosNatureza
 	 */
 	public function consultarPorNome($natureza){
-		
+
 		$sql = "SELECT * FROM natureza WHERE natureza = '".$natureza."'";
-		$resultado = $this->conexao->banco->Execute($sql);	
+		$resultado = $this->conexao->banco->Execute($sql);
 		$registro = $resultado->FetchNextObject();
 		$dadosNatureza = new Natureza();
-		$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);				
+		$dadosNatureza->__constructOverload($registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA);
 		return $dadosNatureza;
 	}
-/**
+	/**
 	 * Function to insert one nature in the database
 	 * @param $natureza
 	 */
 	public function inserirNatureza(Natureza $natureza){
 		$sql = "INSERT INTO natureza (categoria_id_categoria,natureza) values ('{$natureza->__getIdCategoria()}','{$natureza->__getNatureza()}')";
-		$this->conexao->banco->Execute($sql);	
+		$this->conexao->banco->Execute($sql);
 		//if(!$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db)){
-		//	throw new EConexaoFalha();	
-		//}				
+		//	throw new EConexaoFalha();
+		//}
 	}
 	/**
 	 * Function to select one nature by the category's id

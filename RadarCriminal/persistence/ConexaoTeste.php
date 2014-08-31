@@ -2,7 +2,7 @@
 require_once('C:/xampp/htdocs/mds2013/libs/adodb/adodb.inc.php');
 require_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
 class ConexaoTeste{
-	
+
 	/**
 	 * Variables to specify the conection with the base and the tests
 	 * @var $banco;
@@ -18,7 +18,7 @@ class ConexaoTeste{
 	private $usuario;
 	private $senha;
 	private $db;
-	
+
 	/**
 	 * Full constructor to the object ConexaoTeste
 	 * @param $banco;
@@ -29,7 +29,7 @@ class ConexaoTeste{
 	 * @param $db;
 	 */
 	public function __construct(){
-		
+
 		$this->tipo_banco    = "mysql";
 		$this->servidor      = "localhost";
 		$this->usuario       = "root";

@@ -13,13 +13,13 @@ class TempoDAO{
 	 */
 	public function __construct(){
 		$this->conexao = new Conexao();
-	} 
+	}
 	/**
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste(){
 		$this->conexao = new ConexaoTeste();
-	
+
 	}
 	/**
 	 * Function to list all the times of the crimes
@@ -31,11 +31,11 @@ class TempoDAO{
 		while($registro = $resultado->FetchNextObject())
 		{
 			$dadosTempo = new Tempo();
-			$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);	
+			$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
 			$retornaTempos[] = $dadosTempo;
 		}
 		return $retornaTempos;
-	} 
+	}
 	/**
 	 * Function to list all the times of the crimes in order
 	 * @return $retornaTempos
@@ -63,7 +63,7 @@ class TempoDAO{
 		$dadosTempo = new Tempo();
 		$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
 		return $dadosTempo;
-		
+
 	}
 
 	/**

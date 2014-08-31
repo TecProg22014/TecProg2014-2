@@ -21,7 +21,7 @@ class CategoriaDAO{
 	public function __construct(){
 		$this->conexao = new Conexao();
 	}
-	
+
 	/**
 	 * Specific constroctor to unit test
 	 */
@@ -29,7 +29,7 @@ class CategoriaDAO{
 		$this->conexao = new ConexaoTeste();
 
 	}
-	
+
 	/**
 	 * Function to list all categories of crimes
 	 * @return Array $retornaCategoria
@@ -44,7 +44,7 @@ class CategoriaDAO{
 		}
 		return $retornaCategorias;
 	}
-	
+
 	/**
 	 * Function to alphabetically list all categories of crimes
 	 * @return Array $retornaCategoria
@@ -67,7 +67,7 @@ class CategoriaDAO{
 		}
 		return $retornaCategorias;
 	}
-	
+
 	/**
 	 * Function to select one category by the id
 	 * @param int $id
@@ -85,7 +85,7 @@ class CategoriaDAO{
 		return $dadosCategoria;
 
 	}
-	
+
 	/**
 	 * Function to select one category by the name
 	 * @param String $nomeCategoria
@@ -102,7 +102,7 @@ class CategoriaDAO{
 		$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
 		return $dadosCategoria;
 	}
-	
+
 	/**
 	 * Function to insert one category in the database
 	 * @param Categoria $categoria
@@ -135,7 +135,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of police actions
 	 * @return int $registro
@@ -146,7 +146,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of sexual crimes
 	 * @return int $registro
@@ -157,7 +157,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of robbery crimes
 	 * @return int $registro
@@ -168,7 +168,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of theft crimes
 	 * @return int $registro
@@ -179,7 +179,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to count the number of crimes in patrimony
 	 * @return int $registro
@@ -190,7 +190,7 @@ class CategoriaDAO{
 		$registro = $resultado->FetchNextObject();
 		return $registro->TOTAL;
 	}
-	
+
 	/**
 	 * Function to list all the categories
 	 * @return String $totalCategoria
@@ -206,7 +206,7 @@ class CategoriaDAO{
 		}
 		return $totalCategoria;
 	}
-	
+
 	/**
 	 * Function to count the number of crimes in the traffic
 	 * @return int $registro

@@ -9,7 +9,7 @@ class RegiaoAdministrativaDAO {
 	 * @var Conexao conexao
 	 */
 	private $conexao;
-	
+
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
@@ -21,7 +21,7 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function __constructTeste(){
 		$this->conexao = new ConexaoTeste();
-	
+
 	}
 	/**
 	 * Function to list all administrative regions of the crimes
@@ -69,7 +69,7 @@ class RegiaoAdministrativaDAO {
 		$dadosRA = new RegiaoAdministrativa();
 		$dadosRA->__constructOverload($registro->ID_REGIAO_ADMINISTRATIVA,$registro->NOME);
 		return $dadosRA;
-	
+
 	}
 	/**
 	 * Function to select one administrative region by the name

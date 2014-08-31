@@ -1,3 +1,3 @@
 <?php
- $registry->db = db::getInstance();
+$registry->db = db::getInstance();
 ?>
