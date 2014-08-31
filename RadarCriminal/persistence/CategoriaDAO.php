@@ -32,7 +32,7 @@ class CategoriaDAO{
 	
 	/**
 	 * Function to list all categories of crimes
-	 * @return Array $aretornaCategoria
+	 * @return Array $retornaCategoria
 	 */
 	public function listarTodas(){
 		$sql = "SELECT * FROM categoria";
