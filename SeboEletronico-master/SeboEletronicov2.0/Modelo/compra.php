@@ -9,19 +9,6 @@
         $cont =0;
         $registro = mysql_fetch_assoc($result);
 
-        
-//        
-//        while() {
-//	   
-//                 
-//		 $listaLivros = array($cont=>$registro);
-//                 
-//                 
-//                 $cont++;
-//		}
-//             
-                
-        
         var_dump($registro);
         
 	?> 
