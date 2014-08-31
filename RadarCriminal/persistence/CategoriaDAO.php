@@ -11,7 +11,7 @@ include_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
 class CategoriaDAO{
 	/**
 	 * Variable to instance a object to conect with the database
-	 * @var conexao
+	 * @var Conexao conexao
 	 */
 	private $conexao;
 
