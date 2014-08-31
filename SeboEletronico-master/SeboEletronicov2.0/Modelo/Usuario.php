@@ -7,6 +7,12 @@ include '../Utilidades/ExcessaoEmailInvalido.php';
 include '../Utilidades/ExcessaoSenhaInvalida.php';
 include '../Dao/UsuarioDao.php';
 
+/**
+ * The class Usuario is the model of users.
+ * All users on system are objects of this.
+ * 
+ */
+
 class Usuario {
 	
 	/**
