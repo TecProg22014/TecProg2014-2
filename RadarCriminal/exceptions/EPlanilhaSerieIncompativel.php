@@ -1,7 +1,10 @@
 <?php
 class EPlanilhaSerieIncompativel extends Exception{
 	
+	/**
+	 * Constructor to set a message error for inompatible serie spreadsheet 
+	 */
 	public function __construct(){
-		$this->message = "Esta planilha não e de serie historica!";
+		$this->message = "Esta planilha nï¿½o e de serie historica!";
 	}
 }
