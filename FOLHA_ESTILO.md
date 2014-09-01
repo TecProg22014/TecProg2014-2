@@ -107,19 +107,23 @@ Deve seguir a seguinte forma:
 
 <code>
   if(condicao){
+  
     declaracao;
+    
   }
 </code>
 
 <code>
    if (condição) {
-    declaração;
-    } else if (condição) {
-      
+   
       declaração;
-     	
-    } else if (condição) {
       
+    } else if (condição) {
+    
+      declaração;
+      
+    } else if (condição) {
+    
       declaração;
       
     }
@@ -142,7 +146,9 @@ A declaração for deve seguir a seguinte forma:
 A declaração while deve seguir a seguinte forma:
 <code>
   while (condição) {
+  
     declaração;
+    
   }
 </code>
 
@@ -152,8 +158,11 @@ A declaração while deve seguir a seguinte forma:
 A declaração do-while deve seguir a seguinte forma:
 <code>
   do {
+  
     declaração;
+    
   } while (condição);
+  
 </code>
 
 ### Declaração switch
@@ -163,6 +172,7 @@ A declaração switch deve seguir a seguinte forma:
 <br />
 <code>
   switch (condição) {
+  
     case ABC:
     declaração;
     break;
@@ -188,9 +198,13 @@ A declaração try-catch deve seguir a seguinte forma:
 <br />
 <code>
   try {
+  
     <strong>declaração;</strong>
+    
   } catch (Exception $erro) {
+  
     declaração;
+    
   }
 
 </code>
@@ -209,7 +223,9 @@ Deve-se usar espaços em branco nas seguintes situações:
 
 <code>
   while ( true ) {
+  
     declaração;
+    
   }
 </code>
 
