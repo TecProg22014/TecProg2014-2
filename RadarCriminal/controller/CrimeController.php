@@ -329,7 +329,7 @@ class CrimeController {
 	}
 	
 	/**
-	 * Function to sum all the attempted murder
+	 * Function to sum all the murder attempts
 	 * @return int $retornoSomaTotalTentativasHomicidio
 	 */
 	public function _somaTotalTentativasHomicidio() {
@@ -341,7 +341,7 @@ class CrimeController {
 	}
 	
 	/**
-	 * Function to sum all the attempted murder between 2010 and 2011
+	 * Function to sum all the murder attempts between 2010 and 2011
 	 * @return int $retornoSomaTotalTentativasHomicidio2010_2011
 	 */
 	public function _somaTotalTentativasHomicidio2010_2011() {
