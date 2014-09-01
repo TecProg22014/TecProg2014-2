@@ -64,23 +64,6 @@ class UsuarioDao {
 		return ($deletouUsuario&&$deleteouSenha);
 
 	}
-
-	//    public function checaCadastro($email, $senha){
-	//
-	//        $sql= "SELECT * FROM usuario WHERE email_usuario = '".$email."'";
-	//        $emailBuscado = mysql_query($sql);
-	//
-	//        $resultado = mysql_fetch_row($emailBuscado);
-	//
-	//        $sql2="SELECT * FROM senha WHERE codigo_senha = '".$senha."'";
-	//        $codigoDaSenhaBuscado = mysql_query($sql2);
-	//        $resultado1 = mysql_fetch_row($codigoDaSenhaBuscado);
-	//
-	//       if($resultado['senha_usuario'] == $resultado1['id_senha']){
-	//           return $resultado;
-	//       }
-	//    }
-	//
 	public function getCadastradosPorId($idPessoa){
 
 		$sql="SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
@@ -90,14 +73,6 @@ class UsuarioDao {
 
 		return $res;
 	}
-
-	//    public function getSenhaPorId($idSenha){
-	//            $sql="SELECT codigo_senha FROM senha WHERE id_senha = '".$idSenha."'";
-	//            $resultado = mysql_query($sql);
-	//            $res = mysql_fetch_array($resultado);
-	//
-	//            return $res;
-	//        }
 }
 
 ?>
