@@ -100,7 +100,7 @@ class CategoriaController {
 	}
 	
 	/**
-	 * Function to sum all the thefts
+	 * Function to sum all the stealing
 	 * @return int $retornoSomaTotalFurtos
 	 */
 	public function _somaTotalFurtos() {
