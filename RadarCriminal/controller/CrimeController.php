@@ -242,7 +242,7 @@ class CrimeController {
 		
 		for($i = 0; $i < count ( $dadosCrime ); $i ++) {
 			/**
-			 * Label that defines what will be represented in the graph
+			 * Loop that defines what will be represented in the graph
 			 * the string ("\"bar\"") defines the graphs full bar and
 			 * the string ("\"bar simple\"") defines the graphs dotted bar
 			 * The conditional 'if($i%2==0)' grants that the dotted and full bars will be intercalated.
