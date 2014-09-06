@@ -1,7 +1,7 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/RegiaoAdministrativaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
-include_once ('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/RegiaoAdministrativaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/RegiaoAdministrativa.php";
 class RegiaoAdministrativaController {
 	
 	/**
