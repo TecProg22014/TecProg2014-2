@@ -1,6 +1,7 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/TempoDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Tempo.php');
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
+
 class TempoController {
 	
 	/**
