@@ -1,14 +1,16 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaListarTodosVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaConsultarPorIdVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaConsultarPorNomeVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaListarTodosVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaConsultarPorIdVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaConsultarPorNomeVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
 
 class NaturezaDAO{
 	/**
