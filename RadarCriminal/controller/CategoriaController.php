@@ -1,7 +1,9 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
 class CategoriaController {
 	
 	/**
