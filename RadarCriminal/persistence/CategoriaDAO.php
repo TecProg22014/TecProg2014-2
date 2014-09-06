@@ -1,12 +1,14 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ECategoriaListarTodasVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ECategoriaListarConsultaPorIdVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ECategoriaConsultarPorNomeVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarTodasVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarConsultaPorIdVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaConsultarPorNomeVazio.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
 
 class CategoriaDAO{
 	/**
