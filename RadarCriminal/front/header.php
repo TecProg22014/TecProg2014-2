@@ -5,7 +5,7 @@
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>Radar Criminal</title>
-	<link rel="shortcut icon" href="../view/radarcriminal.ico">
+	<link rel="shortcut icon" href="../front/radarcriminal.ico">
 	<meta name="description" content="RadarCriminal - Pagina de estatísticas">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="author" content="Sérgio Silva, Eduardo Augusto, Lucas Carvalho, Lucas Andrade, Eliseu Egewarth">
@@ -17,11 +17,11 @@
 	<!-- end: Mobile Specific -->
 	
 	<!-- start: CSS -->
-	<link href="./view/css/bootstrap.min.css" rel="stylesheet">
-	<link href="./view/css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="./view/css/style.css" rel="stylesheet">
-	<link href="./view/css/style-responsive.css" rel="stylesheet">
-	<link href="./view/css/retina.css" rel="stylesheet">
+	<link href="./front/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./front/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="./front/css/style.css" rel="stylesheet">
+	<link href="./front/css/style-responsive.css" rel="stylesheet">
+	<link href="./front/css/retina.css" rel="stylesheet">
 	<!-- end: CSS -->
 	
 
@@ -36,10 +36,10 @@
 	<![endif]-->
 	
 	<!-- start: Favicon and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="C:/xampp/htdocs/mds2013/view/ico/app_icon_radar_criminal-144.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="C:/xampp/htdocs/mds2013/view/ico/app_icon_radar_criminal-114.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="C:/xampp/htdocs/mds2013/view/ico/app_icon_radar_criminal-72.png">
-	<link rel="apple-touch-icon-precomposed" href="C:/xampp/htdocs/mds2013/view/ico/app_icon_radar_criminal-57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-72.png">
+	<link rel="apple-touch-icon-precomposed" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-57.png">
 	
 	<!-- end: Favicon and Touch Icons -->	
 		
@@ -61,7 +61,8 @@
 					<!-- <img src="img/logo-half.png"> -->
 				</a>
 				</div>		
-<?php 
-	include 'C:/xampp/htdocs/mds2013/view/menu_top.php';
-	include 'C:/xampp/htdocs/mds2013/view/menu_side.php';
+<?php
+	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; /** Returns the physical address of the web server */
+	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_top.php";
+	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_side.php";
 ?>
