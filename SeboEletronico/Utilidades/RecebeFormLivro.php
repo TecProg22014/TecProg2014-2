@@ -28,7 +28,7 @@ switch($_POST['tipo']){
                              echo "<script>('Falha ao cadastrar o livro, tente novamente.')</script>";
                          }
                            
-                            echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/indexLivro.php';</script>";
+                            echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLivro.php';</script>";
                             
                           break;
       
@@ -52,7 +52,7 @@ switch($_POST['tipo']){
                             </script>  
                             
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
+                                window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLivro.php";
                             </script><?php
                         
                     break;
@@ -69,7 +69,7 @@ switch($_POST['tipo']){
                  
                         ?>
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php?livros=<?php echo $idLivro?>";
+                                window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/listaDeLivros.php?livros=<?php echo $idLivro?>";
                             </script><?php
                 break;
             
@@ -85,7 +85,7 @@ switch($_POST['tipo']){
                             </script>
                             
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
+                                window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLivro.php";
                             </script><?php
    }
             
