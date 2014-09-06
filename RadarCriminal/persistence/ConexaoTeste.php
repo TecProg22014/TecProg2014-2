@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/libs/adodb/adodb.inc.php');
-require_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/libs/adodb/adodb.inc.php";
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
 class ConexaoTeste{
 
 	/**
