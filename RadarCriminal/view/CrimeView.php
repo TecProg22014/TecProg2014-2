@@ -1,5 +1,6 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/controller/CrimeController.php');
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; /** Returns the physical address of the web server */
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/CrimeController.php";
 class CrimeView{
 	
 	/**
