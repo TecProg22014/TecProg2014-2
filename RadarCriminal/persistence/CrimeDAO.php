@@ -1,11 +1,13 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Crime.php');
-include_once('C:/xampp/htdocs/mds2013/model/Tempo.php');
-include_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/NaturezaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/TempoDAO.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Crime.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
 
 class CrimeDAO{
 	/**
