@@ -1,14 +1,15 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/CrimeDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/persistence/TempoDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/persistence/NaturezaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/persistence/RegiaoAdministrativaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Crime.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Tempo.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once ('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CrimeDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/RegiaoAdministrativaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Crime.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/RegiaoAdministrativa.php";
+
 class CrimeController {
 	
 	/**
