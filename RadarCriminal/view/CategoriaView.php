@@ -1,6 +1,7 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/controller/CategoriaController.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; /** Returns the physical address of the web server */
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/CategoriaController.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
 class CategoriaView {
 	/**
 	 * Variable to instance one object of category controller
