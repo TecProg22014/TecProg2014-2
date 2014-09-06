@@ -1,11 +1,12 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/NaturezaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once ('C:/xampp/htdocs/mds2013/controller/CrimeController.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EFalhaNaturezaController.php');
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/CrimeController.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EFalhaNaturezaController.php";
+
 class NaturezaController {
 	
 	/**
