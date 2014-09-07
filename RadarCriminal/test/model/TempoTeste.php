@@ -2,9 +2,9 @@
 	/**
 	 * Classe Tempo Teste
 	 **/
-	/** Returns the physical address of the web server */
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-	require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
+	
+	
+	require_once "/model/Tempo.php";
 	
 	class TempoTeste extends PHPUnit_Framework_Testcase{
 		

@@ -3,9 +3,9 @@
 	 * @author Eliseu
 	 * Classe Crime Teste
 	 **/
-	/** Returns the physical address of the web server */
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-	require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Crime.php";
+	
+	
+	require_once "/model/Crime.php";
 	
 	
 	class CrimeTeste extends PHPUnit_Framework_Testcase{
