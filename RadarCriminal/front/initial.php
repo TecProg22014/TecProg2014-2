@@ -1,13 +1,14 @@
-
 <?php
-	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/CrimeView.php";
-	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/TempoView.php";
-	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/NaturezaView.php";
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CrimeView.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/TempoView.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/NaturezaView.php";
 
-	$crimeVW = new CrimeView(); /**Instance of CrimeView*/
-	$categoriaVW = new CategoriaView(); /**Instance of CategoriaView*/
-	$tempoVW = new TempoView(); /**Instance of TempoView*/
-	$naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
+$crimeVW = new CrimeView(); /**Instance of CrimeView*/
+$categoriaVW = new CategoriaView(); /**Instance of CategoriaView*/
+$tempoVW = new TempoView(); /**Instance of TempoView*/
+$naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 ?>
 <!-- start: Content -->
 <div id="content" class="span10">

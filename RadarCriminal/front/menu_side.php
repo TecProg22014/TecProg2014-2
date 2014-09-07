@@ -1,13 +1,13 @@
 <?php
-	/** Returns the physical address of the web server */
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; 
-	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/RegiaoAdministrativaView.php";
-	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CategoriaView.php";
-	$RAVW = new RegiaoAdministrativaView();
-	$categoriaVW = new CategoriaView();
-	
-	$contRA = $RAVW->contarRegistrosRA();
-	$contCategoria = $categoriaVW->contarRegistros();
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; 
+include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/RegiaoAdministrativaView.php";
+include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CategoriaView.php";
+$RAVW = new RegiaoAdministrativaView();
+$categoriaVW = new CategoriaView();
+
+$contRA = $RAVW->contarRegistrosRA();
+$contCategoria = $categoriaVW->contarRegistros();
 ?>
 <!-- start: Header -->
 	

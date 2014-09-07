@@ -1,6 +1,8 @@
-
-<?php include_once('./views/CrimeView.php');
-include_once('./views/TempoView.php');
+<?php
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CrimeView.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/TempoView.php";
 $crimeVW = new CrimeView();
 $tempoVW = new TempoView();
 
@@ -23,7 +25,7 @@ $tempoVW = new TempoView();
 			</div>
 			<div class="box-content">
 				<div style="margin: 0 auto;">
-					<embed src='./view/img/regioes_administrativa.svg'/>
+					<embed src='./front/img/regioes_administrativa.svg'/>
 				</div>
 			</div>
 		</div>
