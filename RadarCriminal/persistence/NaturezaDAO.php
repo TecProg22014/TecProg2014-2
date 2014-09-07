@@ -1,16 +1,15 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaListarTodosVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaConsultarPorIdVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENaturezaConsultarPorNomeVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
+
+include_once "/model/Natureza.php";
+include_once "/model/Categoria.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+include_once "/persistence/CategoriaDAO.php";
+include_once "/exceptions/ENaturezaListarTodosVazio.php";
+include_once "/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php";
+include_once "/exceptions/ENaturezaConsultarPorIdVazio.php";
+include_once "/exceptions/ENaturezaConsultarPorNomeVazio.php";
+include_once "/exceptions/EConexaoFalha.php";
 
 class NaturezaDAO{
 	/**
