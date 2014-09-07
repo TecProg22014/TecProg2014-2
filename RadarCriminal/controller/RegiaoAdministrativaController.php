@@ -1,4 +1,6 @@
 <?php
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
 include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/RegiaoAdministrativaDAO.php";
 include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
 include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/RegiaoAdministrativa.php";
