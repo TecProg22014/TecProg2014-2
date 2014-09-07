@@ -1,6 +1,7 @@
 <?php
-	require_once ('C:/xampp/htdocs/mds2013/persistence/NaturezaDAO.php');
-	//include_once(__APP_PATH.'../../persistence/NaturezaDAO.php');
+	/** Returns the physical address of the web server */
+	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+	require_once  $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
 /**
  * Classe de teste da classe NaturezaDAO
  * @author Lucas Andrade Ribeiro
