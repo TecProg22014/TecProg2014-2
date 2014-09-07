@@ -1,11 +1,11 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/util/Parse.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/CategoriaController.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/CrimeController.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/NaturezaController.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/TempoController.php";
+
+
+require_once "/util/Parse.php";
+include_once "/controller/CategoriaController.php";
+include_once "/controller/CrimeController.php";
+include_once "/controller/NaturezaController.php";
+include_once "/controller/TempoController.php";
 
 class RunParse{
 	private $parse;
