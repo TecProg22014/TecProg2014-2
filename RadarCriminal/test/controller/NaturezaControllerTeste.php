@@ -1,8 +1,8 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; 
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/NaturezaController.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+
+ 
+require_once "/controller/NaturezaController.php";
+require_once "/model/Natureza.php";
 
 class NaturezaControllerTeste extends PHPUnit_Framework_Testcase{
 

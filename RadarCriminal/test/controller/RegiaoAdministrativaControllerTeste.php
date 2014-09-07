@@ -1,8 +1,8 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/RegiaoAdministrativaController.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/RegiaoAdministrativa.php";
+
+
+require_once "/controller/RegiaoAdministrativaController.php";
+require_once "/model/RegiaoAdministrativa.php";
 
 class RegiaoAdministrativaControllerTeste extends PHPUnit_Framework_Testcase{
 	public function testConstruct()
