@@ -11,10 +11,6 @@ $naturezaVW = new NaturezaView();
 $categoriaVW = new CategoriaView();
 $idCategoria = isset( $_GET['id'] ) ? $_GET['id'] : null;
 
-
-//$arrayCategorias = $categoriaVW->listarTodasAlfabeticamentePuro();
-//$auxCategoria = $arrayCategorias[$idCategoria];
-//$auxNatureza = $naturezaVW->consultarPorIdCategoria($auxCategoria->__getIdCategoria());
 ?>
 <!-- start: Content -->
 <div id="content" class="span10">
