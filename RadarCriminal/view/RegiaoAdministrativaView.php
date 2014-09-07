@@ -1,7 +1,7 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/RegiaoAdministrativaController.php";
+
+
+include_once "/controller/RegiaoAdministrativaController.php";
 class RegiaoAdministrativaView {
 	/**
 	 * Variable to instance a new object of administrative region controller
