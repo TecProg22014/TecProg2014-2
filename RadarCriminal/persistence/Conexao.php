@@ -1,8 +1,8 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/libs/adodb/adodb.inc.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
+
+require_once "/libs/adodb/adodb.inc.php";
+require_once "/exceptions/EConexaoFalha.php";
+
 class Conexao{
 
 	/**
