@@ -36,10 +36,10 @@
 	<![endif]-->
 	
 	<!-- start: Favicon and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-144.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-114.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-72.png">
-	<link rel="apple-touch-icon-precomposed" href="C:/xampp/htdocs/mds2013/front/ico/app_icon_radar_criminal-57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="C:/xampp/htdocs/TecProg2014-2/RadarCriminal/front/ico/app_icon_radar_criminal-144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="C:/xampp/htdocs/TecProg2014-2/RadarCriminal/front/ico/app_icon_radar_criminal-114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="C:/xampp/htdocs/TecProg2014-2/RadarCriminal/front/ico/app_icon_radar_criminal-72.png">
+	<link rel="apple-touch-icon-precomposed" href="C:/xampp/htdocs/TecProg2014-2/RadarCriminal/front/ico/app_icon_radar_criminal-57.png">
 	
 	<!-- end: Favicon and Touch Icons -->	
 		
@@ -62,7 +62,8 @@
 				</a>
 				</div>		
 <?php
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; /** Returns the physical address of the web server */
+	/** Returns the physical address of the web server */
+	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
 	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_top.php";
 	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_side.php";
 ?>

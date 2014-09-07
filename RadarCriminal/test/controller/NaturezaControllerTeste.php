@@ -1,6 +1,8 @@
-<?php 
-require_once('C:/xampp/htdocs/mds2013/controller/NaturezaController.php');
-require_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
+<?php
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; 
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/NaturezaController.php";
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
 
 class NaturezaControllerTeste extends PHPUnit_Framework_Testcase{
 

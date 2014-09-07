@@ -1,6 +1,8 @@
 <?php
-
-	require_once ('C:/xampp/htdocs/mds2013/model/Natureza.php');
+	/** Returns the physical address of the web server */
+	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+	require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
+	
 	class NaturezaTeste extends PHPUnit_Framework_Testcase{
 		
 		public function setUp(){
