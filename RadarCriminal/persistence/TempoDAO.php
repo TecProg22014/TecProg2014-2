@@ -1,9 +1,9 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
+
+include_once "/model/Tempo.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+
 class TempoDAO{
 	/**
 	 * Variable to instance a object to conect with the database
