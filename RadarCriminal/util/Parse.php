@@ -1,13 +1,13 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ENomePlanilhaIncompativel.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EPlanilhaSerieIncompativel.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EFalhaLeituraSerieCategoria.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EFalhaLeituraSerieNatureza.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EFalhaLeituraSerieTempo.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EFalhaLeituraSerieCrime.php";
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/libs/excel_reader2.php";
+
+
+require_once "/exceptions/ENomePlanilhaIncompativel.php";
+require_once "/exceptions/EPlanilhaSerieIncompativel.php";
+require_once "/exceptions/EFalhaLeituraSerieCategoria.php";
+require_once "/exceptions/EFalhaLeituraSerieNatureza.php";
+require_once "/exceptions/EFalhaLeituraSerieTempo.php";
+require_once "/exceptions/EFalhaLeituraSerieCrime.php";
+require_once "/libs/excel_reader2.php";
 
 class Parse{
 	private $natureza;
