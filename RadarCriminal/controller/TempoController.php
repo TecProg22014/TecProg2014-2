@@ -1,8 +1,7 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
+
+include_once "/persistence/TempoDAO.php";
+include_once "/model/Tempo.php";
 
 class TempoController {
 	
