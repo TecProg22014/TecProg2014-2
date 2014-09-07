@@ -2,11 +2,11 @@
 $pagina = isset( $_GET['pag'] ) ? $_GET['pag'] : null;
 switch($pagina){
 	case 'ano':
-		include('C:/xampp/htdocs/mds2013/view/year.php');
+		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/year.php";
 		break;
 	case 'tipo':
-		include('C:/xampp/htdocs/mds2013/view/type.php');
+		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/type.php";
 		break;
 	default:
-		include('./view/index.php');	
+		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/index.php";	
 }
