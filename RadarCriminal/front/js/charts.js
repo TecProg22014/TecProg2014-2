@@ -1133,9 +1133,9 @@ function charts() {
 
 	/* ---------- Pie chart ---------- */
 	<?php
-			/** Returns the physical address of the web server */
-			$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-			include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CategoriaView.php");
+			
+			
+			include_once "/view/CategoriaView.php");
 			$categoriaVW = new CategoriaView();
 			echo utf8_encode($categoriaVW->_listarTotalDeCategoria());
 	?>

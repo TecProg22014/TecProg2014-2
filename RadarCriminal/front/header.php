@@ -62,8 +62,8 @@
 				</a>
 				</div>		
 <?php
-	/** Returns the physical address of the web server */
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_top.php";
-	include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/front/menu_side.php";
+	
+	
+	include "/front/menu_top.php";
+	include "/front/menu_side.php";
 ?>

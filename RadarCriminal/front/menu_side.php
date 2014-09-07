@@ -1,8 +1,8 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT']; 
-include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/RegiaoAdministrativaView.php";
-include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/CategoriaView.php";
+
+ 
+include "/view/RegiaoAdministrativaView.php";
+include "/view/CategoriaView.php";
 $RAVW = new RegiaoAdministrativaView();
 $categoriaVW = new CategoriaView();
 
