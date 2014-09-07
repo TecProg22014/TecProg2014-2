@@ -1,7 +1,7 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/TempoController.php";
+
+
+include_once "/controller/TempoController.php";
 class TempoView {
 	/**
 	 * Variable to instance an object of time controller
