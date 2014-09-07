@@ -1,14 +1,13 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarTodasVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaListarConsultaPorIdVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/ECategoriaConsultarPorNomeVazio.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EConexaoFalha.php";
+
+include_once "/model/Categoria.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+include_once "/exceptions/ECategoriaListarTodasVazio.php";
+include_once "/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php";
+include_once "/exceptions/ECategoriaListarConsultaPorIdVazio.php";
+include_once "/exceptions/ECategoriaConsultarPorNomeVazio.php";
+include_once "/exceptions/EConexaoFalha.php";
 
 class CategoriaDAO{
 	/**
