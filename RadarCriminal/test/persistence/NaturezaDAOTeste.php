@@ -1,7 +1,7 @@
 <?php
-	/** Returns the physical address of the web server */
-	$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-	require_once  $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
+	
+	
+	require_once  "/persistence/NaturezaDAO.php";
 /**
  * Classe de teste da classe NaturezaDAO
  * @author Lucas Andrade Ribeiro

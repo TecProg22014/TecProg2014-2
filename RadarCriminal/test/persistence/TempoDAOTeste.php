@@ -1,8 +1,8 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
+
+
+require_once "/persistence/TempoDAO.php";
+include_once "/persistence/Conexao.php";
 /**
  * Classe de teste da classe TempoDAO
  * @author Lucas Andrade Ribeiro
