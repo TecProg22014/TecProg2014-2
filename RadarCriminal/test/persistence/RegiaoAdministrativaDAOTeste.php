@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/persistence/RegiaoAdministrativaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/RegiaoAdministrativaDAO.php";
+include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
 
 class RegiaoAdministrativaDAOTeste extends PHPUnit_Framework_TestCase{
 	
