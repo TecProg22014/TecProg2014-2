@@ -4,24 +4,27 @@
  *	@author Lucas Carvalho
  *	@copyright Radar Criminal 2013
  */
-require_once ('C:/xampp/htdocs/mds2013/util/Parse.php');
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/util/Parse.php";
+
 class ParseTeste extends PHPUnit_Framework_Testcase{
 	
 	public function testExistenciaInstanciaParseSerieHistorica(){
 		$planilha = "série histórica - 2001 - 2012 2.xls";
-		$this->assertFileExists('C:/xampp/htdocs/mds2013/files/'.$planilha);
+		$this->assertFileExists $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/files/'.$planilha);
 		$parse = new Parse($planilha);
 		$this->assertInstanceOf("Parse", $parse);
 	}
 	public function testExistenciaInstanciaParseQuadrimestre(){
 		$planilha = "Quadrimestre_final.2013.xls";	
-		$this->assertFileExists('C:/xampp/htdocs/mds2013/files/'.$planilha);
+		$this->assertFileExists $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/files/'.$planilha);
 		$parse = new Parse($planilha);
 		$this->assertInstanceOf("Parse", $parse);
 	}
 	public function testExistenciaInstanciaParseRA(){
 		$planilha = "JAN_SET_2011_12  POR REGIAO ADM_2.xls";
-		$this->assertFileExists('C:/xampp/htdocs/mds2013/files/'.$planilha);
+		$this->assertFileExists $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/files/'.$planilha);
 		$parse = new Parse($planilha);
 		$this->assertInstanceOf("Parse", $parse);
 	}

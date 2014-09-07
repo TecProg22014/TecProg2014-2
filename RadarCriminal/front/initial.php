@@ -1,11 +1,13 @@
 
-<?php include_once('C:/xampp/htdocs/mds2013/views/CrimeView.php');
-include_once('C:/xampp/htdocs/mds2013/views/TempoView.php');
-include_once('C:/xampp/htdocs/mds2013/views/NaturezaView.php');
-$crimeVW = new CrimeView();
-$categoriaVW = new CategoriaView();
-$tempoVW = new TempoView();
-$naturezaVW = new NaturezaView();
+<?php
+	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/CrimeView.php";
+	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/TempoView.php";
+	include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/views/NaturezaView.php";
+
+	$crimeVW = new CrimeView(); /**Instance of CrimeView*/
+	$categoriaVW = new CategoriaView(); /**Instance of CategoriaView*/
+	$tempoVW = new TempoView(); /**Instance of TempoView*/
+	$naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 ?>
 <!-- start: Content -->
 <div id="content" class="span10">

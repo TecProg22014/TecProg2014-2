@@ -2,21 +2,21 @@
 $pagina = isset( $_GET['pag'] ) ? $_GET['pag'] : null;
 switch($pagina){
         case 'ano':
-                include('/mds2013/view/year.php');
+                include $SERVER_ADDRESS."/view/year.php";
                 break;
         case 'tipo':
-                include('/mds2013/view/type.php');
+                include $SERVER_ADDRESS."/view/type.php";
                 break;
         case 'tRA':
-        		include('C:/xampp/htdocs/mds2013/view/totalra.php');    
+        		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/totalra.php";    
         		break;
         case 'cCat':
-        		include('C:/xampp/htdocs/mds2013/view/crimeporcat.php');
+        		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/crimeporcat.php";
         		break;
         case 'u':
-        		include('C:/xampp/htdocs/mds2013/view/crimeporra.php');
+        		include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/crimeporra.php";
         		break;
         default:
-                include('C:/xampp/htdocs/mds2013/view/initial.php');     
+                include $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/view/initial.php";     
                 break;   
 }

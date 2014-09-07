@@ -54,13 +54,12 @@ class CategoriaDAO{
 	public function listarTodasAlfabicamente(){
 		$sql = "SELECT * FROM categoria ORDER BY nome_categoria ASC";
 		$resultado = $this->conexao->banco->Execute($sql);
-		//if($resultado->RecordCount()== 0){
-		//	throw new ECategoriaListarTodasAlfabeticamenteVazio();
-		//}
+		
 		/**
 	 	* While to alphabetically order of categories
 	 	*
 	 	*/
+		
 		while($registro = $resultado->FetchNextObject())
 		{
 			$dadosCategoria = new Categoria();
@@ -114,16 +113,10 @@ class CategoriaDAO{
 	}
 
 	/**
-	 * @author Sergio Silva
-	 * @author Eliseu Egewarth
-	 * @author Eduardo Augusto
-	 * @copyright RadarCriminal 2013
-	 **/
-
-	/**
 	 * Function to count the number of crimes in person
 	 * @return int $registro
 	 */
+	
 	public function somaGeralCrimeContraPessoa(){
 		$sql = "SELECT SUM( c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
 		$resultado = $this->conexao->banco->Execute($sql);

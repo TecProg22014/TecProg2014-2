@@ -1,6 +1,8 @@
-	<?php
-require_once('C:/xampp/htdocs/mds2013/controller/RegiaoAdministrativaController.php');
-require_once('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+<?php
+/** Returns the physical address of the web server */
+$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/controller/RegiaoAdministrativaController.php";
+require_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/RegiaoAdministrativa.php";
 
 class RegiaoAdministrativaControllerTeste extends PHPUnit_Framework_Testcase{
 	public function testConstruct()
