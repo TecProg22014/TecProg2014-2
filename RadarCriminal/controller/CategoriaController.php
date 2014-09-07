@@ -1,9 +1,9 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/CategoriaDAO.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Categoria.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/exceptions/EErroConsulta.php";
+
+include_once "persistence/CategoriaDAO.php";
+include_once "model/Categoria.php";
+include_once "exceptions/EErroConsulta.php";
+
 class CategoriaController {
 	
 	/**
