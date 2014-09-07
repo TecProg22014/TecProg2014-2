@@ -1,13 +1,12 @@
 <?php
-/** Returns the physical address of the web server */
-$SERVER_ADDRESS = $_SERVER['DOCUMENT_ROOT'];
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Crime.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Tempo.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/model/Natureza.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/Conexao.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/ConexaoTeste.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/NaturezaDAO.php";
-include_once $SERVER_ADDRESS."/TecProg2014-2/RadarCriminal/persistence/TempoDAO.php";
+
+include_once "/model/Crime.php";
+include_once "/model/Tempo.php";
+include_once "/model/Natureza.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+include_once "/persistence/NaturezaDAO.php";
+include_once "/persistence/TempoDAO.php";
 
 class CrimeDAO{
 	/**
