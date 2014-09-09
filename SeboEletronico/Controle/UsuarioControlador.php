@@ -1,6 +1,6 @@
 <?php
 
-include '../Modelo/Usuario.php';
+include "Modelo/Usuario.php";
 
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
