@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/libs/adodb/adodb.inc.php');
-require_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
+
+require_once "/libs/adodb/adodb.inc.php";
+require_once "/exceptions/EConexaoFalha.php";
+
 class ConexaoTeste{
 
 	/**

@@ -1,11 +1,13 @@
-<?php 
-	include ('C:/xampp/htdocs/mds2013/views/RegiaoAdministrativaView.php');
-	include ('C:/xampp/htdocs/mds2013/views/CategoriaView.php');
-	$RAVW = new RegiaoAdministrativaView();
-	$categoriaVW = new CategoriaView();
-	
-	$contRA = $RAVW->contarRegistrosRA();
-	$contCategoria = $categoriaVW->contarRegistros();
+<?php
+
+ 
+include "/view/RegiaoAdministrativaView.php";
+include "/view/CategoriaView.php";
+$RAVW = new RegiaoAdministrativaView();
+$categoriaVW = new CategoriaView();
+
+$contRA = $RAVW->contarRegistrosRA();
+$contCategoria = $categoriaVW->contarRegistros();
 ?>
 <!-- start: Header -->
 	

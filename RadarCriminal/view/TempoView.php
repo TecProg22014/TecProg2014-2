@@ -1,5 +1,7 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/controller/TempoController.php');
+
+
+include_once "/controller/TempoController.php";
 class TempoView {
 	/**
 	 * Variable to instance an object of time controller

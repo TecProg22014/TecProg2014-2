@@ -1,7 +1,9 @@
 <?php
-include_once ('./controller/NaturezaController.php');
-include_once ('./views/CategoriaView.php');
-include_once ('./views/CrimeView.php');
+
+
+include_once "/controller/NaturezaController.php";
+include_once "/view/CategoriaView.php";
+include_once "/view/CrimeView.php";
 class NaturezaView {
 	
 	/**

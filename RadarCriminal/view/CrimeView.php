@@ -1,5 +1,7 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/controller/CrimeController.php');
+
+
+include_once "/controller/CrimeController.php";
 class CrimeView{
 	
 	/**

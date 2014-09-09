@@ -1,11 +1,13 @@
 <?php
-require_once ('C:/xampp/htdocs/mds2013/exceptions/ENomePlanilhaIncompativel.php');
-require_once ('C:/xampp/htdocs/mds2013/exceptions/EPlanilhaSerieIncompativel.php');
-require_once ('C:/xampp/htdocs/mds2013/exceptions/EFalhaLeituraSerieCategoria.php');
-require_once ('C:/xampp/htdocs/mds2013/exceptions/EFalhaLeituraSerieNatureza.php');
-require_once ('C:/xampp/htdocs/mds2013/exceptions/EFalhaLeituraSerieTempo.php');
-require_once ('C:/xampp/htdocs/mds2013/exceptions/EFalhaLeituraSerieCrime.php');
-require_once ('C:/xampp/htdocs/mds2013/libs/excel_reader2.php');
+
+
+require_once "/exceptions/ENomePlanilhaIncompativel.php";
+require_once "/exceptions/EPlanilhaSerieIncompativel.php";
+require_once "/exceptions/EFalhaLeituraSerieCategoria.php";
+require_once "/exceptions/EFalhaLeituraSerieNatureza.php";
+require_once "/exceptions/EFalhaLeituraSerieTempo.php";
+require_once "/exceptions/EFalhaLeituraSerieCrime.php";
+require_once "/libs/excel_reader2.php";
 
 class Parse{
 	private $natureza;
@@ -18,7 +20,7 @@ class Parse{
 	
 	public function __construct($planilha){
 	
-		$this->dados = new Spreadsheet_Excel_Reader("C:/xampp/htdocs/mds2013/files/".$planilha,"UTF-8");
+		$this->dados = new Spreadsheet_Excel_Reader("C:/xampp/htdocs/TecProg2014-2/RadarCriminal/files/".$planilha,"UTF-8");
 		if($planilha == "série histórica - 2001 - 2012 2.xls"){
 			$this->parseDeSerieHistorica();
 		}

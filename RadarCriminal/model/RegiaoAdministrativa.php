@@ -1,5 +1,6 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/exceptions/ETipoErrado.php');
+
+include_once "/exceptions/ETipoErrado.php";
 
 class RegiaoAdministrativa{
 	

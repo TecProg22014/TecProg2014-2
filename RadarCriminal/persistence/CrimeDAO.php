@@ -1,11 +1,12 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Crime.php');
-include_once('C:/xampp/htdocs/mds2013/model/Tempo.php');
-include_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/NaturezaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/TempoDAO.php');
+
+include_once "/model/Crime.php";
+include_once "/model/Tempo.php";
+include_once "/model/Natureza.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+include_once "/persistence/NaturezaDAO.php";
+include_once "/persistence/TempoDAO.php";
 
 class CrimeDAO{
 	/**

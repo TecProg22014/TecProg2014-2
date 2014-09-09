@@ -1,7 +1,8 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
+
+include_once "/model/RegiaoAdministrativa.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
 
 class RegiaoAdministrativaDAO {
 	/**

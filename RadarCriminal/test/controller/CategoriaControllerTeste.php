@@ -1,6 +1,8 @@
 <?php
-	require_once('C:/xampp/htdocs/mds2013/controller/CategoriaController.php');
-	require_once('C:/xampp/htdocs/mds2013/model/Categoria.php');
+	
+	
+	require_once "/controller/CategoriaController.php";
+	require_once "/model/Categoria.php";
 	
 	/**
 	 * Classe CategoriaControllerTeste

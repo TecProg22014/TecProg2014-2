@@ -1,14 +1,15 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
-include_once('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaListarTodosVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaConsultarPorIdVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/ENaturezaConsultarPorNomeVazio.php');
-include_once('C:/xampp/htdocs/mds2013/exceptions/EConexaoFalha.php');
+
+include_once "/model/Natureza.php";
+include_once "/model/Categoria.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+include_once "/persistence/CategoriaDAO.php";
+include_once "/exceptions/ENaturezaListarTodosVazio.php";
+include_once "/exceptions/ENaturezaListarTodasAlfabeticamenteVazio.php";
+include_once "/exceptions/ENaturezaConsultarPorIdVazio.php";
+include_once "/exceptions/ENaturezaConsultarPorNomeVazio.php";
+include_once "/exceptions/EConexaoFalha.php";
 
 class NaturezaDAO{
 	/**

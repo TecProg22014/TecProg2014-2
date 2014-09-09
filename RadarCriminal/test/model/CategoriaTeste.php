@@ -1,5 +1,7 @@
 <?php
-	require_once ('C:/xampp/htdocs/mds2013/model/Categoria.php');
+	
+	
+	require_once "/model/Categoria.php";
 	
 	/**
 	 * Classe Categoria Teste

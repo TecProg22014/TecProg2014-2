@@ -1,6 +1,8 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/controller/CategoriaController.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
+
+
+include_once "/controller/CategoriaController.php";
+include_once "/exceptions/EErroConsulta.php";
 class CategoriaView {
 	/**
 	 * Variable to instance one object of category controller

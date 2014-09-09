@@ -1,7 +1,9 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Categoria.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
+
+include_once "persistence/CategoriaDAO.php";
+include_once "model/Categoria.php";
+include_once "exceptions/EErroConsulta.php";
+
 class CategoriaController {
 	
 	/**

@@ -1,6 +1,8 @@
 <?php
-	require_once('C:/xampp/htdocs/mds2013/persistence/CategoriaDAO.php');
-	include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
+	
+	
+	require_once "/persistence/CategoriaDAO.php";
+	include_once "/persistence/Conexao.php";
 
 /**
  * Classe de teste da classe CategoriaDAO

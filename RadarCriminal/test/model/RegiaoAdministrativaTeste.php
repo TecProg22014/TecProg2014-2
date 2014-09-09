@@ -1,6 +1,7 @@
 <?php
-
-	require_once ('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+	
+	
+	require_once "/model/RegiaoAdministrativa.php";
 	
 	/**
 	 * Classe RegiaoAdministrativa Teste

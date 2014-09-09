@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/controller/TempoController.php');
-require_once('C:/xampp/htdocs/mds2013/model/Tempo.php');
+
+
+require_once "/controller/TempoController.php";
+require_once "/model/Tempo.php";
 
 class TempoControllerTeste extends PHPUnit_Framework_Testcase{
 	

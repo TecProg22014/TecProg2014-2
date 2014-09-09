@@ -1,6 +1,8 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/TempoDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/model/Tempo.php');
+
+include_once "/persistence/TempoDAO.php";
+include_once "/model/Tempo.php";
+
 class TempoController {
 	
 	/**

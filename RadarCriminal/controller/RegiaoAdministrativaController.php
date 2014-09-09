@@ -1,7 +1,9 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/persistence/RegiaoAdministrativaDAO.php');
-include_once ('C:/xampp/htdocs/mds2013/exceptions/EErroConsulta.php');
-include_once ('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+
+include_once "/persistence/RegiaoAdministrativaDAO.php";
+include_once "/exceptions/EErroConsulta.php";
+include_once "/model/RegiaoAdministrativa.php";
+
 class RegiaoAdministrativaController {
 	
 	/**

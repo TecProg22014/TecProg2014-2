@@ -1,6 +1,8 @@
-	<?php
-require_once('C:/xampp/htdocs/mds2013/controller/RegiaoAdministrativaController.php');
-require_once('C:/xampp/htdocs/mds2013/model/RegiaoAdministrativa.php');
+<?php
+
+
+require_once "/controller/RegiaoAdministrativaController.php";
+require_once "/model/RegiaoAdministrativa.php";
 
 class RegiaoAdministrativaControllerTeste extends PHPUnit_Framework_Testcase{
 	public function testConstruct()

@@ -1,11 +1,14 @@
+<?php
 
-<?php include_once('C:/xampp/htdocs/mds2013/views/CrimeView.php');
-include_once('C:/xampp/htdocs/mds2013/views/TempoView.php');
-include_once('C:/xampp/htdocs/mds2013/views/NaturezaView.php');
-$crimeVW = new CrimeView();
-$categoriaVW = new CategoriaView();
-$tempoVW = new TempoView();
-$naturezaVW = new NaturezaView();
+
+include_once "/view/CrimeView.php";
+include_once "/view/TempoView.php";
+include_once "/view/NaturezaView.php";
+
+$crimeVW = new CrimeView(); /**Instance of CrimeView*/
+$categoriaVW = new CategoriaView(); /**Instance of CategoriaView*/
+$tempoVW = new TempoView(); /**Instance of TempoView*/
+$naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 ?>
 <!-- start: Content -->
 <div id="content" class="span10">

@@ -2,7 +2,9 @@
 	/**
 	 * Classe Tempo Teste
 	 **/
-	require_once ('C:/xampp/htdocs/mds2013/model/Tempo.php');
+	
+	
+	require_once "/model/Tempo.php";
 	
 	class TempoTeste extends PHPUnit_Framework_Testcase{
 		

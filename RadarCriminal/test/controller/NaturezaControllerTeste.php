@@ -1,6 +1,8 @@
-<?php 
-require_once('C:/xampp/htdocs/mds2013/controller/NaturezaController.php');
-require_once('C:/xampp/htdocs/mds2013/model/Natureza.php');
+<?php
+
+ 
+require_once "/controller/NaturezaController.php";
+require_once "/model/Natureza.php";
 
 class NaturezaControllerTeste extends PHPUnit_Framework_Testcase{
 

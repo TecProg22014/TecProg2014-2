@@ -1,5 +1,7 @@
 <?php
-include_once ('C:/xampp/htdocs/mds2013/controller/RegiaoAdministrativaController.php');
+
+
+include_once "/controller/RegiaoAdministrativaController.php";
 class RegiaoAdministrativaView {
 	/**
 	 * Variable to instance a new object of administrative region controller

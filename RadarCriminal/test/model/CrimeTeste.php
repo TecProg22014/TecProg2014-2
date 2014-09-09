@@ -3,7 +3,9 @@
 	 * @author Eliseu
 	 * Classe Crime Teste
 	 **/
-	require_once ('C:/xampp/htdocs/mds2013/model/Crime.php');
+	
+	
+	require_once "/model/Crime.php";
 	
 	
 	class CrimeTeste extends PHPUnit_Framework_Testcase{

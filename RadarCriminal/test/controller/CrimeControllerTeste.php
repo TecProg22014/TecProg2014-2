@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/controller/CrimeController.php');
-require_once('C:/xampp/htdocs/mds2013/model/Crime.php');
+
+
+require_once "/controller/CrimeController.php";
+require_once "/model/Crime.php";
 
 
 class CrimeControllerTeste extends PHPUnit_Framework_Testcase{

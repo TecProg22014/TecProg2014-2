@@ -1,6 +1,8 @@
 <?php
-require_once('C:/xampp/htdocs/mds2013/persistence/RegiaoAdministrativaDAO.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
+
+
+require_once "/persistence/RegiaoAdministrativaDAO.php";
+include_once "/persistence/Conexao.php";
 
 class RegiaoAdministrativaDAOTeste extends PHPUnit_Framework_TestCase{
 	

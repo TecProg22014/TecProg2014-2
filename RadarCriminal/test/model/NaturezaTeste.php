@@ -1,6 +1,8 @@
 <?php
-
-	require_once ('C:/xampp/htdocs/mds2013/model/Natureza.php');
+	
+	
+	require_once "/model/Natureza.php";
+	
 	class NaturezaTeste extends PHPUnit_Framework_Testcase{
 		
 		public function setUp(){

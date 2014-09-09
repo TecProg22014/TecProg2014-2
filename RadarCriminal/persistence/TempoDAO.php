@@ -1,7 +1,9 @@
 <?php
-include_once('C:/xampp/htdocs/mds2013/model/Tempo.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/Conexao.php');
-include_once('C:/xampp/htdocs/mds2013/persistence/ConexaoTeste.php');
+
+include_once "/model/Tempo.php";
+include_once "/persistence/Conexao.php";
+include_once "/persistence/ConexaoTeste.php";
+
 class TempoDAO{
 	/**
 	 * Variable to instance a object to conect with the database

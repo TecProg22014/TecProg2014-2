@@ -1,6 +1,6 @@
 <?php
 
-include '../Modelo/Usuario.php';
+include "Modelo/Usuario.php";
 
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
@@ -28,7 +28,7 @@ class UsuarioControlador {
 			$usuario = new Usuario($nome, $telefone, $email, $senha);
 		}catch(Exception $e){
 			print"<script>alert('".$e->getMessage()."')</script>";
-			echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/cadastrarUsuario.php'; </script>";
+			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarUsuario.php'; </script>";
 			exit;
 		}
 		return UsuarioDao::salvaUsuario($usuario);
@@ -70,7 +70,7 @@ class UsuarioControlador {
 			$usuario = new Usuario($nome, $telefone, $email, $senha);
 		}catch(Exception $e){
 			print"<script>alert('".$e->getMessage()."')</script>";
-			echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/alteraUsuario.php'; </script>";
+			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/alteraUsuario.php'; </script>";
 			exit;
 		}
 		return UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha);
