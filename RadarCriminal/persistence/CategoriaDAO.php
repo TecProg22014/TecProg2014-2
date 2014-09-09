@@ -76,9 +76,6 @@ class CategoriaDAO{
 	public function consultarPorId($id){
 		$sql = "SELECT * FROM categoria WHERE id_categoria = '".$id."'";
 		$resultado = $this->conexao->banco->Execute($sql);
-		//if($resultado->RecordCount()== 0){
-		//throw new ECategoriaListarConsultaPorIdVazio();
-		//}
 		$registro = $resultado->FetchNextObject();
 		$dadosCategoria = new Categoria();
 		$dadosCategoria->__constructOverload($registro->ID_CATEGORIA,$registro->NOME_CATEGORIA);
@@ -90,7 +87,7 @@ class CategoriaDAO{
 	 * Function to select one category by the name
 	 * @param String $nomeCategoria
 	 * @return String $dadosCategoria
-	 */
+	 */ 
 	public function consultarPorNome($nomeCategoria){
 		$sql = "SELECT * FROM categoria WHERE nome_categoria = '".$nomeCategoria."'";
 		$resultado = $this->conexao->banco->Execute($sql);
