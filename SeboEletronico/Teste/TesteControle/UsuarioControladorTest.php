@@ -1,14 +1,14 @@
 <?php
 
-require_once "../../Modelo/Usuario.php";
-require_once "../../Controle/UsuarioControlador.php";
-require_once "../../Dao/UsuarioDao.php";
-require_once "../../Utilidades/ValidaDados.php";
-require_once "../../Utilidades/ExcessaoNomeInvalido.php";
-require_once "../../Utilidades/ExcessaoSenhaInvalida.php";
-require_once "../../Utilidades/ExcessaoTelefoneInvalido.php";
-require_once "../../Utilidades/ExcessaoEmailInvalido.php";
-require_once "../../Utilidades/ConexaoComBanco.php";
+require_once "/Modelo/Usuario.php";
+require_once "/Controle/UsuarioControlador.php";
+require_once "/Dao/UsuarioDao.php";
+require_once "/Utilidades/ValidaDados.php";
+require_once "/Utilidades/ExcessaoNomeInvalido.php";
+require_once "/Utilidades/ExcessaoSenhaInvalida.php";
+require_once "/Utilidades/ExcessaoTelefoneInvalido.php";
+require_once "/Utilidades/ExcessaoEmailInvalido.php";
+require_once "/Utilidades/ConexaoComBanco.php";
 
 class UsuarioControladorTest extends PHPUnit_Framework_TestCase {
 
