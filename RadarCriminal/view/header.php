@@ -64,6 +64,6 @@
 <?php
 	
 	
-	include "/front/menu_top.php";
-	include "/front/menu_side.php";
+	include "/view/menu_top.php";
+	include "/view/menu_side.php";
 ?>
