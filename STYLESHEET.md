@@ -20,7 +20,7 @@ Comentários de implementação da classe/interface (/** ... */), se necessário
 Variáveis de classe (static)                                                   | Primeiro as variáveis public, depois protected, depois private.
 Variáveis de instância                                                         | Primeiro public, depois protected, depois private
 Construtores                                                                   | <code>__construct();</code>
-Métodos                                                                        | Esses métodos devem ser agrupados por funcionalidade <code>__patchset()</code>
+Métodos                                                                        | Esses métodos devem ser agrupados por funcionalidade ``` __patchset() ```
 
 
 ## Indentação
@@ -239,7 +239,34 @@ Deve-se usar espaços em branco nas seguintes situações:
 
 <strong>Nota:</strong> Um espaço em branco não deve ser utilizado entre o nome do método e a abertura do parentese. Isso ajuda a distinguir palavra chave de chamada de método.
 * Um espaço em branco deve aparecer depois da vírgula em uma lista de argumentos.
-* Todo operador binário exceto “.” deve ser separado de outros operadores por espaço. Espaço em branco nunca deve separar operadores unários, como incremento (<code>“++”</code>) e decremento (<code>“--”</code>).
+* Todo operador binário exceto “.” deve ser separado de outros operadores por espaço. Espaço em branco nunca deve separar operadores unários, como incremento (``` “++” ```) e decremento (``` “--” ```).
 * As expressões em uma declaração for deve ser separada por um espaço em branco.
 
 ## Convenções dos nomes
+
+### Nomes de Variáveis, Métodos e Funções
+------------
+
+[Sugestões para novos nomes de variáveis e comentários](https://drive.google.com/folderview?id=0B9tT-j0PH4pgOUp0S3V2c2Zabzg&usp=sharing)
+
+## Controle de Versão
+
+### Branches
+-------------
+
+O nome das Branches deverá ser de acordo com o recurso que esta sendo corrigido, melhorado ou desenvolvido, podendo inclusive ser vinculado a determinada Issue utilizando exatamente o mesmo nome.
+
+### Commits
+-------------
+
+REGRAS PARA COMMITS
+* Os commits deverão ser dados por classe ou arquivo
+* Só deverão ser dados commits de multiplos arquivos quando os mesmos contiverem arquivos estáticos do frontend (.html, .css, .js, .scss, .sass e etc)
+* Devem ser evitadas adições de arquivos em lote com o comando ``` git add --all ```
+
+
+### Merge / Pull Request
+-------------
+
+* Todos os dias, as modificações de diretórios podem ser feitas até as 23:00
+* O ``` merge ``` só poderá ser feito por 1 pessoa do grupo (Macario)
