@@ -125,8 +125,9 @@ Deve seguir a seguinte forma:
 -------------
 
 A declaração for deve seguir a seguinte forma:
+<br />
 <code>
-  for (inicialização; condição; update) {
+  for ( inicialização; condição; update ) {
     declaração;
   }
 </code>
@@ -136,6 +137,7 @@ A declaração for deve seguir a seguinte forma:
 -------------
 
 A declaração while deve seguir a seguinte forma:
+<br />
 <code>
   while (condição) {
   
@@ -148,6 +150,7 @@ A declaração while deve seguir a seguinte forma:
 -------------
 
 A declaração do-while deve seguir a seguinte forma:
+<br />
 <code>
   do {
   
@@ -212,7 +215,7 @@ Deve-se usar uma linha em branco nas seguintes situções:
 
 Deve-se usar espaços em branco nas seguintes situações:
 * Uma palavra-chave seguida por um parentese deve ser separada por um espaço em branco. Exemplo:
-
+<br />
 <code>
   while ( true ) {
   
