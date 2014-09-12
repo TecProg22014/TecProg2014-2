@@ -44,6 +44,10 @@ gerais:
 
 ## Comentários
 
+### De Linha
+-------------
+Deve seguir o padrão: <code>// comentário</code>
+
 ### Da função
 -------------
 Deve seguir o padrão: <code>/** comentário */</code>
