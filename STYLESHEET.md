@@ -46,15 +46,15 @@ gerais:
 
 ### De Linha
 -------------
-Deve seguir o padrão: <code>// comentário</code>
+Deve seguir o padrão: ``` php// comentário```
 
 ### Da função
 -------------
-Deve seguir o padrão: <code>/** comentário */</code>
+Deve seguir o padrão: ``` php/** comentário */```
 
 ### Do bloco
 -------------
-Deve seguir o padrão: <code>/** comentário */</code>
+Deve seguir o padrão: ``` php/** comentário */```
 
 ## Declarações
 
@@ -107,9 +107,9 @@ Deve seguir a seguinte forma:
     declaracao;
     
   }
-</code>
+```
 
-<code>
+``` php
    if (condição) {
    
       declaração;
@@ -130,11 +130,11 @@ Deve seguir a seguinte forma:
 
 A declaração for deve seguir a seguinte forma:
 <br />
-<code>
+``` php
   for ( inicialização; condição; update ) {
     declaração;
   }
-</code>
+```
 
 
 ### Declaração while
