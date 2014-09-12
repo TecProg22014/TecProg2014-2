@@ -265,6 +265,12 @@ REGRAS PARA COMMITS
 * Devem ser evitadas adições de arquivos em lote com o comando ``` git add --all ```
 
 
+### Issues
+-------------
+
+Para possíveis reparos de qualquer uma das soluções, utilizar issues para reportar estes problemas.
+
+
 ### Merge / Pull Request
 -------------
 
