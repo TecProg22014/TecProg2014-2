@@ -101,7 +101,7 @@ expressão.
 
 Deve seguir a seguinte forma:
 
-<code>
+``` php
   if(condicao){
   
     declaracao;
@@ -123,7 +123,7 @@ Deve seguir a seguinte forma:
       declaração;
       
     }
-</code>
+```
 
 ### Declaração for
 -------------
@@ -142,34 +142,34 @@ A declaração for deve seguir a seguinte forma:
 
 A declaração while deve seguir a seguinte forma:
 <br />
-<code>
+``` php
   while (condição) {
   
     declaração;
     
   }
-</code>
+```
 
 ### Declaração do-while
 -------------
 
 A declaração do-while deve seguir a seguinte forma:
 <br />
-<code>
+``` php
   do {
   
     declaração;
     
   } while (condição);
   
-</code>
+```
 
 ### Declaração switch
 -------------
 
 A declaração switch deve seguir a seguinte forma:
 <br />
-<code>
+``` php
   switch (condição) {
   
     case ABC:
@@ -188,14 +188,14 @@ A declaração switch deve seguir a seguinte forma:
     declaração;
     break;
   }
-</code>
+```
 
 ### Declaração try-catch
 -------------
 
 A declaração try-catch deve seguir a seguinte forma:
 <br />
-<code>
+``` php
   try {
   
     <strong>declaração;</strong>
@@ -206,7 +206,7 @@ A declaração try-catch deve seguir a seguinte forma:
     
   }
 
-</code>
+```
 
 ### Espaço em branco
 -------------
@@ -220,13 +220,13 @@ Deve-se usar uma linha em branco nas seguintes situções:
 Deve-se usar espaços em branco nas seguintes situações:
 * Uma palavra-chave seguida por um parentese deve ser separada por um espaço em branco. Exemplo:
 <br />
-<code>
+``` php
   while ( true ) {
   
     declaração;
     
   }
-</code>
+```
 
 <strong>Nota:</strong> Um espaço em branco não deve ser utilizado entre o nome do método e a abertura do parentese. Isso ajuda a distinguir palavra chave de chamada de método.
 * Um espaço em branco deve aparecer depois da vírgula em uma lista de argumentos.
