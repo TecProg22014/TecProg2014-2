@@ -1,6 +1,6 @@
 <?php
 
-include "../Utilidades/ConexaoComBanco.php";
+include "Utilidades/ConexaoComBanco.php";
 
 class UsuarioDao {
 	
