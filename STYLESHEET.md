@@ -46,15 +46,24 @@ gerais:
 
 ### De Linha
 -------------
-Deve seguir o padrão: ``` php// comentário```
+Deve seguir o padrão:
+``` php
+  // comentário
+```
 
 ### Da função
 -------------
-Deve seguir o padrão: ``` php/** comentário */```
+Deve seguir o padrão: 
+``` php
+/** comentário */
+```
 
 ### Do bloco
 -------------
-Deve seguir o padrão: ``` php/** comentário */```
+Deve seguir o padrão:
+``` php
+/** comentário */
+```
 
 ## Declarações
 
