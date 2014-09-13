@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="Controle"/>
+	<buildpathentry kind="src" path="Dao"/>
+	<buildpathentry kind="src" path="Modelo"/>
+	<buildpathentry kind="src" path="Teste"/>
+	<buildpathentry kind="src" path="Utilidades"/>
+	<buildpathentry kind="src" path="Visao"/>
+	<buildpathentry kind="lib" path=".metadata/.mylyn/repositories.xml.zip"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>

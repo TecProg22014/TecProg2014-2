@@ -1,12 +1,10 @@
 <?php
 include "Utilidades/ConexaoComBanco.php";
 
-
-
 $email = $_POST['email'];
-
 $senha = $_POST['senha'];
 
+//Persistence Variables
 $sql = mysql_query("SELECT * FROM usuario WHERE email_usuario = '".$email."'") or die(mysql_error());
 $sql2 = mysql_query("SELECT * FROM senha WHERE codigo_senha ='".$senha."'");
 $row = mysql_num_rows($sql);
