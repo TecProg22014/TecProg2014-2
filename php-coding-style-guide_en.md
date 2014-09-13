@@ -283,7 +283,7 @@ Always use <code><?php</code> to delimit PHP code. Do not use the shorthand vers
 ### Casting
 -------------
 
-<p>Put a space between the (type) and the $variable in a cast: ``` (int) $mynumber``` .</p>
+<p>Put a space between the (type) and the $variable in a cast: ``` (int) $mynumber ``` .</p>
 
 ### Function Calls
 -------------
