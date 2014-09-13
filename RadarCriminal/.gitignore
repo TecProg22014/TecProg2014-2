@@ -4,8 +4,15 @@
 
 #ignorar arquivos e diretórios de um diretório
 
-.sonar/**/*
+#.sonar/**/*
 
-#ignorar arquivo
+#diretorios da aplicacao ignorados
 
+.metadata
+.settings
+exceptions/*
+files/**/*
 front/**/*
+libs/**/*
+
+
