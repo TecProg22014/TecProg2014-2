@@ -197,7 +197,7 @@ A declaração switch deve seguir a seguinte forma:
   }
 ```
 
-### `foreach`
+### Declaração `foreach`
     
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -217,7 +217,7 @@ A declaração try-catch deve seguir a seguinte forma:
 ``` php
   try {
   
-    <strong>declaração;</strong>
+    declaração;
     
   } catch (Exception $erro) {
   
