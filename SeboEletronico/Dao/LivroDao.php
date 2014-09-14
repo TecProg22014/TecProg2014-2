@@ -46,14 +46,12 @@ class LivroDao {
 			$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
 		}
 
-		$lista = mysql_query($sql);
-		$listaLivros = mysql_fetch_array($lista);
+		$lista = mysql_query( $sql );
+		$listaLivros = mysql_fetch_array( $lista );
 
-		if(!(empty($listaLivros))){
+		if(!(empty( $listaLivros ))){
 			return false;
-		}
-		
-		else{
+		} else{
 			return $listaLivros;
 		}
 		
@@ -102,9 +100,9 @@ class LivroDao {
 
 		if(!(empty($livros))){
 			return false;
+		} else{
+			return $livros;
 		}
-
-		return $livros;
 			
 	}
 	/**
@@ -122,9 +120,7 @@ class LivroDao {
 
 		if(!(empty($livros))){
 			return false;
-		}
-		
-		else{
+		} else{
 			return $livros;
 		}
 			
