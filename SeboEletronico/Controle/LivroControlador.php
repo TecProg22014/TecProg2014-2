@@ -28,20 +28,22 @@ class LivroControlador {
 	 * @return bool LivroDao::salvaLivro($livro, $id_dono)
 	 */
 
-	public function salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono){
-		if(empty($venda) && empty($troca)){
+	public function salvaLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono ){
+		if( empty( $venda ) && empty( $troca )){
 			$venda = "venda";
 			$troca = "troca";
+		} else{
+			//Nothing will run
 		}
 
 		try{
-			$livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
-		}catch(Exception $e){
+			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-		return LivroDao::salvaLivro($livro, $id_dono);
+		return LivroDao::salvaLivro( $livro, $id_dono );
 	}
 
 	/**
@@ -58,8 +60,8 @@ class LivroControlador {
 	 * @return ArrayObject Livro LivroDao::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca)
 	 */
 
-	public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
-		return LivroDao::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
+	public function pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca ){
+		return LivroDao::pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca );
 	}
 	
 	/**
@@ -70,8 +72,8 @@ class LivroControlador {
 	 * @return ArrayObject Livro LivroDao::getLivroById($id)
 	 */
 	
-	public function getLivroById($id){
-		return LivroDao::getLivroById($id);
+	public function getLivroById( $id ){
+		return LivroDao::getLivroById( $id );
 	}
 	
 	/**
@@ -82,8 +84,8 @@ class LivroControlador {
 	 * @return bool LivroDao::deletaLivro($idLivro)
 	 * The return is true if the book has been deleted.
 	 */
-	public function deletaLivro($idLivro){
-		return LivroDao::deletaLivro($idLivro);
+	public function deletaLivro( $idLivro ){
+		return LivroDao::deletaLivro( $idLivro );
 	}
 	
 	/**
@@ -105,15 +107,15 @@ class LivroControlador {
 	 * Returns true if the book has been updated.
 	 */
 	
-	public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono, $id_usuario){
-		if(empty($venda) && empty($troca)){
+	public function alteraLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono, $id_usuario ){
+		if(empty( $venda ) && empty( $troca )){
 			$venda = "venda";
 			$troca = "troca";
 		}
 
 		try{
-			$livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
-		}catch(Exception $e){
+			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
@@ -130,8 +132,8 @@ class LivroControlador {
 	 * Returns an array of books.
 	 */
 	
-	public function getLivroByIdUsuario($idUsuario){
-		return LivroDao::getLivroByIdUsuario($idUsuario);
+	public function getLivroByIdUsuario( $idUsuario ){
+		return LivroDao::getLivroByIdUsuario( $idUsuario );
 	}
 	
 	/**
