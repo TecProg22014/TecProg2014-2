@@ -438,7 +438,7 @@ $foo->bar(
 );
 ```
 
-## Convenções dos nomes
+## Naming Conventions
 
 ### Variable Names, Methods and Functions
 ------------
