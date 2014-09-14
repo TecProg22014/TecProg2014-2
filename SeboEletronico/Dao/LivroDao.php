@@ -5,7 +5,7 @@ include "Utilidades/ConexaoComBanco.php";
  * Class persistence of 'Livro'
  * */
 class LivroDao {
-	
+
 	public function salvaLivro( $livro, $id_dono ){
 		/**
 		 * Insertion method whose return is an object
@@ -17,7 +17,7 @@ class LivroDao {
 		$livro = mysql_query($sql);
 		return $livro;
 	}
-	
+
 	/**
 	 * Research methods book of the application, all variations of consulting books are concentrated in this method
 	 * Return method: Object
@@ -29,15 +29,16 @@ class LivroDao {
 			if( empty( $estadoNovo ) && !empty( $estadoUsado )){
 				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."'
             	AND tipo_operacao = '".$disponibilidadeVenda."'";
-			} elseif ( !empty( $estadoNovo ) && empty( $estadoUsado )) {
+			} elseif( !empty( $estadoNovo ) && empty( $estadoUsado )) {
 				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."'
-            	AND tipo_operacao = '".$disponibilidadeVenda."'";
+            AND tipo_operacao = '".$disponibilidadeVenda."'";
 			}
-		} else if( !empty( $disponibilidadeTroca ) && empty( $disponibilidadeVenda )){
+			
+		}else if( !empty( $disponibilidadeTroca ) && empty( $disponibilidadeVenda )){
 			if( empty( $estadoNovo ) && !empty( $estadoUsado )){
 				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."'
-            	AND tipo_operacao = '".$disponibilidadeTroca."'";
-			}elseif ( !empty( $estadoNovo ) && empty( $estadoUsado )) {
+           	 	AND tipo_operacao = '".$disponibilidadeTroca."'";
+			} elseif( !empty( $estadoNovo ) && empty( $estadoUsado )) {
 				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."'
             	AND tipo_operacao = '".$disponibilidadeTroca."'";
 			}
@@ -45,17 +46,26 @@ class LivroDao {
 			$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
 		}
 
-		$lista = mysql_query($sql);
-		$listaLivros = mysql_fetch_array($lista);
+		$lista = mysql_query( $sql );
+		$listaLivros = mysql_fetch_array( $lista );
 
-		if(!(empty($listaLivros))){
+		if(!(empty( $listaLivros ))){
 			return false;
 		} else{
 			return $listaLivros;
 		}
-
+		
 	}
-
+	
+	/**
+	 * @method getLivroById
+	 * @param $id
+	 * @var $sql
+	 * @var $result
+	 * Search book by parameter ID
+	 * @return ArrayObject
+	 * */
+	
 	public function getLivroById( $id ){
 		$sql = "SELECT * FROM livro WHERE id_livro = '".$id."'";
 		$result = mysql_query($sql);
@@ -68,10 +78,10 @@ class LivroDao {
 		return $deletou;
 	}
 
-	public function alteraLivro($livro, $id_dono, $id_usuario){
-		$sql = "UPDATE livro SET id_dono = '".$id_usuario."', titulo_livro = '".$livro->getTitulo()."', editora = '".$livro->getEditora()."', 
-				autor = '".$livro->getAutor()."', edicao = '".$livro->getEdicao()."', genero = '".$livro->getGenero()."', estado_conserv = '".$livro->getEstado()."', 
-		        descricao_livro = '".$livro->getDescricao()."', venda = '".$livro->getVenda()."', troca = '".$livro->getTroca()."' WHERE id_livro = '".$id_dono."'";
+	public function alteraLivro( $livro, $id_dono, $id_usuario ){
+		$sql = "UPDATE livro SET id_dono = '".$id_usuario."', titulo_livro = '".$livro->getTitulo()."', editora = '".$livro->getEditora()."',
+            	autor = '".$livro->getAutor()."', edicao = '".$livro->getEdicao()."', genero = '".$livro->getGenero()."', estado_conserv = '".$livro->getEstado()."', 
+                descricao_livro = '".$livro->getDescricao()."', venda = '".$livro->getVenda()."', troca = '".$livro->getTroca()."' WHERE id_livro = '".$id_dono."'";
 		$livro = mysql_query($sql);
 		return $livro;
 	}
@@ -80,25 +90,30 @@ class LivroDao {
 		$sql = "SELECT * FROM livro WHERE id_dono = '".$idUsuario."'";
 		$result = mysql_query($sql);
 		$livros = array();
-
-		while($registro = mysql_fetch_assoc($result) ) {
+		
+		/**
+		 * Book search associated with a user
+		 * */
+		while( $registro = mysql_fetch_assoc( $result ) ) {
 			$livros[]=$registro;
 		}
 
 		if(!(empty($livros))){
 			return false;
 		} else{
-			return $livros;	
+			return $livros;
 		}
-		 
+			
 	}
-
+	/**
+	* Method to search for all records books
+	*/
 	public function getAllLivro(){
 		$sql = "SELECT * FROM livro";
 		$result = mysql_query($sql);
 
 		$livros = array();
-
+		
 		while($registro = mysql_fetch_assoc($result) ) {
 			$livros[]=$registro;
 		}
@@ -106,8 +121,9 @@ class LivroDao {
 		if(!(empty($livros))){
 			return false;
 		} else{
-			return $livros;	
+			return $livros;
 		}
+			
 	}
 
 }
