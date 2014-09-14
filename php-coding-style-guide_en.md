@@ -109,7 +109,7 @@ expressão.
 Deve seguir a seguinte forma:
 
 ``` php
-  if(condicao){
+  if( condicao ){
   
     declaracao;
     
@@ -117,15 +117,15 @@ Deve seguir a seguinte forma:
 ```
 
 ``` php
-   if (condição) {
+   if ( condição ) {
    
       declaração;
       
-    } else if (condição) {
+    } else if ( condição ) {
     
       declaração;
       
-    } else if (condição) {
+    } else if ( condição ) {
     
       declaração;
       
@@ -150,7 +150,7 @@ A declaração for deve seguir a seguinte forma:
 A declaração while deve seguir a seguinte forma:
 <br />
 ``` php
-  while (condição) {
+  while ( condição ) {
   
     declaração;
     
@@ -167,7 +167,7 @@ A declaração do-while deve seguir a seguinte forma:
   
     declaração;
     
-  } while (condição);
+  } while ( condição );
   
 ```
 
@@ -177,7 +177,7 @@ A declaração do-while deve seguir a seguinte forma:
 A declaração switch deve seguir a seguinte forma:
 <br />
 ``` php
-  switch (condição) {
+  switch ( condição ) {
   
     case ABC:
     declaração;
@@ -204,7 +204,7 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
-foreach ($iterable as $key => $value) {
+foreach ( $iterable as $key => $value ) {
     // foreach body
 }
 ```
@@ -219,7 +219,7 @@ A declaração try-catch deve seguir a seguinte forma:
   
     declaração;
     
-  } catch (Exception $erro) {
+  } catch ( Exception $erro ) {
   
     declaração;
     
@@ -294,7 +294,7 @@ Always use <code><?php</code> to delimit PHP code. Do not use the shorthand vers
   * No space between the last parameter, the closing parenthesis, and the semicolon
   *
     Here's an example:
-    ``` $var = foo($bar, $apple, $peach); ```
+    ``` $var = foo( $bar, $apple, $peach ); ```
 
 ### Arrays
 -------------
