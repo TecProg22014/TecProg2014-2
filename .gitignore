@@ -1,8 +1,13 @@
-/nbproject/private/
+#diretorios ignorados
+.metadata/**/*
+.buildpath
+.project
 
 #diretorios ignorados SeboEletronico
 SeboEletronico/.metadata/**/*
 SeboEletronico/.settings/**/*
+SeboEletronico/.buildpath
+SeboEletronico/.project
 
 #diretorios ignorados RadarCriminal
 RadarCriminal/.metadata/**/*
@@ -11,3 +16,5 @@ RadarCriminal/exceptions/*
 RadarCriminal/files/**/*
 RadarCriminal/front/**/*
 RadarCriminal/libs/**/*
+RadarCriminal/.buildpath
+RadarCriminal/.project
