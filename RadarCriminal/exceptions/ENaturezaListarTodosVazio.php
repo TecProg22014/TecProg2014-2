@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class select all categories on null category object excpection
+ */
 class ENaturezaListarTodosVazio extends Exception{
 
 	/**
