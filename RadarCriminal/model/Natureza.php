@@ -27,7 +27,7 @@ class Natureza{
 	 * @param String $nomeNatureza
 	 * @param int $idCategoriaNatureza
 	 */
-	public function __constructOverload($idNatureza,$nomeNatureza,$idCategoriaNatureza){
+	public function __constructOverload( $idNatureza,$nomeNatureza,$idCategoriaNatureza ){
 		$this->idNatureza = $idNatureza;
 		$this->natureza = $nomeNatureza;
 		$this->idCategoria = $idCategoriaNatureza;
@@ -38,11 +38,12 @@ class Natureza{
 	 * @param int $idNatureza
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdNatureza($idNatureza){
-		if(!is_numeric($idNatureza)){
-			throw new ETipoErrado();
+	public function __setIdNatureza( $idNatureza ){
+		if( !is_numeric( $idNatureza ) ){
+			throw new ETipoErrado(); 
+		}else{
+			$this->idNatureza = $idNatureza;
 		}
-		$this->idNatureza = $idNatureza;
 	}
 	
 	/**
@@ -58,12 +59,12 @@ class Natureza{
 	 * @param int $idCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria($idCategoria){
+	public function __setIdCategoria( $idCategoria ){
 	
-		if(!is_numeric($idCategoria)){
+		if(!is_numeric( $idCategoria ) ){
 			throw new ETipoErrado();
 		}else{
-		$this->idCategoria = $idCategoria;
+			$this->idCategoria = $idCategoria;
 		}
 	}
 	
@@ -80,9 +81,9 @@ class Natureza{
 	 * @param String $natureza
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNatureza($natureza){
+	public function __setNatureza( $natureza ){
 		
-		if(!is_string($natureza)){
+		if( !is_string( $natureza ) ){
 			throw new ETipoErrado();
 		}else{
 		$this->natureza = $natureza;
