@@ -25,7 +25,7 @@ class Tempo{
 		if(!is_numeric($idTempo)){
 			throw new ETipoErrado();
 		}else{
-		$this->idTempo = $idTempo;
+			$this->idTempo = $idTempo;
 		}
 	}
 	/**
@@ -45,7 +45,7 @@ class Tempo{
 		if(!is_numeric($intervalo)){
 			throw new ETipoErrado();
 		}else{
-		$this->intervalo = $intervalo;
+			$this->intervalo = $intervalo;
 		}
 	}
 	
