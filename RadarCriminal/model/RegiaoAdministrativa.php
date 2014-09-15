@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class RegiaoAdministrativa is the model class of administrative regions.
+ * All administrative regions in the system are objects of this.
+ */
 class RegiaoAdministrativa{
 	
 	/**
@@ -15,7 +19,7 @@ class RegiaoAdministrativa{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 	
 	}
 	
@@ -48,7 +52,7 @@ class RegiaoAdministrativa{
 	 * Function to get the id of an administrative region where one crime has occurred
 	 * @return Object RegiaoAdministrativa var $idRegiaoAdministrativa
 	 */
-	public function __getIdRegiaoAdministrativa(){
+	public function __getIdRegiaoAdministrativa( ){
 		return $this->idRegiaoAdministrativa;
 	}
 	
@@ -63,6 +67,7 @@ class RegiaoAdministrativa{
 			throw new ETipoErrado();
 		}else{
 			$this->nomeRegiao = $nomeRegiao;
+
 		}
 	}
 	
@@ -70,7 +75,7 @@ class RegiaoAdministrativa{
 	 * Function to get the name of an administrative region where one crime has occurred
 	 * @return Object RegiaoAdministrativa var $nomeRegiao
 	 */
-	public function __getNomeRegiao(){
+	public function __getNomeRegiao( ){
 
 		return $this->nomeRegiao;
 	}

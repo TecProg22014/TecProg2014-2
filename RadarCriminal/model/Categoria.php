@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Categoria is the model class of category.
+ * All categories in the system are objects of this.
+ */
 class Categoria{
 	
 	/**
@@ -15,7 +19,7 @@ class Categoria{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 	
 	}
 	
@@ -47,7 +51,7 @@ class Categoria{
 	/**
 	 * Function to get the id of the category of the crime
 	 */
-	public function __getIdCategoria(){
+	public function __getIdCategoria( ){
 		return $this->idCategoria;
 	}
 	
@@ -69,7 +73,7 @@ class Categoria{
 	 * Function to get the name of the category of the crime
 	 * @return Object Categoria var $nomeCategoria 
 	 */
-	public function __getNomeCategoria(){
+	public function __getNomeCategoria( ){
 		return $this->nomeCategoria;
 	}
 	

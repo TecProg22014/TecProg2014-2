@@ -8,6 +8,11 @@ include_once "/controller/CrimeController.php";
 include_once "/exceptions/EErroConsulta.php";
 include_once "/exceptions/EFalhaNaturezaController.php";
 
+/**
+ * The NaturezaController class is the class that controls the CRUD of natures of crimes.
+ * This class interfaces the view to the persistence in the database, and has only one atribbute
+ * $naturezaDAO.
+ */
 class NaturezaController {
 	
 	/**
@@ -19,23 +24,23 @@ class NaturezaController {
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct() {
-		$this->naturezaDAO = new NaturezaDAO ();
+	public function __construct( ) {
+		$this->naturezaDAO = new NaturezaDAO ( );
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste() {
-		$this->naturezaDAO->__constructTeste ();
+	public function __constructTeste( ) {
+		$this->naturezaDAO->__constructTeste ( );
 	}
 	
 	/**
 	 * Function to select all the natures of crimes
 	 * @return Array $resultado
 	 */
-	public function _listarTodas() {
-		$resultado = $this->naturezaDAO->listarTodas ();
+	public function _listarTodas( ) {
+		$resultado = $this->naturezaDAO->listarTodas ( );
 		
 		return $resultado;
 	}
@@ -44,8 +49,8 @@ class NaturezaController {
 	 * Function to alphabetically list all the natures of crimes
 	 * @return Array $resultado
 	 */
-	public function _listarTodasAlfabicamente() {
-		$resultado = $this->naturezaDAO->listarTodasAlfabicamente ();
+	public function _listarTodasAlfabicamente( ) {
+		$resultado = $this->naturezaDAO->listarTodasAlfabicamente ( );
 		return $resultado;
 	}
 	
@@ -69,8 +74,8 @@ class NaturezaController {
 	 * @param String $naturezaConsulta        	
 	 * @return String $natureza
 	 */
-	public function _consultarPorNome($naturezaConsulta) {
-		$natureza = $this->naturezaDAO->consultarPorNome ( $naturezaConsulta );
+	public function _consultarPorNome( $naturezaConsulta ) {
+		$natureza = $this->naturezaDAO->consultarPorNome ( $naturezaConsulta  );
 		return $natureza;
 	}
 	
@@ -79,8 +84,8 @@ class NaturezaController {
 	 * @param int $id        	
 	 * @return Array $retornaNaturezas
 	 */
-	public function _consultarPorIdCategoria($id) {
-		return $this->naturezaDAO->consultarPorIdCategoria ( $id );
+	public function _consultarPorIdCategoria( $id ) {
+		return $this->naturezaDAO->consultarPorIdCategoria ( $id  );
 	}
 	
 	/**
@@ -88,8 +93,8 @@ class NaturezaController {
 	 * @param  Object Natureza $natureza
 	 * @return boolean $registered *refactor
 	 */
-	public function _inserirNatureza(Natureza $natureza) {
-		return $this->naturezaDAO->inserirNatureza ( $natureza );
+	public function _inserirNatureza(Natureza $natureza ) {
+		return $this->naturezaDAO->inserirNatureza ( $natureza  );
 	}
 	
 	/**
@@ -98,9 +103,9 @@ class NaturezaController {
 	 * @throws Exception EFalhaNaturezaController
 	 * @return boolean $registered *refactor
 	 */
-	public function _inserirArrayParse($arrayNatureza) {
-		if (! is_array ( $arrayNatureza )) {
-			throw new EFalhaNaturezaController ();
+	public function _inserirArrayParse( $arrayNatureza ) {
+		if (! is_array ( $arrayNatureza  ) ) {
+			throw new EFalhaNaturezaController ( );
 		} else {
 			for($i = 0, $arrayKey = $arrayNatureza, $inicio = 0; $i < count ( $arrayNatureza ); $i ++) {
 				$chave = key ( $arrayKey );
@@ -125,15 +130,15 @@ class NaturezaController {
 	 * @param String $natureza        	
 	 * @return Array $dados
 	 */
-	public function _retornarDadosDeNaturezaFormatado($natureza) {
-		$tempoDAO = new TempoDAO ();
-		$crimeCO = new CrimeController ();
-		$arrayDadosTempo = $tempoDAO->listarTodos ();
+	public function _retornarDadosDeNaturezaFormatado( $natureza ) {
+		$tempoDAO = new TempoDAO ( );
+		$crimeCO = new CrimeController ( );
+		$arrayDadosTempo = $tempoDAO->listarTodos ( );
 		$dados;
-		for($i = 0; $i < count ( $arrayDadosTempo ); $i ++) {
-			$dados ['tempo'] [$i] = $arrayDadosTempo [$i]->__getIntervalo ();
-			$dados ['crime'] [$i] = $crimeCO->_somaDeCrimePorNaturezaEmAno ( $natureza, $dados ['tempo'] [$i] );
-			$dados ['title'] [$i] = number_format ( $dados ['crime'] [$i], 0, ',', '.' );
+		for( $i = 0; $i < count ( $arrayDadosTempo  ); $i ++ ) {
+			$dados ['tempo'] [$i] = $arrayDadosTempo [$i]->__getIntervalo ( );
+			$dados ['crime'] [$i] = $crimeCO->_somaDeCrimePorNaturezaEmAno ( $natureza, $dados ['tempo'] [$i]  );
+			$dados ['title'] [$i] = number_format ( $dados ['crime'] [$i], 0, ',', '.'  );
 		}
 		return $dados;
 	}

@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Natureza is the model class of nature.
+ * All natures in the system are objects of this.
+ */
 class Natureza{
 	
 	/**
@@ -17,7 +21,7 @@ class Natureza{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 		
 	}
 	
@@ -50,7 +54,7 @@ class Natureza{
 	 * Function to get the id of a nature of a crime
 	 * @return Object Category var $idNatureza
 	 */
-	public function __getIdNatureza(){
+	public function __getIdNatureza( ){
 		return $this->idNatureza;
 	}
 	
@@ -72,7 +76,7 @@ class Natureza{
 	 * Function to get the id of a category of a crime
 	 * @return Object Category var $idCategoria
 	 */
-	public function __getIdCategoria(){
+	public function __getIdCategoria( ){
 		return $this->idCategoria;
 	}
 	
@@ -82,11 +86,10 @@ class Natureza{
 	 * @throws Exception ETipoErrado
 	 */
 	public function __setNatureza( $natureza ){
-		
 		if( !is_string( $natureza ) ){
 			throw new ETipoErrado();
 		}else{
-		$this->natureza = $natureza;
+			$this->natureza = $natureza;
 		}
 	}
 	
@@ -94,7 +97,7 @@ class Natureza{
 	 * Function to get the name of a nature of a crime
 	 * @return unknown
 	 */
-	public function __getNatureza(){
+	public function __getNatureza( ){
 		return $this->natureza;
 	}
 }

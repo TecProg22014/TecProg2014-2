@@ -1,166 +1,166 @@
+<<<<<<< HEAD
 Folha de Estilos PHP
+=======
+PHP Style Sheet
+>>>>>>> master
 ===
 
-## Cabeçalho
+## Header
 
-O código deve conter um cabeçalho no início da classe no estilo /** ... */ contendo o nome da classe, uma breve descrição da mesma e um aviso de direitos autorais.
+The code must contain a header at the beginning of the class in the style / ** ... * / containing the class name, a brief description of it and a notice of copyright.
 
-### Declaração de classes e interfaces
+### Declaration of classes and interfaces
 -------------
 
-A tabela a seguir mostra as partes de uma classe e a ordem em que devem aparecer:
+The following table shows the parts of a class and the order in which they appear:
 
-Partes da declaração Classe/interface                       | -
+Parts of the class / interface declaration                  | -
 --------------------------------------                      | -------------
-Comentário de documentação da classe/interface (/** ... */) | * [PHPdoc](http://www.phpdoc.org/docs/latest/index.html)
-Declaração class ou interface                               | -
-Comentários de implementação da classe/interface (/** ... */), se necessário   | Este comentário deve conter qualquer informação não apropriada para o comentário da documentação
-Variáveis de classe (static)                                                   | Primeiro as variáveis public, depois protected, depois private.
-Variáveis de instância                                                         | Primeiro public, depois protected, depois private
-Construtores                                                                   | <code>__construct();</code>
-Métodos                                                                        | Esses métodos devem ser agrupados por funcionalidade ``` __patchset() ```
+Review documentation of the class / interface (/** ... */)  | * [PHPdoc](http://www.phpdoc.org/docs/latest/index.html)
+Class or interface statement                                | -
+Comments implement the class / interface (/** ... */), if necessary   | This comment should contain any information not appropriate to comment documentation
+Class variables (static)                                                   | First the variables public, then protected, then private.
+Instance variables                                                         | First public, then protected, then private
+Builders                                                                   | ``` __construct(); ```
+Methods                                                                    | These methods should be grouped by functionality ``` __patchset() ```
 
 
-## Indentação
+## Indentation
 
-### Comprimento da linha
+### Line Length
 -------------
 
-Evitar linhas com mais de <code>80 caracters</code>.
+Avoid lines longer than ``` 80 characters ```.
 
 
-### Quebra de linha
+### Line break
 -------------
 
-Quando uma expressão não couber em uma linha, quebre-a com os seguintes princípios
-gerais:
+When an expression will not fit on a line, break it with the following general principles:
 
-* Quebrar depois da vírgula
-* Quebrar antes do operador
-* Alinhar a nova linha com o mesmo nível do início da expressão da linha anterior
-* Discutir Indentação;
+* Break after the comma
+* Break before the operator
+* Align the new line to the same level at the beginning of the previous row of the expression
 
-## Comentários
+## Comments
 
-### De Linha
+### Line
 -------------
-Deve seguir o padrão:
+Should follow the pattern:
 ``` php
-  // comentário
+  // comment
 ```
 
-### Da função
+### Function
 -------------
-Deve seguir o padrão: 
+Should follow the pattern:
 ``` php
-/** comentário */
+/** comment */
 ```
 
-### Do bloco
+### Block
 -------------
-Deve seguir o padrão:
+Should follow the pattern:
 ``` php
-/** comentário */
+/** comment */
 ```
 
-## Declarações
+## Statements
 
-### Número por linha
+### Number per line
 -------------
 
-Uma declaração por linha é o recomendado, visto que essa abordagem incentiva a
-comentar.
+One declaration per line is recommended, since this approach encourages comment.
 
-### Localização
+### Location
 -------------
 
-Colocar a declaração das variáveis o mais próximo possível da sua utilização
+Put the declaration of variables as close as possible to its use
 
 ### Inicialização
 -------------
 
-Inicializar variáveis locais onde são declaradas, exceto quando o valor inicial depende
-de alguns cálculos que ocorrem primeiro.
+Initialize local variables where they are declared, except when the initial value depends on some calculations that occur first.
 
-### De classes
+### Class
 -------------
 
-As seguintes regras devem ser seguidas:
-* Sem espaço entre o nome do método e o parênteses que inicia a sua lista de parâmetros .
-* Abrir colchetes “{“ aparece no final da mesma linha que o comando da declaração.
-* Fecha colchetes “}” inicia em uma linha própria recuando para combinar com a abertura de colchetes da correspondente declaração, exceto quando a declaração é nula neste caso o “}” deve seguir imediatamente depois do “{“.
-* Métodos devem ser separados por uma linha em branco.
+The rules must be followed:
+* No space between the method name and the parenthesis that starts its parameter list .
+* Open brackets "{" appears at the end of the same line as the command statement.
+* Right square bracket "}" starts a line by itself in retreating to match the opening bracket of the corresponding statement, unless the statement is null in this case the "}" should follow immediately after the "{".
+* Methods should be separated by a blank line.
 
 
-### Declarações simples
+### Simple Statements
 -------------
 
-Cada linha deve conter apenas uma declaração.
+Each line should contain only a statement.
 
-### Declaração `return`
+### Declaration `return`
 -------------
 
 Uma declaração return com um valor não deve usar parênteses a menos que seja uma
 expressão.
 
-### Declaração `if-else`, `if-else-if-else`
+### Declaration `if-else`, `if-else-if-else`
 -------------
 
-Deve seguir a seguinte forma:
+Should follow the pattern:
 
 ``` php
-  if( condicao ){
+  if( condition ){
   
-    declaracao;
+    statement;
     
   }
 ```
 
 ``` php
-   if ( condição ) {
+   if ( condition ) {
    
-      declaração;
+      statement;
       
-    } else if ( condição ) {
+    } else if ( condition ) {
     
-      declaração;
+      statement;
       
-    } else if ( condição ) {
+    } else if ( condition ) {
     
-      declaração;
+      statement;
       
     }
 ```
 
-### Declaração `for`
+### Declaration `for`
 -------------
 
-A declaração for deve seguir a seguinte forma:
+Should follow the pattern:
 <br />
 ``` php
-  for ( inicialização; condição; update ) {
-    declaração;
+  for ( initial; condition; update ) {
+    statement;
   }
 ```
 
 
-### Declaração `while`
+### Declaration `while`
 -------------
 
-A declaração while deve seguir a seguinte forma:
+Should follow the pattern:
 <br />
 ``` php
-  while ( condição ) {
+  while ( condition ) {
   
-    declaração;
+    statement;
     
   }
 ```
 
-### Declaração `do-while`
+### Declaration `do-while`
 -------------
 
-A declaração do-while deve seguir a seguinte forma:
+Should follow the pattern:
 <br />
 ``` php
   do {
@@ -171,33 +171,33 @@ A declaração do-while deve seguir a seguinte forma:
   
 ```
 
-### Declaração `switch`
+### Declaration `switch`
 -------------
 
-A declaração switch deve seguir a seguinte forma:
+Should follow the pattern:
 <br />
 ``` php
-  switch ( condição ) {
+  switch ( condition ) {
   
     case ABC:
-    declaração;
+    statement;
     break;
 
     case DEF:
-    declaração;
+    statement;
     break;
 
     case XYZ:
-    declaração;
+    statement;
     break;
 
     default:
-    declaração;
+    statement;
     break;
   }
 ```
 
-### Declaração `foreach`
+### Declaration `foreach`
     
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -209,50 +209,50 @@ foreach ( $iterable as $key => $value ) {
 }
 ```
 
-### Declaração `try-catch`
+### Declaration `try-catch`
 -------------
 
-A declaração try-catch deve seguir a seguinte forma:
+The try-catch statement should follow the following form:
 <br />
 ``` php
   try {
   
-    declaração;
+    statement;
     
   } catch ( Exception $erro ) {
   
-    declaração;
+    statement;
     
   }
 
 ```
 
-### Espaço em branco
+### Blank
 -------------
 
-Deve-se usar uma linha em branco nas seguintes situções:
-* Entre métodos
-* Entre as variáveis locais em um método e a sua primeira declaração
-* Antes de um comentário de bloco
-* Entre seções lógicas dentro de um método para melhorar sua legibilidade
+Must use a blank line in the following situations:
+* Among methods
+* Between the local variables in a method and its first statement
+* Before a block comment
+* Between logical sections inside a method to improve its readability
 
-Deve-se usar espaços em branco nas seguintes situações:
-* Uma palavra-chave seguida por um parentese deve ser separada por um espaço em branco. Exemplo:
+Must use blanks in the following situations:
+* A keyword followed by a parenthesis should be separated by a blank space. example:
 <br />
 ``` php
   while ( true ) {
   
-    declaração;
+    statement;
     
   }
 ```
 
-<strong>Nota:</strong> Um espaço em branco não deve ser utilizado entre o nome do método e a abertura do parentese. Isso ajuda a distinguir palavra chave de chamada de método.
+<strong>Note:</strong> A blank space should not be used between the method name and the opening parenthesis. This helps to distinguish keyword method call.
 * Um espaço em branco deve aparecer depois da vírgula em uma lista de argumentos.
-* Todo operador binário exceto “.” deve ser separado de outros operadores por espaço. Espaço em branco nunca deve separar operadores unários, como incremento (``` “++” ```) e decremento (``` “--” ```).
-* As expressões em uma declaração for deve ser separada por um espaço em branco.
+* All except binary operator "." Must be separated from other operators for space. Whitespace should never separate unary operators such as increment (``` “++” ```) and decrement (``` “--” ```).
+* The expressions in a for statement should be separated by a blank space.
 
-Always use <code><?php</code> to delimit PHP code. Do not use the shorthand version, <code><?</code>. PHP short tags are not enabled by default on new installations and are deprecated.
+Always use ``` <?php ``` to delimit PHP code. Do not use the shorthand version, <code><?</code>. PHP short tags are not enabled by default on new installations and are deprecated.
 
 ### Use PHP 5 Conventions
 -------------
@@ -442,27 +442,27 @@ $foo->bar(
 );
 ```
 
-## Convenções dos nomes
+## Naming Conventions
 
-### Nomes de Variáveis, Métodos e Funções
+### Variable Names, Methods and Functions
 ------------
 
-[Sugestões para novos nomes de variáveis e comentários](https://drive.google.com/folderview?id=0B9tT-j0PH4pgOUp0S3V2c2Zabzg&usp=sharing)
+[Suggestions for new variable names and comments](https://drive.google.com/folderview?id=0B9tT-j0PH4pgOUp0S3V2c2Zabzg&usp=sharing)
 
-## Controle de Versão
+## Version Control
 
 ### Branches
 -------------
 
-O nome das Branches deverá ser de acordo com o recurso que esta sendo corrigido, melhorado ou desenvolvido, podendo inclusive ser vinculado a determinada Issue utilizando exatamente o mesmo nome.
+The name of the Branches should be in accordance with the resource that is being corrected, improved or developed, and may also be linked to certain Issue using exactly the same name.
 
 ### Commits
 -------------
 
-REGRAS PARA COMMITS
-* Os commits deverão ser dados por classe ou arquivo
-* Só deverão ser dados commits de multiplos arquivos quando os mesmos contiverem arquivos estáticos do frontend (.html, .css, .js, .scss, .sass e etc)
-* Devem ser evitadas adições de arquivos em lote com o comando ``` git add --all ```
+COMMIT RULES
+* Commits should be given by class or file
+* Data should only be commits multiple files when they contain static files from frontend (html, css, js, .scss, .sass and etc)
+* File additions should be avoided in batch with the command ``` git add --all ```
 
 
 ### Issues
@@ -475,4 +475,5 @@ Para possíveis reparos de qualquer uma das soluções, utilizar issues para rep
 -------------
 
 * Todos os dias, as modificações de diretórios podem ser feitas até as 23:00
-* O ``` merge ``` só poderá ser feito por 1 pessoa do grupo (Macario)
+* To request Pull Request event is not part of groups of contributors who can not make ``` push ``` the repository, wait for response to your ``` Pull Request ``` 
+* The ``` merge ``` can only be done by one person in the group (Macario)

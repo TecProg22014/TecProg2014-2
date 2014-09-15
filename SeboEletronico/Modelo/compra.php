@@ -1,6 +1,6 @@
 <?php
 
-	include "Dao/conexao_bd.inc";
+	include "/Dao/conexao_bd.inc";
 	if(!$bd) die ("<h1>Falha no bd </h1>");
 		
 	$sql = "SELECT * FROM livro WHERE id_dono = '8'";

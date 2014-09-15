@@ -1,6 +1,6 @@
 <?php
 
-include "Modelo/Usuario.php";
+include "/Modelo/Usuario.php";
 
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
@@ -23,15 +23,15 @@ class UsuarioControlador {
 	 * @return bool UsuarioDao::salvaUsuario($usuario)
 	 */
 
-	public function salvaUsuario($nome, $email, $telefone, $senha){
+	public function salvaUsuario( $nome, $email, $telefone, $senha ){
 		try{
-			$usuario = new Usuario($nome, $telefone, $email, $senha);
-		}catch(Exception $e){
+			$usuario = new Usuario( $nome, $telefone, $email, $senha );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::salvaUsuario($usuario);
+		return UsuarioDao::salvaUsuario( $usuario );
 	}
 
 	/**
@@ -43,8 +43,8 @@ class UsuarioControlador {
 	 * @return Usuario UsuarioDao::getCadastradosPorId($id)
 	 */
 
-	public function checaCadastroId($id){
-		return UsuarioDao::getCadastradosPorId($id);
+	public function checaCadastroId( $id ){
+		return UsuarioDao::getCadastradosPorId( $id );
 	}
 
 	/**
@@ -64,16 +64,16 @@ class UsuarioControlador {
 	 * The return is true if the user has been updated.
 	 */
 
-	public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
+	public function alterarCadastro( $nome, $email, $telefone, $senha, $id, $senhaVelha ){
 		try{
 
-			$usuario = new Usuario($nome, $telefone, $email, $senha);
-		}catch(Exception $e){
+			$usuario = new Usuario( $nome, $telefone, $email, $senha );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/alteraUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha);
+		return UsuarioDao::alteraUsuario( $usuario,$id, $senhaVelha );
 
 	}
 
@@ -88,10 +88,8 @@ class UsuarioControlador {
 	 * The return is true if the user has been deleted.
 	 */
 
-	public function deletaCadastro($email, $senha){
-			
-		return UsuarioDao::deletaUsuario($email, $senha);
-			
+	public function deletaCadastro( $email, $senha ){	
+		return UsuarioDao::deletaUsuario( $email, $senha );	
 	}
 
 	/**
@@ -101,11 +99,11 @@ class UsuarioControlador {
 	 * @param string $nome
 	 *
 	 * Returns the array of Users who have $nome.
-	 * @return ArrayObject Usuario UsuarioDao::pesquisaUsuario($nome)
+	 * @return ArrayObject Usuario UsuarioDao::pesquisaUsuario( $nome )
 	 */
 
-	public function pesquisaUsuario($nome){
-		return UsuarioDao::pesquisaUsuario($nome);
+	public function pesquisaUsuario( $nome ){
+		return UsuarioDao::pesquisaUsuario( $nome );
 	}
 }
 
