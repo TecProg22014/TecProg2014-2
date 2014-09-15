@@ -24,8 +24,9 @@ class Tempo{
 		
 		if(!is_numeric($idTempo)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->idTempo = $idTempo;
+		}
 	}
 	/**
 	 * Function to get the id of a time of a crime
@@ -43,9 +44,11 @@ class Tempo{
 		
 		if(!is_numeric($intervalo)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->intervalo = $intervalo;
+		}
 	}
+	
 	/**
 	 * Function to get the range of a time of a crime
 	 * @return Object Time var $intervalo
@@ -53,6 +56,7 @@ class Tempo{
 	public function __getIntervalo(){
 		return $this->intervalo;
 	}
+	
 	/**
 	 * Function to set the name of a mes of a crime
 	 *@param String mes
@@ -60,6 +64,7 @@ class Tempo{
 	public function __setMes($mes){
 		$this->mes = $mes;
 	}
+	
 	/**
 	 * Function to get the name of a mes of a crime
 	 * @return unknown
@@ -74,6 +79,7 @@ class Tempo{
 	public function __construct(){
 		
 	}
+	
 	/**
 	 * Full constructor of an object Time that defines a crime
 	 * @param int idTempo
