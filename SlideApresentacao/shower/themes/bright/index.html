@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>TecProg Entrega 2</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<meta name="viewport" content="width=680, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="styles/screen.css">
+</head>
+<body class="list">
+	<!--
+		Debug class on <body> enables
+		cyan grid on slides
+		-->
+	<header class="caption">
+		<h1>TecProg Entrega 2</h1>
+		<p>Sérgio Silva | Eliseu Egewarth | Macário Soares | Tâmara Barbosa</p>
+	</header>
+	<section class="slide cover" id="Cover">
+		<div>
+			<img src="pictures/capa_.jpg" alt="Git">
+			<!--
+				To apply styles to the certain slides
+				set slide ID to get needed elements
+				-->
+			<style>
+				#Cover h2 {
+					margin:30px 0 0;
+					color:#fff;
+					text-shadow: 2px 2px 2px #000;
+					text-align:center;
+					font-size:70px;
+					}
+				#Cover p {
+					margin:10px 0 0;
+					text-align:center;
+					color:#fff;
+					font-style:italic;
+					font-size:20px;
+					}
+				#Cover p a {
+					color:#fff;
+				}
+				
+				#Cover .subtitle{
+					color:#fff;
+					text-shadow: 2px 2px 2px #000;
+					font-size:50px;
+					font-weight:bold;
+					line-height:120%;
+				}
+				
+			</style>
+		</div>
+
+	</section>
+
+	<section class="slide shout right" style="background-color:#ac8a7c;"><div>
+		<h2>Backlog #01</h2>
+	</div></section>
+	
+	<section class="slide cover">
+		<div>
+			<img src="images/entrega_1.png" alt="Commits Primeira Semana">
+		</div>
+	</section>
+	
+	<section class="slide"><div>
+		<h2>Onde estavamos na Backlog #01</h2>
+		<ul>
+			<li class="next">Começado a Construção da Folha de Estilos</li>
+			<li class="next">Primeiros Comentarios</li>
+			<li class="next">Projetos ainda não estavam funcionando</li>
+			<li class="next"><a href="https://github.com/TecProg22014/TecProg2014-2/graphs/contributors?from=2014-08-17&to=2014-08-28&type=c" target="_blank">Primeiros Commits</a></li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout left" style="background-color:#ac8a7c;"><div>
+		<h2>Backlog #02</h2>
+	</div></section>
+	
+	<section class="slide cover">
+		<div>
+			<img src="images/status_atual.png" alt="Repositório do GitHub">
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>O que já foi feito</h2>
+		<ul>
+			<li class="next">Melhoria da Folha de Estilos</li>
+			<li class="next">Versão em Inglês e Português :)</li>
+			<li class="next">* Aplicação da folha de estilos em todo o SeboEletronico</li>
+			<li class="next">** Aplicação da folha de estilos em todo o RadarCriminal</li>
+			<li class="next">Inicio da Entrega 3</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout left" style="background-color:#ac8a7c;"><div>
+		<h2>.gitignore</h2>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Problemas com .gitignore</h2>
+		<ul>
+			<li class="next">Arquivos da IDE estavam sendo submetidos</li>
+			<li class="next">Arquivos que não estavam sendo modificados</li>
+			<li class="next">Modificações de status de repositório (.xml) do IDE</li>
+			<li class="next">.project / .metadata / .settings / ...</li>
+			<li class="next">Diretórios de Bibliotecas (adodb) e outras</li>
+		</ul>
+	</div></section>
+	
+	<section class="slide shout left" style="background-color:#ac8a7c;"><div>
+		<h2>Solução</h2>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Soluções para o .gitignore</h2>
+		<ul>
+			<li class="next">Inclusão de diretórios a serem ignorados</li>
+			<li class="next">Reset do Cache</li>
+			<li class="next">Cada Branch possui seu ignore para evitar alterações arbitrárias</li>
+		</ul>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Apagando cache armazenado</h2>
+		<pre style="margin-left:-230px;">
+			<code>
+				<mark class="comment">&#35; Comando deve ser executado na raiz (root) do repositorio</mark>
+				<mark class="important">&#36; git rm -r --cached</mark>
+				<mark>&#36; git add .</mark>
+			</code>
+		</pre>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Gestão de Tarefas e Comunicação</h2>
+		<ul>
+			<li class="next">Controle de tarefas com o Trello guiados pelas Issues</li>
+			<li class="next">Comunicaçao via <a href="https://hall.com" target="_blank">Hall</a>/WhatsApp</li>
+		</ul>
+	</div></section>
+	
+	<section class="slide shout left" style="background-color:#ac8a7c;"><div>
+		<h2>Backlog #03</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>O que pretendemos fazer</h2>
+		<ul>
+			<li class="next">Continuação da Tarefa #03</li>
+			<li class="next">Corrigir <code>chart.js</code> para ajuste dos gráficos do Radar Criminal</li>
+			<li class="next">Criar folha de estilos para definição de padrões <code>HTML</code></li>
+			<li class="next">* Aplicação da folha de estilos em todo o SeboEletronico</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout left" style="background-color:#ac8a7c;"><div>
+		<h2>Repositório</h2>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Professor da Disciplina</h2>
+		<ul>
+			<li>Maurício Serrano</li>
+			<span>serrano@unb.br</span>
+		</ul>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="../../shower.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>
