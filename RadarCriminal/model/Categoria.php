@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Categoria is the model class of category.
+ * All categories in the system are objects of this.
+ */
 class Categoria{
 	
 	/**
@@ -15,7 +19,7 @@ class Categoria{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 	
 	}
 	
@@ -24,7 +28,7 @@ class Categoria{
 	 * @param int $idCategoria
 	 * @param String $nomeCategoria
 	 */
-	public function __constructOverload($idCategoria,$nomeCategoria){
+	public function __constructOverload( $idCategoria,$nomeCategoria ){
 	
 		$this->idCategoria = $idCategoria;
 		$this->nomeCategoria = $nomeCategoria;
@@ -35,10 +39,10 @@ class Categoria{
 	 * @param int $idCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria($idCategoria){
+	public function __setIdCategoria( $idCategoria ){
 		
-		if (!is_numeric($idCategoria)){
-			throw new ETipoErrado();
+		if (!is_numeric( $idCategoria ) ){
+			throw new ETipoErrado( );
 		}
 		$this->idCategoria = $idCategoria;
 	}
@@ -46,7 +50,7 @@ class Categoria{
 	/**
 	 * Function to get the id of the category of the crime
 	 */
-	public function __getIdCategoria(){
+	public function __getIdCategoria( ){
 		return $this->idCategoria;
 	}
 	
@@ -55,10 +59,10 @@ class Categoria{
 	 * @param String $nomeCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNomeCategoria($nomeCategoria){
+	public function __setNomeCategoria( $nomeCategoria ){
 		
-		if(!is_string($nomeCategoria)){
-			throw new ETipoErrado();
+		if(!is_string( $nomeCategoria ) ){
+			throw new ETipoErrado( );
 		}
 		$this->nomeCategoria = $nomeCategoria;
 	}
@@ -67,7 +71,7 @@ class Categoria{
 	 * Function to get the name of the category of the crime
 	 * @return Object Categoria var $nomeCategoria 
 	 */
-	public function __getNomeCategoria(){
+	public function __getNomeCategoria( ){
 		return $this->nomeCategoria;
 	}
 	
