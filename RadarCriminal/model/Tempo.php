@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Tempo is the model class of time.
+ * All times in the system are objects of this.
+ */
 class Tempo{
 	
 	/**
@@ -20,10 +24,12 @@ class Tempo{
 	 * @param int $idTempo
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdTempo($idTempo){
+	public function __setIdTempo( $idTempo ){
 		
-		if(!is_numeric($idTempo)){
-			throw new ETipoErrado();
+		if(!is_numeric( $idTempo ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->idTempo = $idTempo;
 	}
@@ -31,7 +37,7 @@ class Tempo{
 	 * Function to get the id of a time of a crime
 	 * @return Object Time var $idTempo
 	 */
-	public function __getIdTempo(){
+	public function __getIdTempo( ){
 		return $this->idTempo;
 	}
 	/**
@@ -39,10 +45,12 @@ class Tempo{
 	 * @param int $intervalo
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIntervalo($intervalo){
+	public function __setIntervalo( $intervalo ){
 		
-		if(!is_numeric($intervalo)){
-			throw new ETipoErrado();
+		if(!is_numeric( $intervalo ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->intervalo = $intervalo;
 	}
@@ -50,28 +58,28 @@ class Tempo{
 	 * Function to get the range of a time of a crime
 	 * @return Object Time var $intervalo
 	 */
-	public function __getIntervalo(){
+	public function __getIntervalo( ){
 		return $this->intervalo;
 	}
 	/**
 	 * Function to set the name of a mes of a crime
 	 *@param String mes
 	 */
-	public function __setMes($mes){
+	public function __setMes( $mes ){
 		$this->mes = $mes;
 	}
 	/**
 	 * Function to get the name of a mes of a crime
 	 * @return unknown
 	 */
-	public function __getMes(){
+	public function __getMes( ){
 		return  $this->mes;
 	}
 
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 		
 	}
 	/**
@@ -80,7 +88,7 @@ class Tempo{
 	 * @param int intervalo
 	 * @param String mes
 	 */
-	public function __constructOverload($idTempo,$intervalo,$mes){
+	public function __constructOverload( $idTempo,$intervalo,$mes ){
 		
 		$this->idTempo = $idTempo;
 		$this->intervalo = $intervalo;
