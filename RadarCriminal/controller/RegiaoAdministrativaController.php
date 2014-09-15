@@ -63,9 +63,8 @@ class RegiaoAdministrativaController {
 		if (! is_numeric ( $id  ) ) {
 			throw new EErroConsulta ( );
 		} else {
+			$RA = $this->raDAO->consultarPorId ( $id );
 		}
-		
-		$RA = $this->raDAO->consultarPorId ( $id  );
 		return $RA;
 	}
 	
@@ -79,8 +78,8 @@ class RegiaoAdministrativaController {
 		if (! is_string ( $nome  ) ) {
 			throw new EErroConsulta ( );
 		} else {
+			$RA = $this->raDAO->consultarPorNome ( $nome );
 		}
-		$RA = $this->raDAO->consultarPorNome ( $nome  );
 		return $RA;
 	}
 	
@@ -104,7 +103,7 @@ class RegiaoAdministrativaController {
 	/**
 	 * Function to insert in the database the separate values of an array of administrative regions
 	 * @param Array $arrayRA
-	 *        	*refactor
+	 *       
 	 */
 	public function _inserirRegiaoArrayParseRA( $arrayRA ) {
 		for( $i = 0; $i < count ( $arrayRA  ); $i ++ ) {

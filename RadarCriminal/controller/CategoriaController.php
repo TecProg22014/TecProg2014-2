@@ -57,9 +57,8 @@ class CategoriaController {
 		if (! is_numeric ( $id  ) ) {
 			throw new EErroConsulta ( );
 		} else {
-			//nothing will run
+			$categoria = $this->categoriaDAO->consultarPorId ( $id );
 		}
-		$categoria = $this->categoriaDAO->consultarPorId ( $id  );
 		return $categoria;
 	}
 	
@@ -73,9 +72,8 @@ class CategoriaController {
 		if (! is_string ( $nomeCategoria  ) ) {
 			throw new EErroConsulta ( );
 		} else {
-			//nothing will run
+			$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria );
 		}
-		$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria  );
 		return $categoria;
 	}
 	
@@ -98,13 +96,13 @@ class CategoriaController {
 		if (! is_array ( $arrayCategoria  ) ) {
 			throw new EErroConsulta ( );
 		} else {
-			//nothing will run
+		$dadosCategoria = new Categoria ();
+			for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
+				$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
+				$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
+			}
 		}
-		$dadosCategoria = new Categoria ( );
-		for( $i = 0; $i < count ( $arrayCategoria  ); $i ++ ) {
-			$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i]  );
-			$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria  );
-		}
+		
 		return $retorno;
 	}
 	
@@ -227,7 +225,7 @@ class CategoriaController {
 	
 	/**
 	 * Function to list all the categories applying them in labels
-	 * @return String $labels      *refactor
+	 * @return String $labels      
 	 */
 	public function _listarTotalDeCategoria( ) {
 		$categorias = $this->categoriaDAO->listarTotalDeCategoria ( );

@@ -106,7 +106,7 @@ class TempoController {
 	
 	/**
 	 * Function to list all the periods of time applying them in labels
-	 * @return String $labels     *refactor
+	 * @return String $labels 
 	 */
 	public function _retornarDadosFormatados( ) {
 		$dadosTempo = new Tempo ( );
@@ -115,7 +115,7 @@ class TempoController {
 			$dadosTempo = $arrayDadosTempo [$i];
 			$dados [$i] = $dadosTempo->__getIntervalo ( );
 		}
-		return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",\"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]";
+		return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",
+						   \"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]";
 	}
-	
 }

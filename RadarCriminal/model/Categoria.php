@@ -41,12 +41,11 @@ class Categoria{
 	 */
 	public function __setIdCategoria( $idCategoria ){
 		
-		if (!is_numeric( $idCategoria ) ){
-			throw new ETipoErrado( );
+		if ( !is_numeric( $idCategoria ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->idCategoria = $idCategoria;
 		}
-		$this->idCategoria = $idCategoria;
 	}
 	
 	/**
@@ -63,12 +62,11 @@ class Categoria{
 	 */
 	public function __setNomeCategoria( $nomeCategoria ){
 		
-		if(!is_string( $nomeCategoria ) ){
-			throw new ETipoErrado( );
+		if( !is_string( $nomeCategoria ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->nomeCategoria = $nomeCategoria;
 		}
-		$this->nomeCategoria = $nomeCategoria;
 	}
 	
 	/**

@@ -28,7 +28,7 @@ class RegiaoAdministrativa{
 	 * @param int $idRA
 	 * @param String $nomeRegiao
 	 */
-	public function __constructOverLoad( $idRA,$nomeRegiao ){
+	public function __constructOverLoad( $idRA, $nomeRegiao ){
 		
 		$this->idRegiaoAdministrativa = $idRA;
 		$this->nomeRegiao = $nomeRegiao;
@@ -41,12 +41,11 @@ class RegiaoAdministrativa{
 	 */
 	public function __setIdRegiaoAdministrativa( $idRegiaoAdministrativa ){
 	
-		if(!is_numeric( $idRegiaoAdministrativa ) ){
-			throw new ETipoErrado( );
+		if( !is_numeric( $idRegiaoAdministrativa ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
 		}
-		$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
 	}
 	
 	/**
@@ -64,12 +63,12 @@ class RegiaoAdministrativa{
 	 */
 	public function __setNomeRegiao( $nomeRegiao ){
 		
-		if(!is_string( $nomeRegiao ) ){
-			throw new ETipoErrado( );
+		if( !is_string( $nomeRegiao ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->nomeRegiao = $nomeRegiao;
+
 		}
-		$this->nomeRegiao = $nomeRegiao;
 	}
 	
 	/**

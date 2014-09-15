@@ -43,12 +43,11 @@ class Natureza{
 	 * @throws Exception ETipoErrado
 	 */
 	public function __setIdNatureza( $idNatureza ){
-		if(!is_numeric( $idNatureza ) ){
-			throw new ETipoErrado( );
+		if( !is_numeric( $idNatureza ) ){
+			throw new ETipoErrado(); 
 		}else{
-			//notnhing will run
+			$this->idNatureza = $idNatureza;
 		}
-		$this->idNatureza = $idNatureza;
 	}
 	
 	/**
@@ -67,11 +66,10 @@ class Natureza{
 	public function __setIdCategoria( $idCategoria ){
 	
 		if(!is_numeric( $idCategoria ) ){
-			throw new ETipoErrado( );
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->idCategoria = $idCategoria;
 		}
-		$this->idCategoria = $idCategoria;
 	}
 	
 	/**
@@ -88,13 +86,11 @@ class Natureza{
 	 * @throws Exception ETipoErrado
 	 */
 	public function __setNatureza( $natureza ){
-		
-		if(!is_string( $natureza ) ){
-			throw new ETipoErrado( );
+		if( !is_string( $natureza ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->natureza = $natureza;
 		}
-		$this->natureza = $natureza;
 	}
 	
 	/**

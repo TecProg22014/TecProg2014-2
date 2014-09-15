@@ -53,12 +53,12 @@ class Crime{
 	 */
 	public function __setIdCrime( $idCrime ){
 
-		if(!is_numeric( $idCrime ) ){
-			throw new ETipoErrado( );
+
+		if( !is_numeric( $idCrime ) ){
+			throw new ETipoErrado();
 		}else{
-			//notnhing will run
+			$this->idCrime = $idCrime;
 		}
-		$this->idCrime = $idCrime;
 	}
 	
 	/**
