@@ -39,8 +39,9 @@ class Categoria{
 		
 		if (!is_numeric($idCategoria)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->idCategoria = $idCategoria;
+		}
 	}
 	
 	/**
@@ -59,8 +60,9 @@ class Categoria{
 		
 		if(!is_string($nomeCategoria)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->nomeCategoria = $nomeCategoria;
+		}
 	}
 	
 	/**

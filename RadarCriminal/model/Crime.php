@@ -51,8 +51,9 @@ class Crime{
 
 		if(!is_numeric($idCrime)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->idCrime = $idCrime;
+		}
 	}
 	
 	/**
