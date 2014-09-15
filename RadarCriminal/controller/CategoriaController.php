@@ -95,10 +95,10 @@ class CategoriaController {
 			throw new EErroConsulta ();
 		} else {
 		$dadosCategoria = new Categoria ();
-		for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
-			$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
-			$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
-		}
+			for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
+				$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
+				$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
+			}
 		}
 		
 		return $retorno;
