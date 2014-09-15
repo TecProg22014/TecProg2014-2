@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class select on null time id excpection
+ */
 class ECrimeConsultarIdTempoVazio extends Exception{
 
 	/**
