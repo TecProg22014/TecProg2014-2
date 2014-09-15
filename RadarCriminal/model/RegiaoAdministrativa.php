@@ -72,14 +72,6 @@ class RegiaoAdministrativa{
 	 */
 	public function __getNomeRegiao(){
 
-		//try{
-		//	if(!is_string($this->nomeRegiao)){
-		//		throw new ETipoErrado();
-		//	}
-		//}
-		//catch(ETipoErrado $e){
-		//	echo $e->getMessage();
-		//}
 		return $this->nomeRegiao;
 	}
 }
