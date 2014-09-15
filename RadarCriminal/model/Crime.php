@@ -3,6 +3,10 @@
 include_once "/exceptions/EFalhaLeituraSerieCrime.php";
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Crime is the model class of category.
+ * All crimes in the system are objects of this.
+ */
 class Crime{
 	
 	/**
@@ -24,7 +28,7 @@ class Crime{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 	
 	}
 	
@@ -35,7 +39,7 @@ class Crime{
 	 * @param int $idNatureza
 	 * @param int $quantidade
 	 */
-	public function __constructOverload($idCrime,$idTempo,$idNatureza,$quantidade){
+	public function __constructOverload( $idCrime,$idTempo,$idNatureza,$quantidade ){
 		$this->idCrime = $idCrime;
 		$this->idTempo = $idTempo;
 		$this->idNatureza = $idNatureza;
@@ -47,10 +51,10 @@ class Crime{
 	 * @param int $idCrime
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCrime($idCrime){
+	public function __setIdCrime( $idCrime ){
 
-		if(!is_numeric($idCrime)){
-			throw new ETipoErrado();
+		if(!is_numeric( $idCrime ) ){
+			throw new ETipoErrado( );
 		}
 		$this->idCrime = $idCrime;
 	}
@@ -58,7 +62,7 @@ class Crime{
 	/**
 	 * Function to get the value of the id of some crime
 	 */
-	public function __getIdCrime(){
+	public function __getIdCrime( ){
 		return $this->idCrime;
 	}
 	
@@ -66,7 +70,7 @@ class Crime{
 	 * Function to set the sum of how many times one crime has occurred
 	 * @param int $quantidade
 	 */
-	public function __setQuantidade($quantidade){
+	public function __setQuantidade( $quantidade ){
 	
 		$this->quantidade = $quantidade;
 	}
@@ -75,7 +79,7 @@ class Crime{
 	 * Function to get the quantity of times one crime has occurred
 	 * @return Object Crime var $quantidade
 	 */
-	public function __getQuantidade(){
+	public function __getQuantidade( ){
 		return $this->quantidade;
 	}
 	
@@ -83,7 +87,7 @@ class Crime{
 	 * Function to set one array of periods of time counted to show percents of crimes
 	 * @param int $idTempo
 	 */
-	public function __setIdTempo($idTempo){
+	public function __setIdTempo( $idTempo ){
 		
 		$this->idTempo = $idTempo;
 	}
@@ -92,7 +96,7 @@ class Crime{
 	 * Function to get the arrays of periods related to crimes
 	 * @return Object Crime var $idTempo
 	 */
-	public function __getIdTempo(){
+	public function __getIdTempo( ){
 		return $this->idTempo;
 	}
 	
@@ -100,7 +104,7 @@ class Crime{
 	 * Function to set the id of the nature of one crime
 	 * @param int $idNatureza
 	 */
-	public function __setIdNatureza($idNatureza){
+	public function __setIdNatureza( $idNatureza ){
 		
 		$this->idNatureza = $idNatureza;
 	}
@@ -109,7 +113,7 @@ class Crime{
 	 * Function to get the id of the nature of one crime
 	 * @return Object Crime var $idNatureza
 	 */
-	public function __getIdNatureza(){
+	public function __getIdNatureza( ){
 		return $this->idNatureza;
 	}
 	
@@ -117,14 +121,14 @@ class Crime{
 	 * Function to set the Administrative Region of one crime has occurred
 	 * @param int $idRA
 	 */
-	public function __setIdRegiaoAdministrativa($idRA){
+	public function __setIdRegiaoAdministrativa( $idRA ){
 		$this->idRA = $idRA;
 	}
 	
 	/**
 	 * Function to get the Administrative Region of one crime has occurred
 	 */
-	public function __getIdRegiaoAdministrativa(){
+	public function __getIdRegiaoAdministrativa( ){
 		return $this->idRA;
 	}
 	
