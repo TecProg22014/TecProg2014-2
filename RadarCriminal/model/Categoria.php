@@ -24,7 +24,7 @@ class Categoria{
 	 * @param int $idCategoria
 	 * @param String $nomeCategoria
 	 */
-	public function __constructOverload($idCategoria,$nomeCategoria){
+	public function __constructOverload( $idCategoria,$nomeCategoria ){
 	
 		$this->idCategoria = $idCategoria;
 		$this->nomeCategoria = $nomeCategoria;
@@ -35,12 +35,12 @@ class Categoria{
 	 * @param int $idCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria($idCategoria){
+	public function __setIdCategoria( $idCategoria ){
 		
-		if (!is_numeric($idCategoria)){
+		if ( !is_numeric( $idCategoria ) ){
 			throw new ETipoErrado();
 		}else{
-		$this->idCategoria = $idCategoria;
+			$this->idCategoria = $idCategoria;
 		}
 	}
 	
@@ -56,12 +56,12 @@ class Categoria{
 	 * @param String $nomeCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNomeCategoria($nomeCategoria){
+	public function __setNomeCategoria( $nomeCategoria ){
 		
-		if(!is_string($nomeCategoria)){
+		if( !is_string( $nomeCategoria ) ){
 			throw new ETipoErrado();
 		}else{
-		$this->nomeCategoria = $nomeCategoria;
+			$this->nomeCategoria = $nomeCategoria;
 		}
 	}
 	
