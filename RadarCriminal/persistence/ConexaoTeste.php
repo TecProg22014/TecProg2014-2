@@ -3,6 +3,9 @@
 require_once "/libs/adodb/adodb.inc.php";
 require_once "/exceptions/EConexaoFalha.php";
 
+/**
+ * Class persistence of Conexao Teste
+ */
 class ConexaoTeste{
 
 	/**
@@ -30,7 +33,7 @@ class ConexaoTeste{
 	 * @param $senha;
 	 * @param $db;
 	 */
-	public function __construct(){
+	public function __construct( ){
 
 		$this->tipo_banco    = "mysql";
 		$this->servidor      = "localhost";
