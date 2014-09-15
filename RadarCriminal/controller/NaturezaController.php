@@ -59,7 +59,7 @@ class NaturezaController {
 		if (! is_numeric ( $id )) {
 			throw new EErroConsulta ();
 		}else{
-		$natureza = $this->naturezaDAO->consultarPorId ( $id );
+			$natureza = $this->naturezaDAO->consultarPorId ( $id );
 		}
 		return $natureza;
 	}
@@ -102,21 +102,20 @@ class NaturezaController {
 		if (! is_array ( $arrayNatureza )) {
 			throw new EFalhaNaturezaController ();
 		} else {
-		for($i = 0, $arrayKey = $arrayNatureza, $inicio = 0; $i < count ( $arrayNatureza ); $i ++) {
-			$chave = key ( $arrayKey );
-			$categoriaDAO = new CategoriaDAO ();
-			$dadosCategoria = new Categoria ();
-			$dadosCategoria = $categoriaDAO->consultarPorNome ( $chave );
-			for($j = $inicio; $j < (count ( $arrayNatureza [$chave] ) + $inicio); $j ++) {
-				$dadosNatureza = new Natureza ();
-				$dadosNatureza->__setNatureza ( $arrayNatureza [$chave] [$j] );
-				$dadosNatureza->__setIdCategoria ( $dadosCategoria->__getIdCategoria () );
-				$this->naturezaDAO->inserirNatureza ( $dadosNatureza );
+			for($i = 0, $arrayKey = $arrayNatureza, $inicio = 0; $i < count ( $arrayNatureza ); $i ++) {
+				$chave = key ( $arrayKey );
+				$categoriaDAO = new CategoriaDAO ();
+				$dadosCategoria = new Categoria ();
+				$dadosCategoria = $categoriaDAO->consultarPorNome ( $chave );
+				for($j = $inicio; $j < (count ( $arrayNatureza [$chave] ) + $inicio); $j ++) {
+					$dadosNatureza = new Natureza ();
+					$dadosNatureza->__setNatureza ( $arrayNatureza [$chave] [$j] );
+					$dadosNatureza->__setIdCategoria ( $dadosCategoria->__getIdCategoria () );
+					$this->naturezaDAO->inserirNatureza ( $dadosNatureza );
+				}
+				$inicio = $inicio + count ( $arrayNatureza [$chave] );
+				next ( $arrayKey );
 			}
-			$inicio = $inicio + count ( $arrayNatureza [$chave] );
-			next ( $arrayKey );
-		}
-		
 		}
 		return $dadosCategoria;
 	}
