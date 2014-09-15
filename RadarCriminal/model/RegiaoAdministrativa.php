@@ -39,8 +39,9 @@ class RegiaoAdministrativa{
 	
 		if(!is_numeric($idRegiaoAdministrativa)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
+		}
 	}
 	
 	/**
@@ -60,8 +61,9 @@ class RegiaoAdministrativa{
 		
 		if(!is_string($nomeRegiao)){
 			throw new ETipoErrado();
-		}
+		}else{
 		$this->nomeRegiao = $nomeRegiao;
+		}
 	}
 	
 	/**
