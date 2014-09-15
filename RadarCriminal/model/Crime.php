@@ -4,7 +4,7 @@ include_once "/exceptions/EFalhaLeituraSerieCrime.php";
 include_once "/exceptions/ETipoErrado.php";
 
 /**
- * The class Crime is the model class of category.
+ * The class Crime is the model class of crime.
  * All crimes in the system are objects of this.
  */
 class Crime{

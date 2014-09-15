@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class Natureza is the model class of nature.
+ * All natures in the system are objects of this.
+ */
 class Natureza{
 	
 	/**
@@ -17,7 +21,7 @@ class Natureza{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 		
 	}
 	
@@ -27,7 +31,7 @@ class Natureza{
 	 * @param String $nomeNatureza
 	 * @param int $idCategoriaNatureza
 	 */
-	public function __constructOverload($idNatureza,$nomeNatureza,$idCategoriaNatureza){
+	public function __constructOverload( $idNatureza,$nomeNatureza,$idCategoriaNatureza ){
 		$this->idNatureza = $idNatureza;
 		$this->natureza = $nomeNatureza;
 		$this->idCategoria = $idCategoriaNatureza;
@@ -38,9 +42,11 @@ class Natureza{
 	 * @param int $idNatureza
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdNatureza($idNatureza){
-		if(!is_numeric($idNatureza)){
-			throw new ETipoErrado();
+	public function __setIdNatureza( $idNatureza ){
+		if(!is_numeric( $idNatureza ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->idNatureza = $idNatureza;
 	}
@@ -49,7 +55,7 @@ class Natureza{
 	 * Function to get the id of a nature of a crime
 	 * @return Object Category var $idNatureza
 	 */
-	public function __getIdNatureza(){
+	public function __getIdNatureza( ){
 		return $this->idNatureza;
 	}
 	
@@ -58,10 +64,12 @@ class Natureza{
 	 * @param int $idCategoria
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria($idCategoria){
+	public function __setIdCategoria( $idCategoria ){
 	
-		if(!is_numeric($idCategoria)){
-			throw new ETipoErrado();
+		if(!is_numeric( $idCategoria ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->idCategoria = $idCategoria;
 	}
@@ -70,7 +78,7 @@ class Natureza{
 	 * Function to get the id of a category of a crime
 	 * @return Object Category var $idCategoria
 	 */
-	public function __getIdCategoria(){
+	public function __getIdCategoria( ){
 		return $this->idCategoria;
 	}
 	
@@ -79,10 +87,12 @@ class Natureza{
 	 * @param String $natureza
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNatureza($natureza){
+	public function __setNatureza( $natureza ){
 		
-		if(!is_string($natureza)){
-			throw new ETipoErrado();
+		if(!is_string( $natureza ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->natureza = $natureza;
 	}
@@ -91,7 +101,7 @@ class Natureza{
 	 * Function to get the name of a nature of a crime
 	 * @return unknown
 	 */
-	public function __getNatureza(){
+	public function __getNatureza( ){
 		return $this->natureza;
 	}
 }
