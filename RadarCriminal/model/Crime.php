@@ -35,7 +35,7 @@ class Crime{
 	 * @param int $idNatureza
 	 * @param int $quantidade
 	 */
-	public function __constructOverload($idCrime,$idTempo,$idNatureza,$quantidade){
+	public function __constructOverload( $idCrime,$idTempo,$idNatureza,$quantidade ){
 		$this->idCrime = $idCrime;
 		$this->idTempo = $idTempo;
 		$this->idNatureza = $idNatureza;
@@ -47,12 +47,12 @@ class Crime{
 	 * @param int $idCrime
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCrime($idCrime){
+	public function __setIdCrime( $idCrime ){
 
-		if(!is_numeric($idCrime)){
+		if( !is_numeric( $idCrime ) ){
 			throw new ETipoErrado();
 		}else{
-		$this->idCrime = $idCrime;
+			$this->idCrime = $idCrime;
 		}
 	}
 	
@@ -67,7 +67,7 @@ class Crime{
 	 * Function to set the sum of how many times one crime has occurred
 	 * @param int $quantidade
 	 */
-	public function __setQuantidade($quantidade){
+	public function __setQuantidade( $quantidade ){
 	
 		$this->quantidade = $quantidade;
 	}
@@ -84,7 +84,7 @@ class Crime{
 	 * Function to set one array of periods of time counted to show percents of crimes
 	 * @param int $idTempo
 	 */
-	public function __setIdTempo($idTempo){
+	public function __setIdTempo( $idTempo ){
 		
 		$this->idTempo = $idTempo;
 	}
@@ -101,7 +101,7 @@ class Crime{
 	 * Function to set the id of the nature of one crime
 	 * @param int $idNatureza
 	 */
-	public function __setIdNatureza($idNatureza){
+	public function __setIdNatureza( $idNatureza ){
 		
 		$this->idNatureza = $idNatureza;
 	}
@@ -118,7 +118,7 @@ class Crime{
 	 * Function to set the Administrative Region of one crime has occurred
 	 * @param int $idRA
 	 */
-	public function __setIdRegiaoAdministrativa($idRA){
+	public function __setIdRegiaoAdministrativa( $idRA ){
 		$this->idRA = $idRA;
 	}
 	
