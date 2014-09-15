@@ -4,66 +4,75 @@ include_once "/model/Tempo.php";
 include_once "/persistence/Conexao.php";
 include_once "/persistence/ConexaoTeste.php";
 
+/**
+ * Class persistence of Tempo
+ */
 class TempoDAO{
+	
 	/**
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao conexao
 	 */
 	private $conexao;
+	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct(){
-		$this->conexao = new Conexao();
+	public function __construct( ){
+		$this->conexao = new Conexao( );
 	}
+	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste(){
-		$this->conexao = new ConexaoTeste();
+	public function __constructTeste( ){
+		$this->conexao = new ConexaoTeste( );
 
 	}
+	
 	/**
 	 * Function to list all the times of the crimes
 	 * @return $retornaTempos
 	 */
-	public function listarTodos(){
+	public function listarTodos( ){
 		$sql = "SELECT * FROM tempo";
-		$resultado = $this->conexao->banco->Execute($sql);
-		while($registro = $resultado->FetchNextObject())
+		$resultado = $this->conexao->banco->Execute( $sql );
+		while( $registro = $resultado->FetchNextObject( ) )
 		{
-			$dadosTempo = new Tempo();
-			$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
+			$dadosTempo = new Tempo( );
+			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
 			$retornaTempos[] = $dadosTempo;
 		}
 		return $retornaTempos;
 	}
+	
 	/**
 	 * Function to list all the times of the crimes in order
 	 * @return $retornaTempos
 	 */
-	public function listarTodasEmOrdem(){
+	public function listarTodasEmOrdem( ){
 		$sql = "SELECT * FROM tempo ORDER BY ano ASC ";
-		$resultado = $this->conexao->banco->Execute($sql);
-		while($registro = $resultado->FetchNextObject())
+		$resultado = $this->conexao->banco->Execute( $sql );
+		while( $registro = $resultado->FetchNextObject( ) )
 		{
-			$dadosTempo = new Tempo();
-			$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
+			$dadosTempo = new Tempo( );
+			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
 			$retornaTempos[] = $dadosTempo;
 		}
 		return $retornaTempos;
 	}
+	
 	/**
 	 * Function to select one time by the id
 	 * @param int $id
 	 * @return $dadosTempo
 	 */
-	public function consultarPorId($id){
+	public function consultarPorId( $id ){
 		$sql = "SELECT * FROM tempo WHERE id_tempo = '".$id."'";
-		$resultado = $this->conexao->banco->Execute($sql);
-		$registro = $resultado->FetchNextObject();
-		$dadosTempo = new Tempo();
-		$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
+		$resultado = $this->conexao->banco->Execute( $sql );
+		$registro = $resultado->FetchNextObject( );
+		$dadosTempo = new Tempo( );
+		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
 		return $dadosTempo;
 
 	}
@@ -73,20 +82,21 @@ class TempoDAO{
 	 * @param int $intervalo
 	 * @return String $dadosTempo
 	 */
-	public function consultarPorIntervalo($intervalo){
+	public function consultarPorIntervalo( $intervalo ){
 		$sql = "SELECT * FROM tempo WHERE ano = '".$intervalo."'";
-		$resultado = $this->conexao->banco->Execute($sql);
-		$registro = $resultado->FetchNextObject();
-		$dadosTempo = new Tempo();
-		$dadosTempo->__constructOverload($registro->ID_TEMPO,$registro->ANO,$registro->MES);
+		$resultado = $this->conexao->banco->Execute( $sql );
+		$registro = $resultado->FetchNextObject( );
+		$dadosTempo = new Tempo( );
+		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
 		return $dadosTempo;
 	}
+	
 	/**
 	 * Function to insert one time in the database
 	 * @param $tempo
 	 */
-	public function inserirTempo(Tempo $tempo){
-		$sql = "INSERT INTO tempo (ano) VALUES ('{$tempo->__getIntervalo()}')";
-		$this->conexao->banco->Execute($sql);
+	public function inserirTempo(Tempo $tempo ){
+		$sql = "INSERT INTO tempo (ano ) VALUES ('{$tempo->__getIntervalo( )}' )";
+		$this->conexao->banco->Execute( $sql );
 	}
 }

@@ -43,6 +43,8 @@ class Categoria{
 		
 		if (!is_numeric( $idCategoria ) ){
 			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->idCategoria = $idCategoria;
 	}
@@ -63,6 +65,8 @@ class Categoria{
 		
 		if(!is_string( $nomeCategoria ) ){
 			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->nomeCategoria = $nomeCategoria;
 	}
