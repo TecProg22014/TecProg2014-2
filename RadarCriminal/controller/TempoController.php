@@ -112,16 +112,4 @@ class TempoController {
 		}
 		return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",\"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]";
 	}
-	// Metodo duplicado para adaptacao do retorno de dados para a nova interface
-/**
- *
- * @author Eduardo Augusto
- * @author Sergio Silva
- * @author Eliseu Egewarth
- * @copyright RadarCriminal 2013
- *           
- */
-	/*
-	 * public function _retornarDadosFormatoNovo(){ $dadosTempo = new Tempo(); $arrayDadosTempo = $this->_listarTodos(); for($i=0; $i<count($arrayDadosTempo);$i++){ $dadosTempo = $arrayDadosTempo[$i]; $dados[$i] = $dadosTempo->__getIntervalo(); } return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",\"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]"; }
-	 */
 }
