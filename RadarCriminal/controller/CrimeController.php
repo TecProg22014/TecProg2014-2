@@ -14,7 +14,7 @@ include_once "/model/RegiaoAdministrativa.php";
 /**
  * The CrimeController class is the class that controls the CRUD of crimes.
  * This class interfaces the view to the persistence in the database, and has only one atribbute
- * $caDAO.
+ * $crimeDAO.
  */
 class CrimeController {
 	
