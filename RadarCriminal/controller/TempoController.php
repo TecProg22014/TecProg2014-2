@@ -3,6 +3,11 @@
 include_once "/persistence/TempoDAO.php";
 include_once "/model/Tempo.php";
 
+/**
+ * The TempoController class is the class that controls the CRUD of times of crimes.
+ * This class interfaces the view to the persistence in the database, and has only one atribbute
+ * $tempoDAO.
+ */
 class TempoController {
 	
 	/**
@@ -14,31 +19,31 @@ class TempoController {
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct() {
-		$this->tempoDAO = new TempoDAO ();
+	public function __construct( ) {
+		$this->tempoDAO = new TempoDAO ( );
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste() {
-		$this->tempoDAO->__constructTeste ();
+	public function __constructTeste( ) {
+		$this->tempoDAO->__constructTeste ( );
 	}
 	
 	/**
 	 * Function to list all the periods of time checked in the database
 	 * @return array $periodos
 	 */
-	public function _listarTodos() {
-		return $this->tempoDAO->listarTodos ();
+	public function _listarTodos( ) {
+		return $this->tempoDAO->listarTodos ( );
 	}
 	
 	/**
 	 * Select all the periods of time order by ascendent years of the periods
 	 * @return Array $tempos
 	 */
-	public function _listarTodasEmOrdem() {
-		return $this->tempoDAO->listarTodasEmOrdem ();
+	public function _listarTodasEmOrdem( ) {
+		return $this->tempoDAO->listarTodasEmOrdem ( );
 	}
 	
 	/**
@@ -46,8 +51,8 @@ class TempoController {
 	 * @param int $id
 	 * @return String $tempo
 	 */
-	public function _consultarPorId($id) {
-		return $this->tempoDAO->consultarPorId ( $id );
+	public function _consultarPorId( $id ) {
+		return $this->tempoDAO->consultarPorId ( $id  );
 	}
 	
 	/**
@@ -55,8 +60,8 @@ class TempoController {
 	 * @param String $intervalo
 	 * @return String $periodo    *refactor
 	 */
-	public function _consultarPorIntervalo($intervalo) {
-		return $this->tempoDAO->consultarPorIntervalo ( $intervalo );
+	public function _consultarPorIntervalo( $intervalo ) {
+		return $this->tempoDAO->consultarPorIntervalo ( $intervalo  );
 	}
 	
 	/**
@@ -64,8 +69,8 @@ class TempoController {
 	 * @param Tempo $tempo
 	 * @return boolean $registered     *refactor
 	 */
-	public function _inserirTempo(Tempo $tempo) {
-		return $this->tempoDAO->inserirTempo ( $tempo );
+	public function _inserirTempo( Tempo $tempo ) {
+		return $this->tempoDAO->inserirTempo ( $tempo  );
 	}
 	
 	/**
@@ -73,11 +78,11 @@ class TempoController {
 	 * @param Array $arrayTempo
 	 * @return boolean $registered     *refactor
 	 */
-	public function _inserirTempoArrayParse($arrayTempo) {
-		for($i = 0; $i < count ( $arrayTempo ); $i ++) {
-			$dadosTempo = new Tempo ();
-			$dadosTempo->__setIntervalo ( $arrayTempo [$i] );
-			$this->tempoDAO->inserirTempo ( $dadosTempo );
+	public function _inserirTempoArrayParse( $arrayTempo ) {
+		for( $i = 0; $i < count ( $arrayTempo  ); $i ++ ) {
+			$dadosTempo = new Tempo ( );
+			$dadosTempo->__setIntervalo ( $arrayTempo [$i]  );
+			$this->tempoDAO->inserirTempo ( $dadosTempo  );
 		}
 	}
 	
@@ -86,16 +91,16 @@ class TempoController {
 	 * @param Array $arrayTempo
 	 * @return $registered        *refactor
 	 */
-	public function _inserirTempoArrayParseQuadrimestral($arrayTempo) {
-		for($i = 0, $arrayAno = $arrayTempo; $i < count ( $arrayTempo ); $i ++) {
-			$ano = key ( $arrayAno );
-			$dadosTempo = new Tempo ();
-			$dadosTempo->__setIntervalo ( $ano );
-			for($j = 0; $j < count ( $arrayTempo [$ano] ); $j ++) {
-				$dadosTempo->__setMes ( $arrayDadosTempo [$ano] [$j] );
-				$this->tempoDAO->inserirTempo ( $dadosTempo );
+	public function _inserirTempoArrayParseQuadrimestral( $arrayTempo ) {
+		for( $i = 0, $arrayAno = $arrayTempo; $i < count ( $arrayTempo  ); $i ++ ) {
+			$ano = key ( $arrayAno  );
+			$dadosTempo = new Tempo ( );
+			$dadosTempo->__setIntervalo ( $ano  );
+			for( $j = 0; $j < count ( $arrayTempo [$ano]  ); $j ++ ) {
+				$dadosTempo->__setMes ( $arrayDadosTempo [$ano] [$j]  );
+				$this->tempoDAO->inserirTempo ( $dadosTempo  );
 			}
-			next ( $arrayAno );
+			next ( $arrayAno  );
 		}
 	}
 	
@@ -103,25 +108,14 @@ class TempoController {
 	 * Function to list all the periods of time applying them in labels
 	 * @return String $labels     *refactor
 	 */
-	public function _retornarDadosFormatados() {
-		$dadosTempo = new Tempo ();
-		$arrayDadosTempo = $this->_listarTodos ();
-		for($i = 0; $i < count ( $arrayDadosTempo ); $i ++) {
+	public function _retornarDadosFormatados( ) {
+		$dadosTempo = new Tempo ( );
+		$arrayDadosTempo = $this->_listarTodos ( );
+		for( $i = 0; $i < count ( $arrayDadosTempo  ); $i ++ ) {
 			$dadosTempo = $arrayDadosTempo [$i];
-			$dados [$i] = $dadosTempo->__getIntervalo ();
+			$dados [$i] = $dadosTempo->__getIntervalo ( );
 		}
 		return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",\"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]";
 	}
-	// Metodo duplicado para adaptacao do retorno de dados para a nova interface
-/**
- *
- * @author Eduardo Augusto
- * @author Sergio Silva
- * @author Eliseu Egewarth
- * @copyright RadarCriminal 2013
- *           
- */
-	/*
-	 * public function _retornarDadosFormatoNovo(){ $dadosTempo = new Tempo(); $arrayDadosTempo = $this->_listarTodos(); for($i=0; $i<count($arrayDadosTempo);$i++){ $dadosTempo = $arrayDadosTempo[$i]; $dados[$i] = $dadosTempo->__getIntervalo(); } return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",\"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]"; }
-	 */
+	
 }

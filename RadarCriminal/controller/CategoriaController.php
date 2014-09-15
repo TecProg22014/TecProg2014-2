@@ -3,7 +3,11 @@
 include_once "persistence/CategoriaDAO.php";
 include_once "model/Categoria.php";
 include_once "exceptions/EErroConsulta.php";
-
+/**
+ * The CategoriaController class is the class that controls the CRUD of categories of crimes.
+ * This class interfaces the view to the persistence in the database, and has only one atribbute
+ * $categoriaDAO.
+ */
 class CategoriaController {
 	
 	/**
@@ -15,23 +19,23 @@ class CategoriaController {
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct() {
-		$this->categoriaDAO = new CategoriaDAO ();
+	public function __construct( ) {
+		$this->categoriaDAO = new CategoriaDAO ( );
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste() {
-		$this->categoriaDAO->__constructTeste ();
+	public function __constructTeste( ) {
+		$this->categoriaDAO->__constructTeste ( );
 	}
 	
 	/**
 	 * Function to list all categories of crimes
 	 * @return Array $arrayCategoria
 	 */
-	public function _listarTodas() {
-		$arrayCategoria = $this->categoriaDAO->listarTodas ();
+	public function _listarTodas( ) {
+		$arrayCategoria = $this->categoriaDAO->listarTodas ( );
 		return $arrayCategoria;
 	}
 	
@@ -39,8 +43,8 @@ class CategoriaController {
 	 * Function to alphabetically list all categories of crimes
 	 * @return Array $categorias
 	 */
-	public function _listarTodasAlfabicamente() {
-		return $this->categoriaDAO->listarTodasAlfabicamente ();
+	public function _listarTodasAlfabicamente( ) {
+		return $this->categoriaDAO->listarTodasAlfabicamente ( );
 	}
 	
 	/**
@@ -49,12 +53,13 @@ class CategoriaController {
 	 * @throws Exception EErroConsulta
 	 * @return String $categoria
 	 */
-	public function _consultarPorId($id) {
-		if (! is_numeric ( $id )) {
-			throw new EErroConsulta ();
+	public function _consultarPorId( $id ) {
+		if (! is_numeric ( $id  ) ) {
+			throw new EErroConsulta ( );
 		} else {
+			//nothing will run
 		}
-		$categoria = $this->categoriaDAO->consultarPorId ( $id );
+		$categoria = $this->categoriaDAO->consultarPorId ( $id  );
 		return $categoria;
 	}
 	
@@ -64,12 +69,13 @@ class CategoriaController {
 	 * @throws Exception EErroConsulta
 	 * @return string $categoria
 	 */
-	public function _consultarPorNome($nomeCategoria) {
-		if (! is_string ( $nomeCategoria )) {
-			throw new EErroConsulta ();
+	public function _consultarPorNome( $nomeCategoria ) {
+		if (! is_string ( $nomeCategoria  ) ) {
+			throw new EErroConsulta ( );
 		} else {
+			//nothing will run
 		}
-		$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria );
+		$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria  );
 		return $categoria;
 	}
 	
@@ -78,8 +84,8 @@ class CategoriaController {
 	 * @param Categoria $categoria        	
 	 * @return boolean $resultado
 	 */
-	public function _inserirCategoria(Categoria $categoria) {
-		return $this->categoriaDAO->inserirCategoria ( $categoria );
+	public function _inserirCategoria(Categoria $categoria ) {
+		return $this->categoriaDAO->inserirCategoria ( $categoria  );
 	}
 	
 	/**
@@ -88,15 +94,16 @@ class CategoriaController {
 	 * @throws Exception EErroConsulta
 	 * @return boolean $resultado
 	 */
-	public function _inserirCategoriaArrayParseSerie($arrayCategoria) {
-		if (! is_array ( $arrayCategoria )) {
-			throw new EErroConsulta ();
+	public function _inserirCategoriaArrayParseSerie( $arrayCategoria ) {
+		if (! is_array ( $arrayCategoria  ) ) {
+			throw new EErroConsulta ( );
 		} else {
+			//nothing will run
 		}
-		$dadosCategoria = new Categoria ();
-		for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
-			$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
-			$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
+		$dadosCategoria = new Categoria ( );
+		for( $i = 0; $i < count ( $arrayCategoria  ); $i ++ ) {
+			$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i]  );
+			$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria  );
 		}
 		return $retorno;
 	}
@@ -105,11 +112,11 @@ class CategoriaController {
 	 * Function to sum all the stealing
 	 * @return int $retornoSomaTotalFurtos
 	 */
-	public function _somaTotalFurtos() {
-		for($i = 2010; $i < 2012; $i ++) {
-			$somaTotalFurtos [] = $this->categoriaDAO->somaTotalFurtos ( $i );
+	public function _somaTotalFurtos( ) {
+		for( $i = 2010; $i < 2012; $i ++ ) {
+			$somaTotalFurtos [] = $this->categoriaDAO->somaTotalFurtos ( $i  );
 		}
-		$retornoSomaTotalFurtos = array_sum ( $somaTotalFurtos );
+		$retornoSomaTotalFurtos = array_sum ( $somaTotalFurtos  );
 		return $retornoSomaTotalFurtos;
 	}
 	
@@ -117,12 +124,12 @@ class CategoriaController {
 	 * Function to sum the total of sexual crimes
 	 * @return int $retornoSomaTotalDignidadeSexual
 	 */
-	public function _somaTotalDignidadeSexual() {
+	public function _somaTotalDignidadeSexual( ) {
 		$somaDignidadeSexual;
-		for($i = 2001; $i < 2012; $i ++) {
-			$somaDignidadeSexual [] = $this->_somaTotalDignidadeSexual ( $i );
+		for( $i = 2001; $i < 2012; $i ++ ) {
+			$somaDignidadeSexual [] = $this->_somaTotalDignidadeSexual ( $i  );
 		}
-		$retornoSomaTotalDignidadeSexual = array_sum ( $somaDignidadeSexual );
+		$retornoSomaTotalDignidadeSexual = array_sum ( $somaDignidadeSexual  );
 		return $retornoSomaTotalDignidadeSexual;
 	}
 	
@@ -130,11 +137,11 @@ class CategoriaController {
 	 * Function to sum the total of sexual crimes between 2010 and 2011
 	 * @return $retornoSomaTotalDignidadeSexual2010_2011
 	 */
-	public function _somaTotalDignidadeSexual2010_2011() {
-		for($i = 2010; $i < 2012; $i ++) {
-			$somaTotalDignidadeSexual2010_2011 [] = $this->_somaTotalDignidadeSexual ( $i );
+	public function _somaTotalDignidadeSexual2010_2011( ) {
+		for( $i = 2010; $i < 2012; $i ++ ) {
+			$somaTotalDignidadeSexual2010_2011 [] = $this->_somaTotalDignidadeSexual ( $i  );
 		}
-		$retornoSomaTotalDignidadeSexual2010_2011 = array_sum ( $somaTotalDignidadeSexual2010_2011 );
+		$retornoSomaTotalDignidadeSexual2010_2011 = array_sum ( $somaTotalDignidadeSexual2010_2011  );
 		return $retornoSomaTotalDignidadeSexual2010_2011;
 	}
 	
@@ -142,11 +149,11 @@ class CategoriaController {
 	 * Function to sum all the cops interventions
 	 * @return int $retornoSomaTotalAcaoPolicial
 	 */
-	public function _somaTotalAcaoPolicial() {
-		for($i = 2001; $i < 2012; $i ++) {
-			$somaTotalAcaoPolicial [] = $this->_somaTotalAcaoPolicial ( $i );
+	public function _somaTotalAcaoPolicial( ) {
+		for( $i = 2001; $i < 2012; $i ++ ) {
+			$somaTotalAcaoPolicial [] = $this->_somaTotalAcaoPolicial ( $i  );
 		}
-		$retornoSomaTotalAcaoPolicial = array_sum ( $somaTotalAcaoPolicial );
+		$retornoSomaTotalAcaoPolicial = array_sum ( $somaTotalAcaoPolicial  );
 		return $retornoSomaTotalAcaoPolicial;
 	}
 	
@@ -154,11 +161,11 @@ class CategoriaController {
 	 * Function to sum all the cops interventions between 2010 and 2011
 	 * @return int $retornoSomaTotalAcaoPolicial2010_2011
 	 */
-	public function _somaTotalAcaoPolicial2010_2011() {
-		for($i = 2010; $i < 2012; $i ++) {
-			$somaTotalAcaoPolicial2010_2011 [] = $this->_somaTotalAcaoPolicial ( $i );
+	public function _somaTotalAcaoPolicial2010_2011( ) {
+		for( $i = 2010; $i < 2012; $i ++ ) {
+			$somaTotalAcaoPolicial2010_2011 [] = $this->_somaTotalAcaoPolicial ( $i  );
 		}
-		$retornoSomaTotalAcaoPolicial2010_2011 = array_sum ( $somaTotalAcaoPolicial2010_2011 );
+		$retornoSomaTotalAcaoPolicial2010_2011 = array_sum ( $somaTotalAcaoPolicial2010_2011  );
 		return $retornoSomaTotalAcaoPolicial2010_2011;
 	}
 	
@@ -166,11 +173,11 @@ class CategoriaController {
 	 * Function to sum all the crimes against citizens
 	 * @return int $retornoSomaGeralCrimeContraPessoa
 	 */
-	public function _somaGeralCrimeContraPessoa() {
-		for($i = 2001; $i < 2012; $i ++) {
-			$somaGeralCrimeContraPessoa [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i );
+	public function _somaGeralCrimeContraPessoa( ) {
+		for( $i = 2001; $i < 2012; $i ++ ) {
+			$somaGeralCrimeContraPessoa [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
 		}
-		$retornoSomaGeralCrimeContraPessoa = array_sum ( $somaGeralCrimeContraPessoa );
+		$retornoSomaGeralCrimeContraPessoa = array_sum ( $somaGeralCrimeContraPessoa  );
 		return $retornoSomaGeralCrimeContraPessoa;
 	}
 	
@@ -178,11 +185,11 @@ class CategoriaController {
 	 * Function to sum all the crimes against citizens between 2010 and 2011
 	 * @return int $retornoSomaGeralCrimeContraPessoa2010_2011
 	 */
-	public function _somaGeralCrimeContraPessoa2010_2011() {
-		for($i = 2010; $i < 2012; $i ++) {
-			$somaGeralCrimeContraPessoa2010_2011 [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i );
+	public function _somaGeralCrimeContraPessoa2010_2011( ) {
+		for( $i = 2010; $i < 2012; $i ++ ) {
+			$somaGeralCrimeContraPessoa2010_2011 [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
 		}
-		$retornoSomaGeralCrimeContraPessoa2010_2011 = array_sum ( $somaGeralCrimeContraPessoa2010_2011 );
+		$retornoSomaGeralCrimeContraPessoa2010_2011 = array_sum ( $somaGeralCrimeContraPessoa2010_2011  );
 		return $retornoSomaGeralCrimeContraPessoa2010_2011;
 	}
 	
@@ -190,11 +197,11 @@ class CategoriaController {
 	 * Function to sum the total of theft crimes
 	 * @return int $retornoSomaTotalRoubo
 	 */
-	public function _somaTotalRoubo() {
-		for($i = 2001; $i < 2012; $i ++) {
-			$somaTotalRoubo [] = $this->categoriaDAO->somaTotalRoubo ( $i );
+	public function _somaTotalRoubo( ) {
+		for( $i = 2001; $i < 2012; $i ++ ) {
+			$somaTotalRoubo [] = $this->categoriaDAO->somaTotalRoubo ( $i  );
 		}
-		$retornoSomaTotalRoubo = array_sum ( $somaTotalRoubo );
+		$retornoSomaTotalRoubo = array_sum ( $somaTotalRoubo  );
 		return $retornoSomaTotalRoubo;
 	}
 	
@@ -202,11 +209,11 @@ class CategoriaController {
 	 * Function to sum the total of theft crimes between 2010 and 2011
 	 * @return int $retornoSomaTotalRoubo2010_2011
 	 */
-	public function _somaTotalRoubo2010_2011() {
-		for($i = 2010; $i < 2012; $i ++) {
+	public function _somaTotalRoubo2010_2011( ) {
+		for( $i = 2010; $i < 2012; $i ++  ) {
 			$somaTotalRoubo2010_2011 [] = $this->_somaTotalRoubo ( $i );
 		}
-		$retornoSomaTotalRoubo2010_2011 = array_sum ( $somaTotalRoubo2010_2011 );
+		$retornoSomaTotalRoubo2010_2011 = array_sum ( $somaTotalRoubo2010_2011  );
 		return $retornoSomaTotalRoubo2010_2011;
 	}
 	
@@ -214,16 +221,16 @@ class CategoriaController {
 	 * Function to count how many categories exists in the database
 	 * @return int $total
 	 */
-	public function _contarRegistros() {
-		return $this->categoriaDAO->contarRegistros ();
+	public function _contarRegistros( ) {
+		return $this->categoriaDAO->contarRegistros ( );
 	}
 	
 	/**
 	 * Function to list all the categories applying them in labels
 	 * @return String $labels      *refactor
 	 */
-	public function _listarTotalDeCategoria() {
-		$categorias = $this->categoriaDAO->listarTotalDeCategoria ();
+	public function _listarTotalDeCategoria( ) {
+		$categorias = $this->categoriaDAO->listarTotalDeCategoria ( );
 		return "
 		var data = [
 		{ label: \"" . $categorias ["nome"] [0] . "\",  data: " . $categorias ["quantidade"] [0] . "},
