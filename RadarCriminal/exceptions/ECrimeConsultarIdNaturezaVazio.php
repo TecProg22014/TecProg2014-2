@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class select on null nature id excpection
+ */
 class ECrimeConsultarIdNaturezaVazio extends Exception{
 
 	/**
