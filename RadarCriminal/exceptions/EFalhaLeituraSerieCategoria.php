@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class reading category error excpection
+ */
 class EFalhaLeituraSerieCategoria extends Exception{
 	
 	/**
