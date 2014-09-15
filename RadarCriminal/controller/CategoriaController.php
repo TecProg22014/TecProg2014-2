@@ -3,7 +3,11 @@
 include_once "persistence/CategoriaDAO.php";
 include_once "model/Categoria.php";
 include_once "exceptions/EErroConsulta.php";
-
+/**
+ * The CategoriaController class is the class that controls the CRUD of categories of crimes.
+ * This class interfaces the view to the persistence in the database, and has only one atribbute
+ * $categoriaDAO.
+ */
 class CategoriaController {
 	
 	/**
@@ -53,6 +57,7 @@ class CategoriaController {
 		if (! is_numeric ( $id )) {
 			throw new EErroConsulta ();
 		} else {
+			//nothing will run
 		}
 		$categoria = $this->categoriaDAO->consultarPorId ( $id );
 		return $categoria;
@@ -68,6 +73,7 @@ class CategoriaController {
 		if (! is_string ( $nomeCategoria )) {
 			throw new EErroConsulta ();
 		} else {
+			//nothing will run
 		}
 		$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria );
 		return $categoria;
@@ -92,6 +98,7 @@ class CategoriaController {
 		if (! is_array ( $arrayCategoria )) {
 			throw new EErroConsulta ();
 		} else {
+			//nothing will run
 		}
 		$dadosCategoria = new Categoria ();
 		for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
