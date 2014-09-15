@@ -58,8 +58,9 @@ class NaturezaController {
 	public function _consultarPorId($id) {
 		if (! is_numeric ( $id )) {
 			throw new EErroConsulta ();
-		}
+		}else{
 		$natureza = $this->naturezaDAO->consultarPorId ( $id );
+		}
 		return $natureza;
 	}
 	
@@ -101,7 +102,6 @@ class NaturezaController {
 		if (! is_array ( $arrayNatureza )) {
 			throw new EFalhaNaturezaController ();
 		} else {
-		}
 		for($i = 0, $arrayKey = $arrayNatureza, $inicio = 0; $i < count ( $arrayNatureza ); $i ++) {
 			$chave = key ( $arrayKey );
 			$categoriaDAO = new CategoriaDAO ();
@@ -115,6 +115,8 @@ class NaturezaController {
 			}
 			$inicio = $inicio + count ( $arrayNatureza [$chave] );
 			next ( $arrayKey );
+		}
+		
 		}
 		return $dadosCategoria;
 	}
