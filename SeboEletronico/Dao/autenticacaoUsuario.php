@@ -1,5 +1,5 @@
 <?php
-include "/Utilidades/ConexaoComBanco.php";
+include "../Utilidades/ConexaoComBanco.php";
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
