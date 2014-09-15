@@ -113,6 +113,7 @@ class CrimeController {
 	public function _somaDeCrimePorAno($ano) {
 		return $this->crimeDAO->somaDeCrimePorAno ( $ano );
 	}
+	
 	/**
 	 * Function to return the sum of all time crimes
 	 * 
@@ -256,12 +257,13 @@ class CrimeController {
 				$varbar = "\"bar simple\"";
 			}
 			$dadosCrimeFormatado [] = "<div class=" . $varbar . "title=\"" . $dadosCrimeTitle [$i] . " Ocorrencias\">
-									<div class=\"title\">" . $dados [$i] . "</div>
-									<div class=\"value\">" . $dadosCrime [$i] . "</div>
-									</div>";
+									   		<div class=\"title\">" . $dados [$i] . "</div>
+									   		<div class=\"value\">" . $dadosCrime [$i] . "</div>
+									   </div>";
 			if ($i != 0) {
 				$dadosCrimeFormatado [0] = $dadosCrimeFormatado [0] . $dadosCrimeFormatado [$i];
 			} else {
+				//nothing to do here
 			}
 		}
 		
