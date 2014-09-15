@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class select all crimes on null crime object excpection
+ */
 class EcrimeListarTodosVazio extends Exception{
 
 	/**
