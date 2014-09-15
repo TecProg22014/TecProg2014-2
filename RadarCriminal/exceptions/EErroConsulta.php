@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class sql error excpection
+ */
 class EErroConsulta extends Exception{
 
 	/**
