@@ -2,6 +2,10 @@
 
 include_once "/exceptions/ETipoErrado.php";
 
+/**
+ * The class RegiaoAdministrativa is the model class of administrative regions.
+ * All administrative regions in the system are objects of this.
+ */
 class RegiaoAdministrativa{
 	
 	/**
@@ -15,7 +19,7 @@ class RegiaoAdministrativa{
 	/**
 	 * Null constructor to grant that no null objects will be created
 	 */
-	public function __construct(){
+	public function __construct( ){
 	
 	}
 	
@@ -24,7 +28,7 @@ class RegiaoAdministrativa{
 	 * @param int $idRA
 	 * @param String $nomeRegiao
 	 */
-	public function __constructOverLoad($idRA,$nomeRegiao){
+	public function __constructOverLoad( $idRA,$nomeRegiao ){
 		
 		$this->idRegiaoAdministrativa = $idRA;
 		$this->nomeRegiao = $nomeRegiao;
@@ -35,10 +39,12 @@ class RegiaoAdministrativa{
 	 * @param int $idRegiaoAdministrativa
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdRegiaoAdministrativa($idRegiaoAdministrativa){
+	public function __setIdRegiaoAdministrativa( $idRegiaoAdministrativa ){
 	
-		if(!is_numeric($idRegiaoAdministrativa)){
-			throw new ETipoErrado();
+		if(!is_numeric( $idRegiaoAdministrativa ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
 	}
@@ -47,7 +53,7 @@ class RegiaoAdministrativa{
 	 * Function to get the id of an administrative region where one crime has occurred
 	 * @return Object RegiaoAdministrativa var $idRegiaoAdministrativa
 	 */
-	public function __getIdRegiaoAdministrativa(){
+	public function __getIdRegiaoAdministrativa( ){
 		return $this->idRegiaoAdministrativa;
 	}
 	
@@ -56,10 +62,12 @@ class RegiaoAdministrativa{
 	 * @param String $nomeRegiao
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNomeRegiao($nomeRegiao){
+	public function __setNomeRegiao( $nomeRegiao ){
 		
-		if(!is_string($nomeRegiao)){
-			throw new ETipoErrado();
+		if(!is_string( $nomeRegiao ) ){
+			throw new ETipoErrado( );
+		}else{
+			//notnhing will run
 		}
 		$this->nomeRegiao = $nomeRegiao;
 	}
@@ -68,16 +76,8 @@ class RegiaoAdministrativa{
 	 * Function to get the name of an administrative region where one crime has occurred
 	 * @return Object RegiaoAdministrativa var $nomeRegiao
 	 */
-	public function __getNomeRegiao(){
+	public function __getNomeRegiao( ){
 
-		//try{
-		//	if(!is_string($this->nomeRegiao)){
-		//		throw new ETipoErrado();
-		//	}
-		//}
-		//catch(ETipoErrado $e){
-		//	echo $e->getMessage();
-		//}
 		return $this->nomeRegiao;
 	}
 }
