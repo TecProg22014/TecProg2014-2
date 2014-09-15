@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class crime controller error excpection
+ */
 class EFalhaCrimeController extends Exception{
 
 	/**
