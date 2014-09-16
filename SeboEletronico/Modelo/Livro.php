@@ -40,7 +40,8 @@ class Livro {
 
 	/**
 	 * Constructor function of class Book.
-	 * Its a full constructor of class and responsible to create a instance of class.
+	 * Its a full constructor of class and responsible to create a 
+	 * instance of class.
 	 *
 	 * @param $titulo
 	 * @param $autor
@@ -54,7 +55,8 @@ class Livro {
 	 *
 	 */
 
-	function __construct($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao) {
+	function __construct($titulo, $autor, $genero, $edicao, $editora, $venda, 
+						 $troca, $estado, $descricao) {
 		$this->__setTitulo($titulo);
 		$this->__setAutor($autor);
 		$this->__setGenero($genero);
@@ -67,7 +69,7 @@ class Livro {
 	}
 
 	/**
-	 * The function __getTitulo() is the function to access the the atribute title value.
+	 * The function __getTitulo() is the function to access the atribute title value.
 	 * @return Object Book var $titulo
 	 * Returns $titulo of book.
 	 */
@@ -227,7 +229,8 @@ class Livro {
 		define("AUTOMOTIVA", "Engenharia Automotiva", TRUE);
 		define("AEROESPACIAL", "Engenharia Aeroespacial", TRUE);
 
-		return array(ENGENHARIA,SOFTWARE, ELETRONICA, ENERGIA, AUTOMOTIVA, AEROESPACIAL);
+		return array( ENGENHARIA,SOFTWARE, ELETRONICA, 
+					  ENERGIA, AUTOMOTIVA, AEROESPACIAL);
 	}
 
 	/**
