@@ -473,6 +473,6 @@ Para possíveis reparos de qualquer uma das soluções, utilizar issues para rep
 
 ### Merge / Pull Request
 -------------
-* 'IMPORTANTE': Caso seja feito ```merge```para a ```master```e o mesmo apresentar problemas, todos os commits dados após a insersão do bug serão resetados! ```git reset --hard```.
+* ```IMPORTANTE```: Caso seja feito ```merge``` para a ```master``` e o mesmo apresentar problemas, todos os commits dados após a insersão do bug serão resetados! ```git reset --hard```.
 * Todos os dias, as modificações de diretórios podem ser feitas até as 23:00
 * O ``` merge ``` só poderá ser feito por 1 pessoa do grupo (Macario)
