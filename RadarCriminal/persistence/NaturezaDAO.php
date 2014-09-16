@@ -47,7 +47,10 @@ class NaturezaDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
+			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,
+												 $registro->NATUREZA,
+												 $registro->CATEGORIA_ID_CATEGORIA );
+												 
 			$retornaNaturezas[] = $dadosNatureza;
 		}
 		return $retornaNaturezas;
@@ -67,7 +70,10 @@ class NaturezaDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
+			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,
+												 $registro->NATUREZA,
+												 $registro->CATEGORIA_ID_CATEGORIA );
+												 
 			$retornaNaturezas[] = $dadosNatureza;
 		}
 		return $retornaNaturezas;
@@ -83,7 +89,10 @@ class NaturezaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosNatureza = new Natureza( );
-		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
+		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,
+											 $registro->NATUREZA,
+											 $registro->CATEGORIA_ID_CATEGORIA );
+											 
 		return $dadosNatureza;
 
 	}
@@ -99,7 +108,10 @@ class NaturezaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosNatureza = new Natureza( );
-		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
+		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,
+											 $registro->NATUREZA,
+											 $registro->CATEGORIA_ID_CATEGORIA );
+											 
 		return $dadosNatureza;
 	}
 	
@@ -108,7 +120,10 @@ class NaturezaDAO{
 	 * @param $natureza
 	 */
 	public function inserirNatureza(Natureza $natureza ){
-		$sql = "INSERT INTO natureza (categoria_id_categoria,natureza ) values ('{$natureza->__getIdCategoria( )}','{$natureza->__getNatureza( )}' )";
+		$sql = "INSERT INTO natureza ( categoria_id_categoria,natureza ) values (
+									   '{$natureza->__getIdCategoria( )}',
+									   '{$natureza->__getNatureza( )}' )";
+		
 		$this->conexao->banco->Execute( $sql );
 	}
 	
@@ -122,7 +137,10 @@ class NaturezaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		while( $registro = $resultado->FetchNextObject( ) ){
 			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
+			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,
+												 $registro->NATUREZA,
+												 $registro->CATEGORIA_ID_CATEGORIA );
+												 
 			$retornaNaturezas[] = $dadosNatureza;
 		}
 		return $retornaNaturezas;
