@@ -25,7 +25,8 @@ class TempoView {
 	}
 	
 	/**
-	 * Function to get data of periods of time organized in new labels to construct diferent graphs
+	 * Function to get data of periods of time organized in new labels to construct 
+	 * diferent graphs
 	 */
 	public function retornarDadosTempoFormatoNovo() {
 		return $this->tempoCO->_retornarDadosFormatoNovo ();
