@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-Folha de Estilos PHP
-=======
 PHP Style Sheet
->>>>>>> master
 ===
 
 ## Header
