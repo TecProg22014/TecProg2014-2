@@ -115,7 +115,6 @@ class CategoriaDAO{
 	 * Function to count the number of crimes in person
 	 * @return int $registro
 	 */
-	
 	public function somaGeralCrimeContraPessoa( ){
 		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
 		$resultado = $this->conexao->banco->Execute( $sql );
