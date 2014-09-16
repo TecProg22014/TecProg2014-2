@@ -43,7 +43,9 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		while( $registro = $resultado->FetchNextObject( ) ){
 			$dadosCategoria = new Categoria( );
-			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
+			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,
+												  $registro->NOME_CATEGORIA );
+												  
 			$retornaCategorias[] = $dadosCategoria;
 		}
 		return $retornaCategorias;
@@ -65,7 +67,9 @@ class CategoriaDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosCategoria = new Categoria( );
-			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
+			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,
+												  $registro->NOME_CATEGORIA );
+												  
 			$retornaCategorias[] = $dadosCategoria;
 		}
 		return $retornaCategorias;
@@ -81,7 +85,9 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosCategoria = new Categoria( );
-		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
+		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,
+											  $registro->NOME_CATEGORIA );
+											  
 		return $dadosCategoria;
 
 	}
@@ -96,7 +102,9 @@ class CategoriaDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosCategoria = new Categoria( );
-		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
+		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,
+											  $registro->NOME_CATEGORIA );
+											  
 		return $dadosCategoria;
 	}
 
@@ -106,7 +114,9 @@ class CategoriaDAO{
 	 * @return boolean $resultado
 	 */
 	public function inserirCategoria(Categoria $categoria ){
-		$sql = "INSERT INTO categoria (nome_categoria ) values ('{$categoria->__getNomeCategoria( )}' )";
+		$sql = "INSERT INTO categoria (nome_categoria ) values 
+				('{$categoria->__getNomeCategoria( )}' )";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		return $resultado;
 	}
@@ -116,7 +126,9 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaGeralCrimeContraPessoa( ){
-		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
+		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -127,7 +139,10 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalAcaoPolicial( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 26 AND 29";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 26 AND 29";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -138,7 +153,10 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalDignidadeSexual( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 24 AND 25";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 24 AND 25";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -149,7 +167,9 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalRoubo( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 6 AND 18";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 6 AND 18";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -160,7 +180,10 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalFurtos( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 19 AND 23";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 19 AND 23";
+
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -198,7 +221,10 @@ class CategoriaDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalTransito( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 29 AND 30";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 29 AND 30";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
