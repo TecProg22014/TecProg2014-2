@@ -103,9 +103,11 @@ class Usuario {
 		if(!ValidaDados::validaCamposNulos($telefone)){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode ser nulo!");
 		}elseif(ValidaDados::validaTelefone($telefone) == 1){
-			throw new ExcessaoTelefoneInvalido("Telefone nao pode conter caracteres alfabeticos!");
+			throw new ExcessaoTelefoneInvalido("Telefone nao pode conter 
+												caracteres alfabeticos!");
 		}elseif(ValidaDados::validaTelefone($telefone) == 2){
-			throw new ExcessaoTelefoneInvalido("Telefone deve conter exatamente oito (8) digitos!");
+			throw new ExcessaoTelefoneInvalido("Telefone deve conter exatamente 
+												oito (8) digitos!");
 		}else{
 			$this->telefone = $telefone;
 		}
@@ -141,7 +143,8 @@ class Usuario {
 	}
 	
 	/**
-	 * The function __getSenha() is the function to access the atribute with passwords value.
+	 * The function __getSenha() is the function to access the atribute 
+	 * with passwords value.
 	 * @return Object User var $senha
 	 *
 	 */
@@ -151,7 +154,8 @@ class Usuario {
 	}
 	
 	/**
-	 * The function __setSenha() is the function to modify the value of atribute password.
+	 * The function __setSenha() is the function to modify the value 
+	 * of atribute password.
 	 * If the passwords value is null
 	 * Or are no special characters
 	 * Or are different of 6 characters
@@ -169,7 +173,8 @@ class Usuario {
 		}elseif($auxiliar == 1){
 			throw new ExcessaoSenhaInvalida("Senha contem caracteres invalidos!");
 		}elseif($auxiliar == 2){
-			throw new ExcessaoSenhaInvalida("Senha deve conter exatamente seis (6) digitos!");
+			throw new ExcessaoSenhaInvalida("Senha deve conter exatamente 
+											 seis (6) digitos!");
 		}elseif($auxiliar == 3){
 			throw new ExcessaoSenhaInvalida("Senha e confirmação estão diferentes!");
 		}else{
