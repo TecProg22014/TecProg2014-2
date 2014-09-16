@@ -45,7 +45,9 @@ class CrimeDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosCrime = new Crime( );
-			$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
+			$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,
+											  $registro->NATUREZA_ID_NATUREZA,
+											  $registro->QUANTIDADE );
 			$retornaCrimes[] = $dadosCrime;
 		}
 		return $retornaCrimes;
@@ -61,7 +63,9 @@ class CrimeDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
+		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,
+										  $registro->NATUREZA_ID_NATUREZA,
+										  $registro->QUANTIDADE );
 		return $dadosCrime;
 	}
 	
@@ -75,7 +79,9 @@ class CrimeDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
+		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,
+										  $registro->NATUREZA_ID_NATUREZA,
+										  $registro->QUANTIDADE );
 		return $dadosCrime;
 	}
 	
@@ -89,7 +95,9 @@ class CrimeDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
+		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,
+										  $registro->NATUREZA_ID_NATUREZA,
+										  $registro->QUANTIDADE );
 		return $dadosCrime;
 	}
 	
@@ -109,7 +117,10 @@ class CrimeDAO{
 	 * @return int $registro
 	 */
 	public function somaDeCrimePorNatureza( $natureza ){
-		$sql = "SELECT Sum(c.quantidade ) as total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.natureza = '".$natureza."' AND c.id_crime BETWEEN 1 AND 341";
+		$sql = "SELECT Sum(c.quantidade ) as total FROM crime c, 
+				natureza n WHERE c.natureza_id_natureza = n.id_natureza 
+				AND n.natureza = '".$natureza."' AND c.id_crime BETWEEN 1 AND 341";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -120,7 +131,10 @@ class CrimeDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalHomicidios( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 1";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, 
+				natureza n WHERE c.natureza_id_natureza = n.id_natureza 
+				AND n.id_natureza = 1";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -131,7 +145,11 @@ class CrimeDAO{
 	 * @return int $registro
 	 */
 	public function somaDeCrimePorNaturezaEmAno( $natureza,$ano ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n,tempo t WHERE c.natureza_id_natureza = n.id_natureza AND c.tempo_id_tempo = t.id_tempo AND t.ano = ".$ano." AND n.natureza = '".$natureza."'";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n,
+				tempo t WHERE c.natureza_id_natureza = n.id_natureza AND 
+				c.tempo_id_tempo = t.id_tempo AND t.ano = ".$ano." AND 
+				n.natureza = '".$natureza."'";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -142,7 +160,9 @@ class CrimeDAO{
 	 * @return int $registro
 	 */
 	public function somaLesaoCorporal( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 3";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE 
+				c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 3";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -153,7 +173,9 @@ class CrimeDAO{
 	 * @return int $registro
 	 */
 	public function somaTotalTentativasHomicidio( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 2";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE 
+				c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 2";
+		
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		return $registro->TOTAL;
@@ -175,7 +197,12 @@ class CrimeDAO{
 	 * @param Crime $crime
 	 */
 	public function inserirCrime(Crime $crime ){
-		$sql = "INSERT INTO crime (natureza_id_natureza,tempo_id_tempo,quantidade,regiao_administrativa_id_regiao_administrativa ) VALUES ('{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}','{$crime->__getQuantidade( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
+		$sql = "INSERT INTO crime ( natureza_id_natureza,tempo_id_tempo,quantidade,
+									regiao_administrativa_id_regiao_administrativa ) VALUES (
+									'{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}',
+									'{$crime->__getQuantidade( )}',
+									'{$crime->__getIdRegiaoAdministrativa( )}' )";
+		
 		$this->conexao->banco->Execute( $sql );
 	}
 
