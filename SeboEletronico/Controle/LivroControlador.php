@@ -11,7 +11,8 @@ include "/Modelo/Livro.php";
 class LivroControlador {
 
 	/**
-	 * The public function salvaLivro is responsible to create and persist a new book.
+	 * The public function salvaLivro is responsible to create 
+	 * and persist a new book.
 	 * If the data is not valid, the book creation is not completed.
 	 *
 	 * @param string $titulo
@@ -28,7 +29,8 @@ class LivroControlador {
 	 * @return bool LivroDao::salvaLivro($livro, $id_dono)
 	 */
 
-	public function salvaLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono ){
+	public function salvaLivro( $titulo, $autor, $genero, $edicao, $editora, 
+								$venda, $troca, $estado, $descricao, $id_dono ){
 		if( empty( $venda ) && empty( $troca )){
 			$venda = "venda";
 			$troca = "troca";
@@ -37,7 +39,8 @@ class LivroControlador {
 		}
 
 		try{
-			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, 
+								$venda, $troca, $estado, $descricao );
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
@@ -57,11 +60,16 @@ class LivroControlador {
 	 * @param string $disponibilidadeVenda
 	 * @param string $disponibilidadeTroca
 	 * 
-	 * @return ArrayObject Livro LivroDao::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca)
+	 * @return ArrayObject Livro LivroDao::pesquisaLivro($titulo, $estadoNovo,
+	 * 													$estadoUsado, $disponibilidadeVenda, 
+	 * 													$disponibilidadeTroca)
 	 */
 
-	public function pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca ){
-		return LivroDao::pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca );
+	public function pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, 
+								   $disponibilidadeVenda, $disponibilidadeTroca ){
+								   	
+		return LivroDao::pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, 
+										$disponibilidadeVenda, $disponibilidadeTroca );
 	}
 	
 	/**
@@ -107,14 +115,17 @@ class LivroControlador {
 	 * Returns true if the book has been updated.
 	 */
 	
-	public function alteraLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono, $id_usuario ){
+	public function alteraLivro( $titulo, $autor, $genero, $edicao, $editora, 
+								 $venda, $troca, $estado, $descricao, $id_dono, 
+								 $id_usuario ){
 		if(empty( $venda ) && empty( $troca )){
 			$venda = "venda";
 			$troca = "troca";
 		}
 
 		try{
-			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, 
+								$venda, $troca, $estado, $descricao );
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
