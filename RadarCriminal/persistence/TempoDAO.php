@@ -40,7 +40,9 @@ class TempoDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosTempo = new Tempo( );
-			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
+			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,
+											  $registro->MES );
+											  
 			$retornaTempos[] = $dadosTempo;
 		}
 		return $retornaTempos;
@@ -56,7 +58,9 @@ class TempoDAO{
 		while( $registro = $resultado->FetchNextObject( ) )
 		{
 			$dadosTempo = new Tempo( );
-			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
+			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,
+											  $registro->MES );
+											  
 			$retornaTempos[] = $dadosTempo;
 		}
 		return $retornaTempos;
@@ -72,7 +76,9 @@ class TempoDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosTempo = new Tempo( );
-		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
+		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,
+										  $registro->MES );
+										  
 		return $dadosTempo;
 
 	}
@@ -87,7 +93,9 @@ class TempoDAO{
 		$resultado = $this->conexao->banco->Execute( $sql );
 		$registro = $resultado->FetchNextObject( );
 		$dadosTempo = new Tempo( );
-		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
+		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,
+										  $registro->MES );
+										  
 		return $dadosTempo;
 	}
 	
