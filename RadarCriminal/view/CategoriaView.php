@@ -4,6 +4,7 @@
 include_once "/controller/CategoriaController.php";
 include_once "/exceptions/EErroConsulta.php";
 class CategoriaView {
+	
 	/**
 	 * Variable to instance one object of category controller
 	 * 
@@ -12,7 +13,7 @@ class CategoriaView {
 	private $categoriaCO;
 	
 	/**
-	 * Constroctor to instance a new category controller
+	 * Constructor to instance a new category controller
 	 */
 	public function __construct() {
 		$this->categoriaCO = new CategoriaController ();
@@ -42,7 +43,10 @@ class CategoriaView {
 			$auxCategoria = $arrayCategoria [$i];
 			$nomeCategoria = $auxCategoria->__getNomeCategoria ();
 			$idCategoria = $auxCategoria->__getIdCategoria ();
-			$retornoCategoria = $retornoCategoria . "<li><a class=\"submenu\" href=\"?pag=cCat&id=$i\"><i class=\"icon-inbox\"></i><span class=\"hidden-tablet\">$nomeCategoria</span></a></li>";
+			$retornoCategoria = $retornoCategoria . "<li><a class=\"submenu\" 
+								href=\"?pag=cCat&id=$i\"><i class=\"icon-inbox\">
+								</i><span class=\"hidden-tablet\">$nomeCategoria
+								</span></a></li>";
 		}
 		return $retornoCategoria;
 	}
@@ -135,7 +139,8 @@ class CategoriaView {
 	}
 	
 	/**
-	 * Function to get the sum of all the crimes against the citizens between 2010 and 2011
+	 * Function to get the sum of all the crimes against the citizens 
+	 * between 2010 and 2011
 	 * @return int $number    *refactor
 	 */
 	public function _somaGeralCrimeContraPessoa2010_2011() {
