@@ -90,9 +90,9 @@ class Livro {
 		if(!ValidaDados::validaCamposnulos($titulo)){
 			throw new ExcessaoTituloInvalido("Titulo nao pode ser nulo!");
 		}else{
-			//nothig to do
+			$this->titulo = $titulo;
 		}
-		$this->titulo = $titulo;
+		
 		/**
 		 * Nao tera tratamento de excessao, pois o titulo é pessoal e vai de cada autor,
 		 * logo pode ter qualquer tipo de caracter que o autor desejar.
@@ -127,9 +127,9 @@ class Livro {
 		}elseif(ValidaDados::validaNome($autor) == 2){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem espaÃ§os seguidos!");
 		}else{
-			//nothing to do
+			$this->autor = $autor;
 		}
-		$this->autor = $autor;
+		
 	}
 
 	/**
@@ -281,9 +281,9 @@ class Livro {
 		if(!ValidaDados::validaCamposNulos($editora)){
 			throw new ExcessaoEditoraInvalida("A Editora do Livro nao pode ser nula!");
 		}else{
-			//nothing to do
+			$this->editora = $editora;
 		}
-		$this->editora = $editora;
+		
 	}
 
 	/**

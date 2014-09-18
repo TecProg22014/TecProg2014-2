@@ -77,6 +77,7 @@ class Usuario {
 		}else{
 			$this->nome = $nome;
 		}
+		
 	}
 	
 	/**
@@ -111,6 +112,7 @@ class Usuario {
 		}else{
 			$this->telefone = $telefone;
 		}
+		
 	}
 	
 	/**
@@ -138,8 +140,9 @@ class Usuario {
 		}elseif(ValidaDados::validaEmail($email) == 1){
 			throw new ExcessaoEmailInvalido("E-mail nao válido!");
 		}else{
-			$this->email = $email;
+			//nothing to do
 		}
+		$this->email = $email;
 	}
 	
 	/**
@@ -180,6 +183,7 @@ class Usuario {
 		}else{
 			$this->senha = $senha;
 		}
+		
 	}
 	
 }
