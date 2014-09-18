@@ -46,8 +46,9 @@ class Natureza{
 		if( !is_numeric( $idNatureza ) ){
 			throw new ETipoErrado(); 
 		}else{
-			$this->idNatureza = $idNatureza;
+			//nothing to do here
 		}
+		$this->idNatureza = $idNatureza;
 	}
 	
 	/**
@@ -68,8 +69,9 @@ class Natureza{
 		if(!is_numeric( $idCategoria ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->idCategoria = $idCategoria;
+			//nothing to do here
 		}
+		$this->idCategoria = $idCategoria;
 	}
 	
 	/**
@@ -89,8 +91,9 @@ class Natureza{
 		if( !is_string( $natureza ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->natureza = $natureza;
+			//nothing to do here
 		}
+		$this->natureza = $natureza;
 	}
 	
 	/**
