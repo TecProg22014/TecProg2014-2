@@ -28,8 +28,9 @@ class Tempo{
 		if(!is_numeric($idTempo)){
 			throw new ETipoErrado();
 		}else{
-			$this->idTempo = $idTempo;
+			//nothing to do here
 		}
+		$this->idTempo = $idTempo;
 	}
 	/**
 	 * Function to get the id of a time of a crime
@@ -48,8 +49,9 @@ class Tempo{
 		if(!is_numeric($intervalo)){
 			throw new ETipoErrado();
 		}else{
-			$this->intervalo = $intervalo;
+			//nothing to do here
 		}
+		$this->intervalo = $intervalo;
 	}
 	
 	/**
