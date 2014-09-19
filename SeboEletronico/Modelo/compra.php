@@ -1,16 +1,13 @@
 <?php
 
 	include "/Dao/conexao_bd.inc";
-	if(!$bd) die ("<h1>Falha no bd </h1>");
+	if(!$dbConnection) die ("<h1>Falha na conexão com o Banco de Dados </h1>");
 		
-	$sql = "SELECT * FROM livro WHERE id_dono = '8'";
-        $result = mysql_query($sql);
-        
-        $cont =0;
-        $registro = mysql_fetch_assoc($result);
-
-        var_dump($registro);
-        
+	$findBooksOfUser8 = "SELECT * FROM livro WHERE id_dono = '8'";
+        $resultFindBooksOfUser8 = mysql_query($findBooksOfUser8);
+        $cont = 0;
+        $bookArray = mysql_fetch_assoc($resultFindBooksOfUser8);
+        var_dump($bookArray);
 	?> 
 	
 	<input type=button value="Compre" onClick="alert('Compra feita com Sucesso')">
