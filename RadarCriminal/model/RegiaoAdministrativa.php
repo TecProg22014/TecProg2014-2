@@ -10,11 +10,11 @@ class RegiaoAdministrativa{
 	
 	/**
 	 * Variables that describe one Administrative Region where one crime has occurred
-	 * @var int idRegiaoAdministrativa
-	 * @var String nomeRegiao
+	 * @var int administrativeRegionId
+	 * @var String administrativeRegionName
 	 */
-	private $idRegiaoAdministrativa;
-	private $nomeRegiao;
+	private $administrativeRegionId;
+	private $administrativeRegionName;
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
@@ -25,58 +25,58 @@ class RegiaoAdministrativa{
 	
 	/**
 	 * Full constructor of an object Administrative Region that describes where one crime has occurred
-	 * @param int $idRA
-	 * @param String $nomeRegiao
+	 * @param int $raId
+	 * @param String $administrativeRegionName
 	 */
-	public function __constructOverLoad( $idRA, $nomeRegiao ){
+	public function __constructOverLoad( $raId, $administrativeRegionName ){
 		
-		$this->idRegiaoAdministrativa = $idRA;
-		$this->nomeRegiao = $nomeRegiao;
+		$this->administrativeRegionId = $raId;
+		$this->administrativeRegionName = $administrativeRegionName;
 	}
 	
 	/**
 	 * Function to set the id of an administrative region where one crime has occurred
-	 * @param int $idRegiaoAdministrativa
+	 * @param int $administrativeRegionId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdRegiaoAdministrativa( $idRegiaoAdministrativa ){
+	public function __setAdministrativeRegionId( $administrativeRegionId ){
 	
-		if( !is_numeric( $idRegiaoAdministrativa ) ){
+		if( !is_numeric( $administrativeRegionId ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
+			$this->administrativeRegionId = $administrativeRegionId;
 		}
 	}
 	
 	/**
 	 * Function to get the id of an administrative region where one crime has occurred
-	 * @return Object RegiaoAdministrativa var $idRegiaoAdministrativa
+	 * @return Object RegiaoAdministrativa var $administrativeRegionId
 	 */
-	public function __getIdRegiaoAdministrativa( ){
-		return $this->idRegiaoAdministrativa;
+	public function __getAdministrativeRegionId( ){
+		return $this->administrativeRegionId;
 	}
 	
 	/**
 	 * Function to set the name of an administrative region where one crime has occurred
-	 * @param String $nomeRegiao
+	 * @param String $administrativeRegionName
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNomeRegiao( $nomeRegiao ){
+	public function __setAdministrativeRegionName( $administrativeRegionName ){
 		
-		if( !is_string( $nomeRegiao ) ){
+		if( !is_string( $administrativeRegionName ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->nomeRegiao = $nomeRegiao;
+			$this->administrativeRegionName = $administrativeRegionName;
 
 		}
 	}
 	
 	/**
 	 * Function to get the name of an administrative region where one crime has occurred
-	 * @return Object RegiaoAdministrativa var $nomeRegiao
+	 * @return Object RegiaoAdministrativa var $administrativeRegionName
 	 */
-	public function __getNomeRegiao( ){
+	public function __getAdministrativeRegionName( ){
 
-		return $this->nomeRegiao;
+		return $this->administrativeRegionName;
 	}
 }
