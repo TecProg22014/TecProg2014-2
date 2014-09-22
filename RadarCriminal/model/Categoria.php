@@ -13,8 +13,8 @@ class Categoria{
 	 * @var int categoryId
 	 * @var String categoryName
 	 */
-	private $categoryId;
-	private $categoryName;
+	private $categoryId; //Identifier of a category object
+	private $categoryName; //Name of a category object
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
