@@ -14,9 +14,9 @@ class Natureza{
 	 * @var String nature
 	 * @var int categoryId
 	 */
-	private $natureId;
-	private $nature;
-	private $categoryId;
+	private $natureId; //Identifier of a nature of crime
+	private $nature; //Name of nature
+	private $categoryId; //Identifier of a category of crime
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
