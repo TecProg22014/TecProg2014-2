@@ -15,9 +15,9 @@ class Tempo{
 	 * @var String month
 	 */
 
-	private $timeId;
-	private $interval;
-	private $month;
+	private $timeId; //Identifier of the time of a crime
+	private $interval; //Value of one interval of time
+	private $month; //Value of one month
 	
 	/**
 	 * Function to set the id of the time of a crime
