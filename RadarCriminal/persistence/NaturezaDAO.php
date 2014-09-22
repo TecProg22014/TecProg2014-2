@@ -20,7 +20,7 @@ class NaturezaDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection;
+	private $connection; //Variable to conect with the database
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -43,12 +43,12 @@ class NaturezaDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM nature";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successfu
 		while( $register = $result->FetchNextObject( ) )
 		{
-			$natureData = new Natureza( );
+			$natureData = new Natureza( ); //Instance of Nature for use the datas
 			$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
-			$natureReturn[] = $natureData;
+			$natureReturn[] = $natureData; //Array for return all the natures
 		}
 		return $natureReturn;
 	}
@@ -81,7 +81,7 @@ class NaturezaDAO{
 	public function idFind( $natureId ){
 		$sql = "SELECT * FROM nature WHERE id_nature = '".$natureId."'";
 		$result = $this->connection->banco->Execute( $sql );
-		$register = $result->FetchNextObject( );
+		$register = $result->FetchNextObject( ); //Auxiliar variable to register a nature
 		$natureData = new Natureza( );
 		$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
 		return $natureData;
