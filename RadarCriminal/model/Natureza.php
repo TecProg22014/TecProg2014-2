@@ -10,13 +10,13 @@ class Natureza{
 	
 	/**
 	 * Variables that define the nature of one crime
-	 * @var int idNatureza
-	 * @var String natureza
-	 * @var int idCategoria
+	 * @var int natureId
+	 * @var String nature
+	 * @var int categoryId
 	 */
-	private $idNatureza;
-	private $natureza;
-	private $idCategoria;
+	private $natureId;
+	private $nature;
+	private $categoryId;
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
@@ -27,69 +27,69 @@ class Natureza{
 	
 	/**
 	 * Full constructor of an object Nature that defines a crime
-	 * @param int $idNatureza
-	 * @param String $nomeNatureza
-	 * @param int $idCategoriaNatureza
+	 * @param int $natureId
+	 * @param String $natureName
+	 * @param int $categoryNatureId
 	 */
-	public function __constructOverload( $idNatureza,$nomeNatureza,$idCategoriaNatureza ){
-		$this->idNatureza = $idNatureza;
-		$this->natureza = $nomeNatureza;
-		$this->idCategoria = $idCategoriaNatureza;
+	public function __constructOverload( $natureId,$natureName,$categoryNatureId ){
+		$this->natureId = $natureId;
+		$this->nature = $natureName;
+		$this->categoryId = $categoryNatureId;
 	}
 	
 	/**
 	 * Function to set the id of a nature of a crime
-	 * @param int $idNatureza
+	 * @param int $natureId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdNatureza( $idNatureza ){
-		if( !is_numeric( $idNatureza ) ){
+	public function __setNatureId( $natureId ){
+		if( !is_numeric( $natureId ) ){
 			throw new ETipoErrado(); 
 		}else{
-			$this->idNatureza = $idNatureza;
+			$this->natureId = $natureId;
 		}
 	}
 	
 	/**
 	 * Function to get the id of a nature of a crime
-	 * @return Object Category var $idNatureza
+	 * @return Object Category var $natureId
 	 */
-	public function __getIdNatureza( ){
-		return $this->idNatureza;
+	public function __getNatureId( ){
+		return $this->natureId;
 	}
 	
 	/**
 	 * Function to set the id of the category of a crime
-	 * @param int $idCategoria
+	 * @param int $categoryId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria( $idCategoria ){
+	public function __setCategoryId( $categoryId ){
 	
-		if(!is_numeric( $idCategoria ) ){
+		if(!is_numeric( $categoryId ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->idCategoria = $idCategoria;
+			$this->categoryId = $categoryId;
 		}
 	}
 	
 	/**
 	 * Function to get the id of a category of a crime
-	 * @return Object Category var $idCategoria
+	 * @return Object Category var $categoryId
 	 */
-	public function __getIdCategoria( ){
-		return $this->idCategoria;
+	public function __getCategoryId( ){
+		return $this->categoryId;
 	}
 	
 	/**
 	 * Function to set the name of one nature of a crime
-	 * @param String $natureza
+	 * @param String $nature
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNatureza( $natureza ){
-		if( !is_string( $natureza ) ){
+	public function __setNature( $nature ){
+		if( !is_string( $nature ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->natureza = $natureza;
+			$this->nature = $nature;
 		}
 	}
 	
@@ -97,7 +97,7 @@ class Natureza{
 	 * Function to get the name of a nature of a crime
 	 * @return unknown
 	 */
-	public function __getNatureza( ){
-		return $this->natureza;
+	public function __getNature( ){
+		return $this->nature;
 	}
 }
