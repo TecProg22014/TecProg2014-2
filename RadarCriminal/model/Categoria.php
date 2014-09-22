@@ -10,11 +10,11 @@ class Categoria{
 	
 	/**
 	 * Variables to specify the category of the crime
-	 * @var int idCategoria
-	 * @var String nomeCategoria
+	 * @var int categoryId
+	 * @var String categoryName
 	 */
-	private $idCategoria;
-	private $nomeCategoria;
+	private $categoryId;
+	private $categoryName;
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
@@ -25,56 +25,56 @@ class Categoria{
 	
 	/**
 	 * Full constructor to the object Categoria
-	 * @param int $idCategoria
-	 * @param String $nomeCategoria
+	 * @param int $categoryId
+	 * @param String $categoryName
 	 */
-	public function __constructOverload( $idCategoria,$nomeCategoria ){
+	public function __constructOverload( $categoryId,$categoryName ){
 	
-		$this->idCategoria = $idCategoria;
-		$this->nomeCategoria = $nomeCategoria;
+		$this->categoryId = $categoryId;
+		$this->categoryName = $categoryName;
 	}
 	
 	/**
 	 * Function to set the id of the category of the crime
-	 * @param int $idCategoria
+	 * @param int $categoryId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCategoria( $idCategoria ){
+	public function __setCategoryId( $categoryId ){
 		
-		if ( !is_numeric( $idCategoria ) ){
+		if ( !is_numeric( $categoryId ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->idCategoria = $idCategoria;
+			$this->categoryId = $categoryId;
 		}
 	}
 	
 	/**
 	 * Function to get the id of the category of the crime
 	 */
-	public function __getIdCategoria( ){
-		return $this->idCategoria;
+	public function __getCategoryId( ){
+		return $this->categoryId;
 	}
 	
 	/**
 	 * Function to set the name of the category of the crime
-	 * @param String $nomeCategoria
+	 * @param String $categoryName
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setNomeCategoria( $nomeCategoria ){
+	public function __setCategoryName( $categoryName ){
 		
-		if( !is_string( $nomeCategoria ) ){
+		if( !is_string( $categoryName ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->nomeCategoria = $nomeCategoria;
+			$this->categoryName = $categoryName;
 		}
 	}
 	
 	/**
 	 * Function to get the name of the category of the crime
-	 * @return Object Categoria var $nomeCategoria 
+	 * @return Object Categoria var $categoryName 
 	 */
-	public function __getNomeCategoria( ){
-		return $this->nomeCategoria;
+	public function __getCategoryName( ){
+		return $this->categoryName;
 	}
 	
 }
