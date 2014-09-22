@@ -13,8 +13,8 @@ class RegiaoAdministrativa{
 	 * @var int administrativeRegionId
 	 * @var String administrativeRegionName
 	 */
-	private $administrativeRegionId;
-	private $administrativeRegionName;
+	private $administrativeRegionId; //Identifier of the administrative regions of a crime, a kind of city
+	private $administrativeRegionName; //Name of a adminitrative region of crime
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
