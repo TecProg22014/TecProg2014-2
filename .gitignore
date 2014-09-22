@@ -2,6 +2,7 @@
 .metadata/**/*
 .buildpath
 .project
+.DS_Store
 
 #diretorios ignorados SeboEletronico
 SeboEletronico/.metadata/**/*
