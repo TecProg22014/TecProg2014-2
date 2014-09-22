@@ -17,7 +17,7 @@ class CategoriaDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection;
+	private $connection; //Variable to conect with the database
 
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -40,11 +40,11 @@ class CategoriaDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM categoria";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
 		while( $registro = $result->FetchNextObject( ) ){
-			$categoryData = new Categoria( );
+			$categoryData = new Categoria( ); //Instance of Category for use the datas
 			$categoryData->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
-			$categoryReturn[] = $categoryData;
+			$categoryReturn[] = $categoryData; //Array for return all the categories
 		}
 		return $categoryReturn;
 	}
@@ -187,7 +187,7 @@ class CategoriaDAO{
 		$result = $this->connection->banco->Execute( $sql );
 		$i = 0;
 		while( $registro = $result->FetchNextObject( ) ){
-			$categoryTotal["nome"][$i] = $registro->NOME_CATEGORIA;
+			$categoryTotal["nome"][$i] = $registro->NOME_CATEGORIA; //Amount of categories
 			$categoryTotal["quantidade"][$i] = $registro->TOTAL;
 			$i++;
 		}
