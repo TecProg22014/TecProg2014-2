@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-$id_usuario = $_SESSION['id_usuario'];
+	session_start();
+	$id_usuario = $_SESSION['id_usuario'];
 
-include '../Controle/LivroControlador.php';
-$id = $_REQUEST['id'];
-$listaLivros = LivroControlador::getLivroById($id);
+	include '../Controle/LivroControlador.php';
+	$id = $_REQUEST['id'];
+	$listaLivros = LivroControlador::getLivroById( $id );
 
 ?>
 
@@ -146,7 +146,6 @@ $listaLivros = LivroControlador::getLivroById($id);
 				
 					<input type="submit" name='Enviar' value="ALTERAR" title='Enviar dados' />
 				</th>
-			
 			</table>
 		</form>
 	</body>
