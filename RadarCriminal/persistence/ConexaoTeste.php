@@ -17,12 +17,12 @@ class ConexaoTeste{
 	 * @var $key;
 	 * @var $db;
 	 */
-	public $base;
-	private $baseType;
-	private $server;
-	private $user;
-	private $key;
-	private $db;
+	public $base; //Variable for the base of the database conection
+	private $baseType; //Variable to specify the type of base
+	private $server; //Variable for the server of the database conection
+	private $user; //Variable for the user of the database conection
+	private $key; //Key for the user acess for database conection
+	private $db; //Table of data
 
 	/**
 	 * Full constructor to the object ConexaoTeste
