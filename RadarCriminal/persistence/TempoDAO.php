@@ -13,7 +13,7 @@ class TempoDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection; //Variable to conect with the database
+	private $connection;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -36,7 +36,7 @@ class TempoDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM time";
-		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$timeData = new Tempo( ); //Instance of Time for use the datas
@@ -51,9 +51,9 @@ class TempoDAO{
 	 * Function to list all the times of the crimes in order
 	 * @return $timeReturn
 	 */
-	public function orderlistAll( ){
+	public function orderListAll( ){
 		$sql = "SELECT * FROM time ORDER BY ano ASC ";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$timeData = new Tempo( );
@@ -71,7 +71,7 @@ class TempoDAO{
 	 */
 	public function idFind( $timeId ){
 		$sql = "SELECT * FROM time WHERE id_time = '".$timeId."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a time
 		$timeData = new Tempo( );
 		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
@@ -86,7 +86,7 @@ class TempoDAO{
 	 */
 	public function intervalFind( $interval ){
 		$sql = "SELECT * FROM time WHERE ano = '".$interval."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); 
 		$timeData = new Tempo( );
 		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
@@ -100,6 +100,6 @@ class TempoDAO{
 	 */
 	public function addTime(Tempo $time ){
 		$sql = "INSERT INTO time (year ) VALUES ('{$time->__getIntervalo( )}' )";
-		$this->connection->banco->Execute( $sql );
+		$this->connection->base->Execute( $sql );
 	}
 }

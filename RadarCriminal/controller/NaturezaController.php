@@ -40,7 +40,7 @@ class NaturezaController {
 	 * @return Array $resultado
 	 */
 	public function _listarTodas( ) {
-		$resultado = $this->naturezaDAO->listarTodas ( );
+		$resultado = $this->naturezaDAO->listAll ( );
 		
 		return $resultado;
 	}
@@ -50,7 +50,7 @@ class NaturezaController {
 	 * @return Array $resultado
 	 */
 	public function _listarTodasAlfabicamente( ) {
-		$resultado = $this->naturezaDAO->listarTodasAlfabicamente ( );
+		$resultado = $this->naturezaDAO->alphabeticallyListAll ( );
 		return $resultado;
 	}
 	
@@ -66,7 +66,7 @@ class NaturezaController {
 		}else{
 			//nothing to do here
 		}
-		$natureza = $this->naturezaDAO->consultarPorId ( $id );
+		$natureza = $this->naturezaDAO->idFind ( $id );
 		return $natureza;
 	}
 	
@@ -76,7 +76,7 @@ class NaturezaController {
 	 * @return String $natureza
 	 */
 	public function _consultarPorNome( $naturezaConsulta ) {
-		$natureza = $this->naturezaDAO->consultarPorNome ( $naturezaConsulta  );
+		$natureza = $this->naturezaDAO->nameFind ( $naturezaConsulta  );
 		return $natureza;
 	}
 	
@@ -86,7 +86,7 @@ class NaturezaController {
 	 * @return Array $retornaNaturezas
 	 */
 	public function _consultarPorIdCategoria( $id ) {
-		return $this->naturezaDAO->consultarPorIdCategoria ( $id  );
+		return $this->naturezaDAO->idCategoryFind ( $id  );
 	}
 	
 	/**
@@ -95,7 +95,7 @@ class NaturezaController {
 	 * @return boolean $registered *refactor
 	 */
 	public function _inserirNatureza(Natureza $natureza ) {
-		return $this->naturezaDAO->inserirNatureza ( $natureza  );
+		return $this->naturezaDAO->addNature ( $natureza  );
 	}
 	
 	/**
@@ -119,7 +119,7 @@ class NaturezaController {
 				$dadosNatureza = new Natureza ();
 				$dadosNatureza->__setNatureza ( $arrayNatureza [$chave] [$j] );
 				$dadosNatureza->__setIdCategoria ( $dadosCategoria->__getIdCategoria () );
-				$this->naturezaDAO->inserirNatureza ( $dadosNatureza );
+				$this->naturezaDAO->addNature ( $dadosNatureza );
 			}
 			$inicio = $inicio + count ( $arrayNatureza [$chave] );
 			next ( $arrayKey );

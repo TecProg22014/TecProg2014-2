@@ -13,7 +13,7 @@ class RegiaoAdministrativaDAO {
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection; //Variable to conect with the database
+	private $connection;
 
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -36,7 +36,7 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM regiao_administrativa";
-		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
 		/**
 	 	* While to alphabetically order of administrative regions
 	 	*
@@ -57,7 +57,7 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function alphabeticallyListAll( ){
 		$sql = "SELECT * FROM regiao_administrativa ORDER BY name ASC";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$raData = new RegiaoAdministrativa( );
@@ -76,7 +76,7 @@ class RegiaoAdministrativaDAO {
 	public function idFind( $raId ){
 		$sql = "SELECT * FROM regiao_administrativa 
 				WHERE id_regiao_administrativa ='".$raId."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a RA
 		$raData = new RegiaoAdministrativa( );
 		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
@@ -92,7 +92,7 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function nameFind( $raName ){
 		$sql = "SELECT * FROM regiao_administrativa WHERE name = '".$raName."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$raData = new RegiaoAdministrativa( );
 		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
@@ -107,7 +107,7 @@ class RegiaoAdministrativaDAO {
 	public function countRegisters( ){
 		$sql = "SELECT COUNT(id_regiao_administrativa )AS total 
 				FROM regiao_administrativa";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -120,7 +120,7 @@ class RegiaoAdministrativaDAO {
 	public function addRA(RegiaoAdministrativa $RA ){
 		$sql = "INSERT INTO regiao_administrativa (raName ) values 
 				('{$RA->__getNomeRegiao( )}' )";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		return $result;
 	}
 }

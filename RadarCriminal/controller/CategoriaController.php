@@ -35,7 +35,7 @@ class CategoriaController {
 	 * @return Array $arrayCategoria
 	 */
 	public function _listarTodas( ) {
-		$arrayCategoria = $this->categoriaDAO->listarTodas ( );
+		$arrayCategoria = $this->categoriaDAO->listAll ( );
 		return $arrayCategoria;
 	}
 	
@@ -44,7 +44,7 @@ class CategoriaController {
 	 * @return Array $categorias
 	 */
 	public function _listarTodasAlfabicamente( ) {
-		return $this->categoriaDAO->listarTodasAlfabicamente ( );
+		return $this->categoriaDAO->alphabeticallyListAll ( );
 	}
 	
 	/**
@@ -59,7 +59,7 @@ class CategoriaController {
 		} else {
 			//nothing to do here
 		}
-		$categoria = $this->categoriaDAO->consultarPorId ( $id );
+		$categoria = $this->categoriaDAO->idFind ( $id );
 		return $categoria;
 	}
 	
@@ -75,7 +75,7 @@ class CategoriaController {
 		} else {
 			//nothing to do here
 		}
-		$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria );
+		$categoria = $this->categoriaDAO->nameFind ( $nomeCategoria );
 		return $categoria;
 	}
 	
@@ -85,7 +85,7 @@ class CategoriaController {
 	 * @return boolean $resultado
 	 */
 	public function _inserirCategoria(Categoria $categoria ) {
-		return $this->categoriaDAO->inserirCategoria ( $categoria  );
+		return $this->categoriaDAO->addCategory ( $categoria  );
 	}
 	
 	/**
@@ -102,8 +102,8 @@ class CategoriaController {
 		}
 		$dadosCategoria = new Categoria ();
 			for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
-				$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
-				$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
+				$dadosCategoria->__setCategoryName ( $arrayCategoria [$i] );
+				$retorno = $this->categoriaDAO->addCategory ( $dadosCategoria );
 			}
 		return $retorno;
 	}
@@ -114,7 +114,7 @@ class CategoriaController {
 	 */
 	public function _somaTotalFurtos( ) {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalFurtos [] = $this->categoriaDAO->somaTotalFurtos ( $i  );
+			$somaTotalFurtos [] = $this->categoriaDAO->totalStealing ( $i  );
 		}
 		$retornoSomaTotalFurtos = array_sum ( $somaTotalFurtos  );
 		return $retornoSomaTotalFurtos;
@@ -175,7 +175,7 @@ class CategoriaController {
 	 */
 	public function _somaGeralCrimeContraPessoa( ) {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaGeralCrimeContraPessoa [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
+			$somaGeralCrimeContraPessoa [] = $this->categoriaDAO->totalCrimeInPerson ( $i  );
 		}
 		$retornoSomaGeralCrimeContraPessoa = array_sum ( $somaGeralCrimeContraPessoa  );
 		return $retornoSomaGeralCrimeContraPessoa;
@@ -187,7 +187,7 @@ class CategoriaController {
 	 */
 	public function _somaGeralCrimeContraPessoa2010_2011( ) {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaGeralCrimeContraPessoa2010_2011 [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
+			$somaGeralCrimeContraPessoa2010_2011 [] = $this->categoriaDAO->totalCrimeInPerson ( $i  );
 		}
 		$retornoSomaGeralCrimeContraPessoa2010_2011 = array_sum ( $somaGeralCrimeContraPessoa2010_2011  );
 		return $retornoSomaGeralCrimeContraPessoa2010_2011;
@@ -199,7 +199,7 @@ class CategoriaController {
 	 */
 	public function _somaTotalRoubo( ) {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTotalRoubo [] = $this->categoriaDAO->somaTotalRoubo ( $i  );
+			$somaTotalRoubo [] = $this->categoriaDAO->totalTheft ( $i  );
 		}
 		$retornoSomaTotalRoubo = array_sum ( $somaTotalRoubo  );
 		return $retornoSomaTotalRoubo;
@@ -222,7 +222,7 @@ class CategoriaController {
 	 * @return int $total
 	 */
 	public function _contarRegistros( ) {
-		return $this->categoriaDAO->contarRegistros ( );
+		return $this->categoriaDAO->recordsCount ( );
 	}
 	
 	/**
@@ -230,7 +230,7 @@ class CategoriaController {
 	 * @return String $labels      
 	 */
 	public function _listarTotalDeCategoria( ) {
-		$categorias = $this->categoriaDAO->listarTotalDeCategoria ( );
+		$categorias = $this->categoriaDAO->listAll ( );
 		return "
 		var data = [
 		{ label: \"" . $categorias ["nome"] [0] . "\",  data: " . $categorias ["quantidade"] [0] . "},

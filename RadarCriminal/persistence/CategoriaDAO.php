@@ -17,7 +17,7 @@ class CategoriaDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection; //Variable to conect with the database
+	private $connection;
 
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -40,7 +40,7 @@ class CategoriaDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM categoria";
-		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
 		while( $register = $result->FetchNextObject( ) ){
 			$categoryData = new Categoria( ); //Instance of Category for use the datas
 			$categoryData->__constructOverload( $register->ID_CATEGORIA,
@@ -56,7 +56,7 @@ class CategoriaDAO{
 	 */
 	public function alphabeticallyListAll( ){
 		$sql = "SELECT * FROM category ORDER BY nome_category ASC";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		
 		/**
 	 	* While to alphabetically order of categories
@@ -80,7 +80,7 @@ class CategoriaDAO{
 	 */
 	public function idFind( $categoryId ){
 		$sql = "SELECT * FROM category WHERE id_category = '".$id."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$categoryData = new Categoria( );
 		$categoryData->__constructOverload( $register->ID_CATEGORIA,
@@ -95,7 +95,7 @@ class CategoriaDAO{
 	 */ 
 	public function nameFind( $categoryName ){
 		$sql = "SELECT * FROM category WHERE nome_category = '".$categoryName."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$categoryData = new Categoria( );
 		$categoryData->__constructOverload( $register->ID_CATEGORIA,
@@ -111,7 +111,7 @@ class CategoriaDAO{
 	public function addCategory(Categoria $category ){
 		$sql = "INSERT INTO category (nome_category ) values 
 			   ('{$category->__getcategoryName( )}' )";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		return $result;
 	}
 
@@ -122,7 +122,7 @@ class CategoriaDAO{
 	public function totalCrimeInPerson( ){
 		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -135,7 +135,7 @@ class CategoriaDAO{
 		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
 				BETWEEN 26 AND 29";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -148,7 +148,7 @@ class CategoriaDAO{
 		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
 				BETWEEN 24 AND 25";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -161,7 +161,7 @@ class CategoriaDAO{
 		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza 
 				BETWEEN 6 AND 18";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -174,7 +174,7 @@ class CategoriaDAO{
 		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
 				BETWEEN 19 AND 23";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -185,7 +185,7 @@ class CategoriaDAO{
 	 */
 	public function totalPatrimony( ){
 		$sql = "SELECT SUM(total ) as total FROM totalcrimecontrapatrimonio";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -196,7 +196,7 @@ class CategoriaDAO{
 	 */
 	public function totalCategories( ){
 		$sql="SELECT * FROM totalgeralcategoria";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$i = 0;
 		while( $register = $result->FetchNextObject( ) ){
 			$categoryTotal["nome"][$i] = $register->NOME_CATEGORIA; //Amount of categories
@@ -214,7 +214,7 @@ class CategoriaDAO{
 		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
 				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
 				BETWEEN 29 AND 30";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}
@@ -225,7 +225,7 @@ class CategoriaDAO{
 	 */
 	public function recordsCount( ){
 		$sql = "SELECT COUNT(id_category )AS total FROM category";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
 	}

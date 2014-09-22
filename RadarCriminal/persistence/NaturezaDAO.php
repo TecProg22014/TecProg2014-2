@@ -20,7 +20,7 @@ class NaturezaDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection; //Variable to conect with the database
+	private $connection;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -30,7 +30,7 @@ class NaturezaDAO{
 	}
 	
 	/**
-	 * Specific constroctor to unit test
+	 * Specific constructor to unit test
 	 */
 	public function __constructTeste( ){
 		$this->connection = new ConexaoTeste( );
@@ -43,7 +43,7 @@ class NaturezaDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM nature";
-		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successfu
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successfu
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$natureData = new Natureza( ); //Instance of Nature for use the datas
@@ -61,7 +61,7 @@ class NaturezaDAO{
 	 */
 	public function alphabeticallyListAll( ){
 		$sql = "SELECT * FROM nature ORDER BY nature ASC ";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		/**
 	 	* While to alphabetically order of nature
 	 	*
@@ -84,7 +84,7 @@ class NaturezaDAO{
 	 */
 	public function idFind( $natureId ){
 		$sql = "SELECT * FROM nature WHERE id_nature = '".$natureId."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a nature
 		$natureData = new Natureza( );
 		$natureData->__constructOverload( $register->ID_NATUREZA,
@@ -101,7 +101,7 @@ class NaturezaDAO{
 	 */
 	public function nameFind( $nature ){
 		$sql = "SELECT * FROM nature WHERE nature = '".$nature."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$natureData = new Natureza( );
 		$natureData->__constructOverload( $register->ID_NATUREZA,
@@ -118,7 +118,7 @@ class NaturezaDAO{
 		$sql = "INSERT INTO nature (categoria_id_categoria,nature ) values (
 									'{$nature->__getIdCategoria( )}',
 									'{$nature->__getNatureza( )}' )";
-		$this->connection->banco->Execute( $sql );
+		$this->connection->base->Execute( $sql );
 	}
 	
 	/**
@@ -128,7 +128,7 @@ class NaturezaDAO{
 	 */
 	public function idCategoryFind( $id ){
 		$sql = "SELECT * FROM nature WHERE categoria_id_categoria= '".$id."'";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) ){
 			$natureData = new Natureza( );
 			$natureData->__constructOverload( $register->ID_NATUREZA,

@@ -45,7 +45,7 @@ class CrimeController {
 	 * @return Array $resultado
 	 */
 	public function _listarTodos( ) {
-		return $this->crimeDAO->listarTodos ( );
+		return $this->crimeDAO->listAll ( );
 	}
 	
 	/**
@@ -55,7 +55,7 @@ class CrimeController {
 	 * @return Object $crime
 	 */
 	public function _consultarPorId( $id ) {
-		return $this->crimeDAO->consultarPorId ( $id  );
+		return $this->crimeDAO->idFind ( $id  );
 	}
 	
 	/**
@@ -65,7 +65,7 @@ class CrimeController {
 	 * @return Object Crime
 	 */
 	public function _consultarPorIdNatureza( $natureza ) {
-		return $this->crimeDAO->consultarPorIdNatureza ( $natureza  );
+		return $this->crimeDAO->natureFind ( $natureza  );
 	}
 	
 	/**
@@ -75,7 +75,7 @@ class CrimeController {
 	 * @return Object Crime
 	 */
 	public function _consultarPorIdTempo( $tempo ) {
-		return $this->crimeDAO->consultarPorIdNatureza ( $tempo  );
+		return $this->crimeDAO->natureFind ( $tempo  );
 	}
 	
 	/**
@@ -85,7 +85,7 @@ class CrimeController {
 	 * @return boolean $registered *refactor
 	 */
 	public function _inserirCrime(Crime $crime ) {
-		return $this->crimeDAO->inserirCrime ( $crime  );
+		return $this->crimeDAO->addCrime ( $crime  );
 	}
 	
 	/**
@@ -95,7 +95,7 @@ class CrimeController {
 	 * @return number $sumOfCrimes *refactor
 	 */
 	public function _somaDeCrimePorNatureza( $natureza ) {
-		return $this->crimeDAO->somaDeCrimePorNatureza ( $natureza  );
+		return $this->crimeDAO->totalNatureCrime ( $natureza  );
 	}
 	
 	/**
@@ -106,7 +106,7 @@ class CrimeController {
 	 * @return number $sumOfCrimes *refactor
 	 */
 	public function _somaDeCrimePorNaturezaEmAno( $natureza, $ano ) {
-		return $this->crimeDAO->somaDeCrimePorNaturezaEmAno ( $natureza, $ano  );
+		return $this->crimeDAO->totalNatureInYearCrime ( $natureza, $ano  );
 	}
 	
 	/**
@@ -116,7 +116,7 @@ class CrimeController {
 	 * @return number $sumOfCrimes *refactor
 	 */
 	public function _somaDeCrimePorAno( $ano ) {
-		return $this->crimeDAO->somaDeCrimePorAno ( $ano  );
+		return $this->crimeDAO->totalYearCrime ( $ano  );
 	}
 	
 	/**
@@ -220,7 +220,7 @@ class CrimeController {
 					$dadosCrime->__setIdRegiaoAdministrativa ( $dadosRegiao->__getIdRegiaoAdministrativa ( )  );
 					$dadosCrime->__setIdTempo ( $dadosTempo->__getIdTempo ( )  );
 					$dadosCrime->__setQuantidade ( $arrayCrime [$natureza] [$regiao] [$tempo]  );
-					$this->crimeDAO->inserirCrime ( $dadosCrime  );
+					$this->crimeDAO->addCrime ( $dadosCrime  );
 					next ( $arrayTempo  );
 				}
 				
@@ -281,7 +281,7 @@ class CrimeController {
 	 */
 	public function _somaHomicidios2010_2011( ) {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaHomicidios2010_2011 [] = $this->crimeDAO->somaTotalHomicidios ( $i  );
+			$somaHomicidios2010_2011 [] = $this->crimeDAO->totalMurder ( $i  );
 		}
 		
 		$retornoHomicidios2010_2011 = array_sum ( $somaHomicidios2010_2011  );
@@ -306,7 +306,7 @@ class CrimeController {
 	 */
 	public function _somaTotalHomicidios( ) {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTotalHomicidios [] = $this->crimeDAO->somaTotalHomicidios ( $i  );
+			$somaTotalHomicidios [] = $this->crimeDAO->totalMurder ( $i  );
 		}
 		
 		$retornoSomaTotalHomicidios = array_sum ( $somaTotalHomicidios  );
@@ -319,7 +319,7 @@ class CrimeController {
 	 */
 	public function _somaLesaoCorporal( ) {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaLesaoCorporal [] = $this->crimeDAO->somaLesaoCorporal ( $i  );
+			$somaLesaoCorporal [] = $this->crimeDAO->totalInjury ( $i  );
 		}
 		$retornoSomaLesaoCorporal = array_sum ( $somaLesaoCorporal  );
 		return $retornoSomaLesaoCorporal;
@@ -355,7 +355,7 @@ class CrimeController {
 	 */
 	public function _somaTotalTentativasHomicidio2010_2011( ) {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalTentativasHomicidio2010_2011 [] = $this->crimeDAO->somaTotalTentativasHomicidio ( $i  );
+			$somaTotalTentativasHomicidio2010_2011 [] = $this->crimeDAO->totalAttemptedMurder ( $i  );
 		}
 		$retornoSomaTotalTentativasHomicidio2010_2011 = array_sum ( $somaTotalTentativasHomicidio2010_2011  );
 		return $retornoSomaTotalTentativasHomicidio2010_2011;
@@ -366,6 +366,6 @@ class CrimeController {
 	 * @return int $totalCrimes
 	 */
 	public function _somarGeral( ) {
-		return $this->crimeDAO->somarGeral ( );
+		return $this->crimeDAO->totalCrime ( );
 	}
 }

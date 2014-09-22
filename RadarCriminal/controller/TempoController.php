@@ -35,7 +35,7 @@ class TempoController {
 	 * @return array $periodos
 	 */
 	public function _listarTodos( ) {
-		return $this->tempoDAO->listarTodos ( );
+		return $this->tempoDAO->listAll ( );
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class TempoController {
 	 * @return Array $tempos
 	 */
 	public function _listarTodasEmOrdem( ) {
-		return $this->tempoDAO->listarTodasEmOrdem ( );
+		return $this->tempoDAO->orderListAll ( );
 	}
 	
 	/**
@@ -52,7 +52,7 @@ class TempoController {
 	 * @return String $tempo
 	 */
 	public function _consultarPorId( $id ) {
-		return $this->tempoDAO->consultarPorId ( $id  );
+		return $this->tempoDAO->idFind ( $id  );
 	}
 	
 	/**
@@ -61,7 +61,7 @@ class TempoController {
 	 * @return String $periodo    *refactor
 	 */
 	public function _consultarPorIntervalo( $intervalo ) {
-		return $this->tempoDAO->consultarPorIntervalo ( $intervalo  );
+		return $this->tempoDAO->intervalFind ( $intervalo  );
 	}
 	
 	/**
@@ -70,7 +70,7 @@ class TempoController {
 	 * @return boolean $registered     *refactor
 	 */
 	public function _inserirTempo( Tempo $tempo ) {
-		return $this->tempoDAO->inserirTempo ( $tempo  );
+		return $this->tempoDAO->addTime ( $tempo  );
 	}
 	
 	/**
@@ -82,7 +82,7 @@ class TempoController {
 		for( $i = 0; $i < count ( $arrayTempo  ); $i ++ ) {
 			$dadosTempo = new Tempo ( );
 			$dadosTempo->__setIntervalo ( $arrayTempo [$i]  );
-			$this->tempoDAO->inserirTempo ( $dadosTempo  );
+			$this->tempoDAO->addTime ( $dadosTempo  );
 		}
 	}
 	
@@ -98,7 +98,7 @@ class TempoController {
 			$dadosTempo->__setIntervalo ( $ano  );
 			for( $j = 0; $j < count ( $arrayTempo [$ano]  ); $j ++ ) {
 				$dadosTempo->__setMes ( $arrayDadosTempo [$ano] [$j]  );
-				$this->tempoDAO->inserirTempo ( $dadosTempo  );
+				$this->tempoDAO->addTime ( $dadosTempo  );
 			}
 			next ( $arrayAno  );
 		}

@@ -37,7 +37,7 @@ class RegiaoAdministrativaController {
 	 * @return Array $arrayRA
 	 */
 	public function _listarTodas( ) {
-		$arrayRA = $this->raDAO->listarTodas ( );
+		$arrayRA = $this->raDAO->listAll ( );
 		return $arrayRA;
 	}
 	
@@ -46,7 +46,7 @@ class RegiaoAdministrativaController {
 	 * @return Array $nomeRA
 	 */
 	public function _listarTodasAlfabeticamente( ) {
-		$arrayRA = $this->raDAO->listarTodasAlfabeticamente ( );
+		$arrayRA = $this->raDAO->alphabeticallyListAll ( );
 		for( $i = 0; $i < (count ( $arrayRA  ) ); $i ++ ) {
 			$nomeRA [] = $arrayRA [$i]->__getNomeRegiao ( );
 		}
@@ -65,7 +65,7 @@ class RegiaoAdministrativaController {
 		} else {
 			//nothing to do here
 		}
-		$RA = $this->raDAO->consultarPorId ( $id );
+		$RA = $this->raDAO->idFind ( $id );
 		return $RA;
 	}
 	
@@ -81,7 +81,7 @@ class RegiaoAdministrativaController {
 		} else {
 			//nothing to do here
 		}
-		$RA = $this->raDAO->consultarPorNome ( $nome );
+		$RA = $this->raDAO->nameFind ( $nome );
 		return $RA;
 	}
 	
@@ -90,7 +90,7 @@ class RegiaoAdministrativaController {
 	 * @return int $sum
 	 */
 	public function _contarRegistrosRA( ) {
-		return $this->raDAO->contarRegistrosRA ( );
+		return $this->raDAO->countRegisters ( );
 	}
 	
 	/**
@@ -99,7 +99,7 @@ class RegiaoAdministrativaController {
 	 * @return boolean $registered *refactor
 	 */
 	public function _inserirRA(RegiaoAdministrativa $RA ) {
-		return $this->raDAO->inserirRA ( $RA  );
+		return $this->raDAO->addRA ( $RA  );
 	}
 	
 	/**
@@ -111,7 +111,7 @@ class RegiaoAdministrativaController {
 		for( $i = 0; $i < count ( $arrayRA  ); $i ++ ) {
 			$dadosRegiao = new RegiaoAdministrativa ( );
 			$dadosRegiao->__setNomeRegiao ( $arrayRA [$i]  );
-			$this->raDAO->inserirRA ( $dadosRegiao  );
+			$this->raDAO->addRA ( $dadosRegiao  );
 		}
 	}
 }

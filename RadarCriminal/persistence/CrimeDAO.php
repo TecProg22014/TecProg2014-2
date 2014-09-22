@@ -18,8 +18,7 @@ class CrimeDAO{
 	 * @var Conexao connection
 	 */
 	
-	private $connection; //Variable to conect with the database
-
+	private $connection; 
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
