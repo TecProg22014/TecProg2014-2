@@ -18,7 +18,7 @@ class CrimeDAO{
 	 * @var Conexao connection
 	 */
 	
-	private $connection;
+	private $connection; //Variable to conect with the database
 
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -41,12 +41,12 @@ class CrimeDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM crime";
-		$result = $this->connection->base->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
 		while( $register = $result->FetchNextObject( ) )
 		{
-			$crimeData = new Crime( );
+			$crimeData = new Crime( ); //Instance of Category for use the datas
 			$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,$register->NATUREZA_ID_NATUREZA,$register->QUANTIDADE );
-			$crimeReturn[] = $crimeData;
+			$crimeReturn[] = $crimeData; //Array for return all the categories
 		}
 		return $crimeReturn;
 	}
