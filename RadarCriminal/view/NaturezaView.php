@@ -30,7 +30,9 @@ class NaturezaView {
 		$todasNaturezas = $this->naturezaCO->_listarTodasAlfabicamente ();
 		for($i = 0, $retornoTipos = ""; $i < count ( $todasNaturezas ); $i ++) {
 			$dadosCrime = $this->crimeCO->_somaDeCrimePorNatureza ( $todasNaturezas [$i]->__getNatureza () );
-			$retornoTipos = $retornoTipos . "<h3>" . $todasNaturezas [$i]->__getNatureza () . "</h3>
+			$retornoTipos = $retornoTipos . "<h3>" . 
+							$todasNaturezas [$i]->__getNatureza () . "</h3>
+							
 				<div class=\"progress\" title=\"" . number_format ( $dadosCrime, 0, ',', '.' ) . "\">
 				<div class=\"bar\" style=\"width: " . (100 * $dadosCrime / 450000) . "%;\"></div>
 				</div>";
@@ -81,7 +83,8 @@ class NaturezaView {
 			 * Loop that defines what will be represented in the graph
 			 * the string ("\"bar\"") defines the graphs full bar and
 			 * the string ("\"bar simple\"") defines the graphs dotted bar
-			 * The conditional 'if($i%2==0)' grants that the dotted and full bars will be intercalated.
+			 * The conditional 'if($i%2==0)' grants that the dotted 
+			 * and full bars will be intercalated.
 			 * Returns the concatenated strings array
 			 */
 			if ($i % 2 == 0) {
@@ -128,7 +131,6 @@ class NaturezaView {
 									
 									 " . $this->_retornarDadosDeNaturezaFormatado ( $naturezaAtual->__getNatureza () ) . " </div>
 									
-		
 							</div>
 				</div>
 		

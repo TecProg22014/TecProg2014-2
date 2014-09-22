@@ -44,7 +44,8 @@ class RegiaoAdministrativaDAO {
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$raData = new RegiaoAdministrativa( ); //Instance of RA for use the datas
-			$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
+			$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
+										  $register->NOME );
 			$raReturn[] = $raData; //Array for return all the RAs
 		}
 		return $raReturn;
@@ -60,7 +61,8 @@ class RegiaoAdministrativaDAO {
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$raData = new RegiaoAdministrativa( );
-			$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
+			$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
+										  $register->NOME );
 			$raReturn[] = $raData;
 		}
 		return $raReturn;
@@ -72,11 +74,13 @@ class RegiaoAdministrativaDAO {
 	 * @return String $raData
 	 */
 	public function idFind( $raId ){
-		$sql = "SELECT * FROM regiao_administrativa WHERE id_regiao_administrativa ='".$raId."'";
+		$sql = "SELECT * FROM regiao_administrativa 
+				WHERE id_regiao_administrativa ='".$raId."'";
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a RA
 		$raData = new RegiaoAdministrativa( );
-		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
+		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
+									  $register->NOME );
 		return $raData;
 
 	}
@@ -91,7 +95,8 @@ class RegiaoAdministrativaDAO {
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$raData = new RegiaoAdministrativa( );
-		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
+		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,
+									  $register->NOME );
 		return $raData;
 	}
 	
@@ -100,7 +105,8 @@ class RegiaoAdministrativaDAO {
 	 * @return int $register
 	 */
 	public function countRegisters( ){
-		$sql = "SELECT COUNT(id_regiao_administrativa )AS total FROM regiao_administrativa";
+		$sql = "SELECT COUNT(id_regiao_administrativa )AS total 
+				FROM regiao_administrativa";
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -112,7 +118,8 @@ class RegiaoAdministrativaDAO {
 	 * @return boolean $result
 	 */
 	public function addRA(RegiaoAdministrativa $RA ){
-		$sql = "INSERT INTO regiao_administrativa (raName ) values ('{$RA->__getNomeRegiao( )}' )";
+		$sql = "INSERT INTO regiao_administrativa (raName ) values 
+				('{$RA->__getNomeRegiao( )}' )";
 		$result = $this->connection->banco->Execute( $sql );
 		return $result;
 	}

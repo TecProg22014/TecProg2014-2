@@ -34,15 +34,14 @@ class ConexaoTeste{
 	 * @param $db;
 	 */
 	public function __construct( ){
-
 		$this->baseType      = "mysql";
 		$this->server        = "localhost";
 		$this->user        	 = "root";
 		$this->key           = "";
 		$this->db            = "radar_criminal_teste";
-		$this->base = NewADOConnection($this->baseType);
+		$this->base 		 = NewADOConnection($this->baseType);
 		$this->base->dialect = 3;
-		$this->base->debug = false;
+		$this->base->debug 	 = false;
 		$this->base->Connect($this->server,$this->user,$this->key,$this->db);
 	}
 }

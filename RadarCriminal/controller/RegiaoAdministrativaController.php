@@ -63,8 +63,9 @@ class RegiaoAdministrativaController {
 		if (! is_numeric ( $id  ) ) {
 			throw new EErroConsulta ( );
 		} else {
-			$RA = $this->raDAO->consultarPorId ( $id );
+			//nothing to do here
 		}
+		$RA = $this->raDAO->consultarPorId ( $id );
 		return $RA;
 	}
 	
@@ -78,8 +79,9 @@ class RegiaoAdministrativaController {
 		if (! is_string ( $nome  ) ) {
 			throw new EErroConsulta ( );
 		} else {
-			$RA = $this->raDAO->consultarPorNome ( $nome );
+			//nothing to do here
 		}
+		$RA = $this->raDAO->consultarPorNome ( $nome );
 		return $RA;
 	}
 	

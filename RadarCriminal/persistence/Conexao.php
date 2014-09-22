@@ -42,7 +42,7 @@ class Conexao{
 		$this->db            = "radar_criminal";
 		$this->base 		 = NewADOConnection($this->baseType);
 		$this->base->dialect = 3;
-		$this->base->debug = false;
+		$this->base->debug 	 = false;
 		$this->base->Connect($this->server,$this->user,$this->key,$this->db);
 	}
 }

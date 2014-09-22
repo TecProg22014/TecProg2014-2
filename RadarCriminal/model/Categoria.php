@@ -44,8 +44,9 @@ class Categoria{
 		if ( !is_numeric( $categoryId ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->categoryId = $categoryId;
+			//nothing to do here
 		}
+		$this->idCategoria = $idCategoria;
 	}
 	
 	/**
@@ -65,8 +66,9 @@ class Categoria{
 		if( !is_string( $categoryName ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->categoryName = $categoryName;
+			//nothig to do here
 		}
+		$this->nomeCategoria = $nomeCategoria;
 	}
 	
 	/**

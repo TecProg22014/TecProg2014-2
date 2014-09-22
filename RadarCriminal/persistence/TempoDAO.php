@@ -40,7 +40,8 @@ class TempoDAO{
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$timeData = new Tempo( ); //Instance of Time for use the datas
-			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
+			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+											$register->MES );
 			$timeReturn[] = $timeData; //Array for return all the times
 		}
 		return $timeReturn;
@@ -56,7 +57,8 @@ class TempoDAO{
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$timeData = new Tempo( );
-			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
+			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+											$register->MES );
 			$timeReturn[] = $timeData;
 		}
 		return $timeReturn;
@@ -72,9 +74,9 @@ class TempoDAO{
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a time
 		$timeData = new Tempo( );
-		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
+		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+										$register->MES );
 		return $timeData;
-
 	}
 
 	/**
@@ -87,7 +89,8 @@ class TempoDAO{
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( ); 
 		$timeData = new Tempo( );
-		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
+		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+										$register->MES );
 		return $timeData;
 	}
 	

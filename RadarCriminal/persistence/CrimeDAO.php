@@ -45,7 +45,9 @@ class CrimeDAO{
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$crimeData = new Crime( ); //Instance of Category for use the datas
-			$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,$register->NATUREZA_ID_NATUREZA,$register->QUANTIDADE );
+			$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+											 $register->NATUREZA_ID_NATUREZA,
+											 $register->QUANTIDADE );
 			$crimeReturn[] = $crimeData; //Array for return all the categories
 		}
 		return $crimeReturn;
@@ -61,7 +63,9 @@ class CrimeDAO{
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$crimeData = new Crime( );
-		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,$register->NATUREZA_ID_NATUREZA,$register->QUANTIDADE );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
 		return $crimeData;
 	}
 	
@@ -75,7 +79,9 @@ class CrimeDAO{
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$crimeData = new Crime( );
-		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,$register->NATUREZA_ID_NATUREZA,$register->QUANTIDADE );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
 		return $crimeData;
 	}
 	
@@ -89,7 +95,9 @@ class CrimeDAO{
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$crimeData = new Crime( );
-		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,$register->NATUREZA_ID_NATUREZA,$register->QUANTIDADE );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
 		return $crimeData;
 	}
 	
@@ -109,7 +117,9 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalNatureCrime( $nature ){
-		$sql = "SELECT Sum(c. ) as total FROM crime c, nature n WHERE c.nature_id_nature = n.id_nature AND n.nature = '".$nature."' AND c.id_crime BETWEEN 1 AND 341";
+		$sql = "SELECT Sum(c. ) as total FROM crime c, 
+				nature n WHERE c.nature_id_nature = n.id_nature 
+				AND n.nature = '".$nature."' AND c.id_crime BETWEEN 1 AND 341";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -131,7 +141,10 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalNatureInYearCrime( $nature,$year ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n,tempo t WHERE c.nature_id_nature = n.id_nature AND c.tempo_id_tempo = t.id_tempo AND t.year = ".$year." AND n.nature = '".$nature."'";
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n,
+				tempo t WHERE c.nature_id_nature = n.id_nature AND 
+				c.tempo_id_tempo = t.id_tempo AND t.year = ".$year." AND 
+				n.nature = '".$nature."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -142,7 +155,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalInjury( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 3";
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE 
+				c.nature_id_nature = n.id_nature AND n.id_nature = 3";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -153,7 +167,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalAttemptedMurder( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 2";
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE
+				c.nature_id_nature = n.id_nature AND n.id_nature = 2";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -175,7 +190,10 @@ class CrimeDAO{
 	 * @param Crime $crime
 	 */
 	public function addCrime(Crime $crime ){
-		$sql = "INSERT INTO crime (nature_id_nature,tempo_id_tempo,amount,regiao_administrativa_id_regiao_administrativa ) VALUES ('{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}','{$crime->__getAmount( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
+		$sql = "INSERT INTO crime (nature_id_nature,tempo_id_tempo,amount,
+								   regiao_administrativa_id_regiao_administrativa ) VALUES (
+								   '{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}',
+								   '{$crime->__getAmount( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
 		$this->connection->base->Execute( $sql );
 	}
 

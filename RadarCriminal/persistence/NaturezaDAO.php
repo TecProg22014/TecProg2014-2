@@ -47,7 +47,9 @@ class NaturezaDAO{
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$natureData = new Natureza( ); //Instance of Nature for use the datas
-			$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
 			$natureReturn[] = $natureData; //Array for return all the natures
 		}
 		return $natureReturn;
@@ -67,7 +69,9 @@ class NaturezaDAO{
 		while( $register = $result->FetchNextObject( ) )
 		{
 			$natureData = new Natureza( );
-			$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
 			$natureReturn[] = $natureData;
 		}
 		return $natureReturn;
@@ -83,7 +87,9 @@ class NaturezaDAO{
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a nature
 		$natureData = new Natureza( );
-		$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
+		$natureData->__constructOverload( $register->ID_NATUREZA,
+										  $register->NATUREZA,
+										  $register->CATEGORIA_ID_CATEGORIA );
 		return $natureData;
 
 	}
@@ -94,12 +100,13 @@ class NaturezaDAO{
 	 * @return String $natureData
 	 */
 	public function nameFind( $nature ){
-
 		$sql = "SELECT * FROM nature WHERE nature = '".$nature."'";
 		$result = $this->connection->banco->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$natureData = new Natureza( );
-		$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
+		$natureData->__constructOverload( $register->ID_NATUREZA,
+										  $register->NATUREZA,
+										  $register->CATEGORIA_ID_CATEGORIA );
 		return $natureData;
 	}
 	
@@ -108,7 +115,9 @@ class NaturezaDAO{
 	 * @param $nature
 	 */
 	public function addNature(Natureza $nature ){
-		$sql = "INSERT INTO nature (categoria_id_categoria,nature ) values ('{$nature->__getIdCategoria( )}','{$nature->__getNatureza( )}' )";
+		$sql = "INSERT INTO nature (categoria_id_categoria,nature ) values (
+									'{$nature->__getIdCategoria( )}',
+									'{$nature->__getNatureza( )}' )";
 		$this->connection->banco->Execute( $sql );
 	}
 	
@@ -122,7 +131,9 @@ class NaturezaDAO{
 		$result = $this->connection->banco->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) ){
 			$natureData = new Natureza( );
-			$natureData->__constructOverload( $register->ID_NATUREZA,$register->NATUREZA,$register->CATEGORIA_ID_CATEGORIA );
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
 			$natureReturn[] = $natureData;
 		}
 		return $natureReturn;
