@@ -13,7 +13,7 @@ class RegiaoAdministrativaDAO {
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection;
+	private $connection; //Variable to conect with the database
 
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -36,16 +36,16 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM regiao_administrativa";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
 		/**
 	 	* While to alphabetically order of administrative regions
 	 	*
 	 	*/
 		while( $register = $result->FetchNextObject( ) )
 		{
-			$raData = new RegiaoAdministrativa( );
+			$raData = new RegiaoAdministrativa( ); //Instance of RA for use the datas
 			$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
-			$raReturn[] = $raData;
+			$raReturn[] = $raData; //Array for return all the RAs
 		}
 		return $raReturn;
 	}
@@ -74,7 +74,7 @@ class RegiaoAdministrativaDAO {
 	public function idFind( $raId ){
 		$sql = "SELECT * FROM regiao_administrativa WHERE id_regiao_administrativa ='".$raId."'";
 		$result = $this->connection->banco->Execute( $sql );
-		$register = $result->FetchNextObject( );
+		$register = $result->FetchNextObject( ); //Auxiliar variable to register a RA
 		$raData = new RegiaoAdministrativa( );
 		$raData->__constructOverload( $register->ID_REGIAO_ADMINISTRATIVA,$register->NOME );
 		return $raData;
