@@ -18,12 +18,13 @@ class Crime{
 	 * @var int raId
 	 * @var String exceptionCrime
 	 */
-	private $crimeId;
-	private $amount;
-	private $timeId;
-	private $natureId;
-	private $raId;
-	private $exceptionCrime;
+	private $crimeId; //Identifier of a crime
+	private $amount; //Amount of crime
+	private $timeId; //Identifier of the time of a crime
+	private $natureId; //Identifier of the nature of a crime
+	//RA = brazilian acronym for administrative region, a kind of city
+	private $raId; //Identifier of the administrative regions of a crime 
+	private $exceptionCrime; //Variable to throws exception of a crime
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
