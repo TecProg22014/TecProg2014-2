@@ -11,135 +11,135 @@ include_once "/exceptions/EFalhaNaturezaController.php";
 /**
  * The NaturezaController class is the class that controls the CRUD of natures of crimes.
  * This class interfaces the view to the persistence in the database, and has only one atribbute
- * $naturezaDAO.
+ * $natureDAO.
  */
 class NaturezaController {
 	
 	/**
 	 * Variable to instance a object to percist in the database
-	 * @var naturezaDAO
+	 * @var natureDAO
 	 */
-	private $naturezaDAO;
+	private $natureDAO;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct( ) {
-		$this->naturezaDAO = new NaturezaDAO ( );
+	public function __construct() {
+		$this->natureDAO = new NaturezaDAO  ();
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste( ) {
-		$this->naturezaDAO->__constructTeste ( );
+	public function __constructTest() {
+		$this->natureDAO->__constructTest ();
 	}
 	
 	/**
 	 * Function to select all the natures of crimes
-	 * @return Array $resultado
+	 * @return Array $result
 	 */
-	public function _listarTodas( ) {
-		$resultado = $this->naturezaDAO->listarTodas ( );
+	public function _getAllNatures() {
+		$result = $this->natureDAO->listAll ();
 		
-		return $resultado;
+		return $result;
 	}
 	
 	/**
 	 * Function to alphabetically list all the natures of crimes
-	 * @return Array $resultado
+	 * @return Array $result
 	 */
-	public function _listarTodasAlfabicamente( ) {
-		$resultado = $this->naturezaDAO->listarTodasAlfabicamente ( );
-		return $resultado;
+	public function _getNaturesAlphabetically() {
+		$result = $this->natureDAO->alphabeticallyListAll ();
+		return $result;
 	}
 	
 	/**
 	 * Function to select one nature of crime by the id
 	 * @param int $id        	
 	 * @throws Exception EErroConsulta
-	 * @return String $natureza
+	 * @return String $nature
 	 */
-	public function _consultarPorId($id) {
+	public function _getNatureById($id) {
 		if (! is_numeric ( $id )) {
 			throw new EErroConsulta ();
 		}else{
-			$natureza = $this->naturezaDAO->consultarPorId ( $id );
+			$nature = $this->natureDAO->idFind ( $id );
 		}
-		return $natureza;
+		return $nature;
 	}
 	
 	/**
 	 * Function to select one nature of crime by the name
-	 * @param String $naturezaConsulta        	
-	 * @return String $natureza
+	 * @param String $natureName
+	 * @return String $nature
 	 */
-	public function _consultarPorNome( $naturezaConsulta ) {
-		$natureza = $this->naturezaDAO->consultarPorNome ( $naturezaConsulta  );
-		return $natureza;
+	public function getNatureByName( $natureName ) {
+		$nature = $this->natureDAO->nameFind ( $natureName  );
+		return $nature;
 	}
 	
 	/**
 	 * Function to select all the natures of crimes by one category's id
 	 * @param int $id        	
-	 * @return Array $retornaNaturezas
+	 * @return Array $returnNaturesByCategoryId
 	 */
-	public function _consultarPorIdCategoria( $id ) {
-		return $this->naturezaDAO->consultarPorIdCategoria ( $id  );
+	public function getNatureByCategoryId( $id ) {
+		return $this->natureDAO->idCategoryFind ( $id  );
 	}
 	
 	/**
 	 * Function to insert in the database one new nature of crime
-	 * @param  Object Natureza $natureza
+	 * @param  Object Natureza $nature
 	 * @return boolean $registered *refactor
 	 */
-	public function _inserirNatureza(Natureza $natureza ) {
-		return $this->naturezaDAO->inserirNatureza ( $natureza  );
+	public function _saveNature(Natureza $nature ) {
+		return $this->natureDAO->addNature ( $nature  );
 	}
 	
 	/**
 	 * Function to insert in the database the separate values of an array of natures
-	 * @param Array $arrayNatureza        	
+	 * @param Array $natureArray        	
 	 * @throws Exception EFalhaNaturezaController
 	 * @return boolean $registered *refactor
 	 */
-	public function _inserirArrayParse( $arrayNatureza ) {
-		if (! is_array ( $arrayNatureza  ) ) {
-			throw new EFalhaNaturezaController ( );
+	public function _inserirArrayParse( $natureArray ) {
+		if (! is_array ( $natureArray  ) ) {
+			throw new EFalhaNaturezaController ();
 		} else {
-			for($i = 0, $arrayKey = $arrayNatureza, $inicio = 0; $i < count ( $arrayNatureza ); $i ++) {
-				$chave = key ( $arrayKey );
-				$categoriaDAO = new CategoriaDAO ();
-				$dadosCategoria = new Categoria ();
-				$dadosCategoria = $categoriaDAO->consultarPorNome ( $chave );
-				for($j = $inicio; $j < (count ( $arrayNatureza [$chave] ) + $inicio); $j ++) {
-					$dadosNatureza = new Natureza ();
-					$dadosNatureza->__setNatureza ( $arrayNatureza [$chave] [$j] );
-					$dadosNatureza->__setIdCategoria ( $dadosCategoria->__getIdCategoria () );
-					$this->naturezaDAO->inserirNatureza ( $dadosNatureza );
+			for($i = 0, $arrayKey = $natureArray, $begining = 0; $i < count ( $natureArray ); $i ++) {
+				$key = key ( $arrayKey );
+				$categoryDAO = new CategoriaDAO ();
+				$categoryData = new Categoria ();
+				$categoryData = $categoryDAO->nameFind ( $key );
+				for($j = $begining; $j < (count ( $natureArray [$key] ) + $begining); $j ++) {
+					$natureData = new Natureza ();
+					$natureData->__setNatureza ( $natureArray [$key] [$j] );
+					$natureData->__setIdCategoria ( $categoryData->__getIdCategoria () );
+					$this->natureDAO->addNature ( $natureData );
 				}
-				$inicio = $inicio + count ( $arrayNatureza [$chave] );
+				$begining = $begining + count ( $natureArray [$key] );
 				next ( $arrayKey );
 			}
 		}
-		return $dadosCategoria;
+		return $categoryData;
 	}
 	
 	/**
 	 * Function to list one matrix of related crime, title and time
-	 * @param String $natureza        	
-	 * @return Array $dados
+	 * @param String $nature        	
+	 * @return Array $dado
 	 */
-	public function _retornarDadosDeNaturezaFormatado( $natureza ) {
-		$tempoDAO = new TempoDAO ( );
-		$crimeCO = new CrimeController ( );
-		$arrayDadosTempo = $tempoDAO->listarTodos ( );
-		$dados;
-		for( $i = 0; $i < count ( $arrayDadosTempo  ); $i ++ ) {
-			$dados ['tempo'] [$i] = $arrayDadosTempo [$i]->__getIntervalo ( );
-			$dados ['crime'] [$i] = $crimeCO->_somaDeCrimePorNaturezaEmAno ( $natureza, $dados ['tempo'] [$i]  );
-			$dados ['title'] [$i] = number_format ( $dados ['crime'] [$i], 0, ',', '.'  );
+	public function _retornarDadosDeNaturezaFormatado( $nature ) {
+		$timeDAO = new TempoDAO ();
+		$crimeCO = new CrimeController ();
+		$timeDataArray = $timeDAO->listAll ();
+		$data;
+		for( $i = 0; $i < count ( $timeDataArray  ); $i ++ ) {
+			$data ['tempo'] [$i] = $timeDataArray [$i]->__getIntervalo ();
+			$data ['crime'] [$i] = $crimeCO->_somaDeCrimePorNaturezaEmAno ( $nature, $data ['tempo'] [$i]  );
+			$data ['title'] [$i] = number_format ( $data ['crime'] [$i], 0, ',', '.'  );
 		}
-		return $dados;
+		return $data;
 	}
 }
