@@ -13,7 +13,7 @@ class TempoDAO{
 	 * Variable to instance a object to conect with the database
 	 * @var Conexao connection
 	 */
-	private $connection;
+	private $connection; //Variable to conect with the database
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
@@ -36,12 +36,12 @@ class TempoDAO{
 	 */
 	public function listAll( ){
 		$sql = "SELECT * FROM time";
-		$result = $this->connection->banco->Execute( $sql );
+		$result = $this->connection->banco->Execute( $sql ); //Show if the result of a function was successful
 		while( $register = $result->FetchNextObject( ) )
 		{
-			$timeData = new Tempo( );
+			$timeData = new Tempo( ); //Instance of Time for use the datas
 			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
-			$timeReturn[] = $timeData;
+			$timeReturn[] = $timeData; //Array for return all the times
 		}
 		return $timeReturn;
 	}
@@ -70,7 +70,7 @@ class TempoDAO{
 	public function idFind( $timeId ){
 		$sql = "SELECT * FROM time WHERE id_time = '".$timeId."'";
 		$result = $this->connection->banco->Execute( $sql );
-		$register = $result->FetchNextObject( );
+		$register = $result->FetchNextObject( ); //Auxiliar variable to register a time
 		$timeData = new Tempo( );
 		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
 		return $timeData;
@@ -85,7 +85,7 @@ class TempoDAO{
 	public function intervalFind( $interval ){
 		$sql = "SELECT * FROM time WHERE ano = '".$interval."'";
 		$result = $this->connection->banco->Execute( $sql );
-		$register = $result->FetchNextObject( );
+		$register = $result->FetchNextObject( ); 
 		$timeData = new Tempo( );
 		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,$register->MES );
 		return $timeData;
@@ -96,7 +96,7 @@ class TempoDAO{
 	 * @param $time
 	 */
 	public function addTime(Tempo $time ){
-		$sql = "INSERT INTO time (ano ) VALUES ('{$time->__getIntervalo( )}' )";
+		$sql = "INSERT INTO time (year ) VALUES ('{$time->__getIntervalo( )}' )";
 		$this->connection->banco->Execute( $sql );
 	}
 }
