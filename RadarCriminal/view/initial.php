@@ -58,7 +58,7 @@ $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 			<div class="box-content">
 				<div class="main-chart">
 				<!--Impressão de gráfico em barras-->
-				<?php echo $crimeVW-> SOLVE>>>>>>>>>>>>>>>>>>>>>>>>>> retornarDadosCrimeSomadoFormatoNovo() ?>
+				<?php echo $crimeVW->getCrimesData() ?>
 			</div>
 		</div>
 	</div>
