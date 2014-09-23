@@ -22,7 +22,7 @@ class CrimeView{
 	 * @return String $dataGraph  *refactor
 	 */
 	public function getCrimesData(){
-		return $this->crimeController->getCrimesData();
+		return $this->crimeController-> SOLVE>>>>>>>>>>>>>>>>>>>>>>> getCrimesData();
 	}
 
 	/**
