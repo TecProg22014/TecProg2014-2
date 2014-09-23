@@ -104,7 +104,7 @@ class RegiaoAdministrativaDAO {
 	 * Function to count the number of administrative regions
 	 * @return int $register
 	 */
-	public function countRegisters( ){
+	public function countAdministrativeRegions (){
 		$sql = "SELECT COUNT(id_regiao_administrativa )AS total 
 				FROM regiao_administrativa";
 		$result = $this->connection->base->Execute( $sql );
@@ -117,7 +117,7 @@ class RegiaoAdministrativaDAO {
 	 * @param Categoria $categoria
 	 * @return boolean $result
 	 */
-	public function addRA(RegiaoAdministrativa $RA ){
+	public function addAdministrativeRegion(RegiaoAdministrativa $RA ){
 		$sql = "INSERT INTO regiao_administrativa (raName ) values 
 				('{$RA->__getNomeRegiao( )}' )";
 		$result = $this->connection->base->Execute( $sql );

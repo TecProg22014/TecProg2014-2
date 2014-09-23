@@ -224,7 +224,7 @@ class CategoriaDAO{
 	 * @return int $register
 	 */
 	public function recordsCount( ){
-		$sql = "SELECT COUNT(id_category )AS total FROM category";
+		$sql = "SELECT COUNT(id_categoria )AS total FROM categoria";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;

@@ -100,9 +100,9 @@ class CategoriaController {
 		} else {
 			//nothing to do here
 		}
-		$dadosCategoria = new Categoria ();
+		$categoryData = new Categoria ();
 			for($i = 0; $i < count ( $categoryArray ); $i ++) {
-				$categoryData->__setNomeCategoria ( $categoryArray [$i] );
+				$categoryData->__setCategoryName ( $categoryArray [$i] );
 				$return = $this->categoryDAO->addCategory ( $categoryData );
 			}
 		return $return;
