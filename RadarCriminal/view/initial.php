@@ -21,7 +21,7 @@ $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 			<div class="boxchart-overlay radarGrey">
 				<div class="boxchart">5,6,7,2,0,4,2,4,8,2,3,3,2</div>
 			</div>
-			<span class="title">Ocorrências</span> <span class="value"><?php echo number_format($crimeVW->_somarGeral(),0,',','.') ?>
+			<span class="title">Ocorrências</span> <span class="value"><?php echo number_format($crimeVW->_sumAllCrimes(),0,',','.') ?>
 			</span>
 		</div>
 
@@ -30,21 +30,21 @@ $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 			<div class="boxchart-overlay red">
 				<div class="boxchart">1,2,6,4,0,8,2,4,5,3,1,7,5</div>
 			</div>
-			<span class="title">Homicídios</span> <span class="value"> <?php echo number_format($crimeVW->_somaTotalHomicidios(),0,',','.') ?>
+			<span class="title">Homicídios</span> <span class="value"> <?php echo number_format($crimeVW->_sumAllHomicides(),0,',','.') ?>
 			</span>
 		</div>
 
 		<div class="span3 smallstat box mobileHalf noMargin" onTablet="span6"
 			onDesktop="span3">
 			<i class="icon-search radarLightYellow"></i> <span class="title">Roubo</span> <span
-				class="value"><?php echo  number_format($categoriaVW->_somaTotalRoubo(),0,',','.') ?>
+				class="value"><?php echo  number_format($categoriaVW->_sumAllTheft(),0,',','.') ?>
 			</span>
 		</div>
 
 		<div class="span3 smallstat mobileHalf box" onTablet="span6"
 			onDesktop="span3">
 			<i class="icon-certificate radarYellow"></i> <span class="title">Furto</span>
-			<span class="value"><?php echo number_format($categoriaVW->_somaTotalFurtos(),0,',','.') ?>
+			<span class="value"><?php echo number_format($categoriaVW->_sumAllStealing(),0,',','.') ?>
 			</span>
 		</div>
 
@@ -58,7 +58,7 @@ $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 			<div class="box-content">
 				<div class="main-chart">
 				<!--Impressão de gráfico em barras-->
-				<?php echo $crimeVW->retornarDadosCrimeSomadoFormatoNovo() ?>
+				<?php echo $crimeVW->getCrimesData() ?>
 			</div>
 		</div>
 	</div>
@@ -91,7 +91,7 @@ $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
 						</div>
 					</div>
 					<div class="box-content" style="display:none;">
-						<?php echo utf8_encode($naturezaVW->listarTodasAlfabicamente()); ?>
+						<?php echo utf8_encode($naturezaVW->getAllAlphabeticallyOrderedNatures()); ?>
 					</div>
 		</div><!--/span-->
 

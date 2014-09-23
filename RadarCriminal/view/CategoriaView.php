@@ -24,11 +24,12 @@ class CategoriaView {
 	 * @return Array $categoryArray
 	 */
 	public function listAllCategories() {
-		$categoryArray = $this->categoryController->_getAllCategories ();
 		if (! is_array ( $categoryArray )) {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
+		$categoryArray = $this->categoryController->_getAllCategories ();
 		return $categoryArray;
 	}
 	
@@ -66,11 +67,12 @@ class CategoriaView {
 	 * @return String $category
 	 */
 	public function _selectCategoryById($id) {
-		$category = $this->categoryController->getCategoryById ( $id );
 		if (get_class ( $category ) != 'Categoria') {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
+		$category = $this->categoryController->getCategoryById ( $id );
 		return $category;
 	}
 	
@@ -81,12 +83,14 @@ class CategoriaView {
 	 * @return String $category
 	 */
 	public function _selectCategoryByName($categoryName) {
-		$category = $this->categoryController->_consultarPorNome ( $categoryName );
 		if (get_class ( $category ) != 'Categoria') {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
+		$category = $this->categoryController->_consultarPorNome ( $categoryName );
 		return $category;
+		
 	}
 	
 	/**
