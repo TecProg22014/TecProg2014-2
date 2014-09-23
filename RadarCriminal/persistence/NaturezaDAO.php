@@ -18,113 +18,124 @@ class NaturezaDAO{
 	
 	/**
 	 * Variable to instance a object to conect with the database
-	 * @var Conexao conexao
+	 * @var Conexao connection
 	 */
-	private $conexao;
+	private $connection;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct( ){
-		$this->conexao = new Conexao( );
+		$this->connection = new Conexao( );
 	}
 	
 	/**
-	 * Specific constroctor to unit test
+	 * Specific constructor to unit test
 	 */
 	public function __constructTeste( ){
-		$this->conexao = new ConexaoTeste( );
+		$this->connection = new ConexaoTeste( );
 
 	}
 	
 	/**
 	 * Function to list all nature of crimes
-	 * @return Array $aretornaNaturezas
+	 * @return Array $anatureReturn
 	 */
-	public function listarTodas( ){
-		$sql = "SELECT * FROM natureza";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) )
+	public function listAll( ){
+		$sql = "SELECT * FROM nature";
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successfu
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
-			$retornaNaturezas[] = $dadosNatureza;
+			$natureData = new Natureza( ); //Instance of Nature for use the datas
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
+			$natureReturn[] = $natureData; //Array for return all the natures
 		}
-		return $retornaNaturezas;
+		return $natureReturn;
 	}
 	
 	/**
 	 * Function to alphabetically list all nature of crimes
-	 * @return Array $aretornaNaturezas
+	 * @return Array $anatureReturn
 	 */
-	public function listarTodasAlfabicamente( ){
-		$sql = "SELECT * FROM natureza ORDER BY natureza ASC ";
-		$resultado = $this->conexao->banco->Execute( $sql );
+	public function alphabeticallyListAll( ){
+		$sql = "SELECT * FROM nature ORDER BY nature ASC ";
+		$result = $this->connection->base->Execute( $sql );
 		/**
 	 	* While to alphabetically order of nature
 	 	*
 	 	*/
-		while( $registro = $resultado->FetchNextObject( ) )
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
-			$retornaNaturezas[] = $dadosNatureza;
+			$natureData = new Natureza( );
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
+			$natureReturn[] = $natureData;
 		}
-		return $retornaNaturezas;
+		return $natureReturn;
 	}
 	
 	/**
 	 * Function to select one nature by the id
 	 * @param int $id
-	 * @return String $dadosNatureza
+	 * @return String $natureData
 	 */
-	public function consultarPorId( $id ){
-		$sql = "SELECT * FROM natureza WHERE id_natureza = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosNatureza = new Natureza( );
-		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
-		return $dadosNatureza;
+	public function idFind( $natureId ){
+		$sql = "SELECT * FROM nature WHERE id_nature = '".$natureId."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( ); //Auxiliar variable to register a nature
+		$natureData = new Natureza( );
+		$natureData->__constructOverload( $register->ID_NATUREZA,
+										  $register->NATUREZA,
+										  $register->CATEGORIA_ID_CATEGORIA );
+		return $natureData;
 
 	}
 	
 	/**
 	 * Function to select one nature by the name
 	 * @param String $name
-	 * @return String $dadosNatureza
+	 * @return String $natureData
 	 */
-	public function consultarPorNome( $natureza ){
-
-		$sql = "SELECT * FROM natureza WHERE natureza = '".$natureza."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosNatureza = new Natureza( );
-		$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
-		return $dadosNatureza;
+	public function nameFind( $nature ){
+		$sql = "SELECT * FROM nature WHERE nature = '".$nature."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$natureData = new Natureza( );
+		$natureData->__constructOverload( $register->ID_NATUREZA,
+										  $register->NATUREZA,
+										  $register->CATEGORIA_ID_CATEGORIA );
+		return $natureData;
 	}
 	
 	/**
 	 * Function to insert one nature in the database
-	 * @param $natureza
+	 * @param $nature
 	 */
-	public function inserirNatureza(Natureza $natureza ){
-		$sql = "INSERT INTO natureza (categoria_id_categoria,natureza ) values ('{$natureza->__getIdCategoria( )}','{$natureza->__getNatureza( )}' )";
-		$this->conexao->banco->Execute( $sql );
+	public function addNature(Natureza $nature ){
+		$sql = "INSERT INTO nature (categoria_id_categoria,nature ) values (
+									'{$nature->__getIdCategoria( )}',
+									'{$nature->__getNatureza( )}' )";
+		$this->connection->base->Execute( $sql );
 	}
 	
 	/**
 	 * Function to select one nature by the category's id
 	 * @param int $id
-	 * @return String $dadosNaturezas
+	 * @return String $natureDatas
 	 */
-	public function consultarPorIdCategoria( $id ){
-		$sql = "SELECT * FROM natureza WHERE categoria_id_categoria= '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) ){
-			$dadosNatureza = new Natureza( );
-			$dadosNatureza->__constructOverload( $registro->ID_NATUREZA,$registro->NATUREZA,$registro->CATEGORIA_ID_CATEGORIA );
-			$retornaNaturezas[] = $dadosNatureza;
+	public function idCategoryFind( $id ){
+		$sql = "SELECT * FROM nature WHERE categoria_id_categoria= '".$id."'";
+		$result = $this->connection->base->Execute( $sql );
+		while( $register = $result->FetchNextObject( ) ){
+			$natureData = new Natureza( );
+			$natureData->__constructOverload( $register->ID_NATUREZA,
+											  $register->NATUREZA,
+											  $register->CATEGORIA_ID_CATEGORIA );
+			$natureReturn[] = $natureData;
 		}
-		return $retornaNaturezas;
+		return $natureReturn;
 	}
 }

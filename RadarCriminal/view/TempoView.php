@@ -22,5 +22,4 @@ class TempoView {
 	public function getFormatedTimeData() {
 		return $this->timeController->_formatDataList ();
 	}
-	
 }

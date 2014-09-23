@@ -57,9 +57,10 @@ class CategoriaController {
 		if (! is_numeric ( $id  ) ) {
 			throw new EErroConsulta ();
 		} else {
-			$category = $this->categoryDAO->idFind ( $id );
+			//nothing to do here
 		}
-		return $category;
+		$category = $this->categoryDAO->idFind ( $id );
+		return $categoria;
 	}
 	
 	/**
@@ -72,8 +73,9 @@ class CategoriaController {
 		if (! is_string ( $categoryName  ) ) {
 			throw new EErroConsulta ();
 		} else {
-			$category = $this->categoryDAO->nameFind ( $categoryName );
+			//nothing to do here
 		}
+		$category = $this->categoryDAO->nameFind ( $categoryName );
 		return $category;
 	}
 	
@@ -96,13 +98,13 @@ class CategoriaController {
 		if (! is_array ( $categoryArray  ) ) {
 			throw new EErroConsulta ();
 		} else {
+			//nothing to do here
+		}
 		$dadosCategoria = new Categoria ();
 			for($i = 0; $i < count ( $categoryArray ); $i ++) {
 				$categoryData->__setNomeCategoria ( $categoryArray [$i] );
 				$return = $this->categoryDAO->addCategory ( $categoryData );
 			}
-		}
-		
 		return $return;
 	}
 	

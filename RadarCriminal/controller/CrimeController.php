@@ -65,7 +65,6 @@ class CrimeController {
 	 * @return Object Crime
 	 */
 	public function _getCrimesByNatureId( $idNature ) {
-		return $this->crimeDAO->natureIdFind ( $idNature  );
 	}
 	
 	/**

@@ -15,168 +15,185 @@ class CrimeDAO{
 	
 	/**
 	 * Variable to instance a object to conect with the database
-	 * @var Conexao conexao
+	 * @var Conexao connection
 	 */
 	
-	private $conexao;
-
+	private $connection; 
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct( ){
-		$this->conexao = new Conexao( );
+		$this->connection = new Conexao( );
 	}
 
 	/**
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste( ){
-		$this->conexao = new ConexaoTeste( );
+		$this->connection = new ConexaoTeste( );
 
 	}
 	
 	/**
 	 * Function to list all crimes
-	 * @return Array $retornaCrimes
+	 * @return Array $crimeReturn
 	 */
-	public function listarTodos( ){
+	public function listAll( ){
 		$sql = "SELECT * FROM crime";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) )
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosCrime = new Crime( );
-			$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
-			$retornaCrimes[] = $dadosCrime;
+			$crimeData = new Crime( ); //Instance of Category for use the datas
+			$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+											 $register->NATUREZA_ID_NATUREZA,
+											 $register->QUANTIDADE );
+			$crimeReturn[] = $crimeData; //Array for return all the categories
 		}
-		return $retornaCrimes;
+		return $crimeReturn;
 	}
 	
 	/**
 	 * Function to select one crime by the id
-	 * @param int $id
-	 * @return String $dadosCrime
+	 * @param int $crimeId
+	 * @return String $crimeData
 	 */
-	public function consultarPorId( $id ){
-		$sql = "SELECT * FROM crime WHERE id_crime = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
-		return $dadosCrime;
+	public function idFind( $crimeId ){
+		$sql = "SELECT * FROM crime WHERE id_crime = '".$crimeIid."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$crimeData = new Crime( );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
+		return $crimeData;
 	}
 	
 	/**
 	 * Function to select one crime by the nature id
-	 * @param int $id
-	 * @return String $dadosCrime
+	 * @param int $natureId
+	 * @return String $crimeData
 	 */
-	public function consultarPorIdNatureza( $id ){
-		$sql = "SELECT * FROM crime WHERE natureza_id_natureza = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
-		return $dadosCrime;
+	public function natureFind( $natureId ){
+		$sql = "SELECT * FROM crime WHERE nature_id_nature = '".$natureId."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$crimeData = new Crime( );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
+		return $crimeData;
 	}
 	
 	/**
 	 * Function to select one crime by the time id
 	 * @param int $id
-	 * @return String $dadosCrime
+	 * @return String $crimeData
 	 */
-	public function consultarPorIdTempo( $id ){
-		$sql = "SELECT * FROM crime WHERE tempo_id_tempo = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosCrime = new Crime( );
-		$dadosCrime->__constructOverload( $registro->ID_CRIME,$registro->TEMPO_ID_TEMPO,$registro->NATUREZA_ID_NATUREZA,$registro->QUANTIDADE );
-		return $dadosCrime;
+	public function timeFind( $timeId ){
+		$sql = "SELECT * FROM crime WHERE tempo_id_tempo = '".$timeId."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$crimeData = new Crime( );
+		$crimeData->__constructOverload( $register->ID_CRIME,$register->TEMPO_ID_TEMPO,
+										 $register->NATUREZA_ID_NATUREZA,
+										 $register->QUANTIDADE );
+		return $crimeData;
 	}
 	
 	/**
 	 * Function to count the number of crimes in a year
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaDeCrimePorAno( $ano ){
-		$sql = "SELECT SUM(c.quantidade ) as total FROM crime c, tempo t WHERE t.ano = '".$ano."' AND c.tempo_id_tempo = t.id_tempo AND c.id_crime BETWEEN 1 AND 341";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalYearCrime( $year ){
+		$sql = "SELECT SUM(c.amount ) as total FROM crime c, tempo t WHERE t.year = '".$year."' AND c.tempo_id_tempo = t.id_tempo AND c.id_crime BETWEEN 1 AND 341";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 	
 	/**
 	 * Function to count the number of crimes in a nature
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaDeCrimePorNatureza( $natureza ){
-		$sql = "SELECT Sum(c.quantidade ) as total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.natureza = '".$natureza."' AND c.id_crime BETWEEN 1 AND 341";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalNatureCrime( $nature ){
+		$sql = "SELECT Sum(c. ) as total FROM crime c, 
+				nature n WHERE c.nature_id_nature = n.id_nature 
+				AND n.nature = '".$nature."' AND c.id_crime BETWEEN 1 AND 341";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of homicide
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalHomicidios( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 1";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalMurder( ){
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 1";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 	
 	/**
 	 * Function to count the number of crimes in a nature and a year
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaDeCrimePorNaturezaEmAno( $natureza,$ano ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n,tempo t WHERE c.natureza_id_natureza = n.id_natureza AND c.tempo_id_tempo = t.id_tempo AND t.ano = ".$ano." AND n.natureza = '".$natureza."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalNatureInYearCrime( $nature,$year ){
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n,
+				tempo t WHERE c.nature_id_nature = n.id_nature AND 
+				c.tempo_id_tempo = t.id_tempo AND t.year = ".$year." AND 
+				n.nature = '".$nature."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of injuries
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaLesaoCorporal( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 3";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalInjury( ){
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE 
+				c.nature_id_nature = n.id_nature AND n.id_nature = 3";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 	
 	/**
 	 * Function to count the number of attempted murder
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalTentativasHomicidio( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 2";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalAttemptedMurder( ){
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE
+				c.nature_id_nature = n.id_nature AND n.id_nature = 2";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of crimes
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somarGeral( ){
+	public function totalCrime( ){
 		$sql = "SELECT SUM(total ) as total FROM totalgeralcrimes ";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to insert one crime in the database
 	 * @param Crime $crime
 	 */
-	public function inserirCrime(Crime $crime ){
-		$sql = "INSERT INTO crime (natureza_id_natureza,tempo_id_tempo,quantidade,regiao_administrativa_id_regiao_administrativa ) VALUES ('{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}','{$crime->__getQuantidade( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
-		$this->conexao->banco->Execute( $sql );
+	public function addCrime(Crime $crime ){
+		$sql = "INSERT INTO crime (nature_id_nature,tempo_id_tempo,amount,
+								   regiao_administrativa_id_regiao_administrativa ) VALUES (
+								   '{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}',
+								   '{$crime->__getAmount( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
+		$this->connection->base->Execute( $sql );
 	}
 
 }

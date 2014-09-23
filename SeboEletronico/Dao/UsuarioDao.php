@@ -5,19 +5,21 @@ include "../Utilidades/ConexaoComBanco.php";
  * Class persistence of 'Usuario'
  * */
 class UsuarioDao {
-	
+
 	public function salvaUsuario( $usuario ){
 		$senhaAux = $usuario->getSenha();
 		$senhaFinal = $senhaAux[0];
-		 
+			
 		$sql="INSERT INTO senha (codigo_senha) VALUES ('".$senhaFinal."')";
 		mysql_query( $sql );
 
 		$sql2="SELECT id_senha FROM senha WHERE codigo_senha='".$senhaFinal."'";
 		$resultado = $id_senha = mysql_query( $sql2 );
 		$id_senha = mysql_fetch_array( $resultado );
-		$sql3 = "INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario, senha_usuario) VALUES ('".$usuario->getNome()."', '".$usuario->getEmail()."',
+		$sql3 = "INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario,
+				senha_usuario) VALUES ('".$usuario->getNome()."','".$usuario->getEmail()."',
 				'".$usuario->getTelefone()."','".$id_senha['id_senha']."')";
+
 		$usuarioRetorno = mysql_query( $sql3 );
 
 		return $usuarioRetorno;
@@ -26,8 +28,10 @@ class UsuarioDao {
 	public function alteraUsuario( $usuario, $idDoUsuario,$senhaVelha ){
 		$senhaAux = $usuario->getSenha();
 		$senhaAlterar = $senhaAux[0];
-		$sql = "UPDATE usuario SET nome_usuario = '".$usuario->getNome()."' , telefone_usuario = '".$usuario->getTelefone()."',
+		$sql = "UPDATE usuario SET nome_usuario = '".$usuario->getNome()."' ,
+				telefone_usuario = '".$usuario->getTelefone()."',
 				email_usuario = '".$usuario->getEmail()."' WHERE id_usuario = '".$idDoUsuario."'";
+		
 		$usuario = mysql_query( $sql );
 
 		if( $senhaAlterar != $senhaVelha ){
@@ -35,7 +39,9 @@ class UsuarioDao {
 			$resultado = mysql_query( $sql2 );
 			$id_senha = mysql_fetch_row( $resultado );
 
-			$sql3="UPDATE senha SET codigo_senha = '".$senhaAlterar."' WHERE id_senha = '".$id_senha[0]."'";
+			$sql3=" UPDATE senha SET codigo_senha = '".$senhaAlterar."' WHERE 
+				    id_senha = '".$id_senha[0]."'";
+			
 			$senhaSalva = mysql_query( $sql3 );
 		} else{
 			return ( $usuario && $senhaSalva );

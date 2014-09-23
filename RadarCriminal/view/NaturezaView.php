@@ -80,7 +80,8 @@ class NaturezaView {
 			 * Loop that defines what will be represented in the graph
 			 * the string ("\"bar\"") defines the graphs full bar and
 			 * the string ("\"bar simple\"") defines the graphs dotted bar
-			 * The conditional 'if($i%2==0)' grants that the dotted and full bars will be intercalated.
+			 * The conditional 'if($i%2==0)' grants that the dotted 
+			 * and full bars will be intercalated.
 			 * Returns the concatenated strings array
 			 */
 			if ($i % 2 == 0) {
@@ -127,7 +128,6 @@ class NaturezaView {
 									
 									 " . $this->getNatureData ( $currentNature->__getNatureza () ) . " </div>
 									
-		
 							</div>
 				</div>
 		

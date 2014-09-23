@@ -64,9 +64,11 @@ class NaturezaController {
 		if (! is_numeric ( $id )) {
 			throw new EErroConsulta ();
 		}else{
-			$nature = $this->natureDAO->idFind ( $id );
+			//nothing to do here
 		}
+		$nature = $this->natureDAO->idFind ( $id );
 		return $nature;
+
 	}
 	
 	/**
@@ -107,7 +109,9 @@ class NaturezaController {
 		if (! is_array ( $natureArray  ) ) {
 			throw new EFalhaNaturezaController ();
 		} else {
-			for($i = 0, $arrayKey = $natureArray, $begining = 0; $i < count ( $natureArray ); $i ++) {
+			//nothing to do here
+		}
+		for($i = 0, $arrayKey = $natureArray, $begining = 0; $i < count ( $natureArray ); $i ++) {
 				$key = key ( $arrayKey );
 				$categoryDAO = new CategoriaDAO ();
 				$categoryData = new Categoria ();
@@ -117,10 +121,9 @@ class NaturezaController {
 					$natureData->__setNatureza ( $natureArray [$key] [$j] );
 					$natureData->__setIdCategoria ( $categoryData->__getIdCategoria () );
 					$this->natureDAO->addNature ( $natureData );
-				}
-				$begining = $begining + count ( $natureArray [$key] );
-				next ( $arrayKey );
 			}
+			$begining = $begining + count ( $natureArray [$key] );
+			next ( $arrayKey );
 		}
 		return $categoryData;
 	}

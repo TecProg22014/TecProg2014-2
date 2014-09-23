@@ -22,7 +22,9 @@ class RegiaoAdministrativaView {
 	public function getAllAdministrativeRegionsAlphabetically() {
 		$administrativeRegionName = $this->administrativeRegionController->_getAdministrativeRegionsAlphabetically ();
 		for($i = 0, $administrativeRegionReturn = ""; $i < count ( $administrativeRegionName ); $i ++) {
-			$administrativeRegionReturn = $administrativeRegionReturn . "<li><a class=\"submenu\" href=\"?pag=u\"><i class=\"icon-map-marker\"></i><span class=\"hidden-tablet\">" . $administrativeRegionName [$i] . "</span></a></li>";
+			$administrativeRegionReturn = $administrativeRegionReturn . "<li><a class=\"submenu\" href=\"?pag=u\">
+										  <i class=\"icon-map-marker\"></i><span class=\"hidden-tablet\">"
+										   . $administrativeRegionName [$i] . "</span></a></li>";
 		}
 		return $administrativeRegionReturn;
 	}

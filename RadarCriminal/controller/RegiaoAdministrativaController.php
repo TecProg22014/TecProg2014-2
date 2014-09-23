@@ -63,8 +63,9 @@ class RegiaoAdministrativaController {
 		if (! is_numeric ( $id  ) ) {
 			throw new EErroConsulta ();
 		} else {
-			$administratveRegions = $this->administrativeRegionDAO->idFind ( $id );
+			//nothing to do here
 		}
+		$administratveRegions = $this->administrativeRegionDAO->idFind ( $id );
 		return $administratveRegions;
 	}
 	
@@ -78,8 +79,9 @@ class RegiaoAdministrativaController {
 		if (! is_string ( $nome  ) ) {
 			throw new EErroConsulta ();
 		} else {
-			$administratveRegions = $this->administrativeRegionDAO->nameFind ( $nome );
+			//nothing to do here
 		}
+		$administratveRegions = $this->administrativeRegionDAO->nameFind ( $nome );
 		return $administratveRegions;
 	}
 	
@@ -89,6 +91,7 @@ class RegiaoAdministrativaController {
 	 */
 	public function _countAdministrativeRegions() {
 		return $this->administrativeRegionDAO->countAdministrativeRegions ();
+
 	}
 	
 	/**
