@@ -1,175 +1,183 @@
 <?php
-
-
-include_once "/controller/CategoriaController.php";
+include_once "/controller/categoriaController.php";
 include_once "/exceptions/EErroConsulta.php";
+
 class CategoriaView {
+	
 	/**
 	 * Variable to instance one object of category controller
 	 * 
-	 * @var categoriaCO
+	 * @var $categoryController
 	 */
-	private $categoriaCO;
+	private $categoryController;
 	
 	/**
-	 * Constroctor to instance a new category controller
+	 * Constructor to instance a new category controller
 	 */
 	public function __construct() {
-		$this->categoriaCO = new CategoriaController ();
+		$this->categoryController = new CategoriaController();
 	}
 	
 	/**
 	 * Function to list all the categories
 	 * @throws Exception EErroConsulta
-	 * @return Array $arrayCategoria
+	 * @return Array $categoryArray
 	 */
-	public function listarTodas() {
-		$arrayCategoria = $this->categoriaCO->_listarTodas ();
-		if (! is_array ( $arrayCategoria )) {
+	public function listAllCategories() {
+		if (! is_array ( $categoryArray )) {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
-		return $arrayCategoria;
+		$categoryArray = $this->categoryController->_getAllCategories ();
+		return $categoryArray;
 	}
 	
 	/**
 	 * Function to show alphabetically all the categories
-	 * @return string $retornoCategoria
+	 * @return string $categoryReturn
 	 */
-	public function listarTodasAlfabicamente() {
-		$arrayCategoria = $this->categoriaCO->_listarTodasAlfabicamente ();
-		for($i = 0, $retornoCategoria = ""; $i < count ( $arrayCategoria ); $i ++) {
-			$auxCategoria = $arrayCategoria [$i];
-			$nomeCategoria = $auxCategoria->__getNomeCategoria ();
-			$idCategoria = $auxCategoria->__getIdCategoria ();
-			$retornoCategoria = $retornoCategoria . "<li><a class=\"submenu\" href=\"?pag=cCat&id=$i\"><i class=\"icon-inbox\"></i><span class=\"hidden-tablet\">$nomeCategoria</span></a></li>";
+	public function showAphabeticallyAllCategories() {
+		$categoryArray = $this->categoryController->_getAlphabeticallyAllCategories ();
+		for($i = 0, $categoryReturn = ""; $i < count ( $categoryArray ); $i ++) {
+			$auxCategory = $categoryArray [$i];
+			$categoryName = $auxCategory->__getNomeCategoria ();
+			$categoryId = $auxCategory->__getIdCategoria ();
+			$categoryReturn = $categoryReturn . "<li><a class=\"submenu\" 
+							  href=\"?pag=cCat&id=$i\"><i class=\"icon-inbox\">
+							  </i><span class=\"hidden-tablet\">$categoryName
+							  </span></a></li>";
 		}
-		return $retornoCategoria;
+		return $categoryReturn;
 	}
 	
 	/**
 	 * Function to select alphabetically all the categories
-	 * @return Array $arrayCategoria
+	 * @return Array $categoryArray
 	 */
-	public function listarTodasAlfabeticamentePuro() {
-		$arrayCategoria = $this->categoriaCO->_listarTodasAlfabicamente ();
-		return $arrayCategoria;
+	public function listAphabeticallyAllCategories() {
+		$categoryArray = $this->categoryController->_getAlphabeticallyAllCategories ();
+		return $categoryArray;
 	}
 	
 	/**
 	 * Function to select one category by the id
 	 * @param int $id
 	 * @throws Exception EErroConsulta
-	 * @return String $categoria
+	 * @return String $category
 	 */
-	public function consultarPorId($id) {
-		$categoria = $this->categoriaCO->_consultarPorId ( $id );
-		if (get_class ( $categoria ) != 'Categoria') {
+	public function _selectCategoryById($id) {
+		if (get_class ( $category ) != 'Categoria') {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
-		return $categoria;
+		$category = $this->categoryController->getCategoryById ( $id );
+		return $category;
 	}
 	
 	/**
 	 * Function to select one category by the name
-	 * @param String $nomeCategoria
+	 * @param String $categoryName
 	 * @throws Exception EErroConsulta
-	 * @return String $categoria
+	 * @return String $category
 	 */
-	public function _consultarPorNome($nomeCategoria) {
-		$categoria = $this->categoriaCO->_consultarPorNome ( $nomeCategoria );
-		if (get_class ( $categoria ) != 'Categoria') {
+	public function _selectCategoryByName($categoryName) {
+		if (get_class ( $category ) != 'Categoria') {
 			throw new EErroConsulta ();
 		}else{
+			//nothing to do here
 		}
-		return $categoria;
+		$category = $this->categoryController->_consultarPorNome ( $categoryName );
+		return $category;
+		
 	}
 	
 	/**
 	 * Function to count how many categories exists
 	 * @return int $number    *refactor
 	 */
-	public function contarRegistros() {
-		return $this->categoriaCO->_contarRegistros ();
+	public function countCategories() {
+		return $this->categoryController->_countCategories ();
 	}
 	
 	/**
 	 * Function to get the sum all the sexual crimes
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalDignidadeSexual() {
-		return $this->categoriaCO->_somaTotalDignidadeSexual ();
+	public function _sumAllSexualCrimes() {
+		return $this->categoryController->_sumAllSexualCrimes ();
 	}
 	
 	/**
 	 * Function to get the sum of sexual crimes between 2010 and 2011
 	 * @return int $number  *refactor
 	 */
-	public function _somaTotalDignidadeSexual2010_2011() {
-		return $this->categoriaCO->_somaTotalDignidadeSexual2010_2011 ();
+	public function sumAllSexualCrimes2010_2011() {
+		return $this->categoryController->sumSexualCrimes2010_2011 ();
 	}
 	
 	/**
 	 * Function to get the sum all the cops actions
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalAcaoPolicial() {
-		return $this->categoriaCO->_somaTotalAcaoPolicial ();
+	public function _sumAllCopsActions() {
+		return $this->categoryController->_sumAllCopsActions ();
 	}
 	
 	/**
 	 * Function to get the sum of all cops actions between 2010 and 2011
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalAcaoPolicial2010_2011() {
-		return $this->categoriaCO->_somaTotalAcaoPolicial2010_2011 ();
+	public function _sumAllCopsActions2010_2011() {
+		return $this->categoryController->_sumCopsActions2010_2011 ();
 	}
 	
 	/**
 	 * Function to get the sum of all crimes against citizens
 	 * * @return int $number    *refactor
 	 */
-	public function _somaGeralCrimeContraPessoa() {
-		return $this->categoriaCO->_somaGeralCrimeContraPessoa ();
+	public function _sumAllCrimesAgainstCitizens() {
+		return $this->categoryController->_sumAllCrimesAgainsCitizens ();
 	}
 	
 	/**
-	 * Function to get the sum of all the crimes against the citizens between 2010 and 2011
+	 * Function to get the sum of all the crimes against the citizens 
+	 * between 2010 and 2011
 	 * @return int $number    *refactor
 	 */
-	public function _somaGeralCrimeContraPessoa2010_2011() {
-		return $this->categoriaCO->_somaGeralCrimeContraPessoa2010_2011 ();
+	public function _sumAllCrimesAgainsCitizens2010_2011() {
+		return $this->categoryController->_sumCrimesAgainsCitizens2010_2011 ();
 	}
 	
 	/**
 	 * Function to get the sum of all the theft crimes
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalRoubo() {
-		return $this->categoriaCO->_somaTotalRoubo ();
+	public function _sumAllTheft() {
+		return $this->categoryController->_sumAllTheft ();
 	}
 	
 	/**
 	 * Function to get the sum of all the theft crimes between 2010 and 2011
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalRoubo2010_2011() {
-		return $this->categoriaCO->_somaTotalRoubo2010_2011 ();
+	public function _sumAllTheft2010_2011() {
+		return $this->categoryController->_sumTheft2010_2011 ();
 	}
 	
 	/**
 	 * Function to sum all the stealing crimes
 	 * @return int $number    *refactor
 	 */
-	public function _somaTotalFurtos() {
-		return $this->categoriaCO->_somaTotalFurtos ();
+	public function _sumAllStealing() {
+		return $this->categoryController->_sumAllStealing ();
 	}
 	
 	/**
 	 * Function to get a String of all the categories organized in labels
 	 */
-	public function _listarTotalDeCategoria() {
-		return $this->categoriaCO->_listarTotalDeCategoria ();
+	public function _listCategoriesInLabels() {
+		return $this->categoryController->_listCategories ();
 	}
 }

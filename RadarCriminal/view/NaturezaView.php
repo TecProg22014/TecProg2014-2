@@ -1,51 +1,50 @@
 <?php
-
-
-include_once "/controller/NaturezaController.php";
+include_once "/controller/natureControllerntroller.php";
 include_once "/view/CategoriaView.php";
 include_once "/view/CrimeView.php";
+
 class NaturezaView {
 	
 	/**
 	 * Variables to instance new objects of nature and crime controllers
-	 * @var NaturezaCO
-	 * @var crimeCO
+	 * @var natureController
+	 * @var crimeController
 	 */
-	private $naturezaCO;
-	private $crimeCO;
+	private $natureController;
+	private $crimeControllerntroller;
 	
 	/** 
 	 * Constructor to instance nature and crime controllers
 	 */
 	public function __construct() {
-		$this->naturezaCO = new NaturezaController ();
-		$this->crimeCO = new CrimeController ();
+		$this->natureController = new natureControllerntroller ();
+		$this->crimeController = new crimeControllerntroller ();
 	}
 	
 	/**
 	 * Function to get the alphabetical list of natures
-	 * @return string $retornoTipos
+	 * @return string $typesReturn
 	 */
-	public function listarTodasAlfabicamente() {
-		$todasNaturezas = $this->naturezaCO->_listarTodasAlfabicamente ();
-		for($i = 0, $retornoTipos = ""; $i < count ( $todasNaturezas ); $i ++) {
-			$dadosCrime = $this->crimeCO->_somaDeCrimePorNatureza ( $todasNaturezas [$i]->__getNatureza () );
-			$retornoTipos = $retornoTipos . "<h3>" . $todasNaturezas [$i]->__getNatureza () . "</h3>
-				<div class=\"progress\" title=\"" . number_format ( $dadosCrime, 0, ',', '.' ) . "\">
-				<div class=\"bar\" style=\"width: " . (100 * $dadosCrime / 450000) . "%;\"></div>
+	public function getAllAlphabeticallyOrderedNatures() {
+		$allNatures = $this->natureController->_getNaturesAlphabetically ();
+		for($i = 0, $typesReturn = ""; $i < count ( $allNatures ); $i ++) {
+			$crimeData = $this->crimeController->_sumCrimesByNature ( $allNatures [$i]->__getNature () );
+			$typesReturn = $typesReturn . "<h3>" . $allNatures [$i]->__getNature () . "</h3>
+				<div class=\"progress\" title=\"" . number_format ( $crimeData, 0, ',', '.' ) . "\">
+				<div class=\"bar\" style=\"width: " . (100 * $crimeData / 450000) . "%;\"></div>
 				</div>";
 		}
 		
-		return $retornoTipos;
+		return $typesReturn;
 	}
 	
 	/**
 	 * Function to get one nature searching by one name
 	 * @return String $nature   *refactor
 	 */
-	public function consultarPorNome($natureza) {
-		$natureza = $this->naturezaCO->_consultarPorNome ( $natureza );
-		return $natureza->__getNatureza ();
+	public function getNatureByName($nature) {
+		$nature = $this->natureController->_getNatureByName ( $nature );
+		return $nature->__getNatureza ();
 	}
 	
 	/**
@@ -53,9 +52,9 @@ class NaturezaView {
 	 * @param int $id
 	 * @return String $nature  *refactor
 	 */
-	public function consultarPorId($id) {
-		$natureza = $this->naturezaCO->_consultarPorId ( $id );
-		return $natureza->__getNatureza ();
+	public function getNatureById($id) {
+		$nature = $this->natureController->_getNatureById ( $id );
+		return $nature->__getNature ();
 	}
 	
 	/**
@@ -63,25 +62,26 @@ class NaturezaView {
 	 * @param int $id
 	 * @return String $nature  *refactor
 	 */
-	public function consultarPorIdCategoria($id) {
-		return $this->naturezaCO->_consultarPorIdCategoria ( $id );
+	public function getNaturesByIdCategory($id) {
+		return $this->natureController->_getNaturesByIdCategory ( $id );
 	}
 	
 	/**
 	 * Function to get data of one nature organized in labels to generate a graph 
-	 * @param String $natureza
-	 * @return String $retornoFormatado
+	 * @param String $nature
+	 * @return String $formatedReturn
 	 */
-	public function _retornarDadosDeNaturezaFormatado($natureza) {
-		$dadosDeNatureza = $this->naturezaCO->_retornarDadosDeNaturezaFormatado ( $natureza );
-		$dadosCrimeFormatado = "";
-		$retornoFormatado = "";
-		for($i = 0; $i < count ( $dadosDeNatureza ['title'] ); $i ++) {
+	public function _getNatureData($nature) {
+		$natureData = $this->natureController->_listFormatedNatures ( $nature );
+		$formatedCrimeData = "";
+		$formatedReturn = "";
+		for($i = 0; $i < count ( $natureData ['title'] ); $i ++) {
 			/**
 			 * Loop that defines what will be represented in the graph
 			 * the string ("\"bar\"") defines the graphs full bar and
 			 * the string ("\"bar simple\"") defines the graphs dotted bar
-			 * The conditional 'if($i%2==0)' grants that the dotted and full bars will be intercalated.
+			 * The conditional 'if($i%2==0)' grants that the dotted 
+			 * and full bars will be intercalated.
 			 * Returns the concatenated strings array
 			 */
 			if ($i % 2 == 0) {
@@ -89,35 +89,35 @@ class NaturezaView {
 			} else {
 				$varbar = "\"bar simple\"";
 			}
-			$dadosCrimeFormatado [$i] = "
-				<div class=" . $varbar . " title=\"" . $dadosDeNatureza ['title'] [$i] . " Ocorrencias\">
-					<div class=\"title\">" . $dadosDeNatureza ['tempo'] [$i] . "</div>
-					<div class=\"value\">" . $dadosDeNatureza ['crime'] [$i] . "</div>
+			$formatedCrimeData [$i] = "
+				<div class=" . $varbar . " title=\"" . $natureData ['title'] [$i] . " Ocorrencias\">
+					<div class=\"title\">" . $natureData ['tempo'] [$i] . "</div>
+					<div class=\"value\">" . $natureData ['crime'] [$i] . "</div>
 				</div>";
-			$retornoFormatado .= $dadosCrimeFormatado [$i];
+			$formatedReturn .= $formatedCrimeData [$i];
 		}
-		return $retornoFormatado;
+		return $formatedReturn;
 	}
 	
 	/**
 	 * Function to generate a lateral bar 
-	 * @param String $idCategoria
+	 * @param String $categoryId
 	 * @return String $auxBarra
 	 */
-	public function aposBarraLateral($idCategoria) {
-		$categoriaVW = new CategoriaView ();
-		$crimeVW = new CrimeView ();
-		$arrayCategorias = $categoriaVW->listarTodasAlfabeticamentePuro ();
-		$auxCategoria = $arrayCategorias [$idCategoria];
-		$arrayNaturezas = $this->consultarPorIdCategoria ( $auxCategoria->__getIdCategoria () );
-		for($i = 0; $i < count ( $arrayNaturezas ); $i ++) {
-			$naturezaAtual = $arrayNaturezas [$i];
-			$auxBarra [] = "
+	public function generateSideBar($categoryId) {
+		$categoryView = new CategoriaView ();
+		$crimeView = new CrimeView ();
+		$categoryArray = $categoryView->listAphabeticallyAllCategories ();
+		$categoryAux = $categoryArray [$categoryId];
+		$natureArray = $this->getNaturesByIdCategory ( $categoryAux->__getIdCategoria () );
+		for($i = 0; $i < count ( $natureArray ); $i ++) {
+			$currentNature = $natureArray [$i];
+			$auxBar [] = "
 				<div class=\"row-fluid\">
 		
 				<div class=\"box span12\">
 							<div class=\"box-header\">
-								<h2><a href=\"#\" class=\"btn-minimize\"><i class=\"icon-tasks\"></i>" . $naturezaAtual->__getNatureza () . "</a></h2>
+								<h2><a href=\"#\" class=\"btn-minimize\"><i class=\"icon-tasks\"></i>" . $currentNature->__getNatureza () . "</a></h2>
 								<div class=\"box-icon\">
 									<a href=\"#\" class=\"btn-close\"><i class=\"icon-remove\"></i></a>
 								</div>
@@ -126,14 +126,13 @@ class NaturezaView {
 								<h3>Por Ano</h3></br>
 									<div class=\"chart-natureza\">
 									
-									 " . $this->_retornarDadosDeNaturezaFormatado ( $naturezaAtual->__getNatureza () ) . " </div>
+									 " . $this->getNatureData ( $currentNature->__getNatureza () ) . " </div>
 									
-		
 							</div>
 				</div>
 		
 				</div>";
 		}
-		return $auxBarra;
+		return $auxBar;
 	}
 }

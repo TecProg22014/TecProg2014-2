@@ -6,8 +6,8 @@ include "/view/CategoriaView.php";
 $RAVW = new RegiaoAdministrativaView();
 $categoriaVW = new CategoriaView();
 
-$contRA = $RAVW->contarRegistrosRA();
-$contCategoria = $categoriaVW->contarRegistros();
+$contRA = $RAVW->countAdministrativeRegions();
+$contCategoria = $categoriaVW->countCategories();
 ?>
 <!-- start: Header -->
 	
@@ -27,7 +27,7 @@ $contCategoria = $categoriaVW->contarRegistros();
 						
 
 								<?php //echo "<li><a class=\"submenu\" href=\"crimeporcat.php\"><i class=\"icon-inbox\"></i><span class=\"hidden-tablet\">aa</span></a></li>";
-							    	echo utf8_encode($categoriaVW->listarTodasAlfabicamente());
+							    	echo utf8_encode($categoriaVW->showAphabeticallyAllCategories());
 								?>
 							</ul>
 						</li>
@@ -36,7 +36,7 @@ $contCategoria = $categoriaVW->contarRegistros();
 							<ul>
 								<!--<span class="label"></span> -->
 								<?php 
-									echo utf8_encode($RAVW->listarTodasAlfabeticamente());
+									echo utf8_encode($RAVW->getAllAdministrativeRegionsAlphabetically());
 								?>
 							</ul>
 						</li>

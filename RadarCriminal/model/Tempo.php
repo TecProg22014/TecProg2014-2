@@ -10,70 +10,72 @@ class Tempo{
 	
 	/**
 	 * Variables that define the time of one crime
-	 * @var int idTempo
-	 * @var int intervalo
-	 * @var String mes
+	 * @var int timeId
+	 * @var int interval
+	 * @var String month
 	 */
 
-	private $idTempo;
-	private $intervalo;
-	private $mes;
+	private $timeId; //Identifier of the time of a crime
+	private $interval; //Value of one interval of time
+	private $month; //Value of one month
 	
 	/**
 	 * Function to set the id of the time of a crime
-	 * @param int $idTempo
+	 * @param int $timeId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdTempo( $idTempo ){
-		if(!is_numeric($idTempo)){
+	public function __setTimeId( $timeId ){
+		if(!is_numeric($timeId)){
 			throw new ETipoErrado();
 		}else{
-			$this->idTempo = $idTempo;
+			//nothing to do here
 		}
+		$this->idTempo = $idTempo;
 	}
 	/**
 	 * Function to get the id of a time of a crime
-	 * @return Object Time var $idTempo
+	 * @return Object Time var $timeId
 	 */
-	public function __getIdTempo( ){
-		return $this->idTempo;
+	public function __getTimeId( ){
+		return $this->timeId;
 	}
 	/**
 	 * Function to set the range of the time of a crime
-	 * @param int $intervalo
+	 * @param int $interval
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIntervalo( $intervalo ){
+	public function __setInterval( $interval ){
 		
-		if(!is_numeric($intervalo)){
+		if(!is_numeric($interval)){
 			throw new ETipoErrado();
 		}else{
-			$this->intervalo = $intervalo;
+			//nothing to do here
 		}
+		$this->intervalo = $intervalo;
 	}
 	
 	/**
 	 * Function to get the range of a time of a crime
-	 * @return Object Time var $intervalo
+	 * @return Object Time var $interval
 	 */
-	public function __getIntervalo( ){
-		return $this->intervalo;
+	public function __getInterval( ){
+		return $this->interval;
 	}
 	
 	/**
-	 * Function to set the name of a mes of a crime
-	 *@param String mes
+	 * Function to set the name of a month of a crime
+	 *@param String month
 	 */
-	public function __setMes( $mes ){
-		$this->mes = $mes;
+	public function __setMonth( $month ){
+		$this->month = $month;
 	}
 	
 	/**
-	 * Function to get the name of a mes of a crime
+	 * Function to get the name of a month of a crime
 	 * @return unknown
 	 */
-	public function __getMes( ){
-		return  $this->mes;
+	public function __getMonth( ){
+		return  $this->month;
 	}
 
 	/**
@@ -85,14 +87,14 @@ class Tempo{
 	
 	/**
 	 * Full constructor of an object Time that defines a crime
-	 * @param int idTempo
-	 * @param int intervalo
-	 * @param String mes
+	 * @param int timeId
+	 * @param int interval
+	 * @param String month
 	 */
-	public function __constructOverload( $idTempo,$intervalo,$mes ){
+	public function __constructOverload( $timeId,$interval,$month ){
 		
-		$this->idTempo = $idTempo;
-		$this->intervalo = $intervalo;
-		$this->mes = $mes;
+		$this->timeId = $timeId;
+		$this->interval = $interval;
+		$this->month = $month;
 	}
 }

@@ -10,39 +10,39 @@ class Conexao{
 
 	/**
 	 * Variables to specify the conection with the base
-	 * @var $banco;
-	 * @var $tipo_banco;
-	 * @var $servidor;
-	 * @var $usuario;
-	 * @var $senha;
+	 * @var $base;
+	 * @var $baseType;
+	 * @var $server;
+	 * @var $user;
+	 * @var $key;
 	 * @var $db;
 	 */
-	public $banco;
-	private $tipo_banco;
-	private $servidor;
-	private $usuario;
-	private $senha;
-	private $db;
+	public $base; //Variable for the base of the database conection
+	private $baseType; //Variable to specify the type of base
+	private $server; //Variable for the server of the database conection
+	private $user; //Variable for the user of the database conection
+	private $key; //Key for the user acess for database conection
+	private $db; //Table of data
 
 	/**
 	 * Full constructor to the object Conexao
-	 * @param $banco;
-	 * @param $tipo_banco;
-	 * @param $servidor;
-	 * @param $usuario;
-	 * @param $senha;
+	 * @param $base;
+	 * @param $baseType;
+	 * @param $server;
+	 * @param $user;
+	 * @param $key;
 	 * @param $db;
 	 */
 	public function __construct( ){
 
-		$this->tipo_banco    = "mysql";
-		$this->servidor      = "localhost";
-		$this->usuario       = "root";
-		$this->senha         = "";
+		$this->baseType      = "mysql";
+		$this->server        = "localhost";
+		$this->user    	     = "root";
+		$this->key           = "";
 		$this->db            = "radar_criminal";
-		$this->banco 		 = NewADOConnection($this->tipo_banco);
-		$this->banco->dialect = 3;
-		$this->banco->debug = false;
-		$this->banco->Connect($this->servidor,$this->usuario,$this->senha,$this->db);
+		$this->base 		 = NewADOConnection($this->baseType);
+		$this->base->dialect = 3;
+		$this->base->debug 	 = false;
+		$this->base->Connect($this->server,$this->user,$this->key,$this->db);
 	}
 }

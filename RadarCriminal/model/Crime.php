@@ -11,19 +11,20 @@ class Crime{
 	
 	/**
 	 * Variables to that define a crime
-	 * @var int idCrime
-	 * @var int quantidade
-	 * @var int idTempo
-	 * @var int idNatureza
-	 * @var int idRA
+	 * @var int crimeId
+	 * @var int amount
+	 * @var int timeId
+	 * @var int natureId
+	 * @var int raId
 	 * @var String exceptionCrime
 	 */
-	private $idCrime;
-	private $quantidade;
-	private $idTempo;
-	private $idNatureza;
-	private $idRA;
-	private $exceptionCrime;
+	private $crimeId; //Identifier of a crime
+	private $amount; //Amount of crime
+	private $timeId; //Identifier of the time of a crime
+	private $natureId; //Identifier of the nature of a crime
+	//RA = brazilian acronym for administrative region, a kind of city
+	private $raId; //Identifier of the administrative regions of a crime 
+	private $exceptionCrime; //Variable to throws exception of a crime
 	
 	/**
 	 * Null constructor to grant that no null objects will be created
@@ -34,104 +35,105 @@ class Crime{
 	
 	/**
 	 * Full constuctor of an object Crime
-	 * @param int $idCrime
-	 * @param int $idTempo
-	 * @param int $idNatureza
-	 * @param int $quantidade
+	 * @param int $crimeId
+	 * @param int $timeId
+	 * @param int $natureId
+	 * @param int $amount
 	 */
-	public function __constructOverload( $idCrime,$idTempo,$idNatureza,$quantidade ){
-		$this->idCrime = $idCrime;
-		$this->idTempo = $idTempo;
-		$this->idNatureza = $idNatureza;
-		$this->quantidade = $quantidade;
+	public function __constructOverload( $crimeId,$timeId,$natureId,$amount ){
+		$this->crimeId = $crimeId;
+		$this->timeId = $timeId;
+		$this->natureId = $natureId;
+		$this->amount = $amount;
 	}
 	
 	/**
 	 * Function to set the id of the crime
-	 * @param int $idCrime
+	 * @param int $crimeId
 	 * @throws Exception ETipoErrado
 	 */
-	public function __setIdCrime( $idCrime ){
+	public function __setCrimeId( $crimeId ){
 
 
-		if( !is_numeric( $idCrime ) ){
+		if( !is_numeric( $crimeId ) ){
 			throw new ETipoErrado();
 		}else{
-			$this->idCrime = $idCrime;
+			//nothing to do here
 		}
+		$this->idCrime = $idCrime;
 	}
 	
 	/**
 	 * Function to get the value of the id of some crime
 	 */
-	public function __getIdCrime( ){
-		return $this->idCrime;
+	public function __getCrimeId( ){
+		return $this->crimeId;
 	}
 	
 	/**
 	 * Function to set the sum of how many times one crime has occurred
-	 * @param int $quantidade
+	 * @param int $amount
 	 */
-	public function __setQuantidade( $quantidade ){
+	public function __setAmount( $amount ){
 	
-		$this->quantidade = $quantidade;
+		$this->amount = $amount;
 	}
 	
 	/**
 	 * Function to get the quantity of times one crime has occurred
-	 * @return Object Crime var $quantidade
+	 * @return Object Crime var $amount
 	 */
-	public function __getQuantidade( ){
-		return $this->quantidade;
+	public function __getAmount( ){
+		return $this->amount;
 	}
 	
 	/**
 	 * Function to set one array of periods of time counted to show percents of crimes
-	 * @param int $idTempo
+	 * @param int $timeId
 	 */
-	public function __setIdTempo( $idTempo ){
+	public function __setTimeId( $timeId ){
 		
-		$this->idTempo = $idTempo;
+		$this->timeId = $timeId;
 	}
 	
 	/**
 	 * Function to get the arrays of periods related to crimes
-	 * @return Object Crime var $idTempo
+	 * @return Object Crime var $timeId
 	 */
-	public function __getIdTempo( ){
-		return $this->idTempo;
+	public function __getTimeId( ){
+		return $this->timeId;
 	}
 	
 	/**
 	 * Function to set the id of the nature of one crime
-	 * @param int $idNatureza
+	 * @param int $natureId
 	 */
-	public function __setIdNatureza( $idNatureza ){
+	public function __setNatureId( $natureId ){
 		
-		$this->idNatureza = $idNatureza;
+		$this->natureId = $natureId;
 	}
 	
 	/**
 	 * Function to get the id of the nature of one crime
-	 * @return Object Crime var $idNatureza
+	 * @return Object Crime var $natureId
 	 */
-	public function __getIdNatureza( ){
-		return $this->idNatureza;
+	public function __getNatureId( ){
+		return $this->natureId;
 	}
 	
 	/**
 	 * Function to set the Administrative Region of one crime has occurred
-	 * @param int $idRA
+	 * @param int $raId
 	 */
-	public function __setIdRegiaoAdministrativa( $idRA ){
-		$this->idRA = $idRA;
+	public function __setRaId( $raId ){
+		$this->raId = $raId;
 	}
 	
 	/**
 	 * Function to get the Administrative Region of one crime has occurred
 	 */
-	public function __getIdRegiaoAdministrativa( ){
-		return $this->idRA;
+	public function __getRaId( ){
+		return $this->raId;
 	}
 	
 }

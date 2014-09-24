@@ -1,64 +1,65 @@
 <?php
 
-include_once "persistence/CategoriaDAO.php";
+include_once "persistence/categoriaDAO.php";
 include_once "model/Categoria.php";
 include_once "exceptions/EErroConsulta.php";
 /**
  * The CategoriaController class is the class that controls the CRUD of categories of crimes.
  * This class interfaces the view to the persistence in the database, and has only one atribbute
- * $categoriaDAO.
+ * $categoryDAO.
  */
 class CategoriaController {
 	
 	/**
 	 * Variable to instance a object to percist in the database
-	 * @var categoriaDAO
+	 * @var categoryDAO
 	 */
-	private $categoriaDAO;
+	private $categoryDAO;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct( ) {
-		$this->categoriaDAO = new CategoriaDAO ( );
+	public function __construct() {
+		$this->categoryDAO = new CategoriaDAO ();
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste( ) {
-		$this->categoriaDAO->__constructTeste ( );
+	public function __constructTeste() {
+		$this->categoryDAO->__constructTeste ();
 	}
 	
 	/**
 	 * Function to list all categories of crimes
-	 * @return Array $arrayCategoria
+	 * @return Array $categoryArray
 	 */
-	public function _listarTodas( ) {
-		$arrayCategoria = $this->categoriaDAO->listarTodas ( );
-		return $arrayCategoria;
+	public function getAllCategories() {
+		$categoryArray = $this->categoryDAO->listAll ();
+		return $categoryArray;
 	}
 	
 	/**
 	 * Function to alphabetically list all categories of crimes
-	 * @return Array $categorias
+	 * @return Array $categories
 	 */
-	public function _listarTodasAlfabicamente( ) {
-		return $this->categoriaDAO->listarTodasAlfabicamente ( );
+	public function _getAlphabeticallyAllCategories() {
+		return $this->categoryDAO->alphabeticallyListAll ();
 	}
 	
 	/**
 	 * Function to select one category by the id
 	 * @param int $id        	
 	 * @throws Exception EErroConsulta
-	 * @return String $categoria
+	 * @return String $category
 	 */
-	public function _consultarPorId( $id ) {
+	public function _getCategoryById( $id ) {
 		if (! is_numeric ( $id  ) ) {
-			throw new EErroConsulta ( );
+			throw new EErroConsulta ();
 		} else {
-			$categoria = $this->categoriaDAO->consultarPorId ( $id );
+			//nothing to do here
 		}
+		$category = $this->categoryDAO->idFind ( $id );
 		return $categoria;
 	}
 	
@@ -66,176 +67,177 @@ class CategoriaController {
 	 * Function to select one category by the name
 	 * @param String $nomeCategoria        	
 	 * @throws Exception EErroConsulta
-	 * @return string $categoria
+	 * @return string $category
 	 */
-	public function _consultarPorNome( $nomeCategoria ) {
-		if (! is_string ( $nomeCategoria  ) ) {
-			throw new EErroConsulta ( );
+	public function _getCategoryByName( $categoryName ) {
+		if (! is_string ( $categoryName  ) ) {
+			throw new EErroConsulta ();
 		} else {
-			$categoria = $this->categoriaDAO->consultarPorNome ( $nomeCategoria );
+			//nothing to do here
 		}
-		return $categoria;
+		$category = $this->categoryDAO->nameFind ( $categoryName );
+		return $category;
 	}
 	
 	/**
 	 * Function to insert one category in the database
-	 * @param Categoria $categoria        	
-	 * @return boolean $resultado
+	 * @param Categoria $category        	
+	 * @return boolean $result
 	 */
-	public function _inserirCategoria(Categoria $categoria ) {
-		return $this->categoriaDAO->inserirCategoria ( $categoria  );
+	public function _saveCategory(Categoria $category ) {
+		return $this->categoryDAO->addCategory ( $category  );
 	}
 	
 	/**
 	 * Function to insert in the database the separate values of an array of categories
-	 * @param Array $arrayCategoria        	
+	 * @param Array $categoryArray        	
 	 * @throws Exception EErroConsulta
-	 * @return boolean $resultado
+	 * @return boolean $return
 	 */
-	public function _inserirCategoriaArrayParseSerie( $arrayCategoria ) {
-		if (! is_array ( $arrayCategoria  ) ) {
-			throw new EErroConsulta ( );
+	public function _saveCategoriesParseArray( $categoryArray ) {
+		if (! is_array ( $categoryArray  ) ) {
+			throw new EErroConsulta ();
 		} else {
-		$dadosCategoria = new Categoria ();
-			for($i = 0; $i < count ( $arrayCategoria ); $i ++) {
-				$dadosCategoria->__setNomeCategoria ( $arrayCategoria [$i] );
-				$retorno = $this->categoriaDAO->inserirCategoria ( $dadosCategoria );
-			}
+			//nothing to do here
 		}
-		
-		return $retorno;
+		$categoryData = new Categoria ();
+			for($i = 0; $i < count ( $categoryArray ); $i ++) {
+				$categoryData->__setCategoryName ( $categoryArray [$i] );
+				$return = $this->categoryDAO->addCategory ( $categoryData );
+			}
+		return $return;
 	}
 	
 	/**
 	 * Function to sum all the stealing
-	 * @return int $retornoSomaTotalFurtos
+	 * @return int $returnSumOfAllStealing
 	 */
-	public function _somaTotalFurtos( ) {
+	public function _sumAllStealing() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalFurtos [] = $this->categoriaDAO->somaTotalFurtos ( $i  );
+			$sumOfAllStealing [] = $this->categoryDAO->totalStealing ( $i  );
 		}
-		$retornoSomaTotalFurtos = array_sum ( $somaTotalFurtos  );
-		return $retornoSomaTotalFurtos;
+		$returnSumOfAllStealing = array_sum ( $sumOfAllStealing  );
+		return $returnSumOfAllStealing;
 	}
 	
 	/**
 	 * Function to sum the total of sexual crimes
-	 * @return int $retornoSomaTotalDignidadeSexual
+	 * @return int $returnSumOfAllSexualCrimes
 	 */
-	public function _somaTotalDignidadeSexual( ) {
-		$somaDignidadeSexual;
+	public function _sumAllSexualCrimes() {
+		$sumOfAllSexualCrimes;
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaDignidadeSexual [] = $this->_somaTotalDignidadeSexual ( $i  );
+			$sumOfAllSexualCrimes [] = $this->_sumAllSexualCrimes ( $i  );
 		}
-		$retornoSomaTotalDignidadeSexual = array_sum ( $somaDignidadeSexual  );
-		return $retornoSomaTotalDignidadeSexual;
+		$returnSumOfAllSexualCrimes = array_sum ( $sumOfAllSexualCrimes  );
+		return $returnSumOfAllSexualCrimes;
 	}
 	
 	/**
 	 * Function to sum the total of sexual crimes between 2010 and 2011
-	 * @return $retornoSomaTotalDignidadeSexual2010_2011
+	 * @return $returnSumOfSexualCrimes2010_2011
 	 */
-	public function _somaTotalDignidadeSexual2010_2011( ) {
+	public function _sumSexualCrimes2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalDignidadeSexual2010_2011 [] = $this->_somaTotalDignidadeSexual ( $i  );
+			$sumOfSexualCrimes2010_2011 [] = $this->_sumAllSexualCrimes ( $i  );
 		}
-		$retornoSomaTotalDignidadeSexual2010_2011 = array_sum ( $somaTotalDignidadeSexual2010_2011  );
-		return $retornoSomaTotalDignidadeSexual2010_2011;
+		$returnSumOfSexualCrimes2010_2011 = array_sum ( $sumOfSexualCrimes2010_2011  );
+		return $returnSumOfSexualCrimes2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the cops interventions
-	 * @return int $retornoSomaTotalAcaoPolicial
+	 * @return int $returnSumOfAllCopsActions
 	 */
-	public function _somaTotalAcaoPolicial( ) {
+	public function _sumAllCopsActions() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTotalAcaoPolicial [] = $this->_somaTotalAcaoPolicial ( $i  );
+			$sumOfAllCopsActions [] = $this->_sumAllCopsActions ( $i  );
 		}
-		$retornoSomaTotalAcaoPolicial = array_sum ( $somaTotalAcaoPolicial  );
-		return $retornoSomaTotalAcaoPolicial;
+		$returnSumOfAllCopsActions = array_sum ( $sumOfAllCopsActions  );
+		return $returnSumOfAllCopsActions;
 	}
 	
 	/**
 	 * Function to sum all the cops interventions between 2010 and 2011
-	 * @return int $retornoSomaTotalAcaoPolicial2010_2011
+	 * @return int $returnSumOfAllCopsActions2010_2011
 	 */
-	public function _somaTotalAcaoPolicial2010_2011( ) {
+	public function _sumAllCopsActions2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalAcaoPolicial2010_2011 [] = $this->_somaTotalAcaoPolicial ( $i  );
+			$sumOfAllCopsActions2010_2011 [] = $this->_sumAllCopsActions ( $i  );
 		}
-		$retornoSomaTotalAcaoPolicial2010_2011 = array_sum ( $somaTotalAcaoPolicial2010_2011  );
-		return $retornoSomaTotalAcaoPolicial2010_2011;
+		$returnSumOfAllCopsActions2010_2011 = array_sum ( $sumOfAllCopsActions2010_2011  );
+		return $returnSumOfAllCopsActions2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the crimes against citizens
-	 * @return int $retornoSomaGeralCrimeContraPessoa
+	 * @return int $returnSumOfAllCrimesAgainsCitizens
 	 */
-	public function _somaGeralCrimeContraPessoa( ) {
+	public function _sumAllCrimesAgainsCitizens() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaGeralCrimeContraPessoa [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
+			$sumOfAllCrimesAgainsCitizens [] = $this->categoryDAO->totalCrimeInPerson ( $i  );
 		}
-		$retornoSomaGeralCrimeContraPessoa = array_sum ( $somaGeralCrimeContraPessoa  );
-		return $retornoSomaGeralCrimeContraPessoa;
+		$returnSumOfAllCrimesAgainsCitizens = array_sum ( $sumOfAllCrimesAgainsCitizens  );
+		return $returnSumOfAllCrimesAgainsCitizens;
 	}
 	
 	/**
 	 * Function to sum all the crimes against citizens between 2010 and 2011
-	 * @return int $retornoSomaGeralCrimeContraPessoa2010_2011
+	 * @return int $returnSumOfAllCrimesAgainsCitizens2010_2011
 	 */
-	public function _somaGeralCrimeContraPessoa2010_2011( ) {
+	public function _sumAllCrimesAgainsCitizens2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaGeralCrimeContraPessoa2010_2011 [] = $this->categoriaDAO->somaGeralCrimeContraPessoa ( $i  );
+			$sumOfAllCrimesAgainsCitizens2010_2011 [] = $this->categoryDAO->totalCrimeInPerson ( $i  );
 		}
-		$retornoSomaGeralCrimeContraPessoa2010_2011 = array_sum ( $somaGeralCrimeContraPessoa2010_2011  );
-		return $retornoSomaGeralCrimeContraPessoa2010_2011;
+		$returnSumOfAllCrimesAgainsCitizens2010_2011 = array_sum ( $sumOfAllCrimesAgainsCitizens2010_2011  );
+		return $returnSumOfAllCrimesAgainsCitizens2010_2011;
 	}
 	
 	/**
 	 * Function to sum the total of theft crimes
-	 * @return int $retornoSomaTotalRoubo
+	 * @return int $returnSumOfAllTheft
 	 */
-	public function _somaTotalRoubo( ) {
+	public function _sumAllTheft() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTotalRoubo [] = $this->categoriaDAO->somaTotalRoubo ( $i  );
+			$sumOfAllTheft [] = $this->categoryDAO->totalTheft ( $i  );
 		}
-		$retornoSomaTotalRoubo = array_sum ( $somaTotalRoubo  );
-		return $retornoSomaTotalRoubo;
+		$returnSumOfAllTheft = array_sum ( $sumOfAllTheft  );
+		return $returnSumOfAllTheft;
 	}
 	
 	/**
 	 * Function to sum the total of theft crimes between 2010 and 2011
-	 * @return int $retornoSomaTotalRoubo2010_2011
+	 * @return int $returnSumOfAllTheft2010_2011
 	 */
-	public function _somaTotalRoubo2010_2011( ) {
+	public function _sumAllTheft2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++  ) {
-			$somaTotalRoubo2010_2011 [] = $this->_somaTotalRoubo ( $i );
+			$sumOfAllTheft2010_2011 [] = $this->totalTheft ( $i );
 		}
-		$retornoSomaTotalRoubo2010_2011 = array_sum ( $somaTotalRoubo2010_2011  );
-		return $retornoSomaTotalRoubo2010_2011;
+		$returnSumOfAllTheft2010_2011 = array_sum ( $sumOfAllTheft2010_2011  );
+		return $returnSumOfAllTheft2010_2011;
 	}
 	
 	/**
 	 * Function to count how many categories exists in the database
 	 * @return int $total
 	 */
-	public function _contarRegistros( ) {
-		return $this->categoriaDAO->contarRegistros ( );
+	public function _countCategories() {
+		return $this->categoryDAO->recordsCount ();
 	}
 	
 	/**
 	 * Function to list all the categories applying them in labels
 	 * @return String $labels      
 	 */
-	public function _listarTotalDeCategoria( ) {
-		$categorias = $this->categoriaDAO->listarTotalDeCategoria ( );
+	public function _listCategories() {
+		$categories = $this->categoryDAO->totalCategories ();
 		return "
 		var data = [
-		{ label: \"" . $categorias ["nome"] [0] . "\",  data: " . $categorias ["quantidade"] [0] . "},
-		{ label: \"" . $categorias ["nome"] [1] . "\",  data: " . $categorias ["quantidade"] [1] . "},
-		{ label: \"" . $categorias ["nome"] [2] . "\",  data: " . $categorias ["quantidade"] [2] . "},
-		{ label: \"" . $categorias ["nome"] [3] . "\",  data: " . $categorias ["quantidade"] [3] . "},
-		{ label: \"" . $categorias ["nome"] [4] . "\",  data: " . $categorias ["quantidade"] [4] . "}
+		{ label: \"" . $categories ["nome"] [0] . "\",  data: " . $categories ["quantidade"] [0] . "},
+		{ label: \"" . $categories ["nome"] [1] . "\",  data: " . $categories ["quantidade"] [1] . "},
+		{ label: \"" . $categories ["nome"] [2] . "\",  data: " . $categories ["quantidade"] [2] . "},
+		{ label: \"" . $categories ["nome"] [3] . "\",  data: " . $categories ["quantidade"] [3] . "},
+		{ label: \"" . $categories ["nome"] [4] . "\",  data: " . $categories ["quantidade"] [4] . "}
 		];";
 	}
 }

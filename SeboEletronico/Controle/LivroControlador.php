@@ -11,7 +11,8 @@ include "/Modelo/Livro.php";
 class LivroControlador {
 
 	/**
-	 * The public function salvaLivro is responsible to create and persist a new book.
+	 * The public function salvaLivro is responsible to create 
+	 * and persist a new book.
 	 * If the data is not valid, the book creation is not completed.
 	 *
 	 * @param string $bookTitle
@@ -28,6 +29,7 @@ class LivroControlador {
 	 * @return bool LivroDao::insertBook( $livro, $ownerId )
 	 */
 
+
 	public function insertBook( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription, $ownerId ){
 		if( empty( $bookSale ) && empty( $bookTrade )){
 			$bookSale = "venda";
@@ -37,7 +39,9 @@ class LivroControlador {
 		}
 
 		try{
+
 			$livro = new Livro( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription );
+
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
@@ -62,6 +66,7 @@ class LivroControlador {
 
 	public function searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
 		return LivroDao::searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange );
+
 	}
 	
 	/**
@@ -107,6 +112,7 @@ class LivroControlador {
 	 * Returns true if the book has been updated.
 	 */
 	
+<
 	public function updateBook( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription, $ownerId, $userId ){
 		if( empty( $bookSale ) && empty( $bookTrade )){
 			$bookSale = "venda";
@@ -115,6 +121,7 @@ class LivroControlador {
 
 		try{
 			$livro = new Livro(  $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription );
+
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
