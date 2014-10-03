@@ -1,20 +1,20 @@
 <?php
 
 
-include_once "/controller/crimeController.php";
+include_once "/controller/CrimeController.php";
 class CrimeView{
 	
 	/**
 	 * Variable to instance one object of crime controller
 	 * @var crimeController
 	 */
-	private $crimeControllerntroller;
+	private $crimeController;
 
 	/**
 	 * Constructor to instance a new object of crime controller
 	 */
 	public function __construct(){
-		$this->crimeController = new crimeControllerntroller();
+		$this->crimeController = new crimeController();
 	}
 
 	/**
