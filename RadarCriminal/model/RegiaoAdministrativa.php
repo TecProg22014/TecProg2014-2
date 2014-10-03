@@ -28,9 +28,9 @@ class RegiaoAdministrativa{
 	 * @param int $raId
 	 * @param String $administrativeRegionName
 	 */
-	public function __constructOverLoad( $raId, $administrativeRegionName ){
+	public function __constructOverLoad( $administrativeRegionId, $administrativeRegionName ){
 		
-		$this->administrativeRegionId = $raId;
+		$this->administrativeRegionId = $administrativeRegionId;
 		$this->administrativeRegionName = $administrativeRegionName;
 	}
 	
@@ -46,7 +46,7 @@ class RegiaoAdministrativa{
 		}else{
 			//nothing to do here
 		}
-		$this->idRegiaoAdministrativa = $idRegiaoAdministrativa;
+		$this->administrativeRegionId = $administrativeRegionId;
 	}
 	
 	/**
