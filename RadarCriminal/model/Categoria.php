@@ -46,7 +46,7 @@ class Categoria{
 		}else{
 			//nothing to do here
 		}
-		$this->idCategoria = $idCategoria;
+		$this->$categoryId = $categoryId;
 	}
 	
 	/**
@@ -68,7 +68,7 @@ class Categoria{
 		}else{
 			//nothig to do here
 		}
-		$this->nomeCategoria = $nomeCategoria;
+		$this->categoryName = $categoryName;
 	}
 	
 	/**
