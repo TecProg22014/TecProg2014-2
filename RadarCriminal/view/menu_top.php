@@ -247,8 +247,3 @@
 						
 					</ul>
 				</div>
-				<!-- end: Header Menu -->
-				
-			</div>
-		</div>
-	</div>
