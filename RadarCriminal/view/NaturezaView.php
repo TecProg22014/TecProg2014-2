@@ -1,5 +1,5 @@
 <?php
-include_once "/controller/natureControllerntroller.php";
+include_once "/controller/NatureController.php";
 include_once "/view/CategoriaView.php";
 include_once "/view/CrimeView.php";
 
@@ -17,8 +17,8 @@ class NaturezaView {
 	 * Constructor to instance nature and crime controllers
 	 */
 	public function __construct() {
-		$this->natureController = new natureControllerntroller ();
-		$this->crimeController = new crimeControllerntroller ();
+		$this->natureController = new NatureControllerntroller ();
+		$this->crimeController = new CrimeControllerntroller ();
 	}
 	
 	/**
