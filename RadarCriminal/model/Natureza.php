@@ -48,7 +48,7 @@ class Natureza{
 		}else{
 			//nothing to do here
 		}
-		$this->idNatureza = $idNatureza;
+		$this->natureId = $natureId;
 	}
 	
 	/**
@@ -71,7 +71,7 @@ class Natureza{
 		}else{
 			//nothing to do here
 		}
-		$this->idCategoria = $idCategoria;
+		$this->categoryId = $categoryId;
 	}
 	
 	/**
@@ -93,7 +93,7 @@ class Natureza{
 		}else{
 			//nothing to do here
 		}
-		$this->natureza = $natureza;
+		$this->nature = $nature;
 	}
 	
 	/**
