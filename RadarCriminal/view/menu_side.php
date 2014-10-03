@@ -5,7 +5,6 @@ include "/view/RegiaoAdministrativaView.php";
 include "/view/CategoriaView.php";
 $RAVW = new RegiaoAdministrativaView();
 $categoriaVW = new CategoriaView();
-
 $contRA = $RAVW->countAdministrativeRegions();
 $contCategoria = $categoriaVW->countCategories();
 ?>

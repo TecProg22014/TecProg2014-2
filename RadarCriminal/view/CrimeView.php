@@ -1,7 +1,7 @@
 <?php
 
 
-include_once "/controller/crimeControllerntroller.php";
+include_once "/controller/crimeController.php";
 class CrimeView{
 	
 	/**
