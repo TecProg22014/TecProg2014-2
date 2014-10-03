@@ -1,5 +1,5 @@
 <?php
-include_once "/controller/categoriaController.php";
+include_once "/controller/CategoriaController.php";
 include_once "/exceptions/EErroConsulta.php";
 
 class CategoriaView {
