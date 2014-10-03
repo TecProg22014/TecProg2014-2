@@ -30,7 +30,7 @@ class Tempo{
 		}else{
 			//nothing to do here
 		}
-		$this->idTempo = $idTempo;
+		$this->timeId = $timeId;
 	}
 	/**
 	 * Function to get the id of a time of a crime
@@ -51,7 +51,7 @@ class Tempo{
 		}else{
 			//nothing to do here
 		}
-		$this->intervalo = $intervalo;
+		$this->interval = $interval;
 	}
 	
 	/**
