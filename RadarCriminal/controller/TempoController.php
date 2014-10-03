@@ -20,7 +20,7 @@ class TempoController {
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct() {
-		$this->timeDAO = new timeDAO ();
+		$this->timeDAO = new TempoDAO ();
 	}
 	
 	/**
