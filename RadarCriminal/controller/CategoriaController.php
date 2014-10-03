@@ -1,6 +1,6 @@
 <?php
 
-include_once "persistence/categoriaDAO.php";
+include_once "persistence/CategoriaDAO.php";
 include_once "model/Categoria.php";
 include_once "exceptions/EErroConsulta.php";
 /**
