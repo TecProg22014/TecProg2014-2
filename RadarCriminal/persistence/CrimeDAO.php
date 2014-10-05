@@ -58,7 +58,7 @@ class CrimeDAO{
 	 * @return String $crimeData
 	 */
 	public function idFind( $crimeId ){
-		$sql = "SELECT * FROM crime WHERE id_crime = '".$crimeIid."'";
+		$sql = "SELECT * FROM crime WHERE id_crime = '".$crimeId."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$crimeData = new Crime( );
@@ -194,8 +194,8 @@ class CrimeDAO{
 	public function addCrime(Crime $crime ){
 		$sql = "INSERT INTO crime (nature_id_nature,tempo_id_tempo,amount,
 								   regiao_administrativa_id_regiao_administrativa ) VALUES (
-								   '{$crime->__getIdNatureza( )}','{$crime->__getIdTempo( )}',
-								   '{$crime->__getAmount( )}','{$crime->__getIdRegiaoAdministrativa( )}' )";
+								   '{$crime->__getNatureId( )}','{$crime->__getTimeId( )}',
+								   '{$crime->__getAmount( )}','{$crime->__getRaId( )}' )";
 		$this->connection->base->Execute( $sql );
 	}
 
