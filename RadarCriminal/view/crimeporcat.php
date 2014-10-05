@@ -16,7 +16,7 @@ $idCategoria = isset( $_GET['id'] ) ? $_GET['id'] : null;
 <div id="content" class="span10">
 
 	<?php 
-	$tr = $naturezaVW->aposBarraLateral($idCategoria);
+	$tr = $naturezaVW->generateSideBar($categoryId);
 	for($i=0;$i<count($tr);$i++){
 		echo utf8_encode($tr[$i]);
 	}
