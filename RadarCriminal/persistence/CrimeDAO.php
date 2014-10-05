@@ -105,7 +105,9 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalYearCrime( $year ){
-		$sql = "SELECT SUM(c.amount ) as total FROM crime c, tempo t WHERE t.year = '".$year."' AND c.tempo_id_tempo = t.id_tempo AND c.id_crime BETWEEN 1 AND 341";
+		$sql = "SELECT SUM(c.amount ) as total FROM crime c, 
+				tempo t WHERE t.year = '".$year."' AND c.tempo_id_tempo = t.id_tempo 
+				AND c.id_crime BETWEEN 1 AND 341";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -129,7 +131,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalMurder( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 1";
+		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n 
+				WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 1";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
