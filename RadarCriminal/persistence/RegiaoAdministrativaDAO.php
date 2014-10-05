@@ -119,7 +119,7 @@ class RegiaoAdministrativaDAO {
 	 */
 	public function addAdministrativeRegion(RegiaoAdministrativa $RA ){
 		$sql = "INSERT INTO regiao_administrativa (raName ) values 
-				('{$RA->__getNomeRegiao( )}' )";
+				('{$RA->__getAdministrativeRegionName( )}' )";
 		$result = $this->connection->base->Execute( $sql );
 		return $result;
 	}

@@ -110,7 +110,7 @@ class CategoriaDAO{
 	 */
 	public function addCategory(Categoria $category ){
 		$sql = "INSERT INTO category (nome_category ) values 
-			   ('{$category->__getcategoryName( )}' )";
+			   ('{$category->__getCategoryName( )}' )";
 		$result = $this->connection->base->Execute( $sql );
 		return $result;
 	}
