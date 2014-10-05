@@ -1,5 +1,5 @@
 <?php
-include_once "/controller/NatureController.php";
+include_once "/controller/NaturezaController.php";
 include_once "/view/CategoriaView.php";
 include_once "/view/CrimeView.php";
 
