@@ -1,6 +1,6 @@
 <?php
 
-include "Modelo/Usuario.php";
+include "/Modelo/Usuario.php";
 
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
@@ -15,36 +15,36 @@ class UsuarioControlador {
 	 * The public function salvaUsuario is responsible to create and persist a new user.
 	 * If the data is not valid, the user creation is not completed.
 	 *
-	 * @param string $nome
-	 * @param string $email
-	 * @param string $telefone
-	 * @param string $senha
+	 * @param string $fullUserName;
+	 * @param string $userPhoneNumber;
+	 * @param string $userEmail;
+	 * @param string $userPassword;
 	 *
-	 * @return bool UsuarioDao::salvaUsuario($usuario)
+	 * @return bool UsuarioDao::insertUser( $usuario )
 	 */
 
-	public function salvaUsuario($nome, $email, $telefone, $senha){
+	public function salvaUsuario( $fullUserName, $userEmail, $userPhoneNumber, $userPassword ){
 		try{
-			$usuario = new Usuario($nome, $telefone, $email, $senha);
-		}catch(Exception $e){
+			$usuario = new Usuario( $fullUserName, $userEmail, $userPhoneNumber, $userPassword );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::salvaUsuario($usuario);
+		return UsuarioDao::insertUser( $usuario );
 	}
 
 	/**
 	 * The public function checaCadastroId returns
-	 * the users that contains the passed id.
+	 * the users that contains the passed userId.
 	 *
-	 * @param string $id
+	 * @param string $userId
 	 *
-	 * @return Usuario UsuarioDao::getCadastradosPorId($id)
+	 * @return Usuario UsuarioDao::getVerifyRegisterById( $userId )
 	 */
 
-	public function checaCadastroId($id){
-		return UsuarioDao::getCadastradosPorId($id);
+	public function verifyRegisterById( $userId ){
+		return UsuarioDao::getVerifyRegisterById( $userId );
 	}
 
 	/**
@@ -52,28 +52,28 @@ class UsuarioControlador {
 	 * Implementation operates as a user recreation,
 	 * validating the registered password.
 	 *
-	 * @param string $nome
-	 * @param string $email
-	 * @param string $telefone
-	 * @param string $senha
-	 * @param string $id
-	 * @param string $senhaVelha
+	 * @param string $fullUserName;
+	 * @param string $userEmail;
+	 * @param string $userPhoneNumber;
+	 * @param string $userPassword;
+	 * @param string $userId
+	 * @param string $lastPassword
 	 *
 	 * The return is true if the user has been updated.
-	 * @return bool UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha)
+	 * @return bool UsuarioDao::alteraUsuario( $usuario, $userId, $lastPassword )
 	 * The return is true if the user has been updated.
 	 */
 
-	public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
+	public function updateUser( $fullUserName, $userEmail, $userPhoneNumber, $userPassword, $userId, $lastPassword ){
 		try{
 
-			$usuario = new Usuario($nome, $telefone, $email, $senha);
-		}catch(Exception $e){
+			$usuario = new Usuario( $fullUserName, $userEmail, $userPhoneNumber, $userPassword );
+		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/alteraUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha);
+		return UsuarioDao::updateUser( $usuario, $userId, $lastPassword );
 
 	}
 
@@ -84,28 +84,26 @@ class UsuarioControlador {
 	 * @param string $email
 	 * @param string $senha
 	 * 
-	 * @return bool UsuarioDao::deletaUsuario($email, $senha).
+	 * @return bool UsuarioDao::deletaUsuario( $userEmail, $userPassword ).
 	 * The return is true if the user has been deleted.
 	 */
 
-	public function deletaCadastro($email, $senha){
-			
-		return UsuarioDao::deletaUsuario($email, $senha);
-			
+	public function deleteUser( $userEmail, $userPassword ){	
+		return UsuarioDao::deleteUser( $userEmail, $userPassword );	
 	}
 
 	/**
 	 * The function pesquisaUsuario searches users,
-	 * that contains the string $nome in your name.
+	 * that contains the string $fullUserName in your name.
 	 *
-	 * @param string $nome
+	 * @param string $fullUserName
 	 *
-	 * Returns the array of Users who have $nome.
-	 * @return ArrayObject Usuario UsuarioDao::pesquisaUsuario($nome)
+	 * Returns the array of Users who have $fullUserName.
+	 * @return ArrayObject Usuario UsuarioDao::searchUser( $fullUserName )
 	 */
 
-	public function pesquisaUsuario($nome){
-		return UsuarioDao::pesquisaUsuario($nome);
+	public function searchUser( $fullUserName ){
+		return UsuarioDao::searchUser( $fullUserName );
 	}
 }
 

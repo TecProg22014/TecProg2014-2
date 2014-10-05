@@ -1,11 +1,11 @@
 ﻿<?php
 
-include "Utilidades/ValidaDados.php";
-include "Utilidades/ExcessaoNomeInvalido.php";
-include "Utilidades/ExcessaoTelefoneInvalido.php";
-include "Utilidades/ExcessaoEmailInvalido.php";
-include "Utilidades/ExcessaoSenhaInvalida.php";
-include "Dao/UsuarioDao.php";
+include "/Utilidades/ValidaDados.php";
+include "/Utilidades/ExcessaoNomeInvalido.php";
+include "/Utilidades/ExcessaoTelefoneInvalido.php";
+include "/Utilidades/ExcessaoEmailInvalido.php";
+include "/Utilidades/ExcessaoSenhaInvalida.php";
+include "/Dao/UsuarioDao.php";
 
 /**
  * The class Usuario is the model of users.
@@ -13,47 +13,47 @@ include "Dao/UsuarioDao.php";
  * 
  */
 
-class Usuario {
+class User {
 	
 	/**
 	 * Variebles to define a user.
 	 *
-	 * @var string $nome;
-	 * @var string $telefone;
-	 * @var string $email;
-	 * @var string $senha;
+	 * @var string $fullUserName;
+	 * @var string $userPhoneNumber;
+	 * @var string $userEmail;
+	 * @var string $userPassword;
 	 */
 	
-	private $nome;
-	private $telefone;
-	private $email;
-	private $senha;
+	private $fullUserName;
+	private $userPhoneNumber;
+	private $userEmail;
+	private $userPassword;
 
 	/**
 	 * Constructor function of class User.
 	 * Its a full constructor of class and responsible to create a instance of class.
 	 *
-	 * @param string $nome;
-	 * @param string $telefone;
-	 * @param string $email;
-	 * @param string $senha;
+	 * @param string $fullUserName;
+	 * @param string $userPhoneNumber;
+	 * @param string $userEmail;
+	 * @param string $userPassword;
 	 */
 	
-	public function __construct($nome, $telefone, $email, $senha) {
-		$this->__setNome($nome);
-		$this->__setTelefone($telefone);
-		$this->__setEmail($email);
-		$this->__setSenha($senha);
+	public function __construct( $fullUserName, $userPhoneNumber, $userEmail, $userPassword ) {
+		$this->__setFullUserName( $fullUserName );
+		$this->__setUserPhoneNumber( $userPhoneNumber );
+		$this->__setUserEmail( $userEmail );
+		$this->__setUserPassword( $userPassword );
 	}
 	
 	/**
 	 * The function __getNome() is the function to access the atribute with names value.
-	 * @return Object User var $nome
+	 * @return Object User var $fullUserName
 	 *
 	 */
 	
-	public function __getNome() {
-		return $this->nome;
+	public function __getFullUserName() {
+		return $this->fullUserName;
 	}
 	
 	/**
@@ -62,31 +62,31 @@ class Usuario {
 	 * Or are special characters.
 	 * Or are twice spaces.
 	 * The method throws the exception ExcessaoNomeInvalido().
-	 * @param $nome
+	 * @param $fullUserName
 	 *
 	 */
 	
-	public function __setNome($nome){
+	public function __setFullUserName($fullUserName){
 
-		if(!ValidaDados::validaCamposNulos($nome)){
+		if( !ValidaDados::validaCamposNulos( $fullUserName ) ){
 			throw new ExcessaoNomeInvalido("Nome nao pode ser nulo!");
-		}elseif(ValidaDados::validaNome($nome) == 1){
+		} elseif( ValidaDados::validaNome( $fullUserName ) == 1 ){
 			throw new ExcessaoNomeInvalido("Nome contem caracteres invalidos!");
-		}elseif(ValidaDados::validaNome($nome) == 2){
+		} elseif( ValidaDados::validaNome( $fullUserName ) == 2 ){
 			throw new ExcessaoNomeInvalido("Nome contem espaços seguidos!");
-		}else{
-			$this->nome = $nome;
+		} else{
+			$this->fullUserName = $fullUserName;
 		}
 	}
 	
 	/**
 	 * The function __getTelefone() is the function to access the atribute with phones value.
-	 * @return Object User var $telefone
+	 * @return Object User var $userPhoneNumber
 	 *
 	 */
 	
-	public function __getTelefone() {
-		return $this->telefone;
+	public function __getUserPhoneNumber() {
+		return $this->UserPhoneNumber;
 	}
 
 	/**
@@ -95,30 +95,30 @@ class Usuario {
 	 * Or are no numbers characters
 	 * Or are more of 8 characters
 	 * The method throws the exception ExcessaoTelefoneInvalido().
-	 * @param $telefone
+	 * @param $userPhoneNumber
 	 *
 	 */
 	
-	public function __setTelefone($telefone) {
-		if(!ValidaDados::validaCamposNulos($telefone)){
+	public function __setUserPhoneNumber( $userPhoneNumber ) {
+		if( !ValidaDados::validaCamposNulos( $userPhoneNumber ) ){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode ser nulo!");
-		}elseif(ValidaDados::validaTelefone($telefone) == 1){
+		} elseif( ValidaDados::validaTelefone( $userPhoneNumber ) == 1 ){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode conter caracteres alfabeticos!");
-		}elseif(ValidaDados::validaTelefone($telefone) == 2){
+		} elseif( ValidaDados::validaTelefone( $userPhoneNumber ) == 2 ){
 			throw new ExcessaoTelefoneInvalido("Telefone deve conter exatamente oito (8) digitos!");
-		}else{
-			$this->telefone = $telefone;
+		} else{
+			$this->phoneNumber = $userPhoneNumber;
 		}
 	}
 	
 	/**
 	 * The function __getEmail() is the function to access the atribute with emails value.
-	 * @return Object User var $email
+	 * @return Object User var $userEmail
 	 *
 	 */
 	
-	public function __getEmail() {
-		return $this->email;
+	public function __getUserEmail() {
+		return $this->userEmail;
 	}
 	
 	/**
@@ -126,28 +126,28 @@ class Usuario {
 	 * If the emails value is null
 	 * Or the email is being used
 	 * The method throws the exception ExcessaoEmailInvalido().
-	 * @param $email
+	 * @param $userEmail
 	 *
 	 */
 	
-	public function __setEmail($email) {
-		if(!ValidaDados::validaCamposNulos($email)){
+	public function __setUserEmail( $userEmail ) {
+		if( !ValidaDados::validaCamposNulos( $userEmail ) ){
 			throw new ExcessaoEmailInvalido("E-mail nao pode ser nulo!");
-		}elseif(ValidaDados::validaEmail($email) == 1){
+		} elseif( ValidaDados::validaEmail( $userEmail ) == 1 ){
 			throw new ExcessaoEmailInvalido("E-mail nao válido!");
-		}else{
-			$this->email = $email;
+		} else{
+			$this->userEmail = $userEmail;
 		}
 	}
 	
 	/**
-	 * The function __getSenha() is the function to access the atribute with passwords value.
-	 * @return Object User var $senha
+	 * The function __getUserPassword() is the function to access the atribute with passwords value.
+	 * @return Object User var $userPassword
 	 *
 	 */
 	
-	public function __getSenha() {
-		return $this->senha;
+	public function __getUserPassword() {
+		return $this->userPassword;
 	}
 	
 	/**
@@ -157,23 +157,23 @@ class Usuario {
 	 * Or are different of 6 characters
 	 * Or the password and the confirmation are differents
 	 * The method throws the exception ExcessaoSenhaInvalida().
-	 * @param $senha
+	 * @param $userPassword
 	 *
 	 */
 	
-	public function __setSenha($senha) {
-		$auxiliar = ValidaDados::validaSenha($senha);
+	public function __setUserPassword($userPassword) {
+		$auxiliar = ValidaDados::validaSenha( $userPassword );
 
-		if(!ValidaDados::validaSenhaNula($senha)){
+		if( !ValidaDados::validaSenhaNula( $userPassword )){
 			throw new ExcessaoSenhaInvalida("Senha nao pode ser nula!");
-		}elseif($auxiliar == 1){
+		} elseif( $auxiliar == 1 ){
 			throw new ExcessaoSenhaInvalida("Senha contem caracteres invalidos!");
-		}elseif($auxiliar == 2){
+		} elseif( $auxiliar == 2 ){
 			throw new ExcessaoSenhaInvalida("Senha deve conter exatamente seis (6) digitos!");
-		}elseif($auxiliar == 3){
+		} elseif( $auxiliar == 3 ){
 			throw new ExcessaoSenhaInvalida("Senha e confirmação estão diferentes!");
-		}else{
-			$this->senha = $senha;
+		} else{
+			$this->password = $userPassword;
 		}
 	}
 	
