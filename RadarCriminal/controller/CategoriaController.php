@@ -27,7 +27,7 @@ class CategoriaController {
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste() {
-		$this->categoriaDAO->__constructTeste ();
+		$this->categoryDAO->__constructTeste ();
 	}
 	
 	/**
@@ -35,7 +35,7 @@ class CategoriaController {
 	 * @return Array $categoryArray
 	 */
 	public function getAllCategories() {
-		$categoryArray = $this->categoriaDAO->listAll ();
+		$categoryArray = $this->categoryDAO->listAll ();
 		return $categoryArray;
 	}
 	
@@ -44,7 +44,7 @@ class CategoriaController {
 	 * @return Array $categories
 	 */
 	public function _getAlphabeticallyAllCategories() {
-		return $this->categoriaDAO->alphabeticallyListAll ();
+		return $this->categoryDAO->alphabeticallyListAll ();
 	}
 	
 	/**
@@ -59,7 +59,7 @@ class CategoriaController {
 		} else {
 			//nothing to do here
 		}
-		$category = $this->categoriaDAO->idFind ( $id );
+		$category = $this->categoryDAO->idFind ( $id );
 		return $categoria;
 	}
 	
@@ -75,7 +75,7 @@ class CategoriaController {
 		} else {
 			//nothing to do here
 		}
-		$category = $this->categoriaDAO->nameFind ( $categoryName );
+		$category = $this->categoryDAO->nameFind ( $categoryName );
 		return $category;
 	}
 	
@@ -85,7 +85,7 @@ class CategoriaController {
 	 * @return boolean $result
 	 */
 	public function _saveCategory(Categoria $category ) {
-		return $this->categoriaDAO->addCategory ( $category  );
+		return $this->categoryDAO->addCategory ( $category  );
 	}
 	
 	/**
@@ -103,7 +103,7 @@ class CategoriaController {
 		$categoryData = new Categoria ();
 			for($i = 0; $i < count ( $categoryArray ); $i ++) {
 				$categoryData->__setCategoryName ( $categoryArray [$i] );
-				$return = $this->categoriaDAO->addCategory ( $categoryData );
+				$return = $this->categoryDAO->addCategory ( $categoryData );
 			}
 		return $return;
 	}
@@ -114,7 +114,7 @@ class CategoriaController {
 	 */
 	public function _sumAllStealing() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$sumOfAllStealing [] = $this->categoriaDAO->totalStealing ( $i  );
+			$sumOfAllStealing [] = $this->categoryDAO->totalStealing ( $i  );
 		}
 		$returnSumOfAllStealing = array_sum ( $sumOfAllStealing  );
 		return $returnSumOfAllStealing;
@@ -175,7 +175,7 @@ class CategoriaController {
 	 */
 	public function _sumAllCrimesAgainsCitizens() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$sumOfAllCrimesAgainsCitizens [] = $this->categoriaDAO->totalCrimeInPerson ( $i  );
+			$sumOfAllCrimesAgainsCitizens [] = $this->categoryDAO->totalCrimeInPerson ( $i  );
 		}
 		$returnSumOfAllCrimesAgainsCitizens = array_sum ( $sumOfAllCrimesAgainsCitizens  );
 		return $returnSumOfAllCrimesAgainsCitizens;
@@ -187,7 +187,7 @@ class CategoriaController {
 	 */
 	public function _sumAllCrimesAgainsCitizens2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$sumOfAllCrimesAgainsCitizens2010_2011 [] = $this->categoriaDAO->totalCrimeInPerson ( $i  );
+			$sumOfAllCrimesAgainsCitizens2010_2011 [] = $this->categoryDAO->totalCrimeInPerson ( $i  );
 		}
 		$returnSumOfAllCrimesAgainsCitizens2010_2011 = array_sum ( $sumOfAllCrimesAgainsCitizens2010_2011  );
 		return $returnSumOfAllCrimesAgainsCitizens2010_2011;
@@ -199,7 +199,7 @@ class CategoriaController {
 	 */
 	public function _sumAllTheft() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$sumOfAllTheft [] = $this->categoriaDAO->totalTheft ( $i  );
+			$sumOfAllTheft [] = $this->categoryDAO->totalTheft ( $i  );
 		}
 		$returnSumOfAllTheft = array_sum ( $sumOfAllTheft  );
 		return $returnSumOfAllTheft;
@@ -222,7 +222,7 @@ class CategoriaController {
 	 * @return int $total
 	 */
 	public function _countCategories() {
-		return $this->categoriaDAO->recordsCount ();
+		return $this->categoryDAO->recordsCount ();
 	}
 	
 	/**
@@ -230,7 +230,7 @@ class CategoriaController {
 	 * @return String $labels      
 	 */
 	public function _listCategories() {
-		$categories = $this->categoriaDAO->totalCategories ();
+		$categories = $this->categoryDAO->totalCategories ();
 		return "
 		var data = [
 		{ label: \"" . $categories ["nome"] [0] . "\",  data: " . $categories ["quantidade"] [0] . "},
