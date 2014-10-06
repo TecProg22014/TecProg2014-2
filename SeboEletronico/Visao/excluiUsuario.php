@@ -1,9 +1,9 @@
 <?php
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
-	$senha = $_SESSION['senha'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
+	$userPassword = $_SESSION['senha'];
 	include '../Controle/UsuarioControlador.php';
-	$cadastro = UsuarioControlador::checaCadastroId( $id_usuario );
+	$cadastro = UsuarioControlador::verifyRegisterById( $userIdAuthentication );
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -59,7 +59,7 @@
 
 					<input type="hidden" name="email" value="<?php echo $cadastro['email_usuario']?>"/>
 
-					<input type="hidden" name="senha" value="<?php echo $senha?>"/>
+					<input type="hidden" name="senha" value="<?php echo $userPassword; ?>"/>
 
 					<input type="submit" name='Enviar' value="Excluir" title='Excluir Usu&aacute;rio' />
 				</th>
