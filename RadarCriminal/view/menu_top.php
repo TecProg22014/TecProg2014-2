@@ -1,3 +1,4 @@
+				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
 					<ul class="nav pull-right">
 						<!-- <li class="dropdown hidden-phone">
@@ -246,3 +247,8 @@
 						
 					</ul>
 				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
