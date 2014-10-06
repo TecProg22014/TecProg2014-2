@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
  <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +33,7 @@
 		
 		<br/><br/><br/>
 		
-		<form  name="Insere Dados" action="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/RecebeFormLivro.php" method="post" class="formu">
+		<form  name="Insere Dados" action="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/RecebeFormLivro.php" method="POST" class="formu">
 			<table class='insr'>
 				<tr>
 					<th class='titlein'>
