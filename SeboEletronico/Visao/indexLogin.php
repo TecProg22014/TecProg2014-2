@@ -1,10 +1,11 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])){
+	if( !isset( $_SESSION["email"] ) || !isset( $_SESSION["senha"] ) ){
 		header("Location: entrarLogin.php");
 		exit;
-	}else {
+	} else{
 ?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
