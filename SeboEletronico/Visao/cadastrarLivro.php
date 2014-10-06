@@ -1,7 +1,8 @@
 <?php 
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
 ?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +33,6 @@
 			<button class="button" onclick="meusLivros();">Meus Livros</button>
 			<button class="button" onclick="livrosDisponiveis();">Livros Dispon&iacute;veis</button>
 			<button class="button" onclick="cadastraLivro();">Cadastrar</button>
-			<!--<button class="button" onclick="deletaLivro();">Deletar</button>-->
 			<button class="button" onclick="pesquisaLivro();">Pesquisar</button>
 		</div>
 		
