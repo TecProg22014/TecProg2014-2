@@ -32,7 +32,7 @@
 		
 		<br/><br/><br/>
 		
-		<form  name="Insere Dados" action="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/RecebeForm.php" method="post" class="formu">
+		<form  name="Insere Dados" action="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/RecebeForm.php" method="POST" class="formu">
 			
 			<table class='insr'>
 				<tr>
