@@ -1,9 +1,10 @@
 <?php 
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
+	
 	include '../Controle/UsuarioControlador.php';
-	$nome = $_REQUEST['nome'];
-	$pesquisado = UsuarioControlador::pesquisaUsuario( $nome );
+	$fullUserName = $_REQUEST['nome'];
+	$resultSearchUserByName = UsuarioControlador::pesquisaUsuario( $fullUserName );
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -49,7 +50,7 @@
 				<td>
 					<center> Nome: 
 						<?php
-							echo $pesquisado[1];
+							echo $resultSearchUserByName[1];
 						?>
 					</center> 
 				</td>
@@ -59,7 +60,7 @@
 				<td > 
 					<center> Telefone :
 						<?php
-							echo $pesquisado[3];
+							echo $resultSearchUserByName[3];
 						?>
 					</center> 
 				</td>
@@ -69,7 +70,7 @@
 				<td>
 					<center> Email:
 						<?php
-							echo $pesquisado[4];
+							echo $resultSearchUserByName[4];
 						?>
 					</center>
 				</td>
