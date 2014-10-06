@@ -6,14 +6,14 @@ include "../Utilidades/ConexaoComBanco.php";
  * */
 class LivroDao {
 
-	public function salvaLivro( $livro, $id_dono ){
+	public function insertBook( $livro, $ownerBookId ){
 		/**
 		 * Insertion method whose return is an object
 		 * */
-		$sql = "INSERT INTO livro (id_dono, titulo_livro, editora, autor, edicao, genero, estado_conserv, descricao_livro, venda, troca)
-            VALUES ('".$id_dono."','".$livro->getTitulo()."','".$livro->getEditora()."','".$livro->getAutor()."',
-                '".$livro->getEdicao()."','".$livro->getGenero()."','".$livro->getEstado()."','".$livro->getDescricao()."','".$livro->getVenda()."',
-                    '".$livro->getTroca()."')";
+		$insertBook = "INSERT INTO livro (id_dono, titulo_livro, editora, autor, edicao, genero, estado_conserv, descricao_livro, venda, troca)
+				VALUES ('".$ownerBookId."','".$livro->getBookTitle()."','".$livro->getBookPublisher()."','".$livro->getBookAuthor()."',
+                '".$livro->getBookEdition()."','".$livro->getBookGenre()."','".$livro->getBookStatus()."','".$livro->getBookDescription()."','".$livro->getBookSale()."',
+                '".$livro->getBookTrade()."')";
 		$livro = mysql_query($sql);
 		return $livro;
 	}
@@ -23,36 +23,36 @@ class LivroDao {
 	 * Return method: Object
 	 * */
 
-	public function pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca ){
+	public function searchBook( $bookTitle, $bookStatus, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
 
-		if( empty( $disponibilidadeTroca ) && !empty( $disponibilidadeVenda )){
-			if( empty( $estadoNovo ) && !empty( $estadoUsado )){
-				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."'
+		if( empty( $availabilityForExchange ) && !empty( $availabilityForSale )){
+			if( empty( $physicalConditionBookNew ) && !empty( $physicalConditionBookWorn )){
+				$searchAllBooksByID = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
             	AND tipo_operacao = '".$disponibilidadeVenda."'";
-			} elseif( !empty( $estadoNovo ) && empty( $estadoUsado )) {
-				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."'
-            AND tipo_operacao = '".$disponibilidadeVenda."'";
+			} elseif( !empty( $physicalConditionBookNew ) && empty( $physicalConditionBookWorn )) {
+				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookNew."'
+            AND tipo_operacao = '".$availabilityForSale."'";
 			}
 			
-		}else if( !empty( $disponibilidadeTroca ) && empty( $disponibilidadeVenda )){
-			if( empty( $estadoNovo ) && !empty( $estadoUsado )){
-				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."'
-           	 	AND tipo_operacao = '".$disponibilidadeTroca."'";
-			} elseif( !empty( $estadoNovo ) && empty( $estadoUsado )) {
-				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."'
-            	AND tipo_operacao = '".$disponibilidadeTroca."'";
+		}else if( !empty( $availabilityForExchange ) && empty( $availabilityForSale )){
+			if( empty( $physicalConditionBookNew ) && !empty( $physicalConditionBookWorn )){
+				$searchAllBooksByConditionBookNew = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
+           	 	AND tipo_operacao = '".$availabilityForExchange."'";
+			} elseif( !empty( $physicalConditionBookNew ) && empty( $physicalConditionBookWorn )) {
+				$searchAllBooksByConditionBookWorn = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$estadoNovo."'
+            	AND tipo_operacao = '".$availabilityForExchange."'";
 			}
 		} else{
-			$sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
+			$searchAllBooksByBookTitle = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."'";
 		}
 
-		$lista = mysql_query( $sql );
-		$listaLivros = mysql_fetch_array( $lista );
+		$returnSearchAllBooksByBookTitle = mysql_query( $searchAllBooksByBookTitle );
+		$returnArrayOfBooksByBookTitle = mysql_fetch_array( $returnSearchAllBooksByBookTitle );
 
-		if(!(empty( $listaLivros ))){
+		if(!(empty( $returnArrayOfBooksByBookTitle ))){
 			return false;
 		} else{
-			return $listaLivros;
+			return $returnArrayOfBooksByBookTitle;
 		}
 		
 	}
@@ -66,39 +66,39 @@ class LivroDao {
 	 * @return ArrayObject
 	 * */
 	
-	public function getLivroById( $id ){
-		$sql = "SELECT * FROM livro WHERE id_livro = '".$id."'";
-		$result = mysql_query($sql);
-		return mysql_fetch_array($result);
+	public function getBookByIdUser( $userId ){
+		$searchAllBooksById = "SELECT * FROM livro WHERE id_livro = '".$userId."'";
+		$resultSearchAllBooksById = mysql_query( $searchAllBooksById );
+		return mysql_fetch_array( $resultSearchAllBooksById );
 	}
 
-	public function deletaLivro( $id ){
-		$sql = "DELETE FROM livro WHERE id_livro = '".$id."'";
-		$deletou = mysql_query($sql);
-		return $deletou;
+	public function deleteBook( $bookId ){
+		$deleteBookById = "DELETE FROM livro WHERE id_livro = '".$bookId."'";
+		$returnDeleteBookById = mysql_query($deleteBookById);
+		return $returnDeleteBookById;
 	}
 
-	public function alteraLivro( $livro, $id_dono, $id_usuario ){
-		$sql = "UPDATE livro SET id_dono = '".$id_usuario."', titulo_livro = '".$livro->getTitulo()."', editora = '".$livro->getEditora()."',
-            	autor = '".$livro->getAutor()."', edicao = '".$livro->getEdicao()."', genero = '".$livro->getGenero()."', estado_conserv = '".$livro->getEstado()."', 
-                descricao_livro = '".$livro->getDescricao()."', venda = '".$livro->getVenda()."', troca = '".$livro->getTroca()."' WHERE id_livro = '".$id_dono."'";
-		$livro = mysql_query($sql);
-		return $livro;
+	public function updateBook( $livro, $ownerBookId, $userId ){
+		$updateBookByAllParameter = "UPDATE livro SET id_dono = '".$userId."', titulo_livro = '".$livro->getBookTitle()."', editora = '".$livro->getBookPublisher()."',
+            	autor = '".$livro->getBookAuthor()."', edicao = '".$livro->getBookEdition()."', genero = '".$livro->getBookGenre()."', estado_conserv = '".$livro->getBookStatus()."', 
+                descricao_livro = '".$livro->getBookDescription()."', venda = '".$livro->getBookSale()."', troca = '".$livro->getBookTrade()."' WHERE id_livro = '".$ownerId."'";
+		$resultUpdateBookByAllParameter = mysql_query($updateBookByAllParameter);
+		return $resultUpdateBookByAllParameter;
 	}
 
-	public function getLivroByIdUsuario( $idUsuario ){
-		$sql = "SELECT * FROM livro WHERE id_dono = '".$idUsuario."'";
-		$result = mysql_query($sql);
-		$livros = array();
+	public function getBookByUserId( $userId ){
+		$searchAllBooks = "SELECT * FROM livro WHERE id_dono = '".$userId."'";
+		$resultSearchAllBooks = mysql_query( $searchAllBooks );
+		$resultSearchAllBooks = array();
 		
 		/**
 		 * Book search associated with a user
 		 * */
-		while( $registro = mysql_fetch_assoc( $result ) ) {
-			$livros[]=$registro;
+		while( $receivesContentArrayBooks = mysql_fetch_assoc( $resultSearchAllBooks ) ) {
+			$resultSearchAllBooks[] = $receivesContentArrayBooks;
 		}
 
-		if(!(empty($livros))){
+		if(!( empty( $resultSearchAllBooks ) )){
 			return false;
 		} else{
 			return $livros;
@@ -108,17 +108,17 @@ class LivroDao {
 	/**
 	* Method to search for all records books
 	*/
-	public function getAllLivro(){
-		$sql = "SELECT * FROM livro";
-		$result = mysql_query($sql);
+	public function getAllBook(){
+		$searchAllBooks = "SELECT * FROM livro";
+		$resultSearchAllBooks = mysql_query( $searchAllBooks );
 
 		$livros = array();
 		
-		while($registro = mysql_fetch_assoc($result) ) {
-			$livros[]=$registro;
+		while(  $receivesContentArrayBooksSearch = mysql_fetch_assoc($result) ) {
+			$resultSearchAllBooks[] = $receivesContentArrayBooksSearch;
 		}
 
-		if(!(empty($livros))){
+		if(!( empty( $livros ) )){
 			return false;
 		} else{
 			return $livros;

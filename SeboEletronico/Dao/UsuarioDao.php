@@ -6,62 +6,78 @@ include "../Utilidades/ConexaoComBanco.php";
  * */
 class UsuarioDao {
 	
-	public function salvaUsuario( $usuario ){
-		$senhaAux = $usuario->getSenha();
-		$senhaFinal = $senhaAux[0];
+	public function insertUser( $usuario ){
+		$auxiliaryPassword = $usuario->getUserPassword();
+		$finalPassword = $auxiliaryPassword[0];
 		 
-		$sql="INSERT INTO senha (codigo_senha) VALUES ('".$senhaFinal."')";
-		mysql_query( $sql );
+		$insertUserPassword = "INSERT INTO senha (codigo_senha) VALUES ('".$finalPassword."')";
+		mysql_query( $insertUserPassword );
 
-		$sql2="SELECT id_senha FROM senha WHERE codigo_senha='".$senhaFinal."'";
-		$resultado = $id_senha = mysql_query( $sql2 );
-		$id_senha = mysql_fetch_array( $resultado );
-		$sql3 = "INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario, senha_usuario) VALUES ('".$usuario->getNome()."', '".$usuario->getEmail()."',
-				'".$usuario->getTelefone()."','".$id_senha['id_senha']."')";
-		$usuarioRetorno = mysql_query( $sql3 );
+		$searchUserByPassword = "SELECT id_senha FROM senha WHERE codigo_senha='".$finalPassword."'";
+		$resultSearchUserByPassword = $passwordId = mysql_query( $searchUserByPassword );
+		$passwordId = mysql_fetch_array( $resultSearchUserByPassword );
+		$insertUser = "INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario, senha_usuario) VALUES ('".$usuario->getFullName()."', '".$usuario->getUserEmail()."',
+				'".$usuario->getUserPhoneNumber()."','".$passwordId['id_senha']."')";
+		$returnInsertUser = mysql_query( $insertUser );
 
-		return $usuarioRetorno;
+		return $returnInsertUser;
 	}
 
-	public function alteraUsuario( $usuario, $idDoUsuario,$senhaVelha ){
-		$senhaAux = $usuario->getSenha();
-		$senhaAlterar = $senhaAux[0];
-		$sql = "UPDATE usuario SET nome_usuario = '".$usuario->getNome()."' , telefone_usuario = '".$usuario->getTelefone()."',
-				email_usuario = '".$usuario->getEmail()."' WHERE id_usuario = '".$idDoUsuario."'";
-		$usuario = mysql_query( $sql );
+	public function updateUser( $usuario, $userId, $lastPassword ){
+		$auxiliaryPassword = $usuario->getPassword();
+		$passwordModified = $auxiliaryPassword[0];
+		$updatePassword = "UPDATE usuario SET nome_usuario = '".$usuario->getFullName()."' , telefone_usuario = '".$usuario->getUserPhoneNumber()."',
+				           email_usuario = '".$usuario->getUserEmail()."' WHERE id_usuario = '".$userId."'";
+		$returnUpdatePassword = mysql_query( $updatePassword );
 
-		if( $senhaAlterar != $senhaVelha ){
-			$sql2="SELECT id_senha FROM senha WHERE codigo_senha='".$senhaVelha."'";
-			$resultado = mysql_query( $sql2 );
-			$id_senha = mysql_fetch_row( $resultado );
+		if( $passwordModified != $lastPassword ){
+			$searchLastPasswordForUser = "SELECT id_senha FROM senha WHERE codigo_senha='".$lastPassword."'";
+			$resultSearchLastPasswordForUser = mysql_query( $searchLastPasswordForUser );
+			$passwordId = mysql_fetch_row( $resultSearchLastPasswordForUser );
 
-			$sql3="UPDATE senha SET codigo_senha = '".$senhaAlterar."' WHERE id_senha = '".$id_senha[0]."'";
-			$senhaSalva = mysql_query( $sql3 );
+			$updatePassword = "UPDATE senha SET codigo_senha = '".$passwordModified."' WHERE id_senha = '".$passwordId[0]."'";
+			$savePassword = mysql_query( $updatePassword );
 		} else{
-			return ( $usuario && $senhaSalva );
+			return ( $usuario && $savePassword );
+		}
+	}public function updateUser( $usuario, $userId, $lastPassword ){
+		$auxiliaryPassword = $usuario->getPassword();
+		$passwordModified = $auxiliaryPassword[0];
+		$updatePassword = "UPDATE usuario SET nome_usuario = '".$usuario->getFullName()."' , telefone_usuario = '".$usuario->getUserPhoneNumber()."',
+				           email_usuario = '".$usuario->getUserEmail()."' WHERE id_usuario = '".$userId."'";
+		$returnUpdatePassword = mysql_query( $updatePassword );
+
+		if( $passwordModified != $lastPassword ){
+			$searchLastPasswordForUser = "SELECT id_senha FROM senha WHERE codigo_senha='".$lastPassword."'";
+			$resultSearchLastPasswordForUser = mysql_query( $searchLastPasswordForUser );
+			$passwordId = mysql_fetch_row( $resultSearchLastPasswordForUser );
+			$updatePassword = "UPDATE senha SET codigo_senha = '".$passwordModified."' WHERE id_senha = '".$passwordId[0]."'";
+			$resultUpdatePassword = mysql_query( $updatePassword );
+		} else{
+			return ( $usuario && $updatePassword );
 		}
 	}
 
-	public function pesquisaUsuario( $usuario ){
-		$sql = "SELECT * FROM usuario WHERE nome_usuario = '".$usuario."'";
-		$resultado = mysql_query( $sql );
-		$user = mysql_fetch_row( $resultado );
-		return $user;
+	public function searchUser( $usuario ){
+		$searchUserByUserArray = "SELECT * FROM usuario WHERE nome_usuario = '".$usuario."'";
+		$resultSearchUserByUserArray = mysql_query( $searchUserByUserArray );
+		$searchUser = mysql_fetch_row( $resultSearchUserByUserArray );
+		return $searchUser;
 	}
 
-	public function deletaUsuario( $email, $senha ){
-		$sql = "DELETE FROM usuario WHERE email_usuario = '".$email."'";
-		$deletouUsuario = mysql_query( $sql );
-		$sql1 = "DELETE FROM senha WHERE codigo_senha = '".$senha."'";
-		$deleteouSenha = mysql_query( $sql1 );
-		return ( $deletouUsuario && $deleteouSenha );
+	public function deleteUser( $userEmail, $userPassword ){
+		$deleteUserByEmail = "DELETE FROM usuario WHERE email_usuario = '".$userEmail."'";
+		$resultDeleteUserByEmail = mysql_query( $deleteUserByEmail );
+		$deleteUserByPassword = "DELETE FROM senha WHERE codigo_senha = '".$userPassword."'";
+		$resultDeleteUserByPassword = mysql_query( $deleteUserByPassword );
+		return ( $resultDeleteUserByEmail && $resultDeleteUserByPassword);
 
 	}
-	public function getCadastradosPorId( $idPessoa ){
-		$sql = "SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
-		$resultado = mysql_query( $sql );
-		$res = mysql_fetch_array( $resultado );
-		return $res;
+	public function getUserRegisteredById( $userIdRegistred ){
+		$searchUserIdRegistred = "SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
+		$resultSearchUserIdRegistred = mysql_query( $searchUserIdRegistred );
+		$returnResultGetUserIdRegistred = mysql_fetch_array( $resultGetUserIdRegistred );
+		return $returnResultGetUserIdRegistred;
 	}
 }
 
