@@ -20,11 +20,10 @@
 	if( $resultSearchAllUserByEmail == $resultSearchAllUserByPassword ){
 		if( $resultSearchAllUserByEmail > 0 ){
 			session_start();
-			$_SESSION['email']= $userEmail;
-			$_SESSION['senha']= $userPassword;
-			$_SESSION['id_usuario'] = $userId;
-			//echo "<script>alert('Seja bem vindo ao SEBO Eletronico!')</script>";
-			echo"<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLogin.php'</script>";
+			$userEmail    = $_SESSION['email'];
+			$userPassword = $_SESSION['senha'];
+			$userId 	  = $_SESSION['id_usuario'];
+			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLogin.php'</script>";
 		}
 	}else{
 		echo "<script>alert('Email de usuario ou senha invalido, tente novamente!')</script>";
