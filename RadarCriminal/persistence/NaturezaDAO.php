@@ -42,7 +42,7 @@ class NaturezaDAO{
 	 * @return Array $anatureReturn
 	 */
 	public function listAll( ){
-		$sql = "SELECT * FROM nature";
+		$sql = "SELECT * FROM natureza";
 		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successfu
 		while( $register = $result->FetchNextObject( ) )
 		{
@@ -60,7 +60,7 @@ class NaturezaDAO{
 	 * @return Array $anatureReturn
 	 */
 	public function alphabeticallyListAll( ){
-		$sql = "SELECT * FROM nature ORDER BY nature ASC ";
+		$sql = "SELECT * FROM natureza ORDER BY natureza ASC ";
 		$result = $this->connection->base->Execute( $sql );
 		/**
 	 	* While to alphabetically order of nature
@@ -83,7 +83,7 @@ class NaturezaDAO{
 	 * @return String $natureData
 	 */
 	public function idFind( $natureId ){
-		$sql = "SELECT * FROM nature WHERE id_nature = '".$natureId."'";
+		$sql = "SELECT * FROM natureza WHERE id_natureza = '".$natureId."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a nature
 		$natureData = new Natureza( );
@@ -100,7 +100,7 @@ class NaturezaDAO{
 	 * @return String $natureData
 	 */
 	public function nameFind( $nature ){
-		$sql = "SELECT * FROM nature WHERE nature = '".$nature."'";
+		$sql = "SELECT * FROM natureza WHERE natureza = '".$nature."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$natureData = new Natureza( );
@@ -115,9 +115,9 @@ class NaturezaDAO{
 	 * @param $nature
 	 */
 	public function addNature(Natureza $nature ){
-		$sql = "INSERT INTO nature (categoria_id_categoria,nature ) values (
-									'{$nature->__getIdCategoria( )}',
-									'{$nature->__getNatureza( )}' )";
+		$sql = "INSERT INTO natureza (categoria_id_categoria,natureza ) values (
+									'{$nature->__getCategoryId( )}',
+									'{$nature->__getNature( )}' )";
 		$this->connection->base->Execute( $sql );
 	}
 	
@@ -127,7 +127,7 @@ class NaturezaDAO{
 	 * @return String $natureDatas
 	 */
 	public function idCategoryFind( $id ){
-		$sql = "SELECT * FROM nature WHERE categoria_id_categoria= '".$id."'";
+		$sql = "SELECT * FROM natureza WHERE categoria_id_categoria= '".$id."'";
 		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) ){
 			$natureData = new Natureza( );

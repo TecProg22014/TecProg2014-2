@@ -240,10 +240,10 @@ class CrimeController {
 		$timeDataArray = $timeDAO->listAll ();
 		for( $i = 0; $i < count ( $timeDataArray  ); $i ++ ) {
 			$timeData = $timeDataArray [$i];
-			$dados [$i] = $timeData->getInterval ();
+			$dados [$i] = $timeData->__getInterval ();
 		}
 		for( $i = 0; $i < count ( $dados  ); $i ++ ) {
-			$crimeData [$i] = $this->sumCrimesPerYear ( $dados [$i]  );
+			$crimeData [$i] = $this->_sumCrimesPerYear ( $dados [$i]  );
 			$crimeDataTitle [$i] = number_format ( $crimeData [$i], 0, ',', '.'  );
 		}
 		
@@ -293,7 +293,7 @@ class CrimeController {
 	 */
 	public function _sumCrimes2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$sumOfAllCrimes2010_2011 [] = $this->sumCrimesPerYear ( $i  );
+			$sumOfAllCrimes2010_2011 [] = $this->_sumCrimesPerYear ( $i  );
 		}
 		$returnSumOfAllCrimes2010_2011 = array_sum ( $sumOfAllCrimes2010_2011  );
 		return $returnSumOfAllCrimes2010_2011;
