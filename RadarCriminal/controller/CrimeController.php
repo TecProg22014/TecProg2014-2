@@ -237,7 +237,7 @@ class CrimeController {
 	public function sumCrimesToGraph() {
 		$timeDAO = new TempoDAO ();
 		$timeData = new Tempo ();
-		$timeDataArray = $timeDAO->listarTodos ();
+		$timeDataArray = $timeDAO->listAll ();
 		for( $i = 0; $i < count ( $timeDataArray  ); $i ++ ) {
 			$timeData = $timeDataArray [$i];
 			$dados [$i] = $timeData->getInterval ();

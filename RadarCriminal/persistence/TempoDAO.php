@@ -35,7 +35,7 @@ class TempoDAO{
 	 * @return $timeReturn
 	 */
 	public function listAll( ){
-		$sql = "SELECT * FROM time";
+		$sql = "SELECT * FROM tempo";
 		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
 		while( $register = $result->FetchNextObject( ) )
 		{
@@ -52,7 +52,7 @@ class TempoDAO{
 	 * @return $timeReturn
 	 */
 	public function orderListAll( ){
-		$sql = "SELECT * FROM time ORDER BY ano ASC ";
+		$sql = "SELECT * FROM tempo ORDER BY ano ASC ";
 		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) )
 		{
@@ -70,7 +70,7 @@ class TempoDAO{
 	 * @return $timeData
 	 */
 	public function idFind( $timeId ){
-		$sql = "SELECT * FROM time WHERE id_time = '".$timeId."'";
+		$sql = "SELECT * FROM tempo WHERE id_tempo = '".$timeId."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); //Auxiliar variable to register a time
 		$timeData = new Tempo( );
@@ -85,7 +85,7 @@ class TempoDAO{
 	 * @return String $timeData
 	 */
 	public function intervalFind( $interval ){
-		$sql = "SELECT * FROM time WHERE ano = '".$interval."'";
+		$sql = "SELECT * FROM tempo WHERE ano = '".$interval."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( ); 
 		$timeData = new Tempo( );
@@ -99,7 +99,7 @@ class TempoDAO{
 	 * @param $time
 	 */
 	public function addTime(Tempo $time ){
-		$sql = "INSERT INTO time (year ) VALUES ('{$time->__getIntervalo( )}' )";
+		$sql = "INSERT INTO tempo (ano ) VALUES ('{$time->__getInterval( )}' )";
 		$this->connection->base->Execute( $sql );
 	}
 }

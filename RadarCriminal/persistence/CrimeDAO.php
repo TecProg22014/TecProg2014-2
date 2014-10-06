@@ -27,7 +27,7 @@ class CrimeDAO{
 	}
 
 	/**
-	 * Specific constroctor to unit test
+	 * Specific constructor to unit test
 	 */
 	public function __constructTeste( ){
 		$this->connection = new ConexaoTeste( );
@@ -105,8 +105,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalYearCrime( $year ){
-		$sql = "SELECT SUM(c.amount ) as total FROM crime c, 
-				tempo t WHERE t.year = '".$year."' AND c.tempo_id_tempo = t.id_tempo 
+		$sql = "SELECT SUM(c.quantidade ) as total FROM crime c, 
+				tempo t WHERE t.ano = '".$year."' AND c.tempo_id_tempo = t.id_tempo 
 				AND c.id_crime BETWEEN 1 AND 341";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
@@ -118,9 +118,9 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalNatureCrime( $nature ){
-		$sql = "SELECT Sum(c. ) as total FROM crime c, 
-				nature n WHERE c.nature_id_nature = n.id_nature 
-				AND n.nature = '".$nature."' AND c.id_crime BETWEEN 1 AND 341";
+		$sql = "SELECT Sum(c.quantidade ) as total FROM crime c, 
+				natureza n WHERE c.natureza_id_natureza = n.id_natureza 
+				AND n.natureza = '".$nature."' AND c.id_crime BETWEEN 1 AND 341";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -131,8 +131,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalMurder( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n 
-				WHERE c.nature_id_nature = n.id_nature AND n.id_nature = 1";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 1";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -143,10 +143,10 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalNatureInYearCrime( $nature,$year ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n,
-				tempo t WHERE c.nature_id_nature = n.id_nature AND 
-				c.tempo_id_tempo = t.id_tempo AND t.year = ".$year." AND 
-				n.nature = '".$nature."'";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n,
+				tempo t WHERE c.natureza_id_natureza = n.id_natureza AND 
+				c.tempo_id_tempo = t.id_tempo AND t.ano = ".$year." AND 
+				n.natureza = '".$nature."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -157,8 +157,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalInjury( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE 
-				c.nature_id_nature = n.id_nature AND n.id_nature = 3";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE 
+				c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 3";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -169,8 +169,8 @@ class CrimeDAO{
 	 * @return int $register
 	 */
 	public function totalAttemptedMurder( ){
-		$sql = "SELECT SUM(c.amount ) AS total FROM crime c, nature n WHERE
-				c.nature_id_nature = n.id_nature AND n.id_nature = 2";
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE
+				c.natureza_id_natureza = n.id_natureza AND n.id_natureza = 2";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		return $register->TOTAL;
@@ -192,7 +192,7 @@ class CrimeDAO{
 	 * @param Crime $crime
 	 */
 	public function addCrime(Crime $crime ){
-		$sql = "INSERT INTO crime (nature_id_nature,tempo_id_tempo,amount,
+		$sql = "INSERT INTO crime (nature_id_natureza,tempo_id_tempo,quantidade,
 								   regiao_administrativa_id_regiao_administrativa ) VALUES (
 								   '{$crime->__getNatureId( )}','{$crime->__getTimeId( )}',
 								   '{$crime->__getAmount( )}','{$crime->__getRaId( )}' )";

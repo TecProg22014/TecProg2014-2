@@ -11,14 +11,14 @@ class NaturezaView {
 	 * @var crimeController
 	 */
 	private $natureController;
-	private $crimeControllerntroller;
+	private $crimeController;
 	
 	/** 
 	 * Constructor to instance nature and crime controllers
 	 */
 	public function __construct() {
-		$this->natureController = new NatureControllerntroller ();
-		$this->crimeController = new CrimeControllerntroller ();
+		$this->natureController = new NaturezaController ();
+		$this->crimeController = new CrimeController ();
 	}
 	
 	/**
