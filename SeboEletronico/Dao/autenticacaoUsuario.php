@@ -4,6 +4,7 @@
 	$userEmail = $_POST['email'];
 	$userPassword = $_POST['senha'];
 
+
 	//Persistence Variables
 	$searchAllUserByEmail = mysql_query("SELECT * FROM usuario WHERE email_usuario = '".$email."'") or die(mysql_error());
 	$searchAllUserByPassword = mysql_query("SELECT * FROM senha WHERE codigo_senha ='".$senha."'");
@@ -14,6 +15,7 @@
 	 * Getting data for initializing session user in the system.
 	 * If $email and $senha are compatible log in is successful (window.location window)
 	 * */
+
 
 	$usuario = mysql_fetch_array( $searchAllUserByEmail );
 	$userId = $usuario['id_usuario'];

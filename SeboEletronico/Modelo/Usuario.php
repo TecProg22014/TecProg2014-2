@@ -77,6 +77,7 @@ class User {
 		} else{
 			$this->fullUserName = $fullUserName;
 		}
+		
 	}
 	
 	/**
@@ -109,6 +110,7 @@ class User {
 		} else{
 			$this->phoneNumber = $userPhoneNumber;
 		}
+		
 	}
 	
 	/**
@@ -137,7 +139,9 @@ class User {
 			throw new ExcessaoEmailInvalido("E-mail nao válido!");
 		} else{
 			$this->userEmail = $userEmail;
+
 		}
+		$this->email = $email;
 	}
 	
 	/**
@@ -151,7 +155,8 @@ class User {
 	}
 	
 	/**
-	 * The function __setSenha() is the function to modify the value of atribute password.
+	 * The function __setSenha() is the function to modify the value 
+	 * of atribute password.
 	 * If the passwords value is null
 	 * Or are no special characters
 	 * Or are different of 6 characters
@@ -175,6 +180,7 @@ class User {
 		} else{
 			$this->password = $userPassword;
 		}
+		
 	}
 	
 }

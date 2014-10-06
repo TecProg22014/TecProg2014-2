@@ -10,6 +10,7 @@ class LivroDao {
 		/**
 		 * Insertion method whose return is an object
 		 * */
+
 		$insertBook = "INSERT INTO livro (id_dono, titulo_livro, editora, autor, edicao, genero, estado_conserv, descricao_livro, venda, troca)
 				VALUES ('".$ownerBookId."','".$livro->getBookTitle()."','".$livro->getBookPublisher()."','".$livro->getBookAuthor()."',
                 '".$livro->getBookEdition()."','".$livro->getBookGenre()."','".$livro->getBookStatus()."','".$livro->getBookDescription()."','".$livro->getBookSale()."',
@@ -19,9 +20,11 @@ class LivroDao {
 	}
 
 	/**
-	 * Research methods book of the application, all variations of consulting books are concentrated in this method
+	 * Research methods book of the application, 
+	 * all variations of consulting books are concentrated in this method
 	 * Return method: Object
 	 * */
+
 
 	public function searchBook( $bookTitle, $bookStatus, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
 

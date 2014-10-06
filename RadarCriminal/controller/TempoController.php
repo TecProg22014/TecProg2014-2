@@ -6,7 +6,7 @@ include_once "/model/Tempo.php";
 /**
  * The TempoController class is the class that controls the CRUD of times of crimes.
  * This class interfaces the view to the persistence in the database, and has only one atribbute
- * $tempoDAO.
+ * $timeDAO.
  */
 class TempoController {
 	
@@ -14,93 +14,93 @@ class TempoController {
 	 * Variable to instance a object to percist in the database 
 	 * @var unknown
 	 */
-	private $tempoDAO;
+	private $timeDAO;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct( ) {
-		$this->tempoDAO = new TempoDAO ( );
+	public function __construct() {
+		$this->timeDAO = new TempoDAO ();
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste( ) {
-		$this->tempoDAO->__constructTeste ( );
+	public function __constructTest() {
+		$this->timeDAO->__constructTest ();
 	}
 	
 	/**
 	 * Function to list all the periods of time checked in the database
 	 * @return array $periodos
 	 */
-	public function _listarTodos( ) {
-		return $this->tempoDAO->listarTodos ( );
+	public function _getAllTimes() {
+		return $this->timeDAO->listAll ();
 	}
 	
 	/**
 	 * Select all the periods of time order by ascendent years of the periods
-	 * @return Array $tempos
+	 * @return Array $times
 	 */
-	public function _listarTodasEmOrdem( ) {
-		return $this->tempoDAO->listarTodasEmOrdem ( );
+	public function _getTimesOrderedByTimePeriods() {
+		return $this->timeDAO->OrderListAll ();
 	}
 	
 	/**
 	 * Select one specific period of time by the id
 	 * @param int $id
-	 * @return String $tempo
+	 * @return String $time
 	 */
 	public function _consultarPorId( $id ) {
-		return $this->tempoDAO->consultarPorId ( $id  );
+		return $this->timeDAO->consultarPorId ( $id  );
 	}
 	
 	/**
 	 * Function to select a period of time by the interval 
-	 * @param String $intervalo
+	 * @param String $idInterval
 	 * @return String $periodo    *refactor
 	 */
-	public function _consultarPorIntervalo( $intervalo ) {
-		return $this->tempoDAO->consultarPorIntervalo ( $intervalo  );
+	public function _getTimeById( $idInterval ) {
+		return $this->timeDAO->idFind ( $idInterval  );
 	}
 	
 	/**
 	 * Function to insert a period of time that crimes had been occurred
-	 * @param Tempo $tempo
+	 * @param Tempo $time
 	 * @return boolean $registered     *refactor
 	 */
-	public function _inserirTempo( Tempo $tempo ) {
-		return $this->tempoDAO->inserirTempo ( $tempo  );
+	public function _savePeriodOfTime( Tempo $time ) {
+		return $this->timeDAO->addTime ( $time  );
 	}
 	
 	/**
 	 * Function to insert in the database the separate values of an array of periods of time
-	 * @param Array $arrayTempo
+	 * @param Array $timeArray
 	 * @return boolean $registered     *refactor
 	 */
-	public function _inserirTempoArrayParse( $arrayTempo ) {
-		for( $i = 0; $i < count ( $arrayTempo  ); $i ++ ) {
-			$dadosTempo = new Tempo ( );
-			$dadosTempo->__setIntervalo ( $arrayTempo [$i]  );
-			$this->tempoDAO->inserirTempo ( $dadosTempo  );
+	public function _saveArrayParsePeriodsOfTime( $timeArray ) {
+		for( $i = 0; $i < count ( $timeArray  ); $i ++ ) {
+			$timeData = new Tempo ();
+			$timeData->__setInterval ( $timeArray [$i]  );
+			$this->timeDAO->addTime ( $timeData  );
 		}
 	}
 	
 	/**
 	 * Function to insert in the database the separate values of an array of four months periods  
-	 * @param Array $arrayTempo
+	 * @param Array $timeArray
 	 * @return $registered        *refactor
 	 */
-	public function _inserirTempoArrayParseQuadrimestral( $arrayTempo ) {
-		for( $i = 0, $arrayAno = $arrayTempo; $i < count ( $arrayTempo  ); $i ++ ) {
-			$ano = key ( $arrayAno  );
-			$dadosTempo = new Tempo ( );
-			$dadosTempo->__setIntervalo ( $ano  );
-			for( $j = 0; $j < count ( $arrayTempo [$ano]  ); $j ++ ) {
-				$dadosTempo->__setMes ( $arrayDadosTempo [$ano] [$j]  );
-				$this->tempoDAO->inserirTempo ( $dadosTempo  );
+	public function saveQuarterlyArrayParsePeriodsOfTime( $timeArray ) {
+		for( $i = 0, $yearArray = $timeArray; $i < count ( $timeArray  ); $i ++ ) {
+			$year = key ( $yearArray  );
+			$timeData = new Tempo ();
+			$timeData->__setIntervalo ( $year  );
+			for( $j = 0; $j < count ( $timeArray [$year]  ); $j ++ ) {
+				$timeData->__setMes ( $timeDataArray [$year] [$j]  );
+				$this->timeDAO->addTime ( $timeData  );
 			}
-			next ( $arrayAno  );
+			next ( $yearArray  );
 		}
 	}
 	
@@ -108,14 +108,14 @@ class TempoController {
 	 * Function to list all the periods of time applying them in labels
 	 * @return String $labels 
 	 */
-	public function _retornarDadosFormatados( ) {
-		$dadosTempo = new Tempo ( );
-		$arrayDadosTempo = $this->_listarTodos ( );
-		for( $i = 0; $i < count ( $arrayDadosTempo  ); $i ++ ) {
-			$dadosTempo = $arrayDadosTempo [$i];
-			$dados [$i] = $dadosTempo->__getIntervalo ( );
+	public function _formatDataList() {
+		$timeData = new Tempo ();
+		$timeDataArray = $this->_getAllTimes ();
+		for( $i = 0; $i < count ( $timeDataArray  ); $i ++ ) {
+			$timeData = $timeDataArray [$i];
+			$data [$i] = $timeData->__getInterval ();
 		}
-		return "labels : [\"$dados[0]\",\"$dados[1]\",\"$dados[2]\",\"$dados[3]\",\"$dados[4]\",\"$dados[5]\",
-						   \"$dados[6]\",\"$dados[7]\",\"$dados[8]\",\"$dados[9]\",\"$dados[10]\"]";
+		return "labels : [\"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",
+						   \"$data[6]\",\"$data[7]\",\"$data[8]\",\"$data[9]\",\"$data[10]\"]";
 	}
 }

@@ -40,7 +40,8 @@ class Livro {
 
 	/**
 	 * Constructor function of class Book.
-	 * Its a full constructor of class and responsible to create a instance of class.
+	 * Its a full constructor of class and responsible to create a 
+	 * instance of class.
 	 *
 	 * @param $bookTitle
 	 * @param $bookAuthor
@@ -90,7 +91,7 @@ class Livro {
 		} else{
 			$this->bookTitle = $bookTitle;
 		}
-
+		
 		/**
 		 * Nao tera tratamento de excessao, pois o titulo é pessoal e vai de cada autor,
 		 * logo pode ter qualquer tipo de caracter que o autor desejar.
@@ -127,6 +128,7 @@ class Livro {
 		} else{
 			$this->autor = $bookAuthor;
 		}
+		
 	}
 
 	/**
@@ -227,7 +229,9 @@ class Livro {
 		define("AUTOMOTIVA", "Engenharia Automotiva", TRUE);
 		define("AEROESPACIAL", "Engenharia Aeroespacial", TRUE);
 
+
 		return array(ENGENHARIA, SOFTWARE, ELETRONICA, ENERGIA, AUTOMOTIVA, AEROESPACIAL);
+
 	}
 
 	/**
@@ -279,6 +283,7 @@ class Livro {
 		} else{
 			$this->bookPublisher = $bookPublisher;
 		}
+		
 	}
 
 	/**

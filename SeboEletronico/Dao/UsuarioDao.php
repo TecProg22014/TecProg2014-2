@@ -20,6 +20,7 @@ class UsuarioDao {
 				'".$usuario->getUserPhoneNumber()."','".$passwordId['id_senha']."')";
 		$returnInsertUser = mysql_query( $insertUser );
 
+
 		return $returnInsertUser;
 	}
 
@@ -30,13 +31,14 @@ class UsuarioDao {
 				           email_usuario = '".$usuario->getUserEmail()."' WHERE id_usuario = '".$userId."'";
 		$returnUpdatePassword = mysql_query( $updatePassword );
 
+
 		if( $passwordModified != $lastPassword ){
 			$searchLastPasswordForUser = "SELECT id_senha FROM senha WHERE codigo_senha='".$lastPassword."'";
 			$resultSearchLastPasswordForUser = mysql_query( $searchLastPasswordForUser );
 			$passwordId = mysql_fetch_row( $resultSearchLastPasswordForUser );
-
 			$updatePassword = "UPDATE senha SET codigo_senha = '".$passwordModified."' WHERE id_senha = '".$passwordId[0]."'";
 			$savePassword = mysql_query( $updatePassword );
+
 		} else{
 			return ( $usuario && $savePassword );
 		}

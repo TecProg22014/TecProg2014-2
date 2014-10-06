@@ -4,10 +4,10 @@
 include "/view/RegiaoAdministrativaView.php";
 include "/view/CategoriaView.php";
 $RAVW = new RegiaoAdministrativaView();
-$categoriaVW = new CategoriaView();
+$categoryVW = new CategoriaView();
 
-$contRA = $RAVW->contarRegistrosRA();
-$contCategoria = $categoriaVW->contarRegistros();
+$countRA = $RAVW->countAdministrativeRegions();
+$countCategory = $categoryVW->countCategories();
 ?>
 <!-- start: Header -->
 	
@@ -22,21 +22,21 @@ $contCategoria = $categoriaVW->contarRegistros();
 						<li><a href="index.php"><i class="icon-home"></i><span class="hidden-tablet"> Pagina Inicial</span></a></li>
 						<li><a href="?pag=tRA"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Ocorrencias por R.A.</span></a></li>	
 						<li>
-							<a class="dropmenu" href="#" alt="Por Natureza" title="Por Natureza"><i class="icon-globe"></i><span class="hidden-tablet"> Crimes</span> <span class="label"><?php echo $contCategoria; ?></span></a>
+							<a class="dropmenu" href="#" alt="Por Natureza" title="Por Natureza"><i class="icon-globe"></i><span class="hidden-tablet"> Crimes</span> <span class="label"><?php echo $countCategory; ?></span></a>
 							<ul>
 						
 
 								<?php //echo "<li><a class=\"submenu\" href=\"crimeporcat.php\"><i class=\"icon-inbox\"></i><span class=\"hidden-tablet\">aa</span></a></li>";
-							    	echo utf8_encode($categoriaVW->listarTodasAlfabicamente());
+							    	echo utf8_encode($categoryVW->showAphabeticallyAllCategories());
 								?>
 							</ul>
 						</li>
 						<li>
-							<a class="dropmenu" href="#" alt="Região Administrativa" title="Região Administrativa"><i class="icon-move"></i><span class="hidden-tablet"> Cidades <span class="label"><?php echo $contRA;  ?></span></a>
+							<a class="dropmenu" href="#" alt="Região Administrativa" title="Região Administrativa"><i class="icon-move"></i><span class="hidden-tablet"> Cidades <span class="label"><?php echo $countRA;  ?></span></a>
 							<ul>
 								<!--<span class="label"></span> -->
 								<?php 
-									echo utf8_encode($RAVW->listarTodasAlfabeticamente());
+									echo utf8_encode($RAVW->getAllAdministrativeRegionsAlphabetically());
 								?>
 							</ul>
 						</li>
