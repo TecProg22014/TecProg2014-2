@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -30,22 +30,22 @@
 		<h1>Compra feita com Sucesso</h1>
 		<?php
 			include "..\Utilidades\ConexaoComBanco.php";
-			if(!$bd){
+			if(!$dataBaseConnection){
 				die ("<h1>Falha no bd </h1>");
 			}
 
-			$tel_comprador = $_POST ['tel_comprador'];
-			$nome_comprador = $_POST['nome_comprador'];
-			$id_livro = $_POST['id_livro'];
-			$id_dono = $_POST['id_dono'];
+			$customerPhone  = $_POST['tel_comprador'];
+			$customerName   = $_POST['nome_comprador'];
+			$bookId 		= $_POST['id_livro'];
+			$ownerId 		= $_POST['id_dono'];
 
 			//Dados Vendedor
-			$strSQL = "SELECT * FROM usuario WHERE id_usuario = '$id_dono' ";
+			$searchAllUsersByOwerId = "SELECT * FROM usuario WHERE id_usuario = '$ownerId' ";
 			
-			$rs = mysql_query($strSQL);
+			$resultSearchAllUsersByOwerId = mysql_query( $searchAllUsersByOwerId );
 					
-			while($row = mysql_fetch_array($rs)) {
-				$email_vendedor = $row['email_usuario'] . "<br />";
+			while( $searchAllUsersByUserEmail = mysql_fetch_array( $resultSearchAllUsersByOwerId ) ) {
+				$customerEmail = $searchAllUsersByUserEmail['email_usuario'] . "<br />";
 			}
 
 			include '../Modelo/Usuario.php';
@@ -55,8 +55,8 @@
 				die ("<h1>Falha no bd </h1>");
 			}
 				
-			$strSQL5 = "UPDATE livro SET operacao = 'V' WHERE id_livro = $id_livro ";
-			$rs5 = mysql_query($strSQL5);
+			$updateBookByOperationFive = "UPDATE livro SET operacao = 'V' WHERE id_livro = $bookId ";
+			$resultUpdateBookByOperationFive = mysql_query( $updateBookByOperationFive );
 		?>
 	</body>
 </html>
