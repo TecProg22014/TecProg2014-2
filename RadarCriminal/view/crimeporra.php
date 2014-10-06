@@ -4,7 +4,7 @@
 include_once "/view/CrimeView.php";
 include_once "/view/TempoView.php";
 $crimeVW = new CrimeView();
-$tempoVW = new TempoView();
+$timeVW = new TempoView();
 
 ?>
 <!-- start: Content -->

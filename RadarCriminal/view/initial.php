@@ -4,9 +4,9 @@
    include_once "/view/NaturezaView.php";
    
    $crimeVW = new CrimeView(); /**Instance of CrimeView*/
-   $categoriaVW = new CategoriaView(); /**Instance of CategoriaView*/
-   $tempoVW = new TempoView(); /**Instance of TempoView*/
-   $naturezaVW = new NaturezaView(); /**Instance of NaturezaView*/
+   $categoryVW = new CategoriaView(); /**Instance of CategoriaView*/
+   $timeVW = new TempoView(); /**Instance of TempoView*/
+   $natureVW = new NaturezaView(); /**Instance of NaturezaView*/
    ?>
 <!-- start: Content -->
 <div id="content" class="span10">
@@ -29,14 +29,14 @@
       </div>
       <div class="span3 smallstat box mobileHalf noMargin" onTablet="span6" onDesktop="span3">
          <i class="icon-search radarLightYellow"></i> <span class="title">Roubo</span> <span class="value">
-         	<?php echo  number_format($categoriaVW->_sumAllTheft(),0,',','.') ?>
+         	<?php echo  number_format($categoryVW->_sumAllTheft(),0,',','.') ?>
          </span>
       </div>
       <div class="span3 smallstat mobileHalf box" onTablet="span6"
          onDesktop="span3">
          <i class="icon-certificate radarYellow"></i> <span class="title">Furto</span>
          <span class="value">
-         	<?php echo number_format($categoriaVW->_sumAllStealing(),0,',','.') ?>
+         	<?php echo number_format($categoryVW->_sumAllStealing(),0,',','.') ?>
          </span>
       </div>
    </div>
@@ -77,7 +77,7 @@
             </div>
          </div>
          <div class="box-content" style="display:none;">
-            <?php echo utf8_encode($naturezaVW->getAllAlphabeticallyOrderedNatures()); ?>
+            <?php echo utf8_encode($natureVW->getAllAlphabeticallyOrderedNatures()); ?>
          </div>
       </div>
    </div>
