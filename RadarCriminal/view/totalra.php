@@ -1,13 +1,11 @@
 <?php
 
-
-include_once "/view/CrimeView.php";
-include_once "/view/TempoView.php";
-$crimeVW = new CrimeView();
-$timeVW = new TempoView();
-
-?>
-<!-- start: Content -->
+   	include_once "/view/CrimeView.php";
+   	include_once "/view/TempoView.php";
+   	$crimeVW = new CrimeView();
+   	$timeVW = new TempoView(); 
+  ?>
+  
 <div id="content" class="span10">
 
 	<!-- MAPA DO DF -->
