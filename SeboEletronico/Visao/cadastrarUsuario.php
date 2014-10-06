@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
 ?>
 <!DOCTYPE HTML>
 <html>
