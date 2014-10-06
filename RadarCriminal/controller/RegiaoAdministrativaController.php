@@ -48,7 +48,7 @@ class RegiaoAdministrativaController {
 	public function _getAdministrativeRegionsAlphabetically() {
 		$administratveRegionsArray = $this->administrativeRegionDAO->alphabeticallyListAll ();
 		for( $i = 0; $i < (count ( $administratveRegionsArray  ) ); $i ++ ) {
-			$administratveRegionsNames [] = $administratveRegionsArray [$i]->getRegionName ();
+			$administratveRegionsNames [] = $administratveRegionsArray [$i]->__getAdministrativeRegionName ();
 		}
 		return $administratveRegionsNames;
 	}
