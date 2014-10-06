@@ -41,8 +41,8 @@ class CategoriaView {
 		$categoryArray = $this->categoryController->_getAlphabeticallyAllCategories ();
 		for($i = 0, $categoryReturn = ""; $i < count ( $categoryArray ); $i ++) {
 			$auxCategory = $categoryArray [$i];
-			$categoryName = $auxCategory->__getNomeCategoria ();
-			$categoryId = $auxCategory->__getIdCategoria ();
+			$categoryName = $auxCategory->__getCategoryName ();
+			$categoryId = $auxCategory->__getCategoryId ();
 			$categoryReturn = $categoryReturn . "<li><a class=\"submenu\" 
 							  href=\"?pag=cCat&id=$i\"><i class=\"icon-inbox\">
 							  </i><span class=\"hidden-tablet\">$categoryName
