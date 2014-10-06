@@ -56,7 +56,7 @@ class RegiaoAdministrativaDAO {
 	 * @return Array $araReturn
 	 */
 	public function alphabeticallyListAll( ){
-		$sql = "SELECT * FROM regiao_administrativa ORDER BY name ASC";
+		$sql = "SELECT * FROM regiao_administrativa ORDER BY nome ASC";
 		$result = $this->connection->base->Execute( $sql );
 		while( $register = $result->FetchNextObject( ) )
 		{
@@ -91,7 +91,7 @@ class RegiaoAdministrativaDAO {
 	 * @return String $raData
 	 */
 	public function nameFind( $raName ){
-		$sql = "SELECT * FROM regiao_administrativa WHERE name = '".$raName."'";
+		$sql = "SELECT * FROM regiao_administrativa WHERE nome = '".$raName."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$raData = new RegiaoAdministrativa( );

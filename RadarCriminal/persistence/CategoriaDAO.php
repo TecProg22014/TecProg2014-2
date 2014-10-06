@@ -55,7 +55,7 @@ class CategoriaDAO{
 	 * @return Array $retornaCategoria
 	 */
 	public function alphabeticallyListAll( ){
-		$sql = "SELECT * FROM category ORDER BY nome_category ASC";
+		$sql = "SELECT * FROM categoria ORDER BY nome_categoria ASC";
 		$result = $this->connection->base->Execute( $sql );
 		
 		/**
@@ -79,7 +79,7 @@ class CategoriaDAO{
 	 * @return String $categoryData
 	 */
 	public function idFind( $categoryId ){
-		$sql = "SELECT * FROM category WHERE id_category = '".$id."'";
+		$sql = "SELECT * FROM categoria WHERE id_categoria = '".$id."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$categoryData = new Categoria( );
@@ -94,7 +94,7 @@ class CategoriaDAO{
 	 * @return String $categoryData
 	 */ 
 	public function nameFind( $categoryName ){
-		$sql = "SELECT * FROM category WHERE nome_category = '".$categoryName."'";
+		$sql = "SELECT * FROM categoria WHERE nome_categoria = '".$categoryName."'";
 		$result = $this->connection->base->Execute( $sql );
 		$register = $result->FetchNextObject( );
 		$categoryData = new Categoria( );
@@ -109,7 +109,7 @@ class CategoriaDAO{
 	 * @return boolean $result
 	 */
 	public function addCategory(Categoria $category ){
-		$sql = "INSERT INTO category (nome_category ) values 
+		$sql = "INSERT INTO categoria (nome_categoria ) values 
 			   ('{$category->__getCategoryName( )}' )";
 		$result = $this->connection->base->Execute( $sql );
 		return $result;
