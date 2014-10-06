@@ -1,14 +1,14 @@
 <?php
 
 	session_start();
-	$id_usuario = $_SESSION['id_usuario'];
+	$userIdAuthentication = $_SESSION['id_usuario'];
 
 	include '../Controle/LivroControlador.php';
-	$id = $_REQUEST['id'];
-	$listaLivros = LivroControlador::getLivroById( $id );
+	$bookIdAuthentication = $_REQUEST['id'];
+	$bookArray = LivroControlador::getBookById( $id );
 
 ?>
-
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -56,7 +56,7 @@
 					<td>
 						<h2>T&iacute;tulo:</h2>
 						<h6>
-							<input type="text" name="titulo" value="<?php echo $listaLivros['titulo_livro']?>">
+							<input type="text" name="titulo" value="<?php echo $bookArray['titulo_livro']?>">
 						</h6>
 					</td>
 				</tr>
@@ -65,7 +65,7 @@
 					<td>
 						<h2>Autor:</h2>
 						<h6>
-							<input type="text" name="autor" value="<?php echo $listaLivros['autor']?>">
+							<input type="text" name="autor" value="<?php echo $bookArray['autor']?>">
 						</h6>
 					</td>
 				</tr>
@@ -74,7 +74,7 @@
 					<td>
 						<h2>Editora:</h2>
 						<h6>
-							<input type="text" name="editora" value="<?php echo $listaLivros['editora']?>">
+							<input type="text" name="editora" value="<?php echo $bookArray['editora']?>">
 						</h6>
 					</td>
 				</tr>
@@ -83,7 +83,7 @@
 					<td>
 						<h2>Edi&ccedil;&atilde;o:</h2>
 						<h6>
-							<input type="number" name="edicao" min="1" max="20" step="1" value="<?php echo $listaLivros['edicao']?>">
+							<input type="number" name="edicao" min="1" max="20" step="1" value="<?php echo $bookArray['edicao']?>">
 						</h6>
 					</td>
 				</tr>
@@ -92,7 +92,7 @@
 					<td>
 						<h2>Descri&ccedil;&atilde;o:</h2>
 						<h6>
-							<input type="textarea" name="descricao" value="<?php echo $listaLivros['descricao_livro']?>">
+							<input type="textarea" name="descricao" value="<?php echo $bookArray['descricao_livro']?>">
 						</h6>
 					</td>
 				</tr>
@@ -140,9 +140,9 @@
 				<th>
 					<input type="hidden" name="tipo" value="alterarLivro" />
 			
-					<input type="hidden" name="id" value="<?php echo $id?>" />
+					<input type="hidden" name="id" value="<?php echo $bookId?>" />
 				
-					<input type="hidden" name="id_dono" value="<?php echo $id_usuario?>" />
+					<input type="hidden" name="id_dono" value="<?php echo $userId?>" />
 				
 					<input type="submit" name='Enviar' value="ALTERAR" title='Enviar dados' />
 				</th>
