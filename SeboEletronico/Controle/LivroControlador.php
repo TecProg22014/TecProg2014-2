@@ -1,6 +1,7 @@
 <?php
 
 include "/Modelo/Livro.php";
+include "/Dao/LivroDao.php";
 /**
  * The LivroControlador class is the class that controls the CRUD of books.
  * this class is the interface for communication of the persistence with the view.
@@ -26,7 +27,7 @@ class LivroControlador {
 	 * @param string $bookDescription
 	 * @param string $ownerId
 	 * 
-	 * @return bool LivroDao::insertBook( $livro, $ownerId )
+	 * @return bool $resultInsert
 	 */
 
 
@@ -47,7 +48,10 @@ class LivroControlador {
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-		return LivroDao::insertBook( $livro, $ownerId );
+
+		$bookDAO = new LivroDao();
+		$resultInsertBook = $bookDAO->insertBook($livro, $ownerId);
+		return $resultInsertBook;
 	}
 
 	/**
@@ -61,12 +65,15 @@ class LivroControlador {
 	 * @param string $availabilityForSale
 	 * @param string $availabilityForExchange
 	 * 
-	 * @return ArrayObject Livro LivroDao::searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange )
+	 * @return ArrayObject $resultSearchBooks
 	 */
 
 	public function searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
-		return LivroDao::searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange );
+		
+		$bookDAO = new LivroDao();
+		$resultSearchBooks = $bookDAO->searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange );
 
+		return $resultSearchBooks;
 	}
 	
 	/**
@@ -74,11 +81,15 @@ class LivroControlador {
 	 * 
 	 * @param string $id
 	 * 
-	 * @return ArrayObject Livro LivroDao::getBookById($bookId)
+	 * @return ArrayObject $resultSearchBookById
 	 */
 	
 	public function getBookById( $bookId ){
-		return LivroDao::getBookById( $bookId );
+		
+		$bookDAO = new LivroDao();
+		$resultSearchBookById = $bookDAO->getBookById( $bookId );
+
+		return $resultSearchBookById;
 	}
 	
 	/**
@@ -86,11 +97,15 @@ class LivroControlador {
 	 * 
 	 * @param string $bookId
 	 * 
-	 * @return bool LivroDao::deleteBook( $bookId )
+	 * @return bool $resultDeleteBook
 	 * The return is true if the book has been deleted.
 	 */
 	public function deleteBook( $bookId ){
-		return LivroDao::deletaLivro( $bookId );
+
+		$bookDAO = new LivroDao();
+		$resultDeleteBook = $bookDAO->deletaLivro( $bookId );
+
+		return $resultDeleteBook;
 	}
 	
 	/**
@@ -108,11 +123,10 @@ class LivroControlador {
 	 * @param string $id_dono
 	 * @param string $id_usuario
 	 * 
-	 * @return bool LivroDao::updateBook( $livro, $ownerId, $userId )
+	 * @return bool $resultUpdateBook
 	 * Returns true if the book has been updated.
 	 */
 	
-<
 	public function updateBook( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription, $ownerId, $userId ){
 		if( empty( $bookSale ) && empty( $bookTrade )){
 			$bookSale = "venda";
@@ -127,7 +141,11 @@ class LivroControlador {
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-		return LivroDao::updateBook( $livro, $ownerId, $userId );
+
+		$bookDAO = new LivroDao();
+		$resultUpdateBook = $bookDAO->updateBook( $livro, $ownerId, $userId );
+
+		return $resultUpdateBook;
 	}
 	
 	/**
@@ -135,12 +153,16 @@ class LivroControlador {
 	 * 
 	 * @param string $userId
 	 * 
-	 * @return ArrayObject Livro LivroDao::getBookByUserId( $userId )
+	 * @return ArrayObject Livro $resultSearchBookByUserId
 	 * Returns an array of books.
 	 */
 	
 	public function getBookByUserId( $userId ){
-		return LivroDao::getBookByUserId( $userId );
+
+		$bookDAO = new LivroDao();
+		$resultSearchBookByUserId = $bookDAO->getBookByUserId( $userId );
+
+		return $resultSearchBookByUserId;
 	}
 	
 	/**
@@ -150,7 +172,11 @@ class LivroControlador {
 	 * Returns an array of books.
 	 */
 	public function getAllBook(){
-		return LivroDao::getAllBook();
+
+		$bookDAO = new LivroDao();
+		$resultGetAllBooks = $bookDAO->getAllBook();
+
+		return $resultGetAllBooks;
 	}
 
 }
