@@ -17,16 +17,30 @@ class ValidaDados {
          *  @return bool $resultNullOrNot, expected true if field is null
          **/
         public function validateNullInputs( $field ){
-            return !( empty( $field ) );
+            define("FIELD_NOT_NULL",true);
+            define("FIELD_NULL",false);
+            // The ! operator is used because the function "empty" returns the oposit value of boolean
+            if(!empty($field)){
+                return FIELD_NOT_NULL;
+            }else{
+                return FIELD_NULL;
+            }
         }
         
         /**
          *  Function to validate if the password is null
          *  @param Array $password, where $password[0] is the password and $password[1] is the password confirmation
-         *  @return bool $passwordNullOrNot, expected true if password is null
+         *  @return bool true or false, expected false if password is null
          **/
         public function validateNullPassword( $password ){
-            return ( !( empty( $password[0] ) ) && !( empty( $password[1] ) ) );
+            define("PASSOWORD_NOT_NULL",true);
+            define("PASSWORD_NULL",false);
+            // The ! operator is used because the function "empty" returns the oposit value of boolean
+            if(!empty($password[0]) && !empty($password[1])){
+                return PASSOWORD_NOT_NULL;
+            }else{
+                return PASSWORD_NULL;
+            }
         }
         
         /**
@@ -35,19 +49,21 @@ class ValidaDados {
          *  @return int $nameValidOrNot
          **/
         public function validaNome( $name ){
+            define("IVALID_CHARACTERS_IN_NAME",1);
+            define("INVALID_NAME", 2);
 
+            // List of all characters that can be used
             $validCharacters = '. abcdefghijklmnopqrstuvwxyzçãõáíóúàòìù';
-            
-            for ( $i = 0; $i < strlen($name); $i++ ) { 
-                $char = stripos( $validCharacters, $name[$i] );
-                if( !$char ){
-                    $nameValidOrNot = 1;
-                    return $nameValidOrNot;
-                }
+            // Loop to read all the characters of the string $name
+            for ( $iterator = 0; $iterator < strlen($name); $iterator++ ) { 
+                // variable to recive the boolean value of character when valid(true) or not(false)
+                $character = stripos( $validCharacters, $name[$iterator] );
                 
-                if( $name[$i] == " " && $name[$i+1] == " " ){
-                    $nameValidOrNot = 2;
-                    return $nameValidOrNot;   
+                if( !$character ){
+                    return IVALID_CHARACTERS_IN_NAME;
+                }else if( $name[$iterator] == " " && $name[$iterator+1] == " " ){
+                    return INVALID_NAME
+                }else{
                 }
             }
         }
@@ -58,9 +74,10 @@ class ValidaDados {
          *  @return int $validEmail
          **/
         public function validaEmail( $email ){
+           define("INVALID_EMAIL", 1);
            if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ){
-                $validEmail = 1;
-                return $validEmail;
+                return INVALID_EMAIL;
+           }else{
            }
         }
         
@@ -70,13 +87,12 @@ class ValidaDados {
          *  @return $foneNotValidCharacters || $foneNotValidLength
          **/
         public function validaTelefone($foneNumber){
-            
+            define("INVALID_FONE_CHARACTERS", 1);
+            define("INVALID_FONE_LENGTH", 2);
             if( !filter_var( $foneNumber, FILTER_VALIDATE_INT) ){
-                $foneNotValidCharacters = 1;
-                return $foneNotValidCharacters;
+                return INVALID_FONE_CHARACTERS;
             }elseif( strlen( $foneNumber ) != 8 ){
-                $foneNotValidLength = 2;
-                return $foneNotValidLength;
+                return INVALID_FONE_LENGTH;
             }
         }
         
@@ -86,13 +102,15 @@ class ValidaDados {
          *  @return $passwordInvalidCharacters || $passwordInvalidLength || $invalidPasswordConfirmation
          **/
         public function validaSenha( $password ){
-
+            define("INVALID_PASSWORD_CHARACTERS", 1);
+            define("INVALID_PASSWORD_LENGHT", 2);
+            define("DIFERENT_PASSWORD_AND_CONFIRMATION", 3);
             if( !filter_var( $password[0], FILTER_VALIDATE_INT ) ){//caracter invalido
-                return 1;
+                return INVALID_FONE_CHARACTERS;
             }elseif( strlen( $password[0] ) != 6 || strlen( $password[1] ) != 6 ){//tamanho invalido
-                return 2;
+                return INVALID_PASSWORD_LENGHT;
             }elseif( $password[0]!= $password[1] ){//senha e confirmação diferentes
-                return 3;
+                return DIFERENT_PASSWORD_AND_CONFIRMATION;
             }
         }
 
