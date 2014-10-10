@@ -48,7 +48,6 @@ class LivroControlador {
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-
 		$bookDAO = new LivroDao();
 		$resultInsertBook = $bookDAO->insertBook($livro, $ownerId);
 		return $resultInsertBook;
@@ -68,11 +67,9 @@ class LivroControlador {
 	 * @return ArrayObject $resultSearchBooks
 	 */
 
-	public function searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
-		
+	public function searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){	
 		$bookDAO = new LivroDao();
 		$resultSearchBooks = $bookDAO->searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange );
-
 		return $resultSearchBooks;
 	}
 	
@@ -85,10 +82,8 @@ class LivroControlador {
 	 */
 	
 	public function getBookById( $bookId ){
-		
 		$bookDAO = new LivroDao();
 		$resultSearchBookById = $bookDAO->getBookById( $bookId );
-
 		return $resultSearchBookById;
 	}
 	
@@ -101,10 +96,8 @@ class LivroControlador {
 	 * The return is true if the book has been deleted.
 	 */
 	public function deleteBook( $bookId ){
-
 		$bookDAO = new LivroDao();
 		$resultDeleteBook = $bookDAO->deletaLivro( $bookId );
-
 		return $resultDeleteBook;
 	}
 	
@@ -132,19 +125,15 @@ class LivroControlador {
 			$bookSale = "venda";
 			$bookTrade = "troca";
 		}
-
 		try{
 			$livro = new Livro(  $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription );
-
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-
 		$bookDAO = new LivroDao();
 		$resultUpdateBook = $bookDAO->updateBook( $livro, $ownerId, $userId );
-
 		return $resultUpdateBook;
 	}
 	
@@ -158,10 +147,8 @@ class LivroControlador {
 	 */
 	
 	public function getBookByUserId( $userId ){
-
 		$bookDAO = new LivroDao();
 		$resultSearchBookByUserId = $bookDAO->getBookByUserId( $userId );
-
 		return $resultSearchBookByUserId;
 	}
 	
@@ -172,10 +159,8 @@ class LivroControlador {
 	 * Returns an array of books.
 	 */
 	public function getAllBook(){
-
 		$bookDAO = new LivroDao();
 		$resultGetAllBooks = $bookDAO->getAllBook();
-
 		return $resultGetAllBooks;
 	}
 

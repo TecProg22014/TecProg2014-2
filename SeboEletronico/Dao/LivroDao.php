@@ -9,7 +9,7 @@ class LivroDao {
 	/**
 	 * Constructor to permit instances for the class
 	 **/
-	public __construct(){
+	public function __construct(){
 
 	}
 

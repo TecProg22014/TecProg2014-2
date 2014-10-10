@@ -6,6 +6,12 @@ include "../Utilidades/ConexaoComBanco.php";
  * */
 class UsuarioDao {
 	
+	/**
+	 * Constructor to permit instances for the class
+	 **/
+	public function __construct(){
+		
+	}
 	public function insertUser( $usuario ){
 		$auxiliaryPassword = $usuario->getUserPassword();
 		$finalPassword = $auxiliaryPassword[0];
@@ -42,7 +48,9 @@ class UsuarioDao {
 		} else{
 			return ( $usuario && $savePassword );
 		}
-	}public function updateUser( $usuario, $userId, $lastPassword ){
+	}
+
+	public function updateUser( $usuario, $userId, $lastPassword ){
 		$auxiliaryPassword = $usuario->getPassword();
 		$passwordModified = $auxiliaryPassword[0];
 		$updatePassword = "UPDATE usuario SET nome_usuario = '".$usuario->getFullName()."' , telefone_usuario = '".$usuario->getUserPhoneNumber()."',
