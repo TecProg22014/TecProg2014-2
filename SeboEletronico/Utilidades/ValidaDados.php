@@ -48,7 +48,7 @@ class ValidaDados {
          *  @param String $name
          *  @return int $nameValidOrNot
          **/
-        public function validaNome( $name ){
+        public function validateName( $name ){
             define("IVALID_CHARACTERS_IN_NAME",1);
             define("INVALID_NAME", 2);
 
@@ -73,7 +73,7 @@ class ValidaDados {
          *  @param email $email
          *  @return int $validEmail
          **/
-        public function validaEmail( $email ){
+        public function validateEmail( $email ){
            define("INVALID_EMAIL", 1);
            if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ){
                 return INVALID_EMAIL;
@@ -86,7 +86,7 @@ class ValidaDados {
          *  @param int $foneNumber
          *  @return $foneNotValidCharacters || $foneNotValidLength
          **/
-        public function validaTelefone($foneNumber){
+        public function validateFoneNumber($foneNumber){
             define("INVALID_FONE_CHARACTERS", 1);
             define("INVALID_FONE_LENGTH", 2);
             if( !filter_var( $foneNumber, FILTER_VALIDATE_INT) ){
@@ -101,7 +101,7 @@ class ValidaDados {
          *  @param Array $password, where $password[0] is the password and $password[1] is the password confirmation
          *  @return $passwordInvalidCharacters || $passwordInvalidLength || $invalidPasswordConfirmation
          **/
-        public function validaSenha( $password ){
+        public function validatePassword( $password ){
             define("INVALID_PASSWORD_CHARACTERS", 1);
             define("INVALID_PASSWORD_LENGHT", 2);
             define("DIFERENT_PASSWORD_AND_CONFIRMATION", 3);
