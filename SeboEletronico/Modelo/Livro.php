@@ -58,6 +58,7 @@ class Livro {
 	 */
 
 	function __construct( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription ) {
+		$this->validator = new ValidaDados();
 		$this->__setBookTitle( $bookTitle );
 		$this->__setBookAuthor( $bookAuthor );
 		$this->__setBookGenre( $bookGenre );
@@ -67,7 +68,6 @@ class Livro {
 		$this->__setBookTrade( $bookTrade );
 		$this->__setBookStatus( $bookStatus );
 		$this->__setBookDescription( $bookDescription );
-		$validator = new ValidaDados();
 	}
 
 	/**
