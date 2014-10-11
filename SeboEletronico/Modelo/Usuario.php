@@ -70,12 +70,13 @@ class User {
 	 */
 	
 	public function __setFullUserName($fullUserName){
-
+		define("INVALID_CHARACTERS_IN_NAME",1);
+        define("INVALID_NAME", 2);
 		if( !$this->validator->validateNullInputs( $fullUserName ) ){
 			throw new ExcessaoNomeInvalido("Nome nao pode ser nulo!");
-		} elseif( $this->validator->validateName( $fullUserName ) == 1 ){
+		} elseif( $this->validator->validateName( $fullUserName ) == INVALID_CHARACTERS_IN_NAME ){
 			throw new ExcessaoNomeInvalido("Nome contem caracteres invalidos!");
-		} elseif( $this->validator->validateName( $fullUserName ) == 2 ){
+		} elseif( $this->validator->validateName( $fullUserName ) == INVALID_NAME ){
 			throw new ExcessaoNomeInvalido("Nome contem espaços seguidos!");
 		} else{
 			$this->fullUserName = $fullUserName;
@@ -104,11 +105,13 @@ class User {
 	 */
 	
 	public function __setUserPhoneNumber( $userPhoneNumber ) {
+		define("INVALID_PHONE_CHARACTERS", 1);
+        define("INVALID_PHONE_LENGTH", 2);	
 		if( !$this->validator->validateNullInputs( $userPhoneNumber ) ){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode ser nulo!");
-		} elseif( $this->validator->validateFoneNumber( $userPhoneNumber ) == 1 ){
+		} elseif( $this->validator->validatePhoneNumber( $userPhoneNumber ) == INVALID_PHONE_CHARACTERS ){
 			throw new ExcessaoTelefoneInvalido("Telefone nao pode conter caracteres alfabeticos!");
-		} elseif( $this->validator->validateFoneNumber( $userPhoneNumber ) == 2 ){
+		} elseif( $this->validator->validatephoneNumber( $userPhoneNumber ) == INVALID_PHONE_LENGTH ){
 			throw new ExcessaoTelefoneInvalido("Telefone deve conter exatamente oito (8) digitos!");
 		} else{
 			$this->phoneNumber = $userPhoneNumber;
@@ -136,9 +139,10 @@ class User {
 	 */
 	
 	public function __setUserEmail( $userEmail ) {
+		define("INVALID_EMAIL", 1);
 		if( !$this->validator->validateNullInputs( $userEmail ) ){
 			throw new ExcessaoEmailInvalido("E-mail nao pode ser nulo!");
-		} elseif( $this->validator->validateEmail( $userEmail ) == 1 ){
+		} elseif( $this->validator->validateEmail( $userEmail ) == INVALID_EMAIL ){
 			throw new ExcessaoEmailInvalido("E-mail nao válido!");
 		} else{
 			$this->userEmail = $userEmail;
@@ -170,15 +174,17 @@ class User {
 	 */
 	
 	public function __setUserPassword($userPassword) {
+		define("INVALID_PASSWORD_CHARACTERS", 1);
+        define("INVALID_PASSWORD_LENGHT", 2);
+        define("DIFERENT_PASSWORD_AND_CONFIRMATION", 3);
 		$auxiliar = $this->validator->validatePassword( $userPassword );
-
 		if( !$this->validator->validateNullPassword( $userPassword )){
 			throw new ExcessaoSenhaInvalida("Senha nao pode ser nula!");
-		} elseif( $auxiliar == 1 ){
+		} elseif( $auxiliar == INVALID_PASSWORD_CHARACTERS ){
 			throw new ExcessaoSenhaInvalida("Senha contem caracteres invalidos!");
-		} elseif( $auxiliar == 2 ){
+		} elseif( $auxiliar == INVALID_PASSWORD_LENGHT ){
 			throw new ExcessaoSenhaInvalida("Senha deve conter exatamente seis (6) digitos!");
-		} elseif( $auxiliar == 3 ){
+		} elseif( $auxiliar == DIFERENT_PASSWORD_AND_CONFIRMATION ){
 			throw new ExcessaoSenhaInvalida("Senha e confirmação estão diferentes!");
 		} else{
 			$this->password = $userPassword;

@@ -122,11 +122,13 @@ class Livro {
 	 */
 
 	public function __setBookAuthor( $bookAuthor ) {
+		define("INVALID_CHARACTERS_IN_NAME",1);
+        define("INVALID_NAME", 2);
 		if( !$this->validator->validateNullInputs( $bookAuthor ) ){
 			throw new ExcessaoNomeInvalido("O nome do Autor nao pode ser nulo!");
-		} elseif( $this->validator->validateName( $bookAuthor ) == 1 ){
+		} elseif( $this->validator->validateName( $bookAuthor ) == INVALID_CHARACTERS_IN_NAME ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem caracteres invalidos!");
-		} elseif( $this->validator->validateName( $bookAuthor ) == 2 ){
+		} elseif( $this->validator->validateName( $bookAuthor ) == INVALID_NAME ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem espaços seguidos!");
 		} else{
 			$this->autor = $bookAuthor;

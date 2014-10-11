@@ -49,7 +49,7 @@ class ValidaDados {
          *  @return int $nameValidOrNot
          **/
         public function validateName( $name ){
-            define("IVALID_CHARACTERS_IN_NAME",1);
+            define("INVALID_CHARACTERS_IN_NAME",1);
             define("INVALID_NAME", 2);
 
             // List of all characters that can be used
@@ -60,7 +60,7 @@ class ValidaDados {
                 $character = stripos( $validCharacters, $name[$iterator] );
                 
                 if( !$character ){
-                    return IVALID_CHARACTERS_IN_NAME;
+                    return INVALID_CHARACTERS_IN_NAME;
                 }else if( $name[$iterator] == " " && $name[$iterator+1] == " " ){
                     return INVALID_NAME
                 }else{
@@ -86,13 +86,13 @@ class ValidaDados {
          *  @param int $foneNumber
          *  @return $foneNotValidCharacters || $foneNotValidLength
          **/
-        public function validateFoneNumber($foneNumber){
-            define("INVALID_FONE_CHARACTERS", 1);
-            define("INVALID_FONE_LENGTH", 2);
+        public function validatePhoneNumber($foneNumber){
+            define("INVALID_PHONE_CHARACTERS", 1);
+            define("INVALID_PHONE_LENGTH", 2);
             if( !filter_var( $foneNumber, FILTER_VALIDATE_INT) ){
-                return INVALID_FONE_CHARACTERS;
+                return INVALID_PHONE_CHARACTERS;
             }elseif( strlen( $foneNumber ) != 8 ){
-                return INVALID_FONE_LENGTH;
+                return INVALID_PHONE_LENGTH;
             }
         }
         
