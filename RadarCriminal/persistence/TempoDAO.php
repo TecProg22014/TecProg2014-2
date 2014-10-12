@@ -11,92 +11,95 @@ class TempoDAO{
 	
 	/**
 	 * Variable to instance a object to conect with the database
-	 * @var Conexao conexao
+	 * @var Conexao connection
 	 */
-	private $conexao;
+	private $connection;
 	
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct( ){
-		$this->conexao = new Conexao( );
+		$this->connection = new Conexao( );
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste( ){
-		$this->conexao = new ConexaoTeste( );
+		$this->connection = new ConexaoTeste( );
 
 	}
 	
 	/**
 	 * Function to list all the times of the crimes
-	 * @return $retornaTempos
+	 * @return $timeReturn
 	 */
-	public function listarTodos( ){
+	public function listAll( ){
 		$sql = "SELECT * FROM tempo";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) )
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosTempo = new Tempo( );
-			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
-			$retornaTempos[] = $dadosTempo;
+			$timeData = new Tempo( ); //Instance of Time for use the datas
+			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+											$register->MES );
+			$timeReturn[] = $timeData; //Array for return all the times
 		}
-		return $retornaTempos;
+		return $timeReturn;
 	}
 	
 	/**
 	 * Function to list all the times of the crimes in order
-	 * @return $retornaTempos
+	 * @return $timeReturn
 	 */
-	public function listarTodasEmOrdem( ){
+	public function orderListAll( ){
 		$sql = "SELECT * FROM tempo ORDER BY ano ASC ";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) )
+		$result = $this->connection->base->Execute( $sql );
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosTempo = new Tempo( );
-			$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
-			$retornaTempos[] = $dadosTempo;
+			$timeData = new Tempo( );
+			$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+											$register->MES );
+			$timeReturn[] = $timeData;
 		}
-		return $retornaTempos;
+		return $timeReturn;
 	}
 	
 	/**
 	 * Function to select one time by the id
-	 * @param int $id
-	 * @return $dadosTempo
+	 * @param int $timeId
+	 * @return $timeData
 	 */
-	public function consultarPorId( $id ){
-		$sql = "SELECT * FROM tempo WHERE id_tempo = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosTempo = new Tempo( );
-		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
-		return $dadosTempo;
-
+	public function idFind( $timeId ){
+		$sql = "SELECT * FROM tempo WHERE id_tempo = '".$timeId."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( ); //Auxiliar variable to register a time
+		$timeData = new Tempo( );
+		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+										$register->MES );
+		return $timeData;
 	}
 
 	/**
 	 * Function to select one time by the interval
-	 * @param int $intervalo
-	 * @return String $dadosTempo
+	 * @param int $interval
+	 * @return String $timeData
 	 */
-	public function consultarPorIntervalo( $intervalo ){
-		$sql = "SELECT * FROM tempo WHERE ano = '".$intervalo."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosTempo = new Tempo( );
-		$dadosTempo->__constructOverload( $registro->ID_TEMPO,$registro->ANO,$registro->MES );
-		return $dadosTempo;
+	public function intervalFind( $interval ){
+		$sql = "SELECT * FROM tempo WHERE ano = '".$interval."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( ); 
+		$timeData = new Tempo( );
+		$timeData->__constructOverload( $register->ID_TEMPO,$register->ANO,
+										$register->MES );
+		return $timeData;
 	}
 	
 	/**
 	 * Function to insert one time in the database
-	 * @param $tempo
+	 * @param $time
 	 */
-	public function inserirTempo(Tempo $tempo ){
-		$sql = "INSERT INTO tempo (ano ) VALUES ('{$tempo->__getIntervalo( )}' )";
-		$this->conexao->banco->Execute( $sql );
+	public function addTime(Tempo $time ){
+		$sql = "INSERT INTO tempo (ano ) VALUES ('{$time->__getInterval( )}' )";
+		$this->connection->base->Execute( $sql );
 	}
 }

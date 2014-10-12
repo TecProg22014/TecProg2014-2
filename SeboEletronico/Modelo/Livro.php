@@ -17,80 +17,81 @@ class Livro {
 	/**
 	 * Variebles to define a book.
 	 *
-	 * @var string $titulo;
-	 * @var string $autor;
-	 * @var string $genero;
-	 * @var string $edicao;
-	 * @var string $editora;
-	 * @var string $venda;
-	 * @var string $troca;
-	 * @var string $estado;
-	 * @var string $descricao;
+	 * @var string $bookTitle;
+	 * @var string $bookAuthor;
+	 * @var string $bookGenre;
+	 * @var string $bookEdition;
+	 * @var string $bookPublisher;
+	 * @var string $bookSale;
+	 * @var string $bookTrade;
+	 * @var string $bookStatus;
+	 * @var string $bookDescription;
 	 */
 
-	private $titulo;
-	private $autor;
-	private $genero;
-	private $edicao;
-	private $editora;
-	private $venda;
-	private $troca;
-	private $estado;
-	private $descricao;
+	private $bookTitle;
+	private $bookAuthor;
+	private $bookGenre;
+	private $bookEdition;
+	private $bookPublisher;
+	private $bookSale;
+	private $bookTrade;
+	private $bookStatus;
+	private $bookDescription;
 
 	/**
 	 * Constructor function of class Book.
-	 * Its a full constructor of class and responsible to create a instance of class.
+	 * Its a full constructor of class and responsible to create a 
+	 * instance of class.
 	 *
-	 * @param $titulo
-	 * @param $autor
-	 * @param $genero
-	 * @param $edicao
-	 * @param $editora
-	 * @param $venda
-	 * @param $troca
-	 * @param $estado
-	 * @param $descricao
+	 * @param $bookTitle
+	 * @param $bookAuthor
+	 * @param $bookGenre
+	 * @param $bookEdition
+	 * @param $bookPublisher
+	 * @param $bookSale
+	 * @param $bookTrade
+	 * @param $bookStatus
+	 * @param $bookDescription
 	 *
 	 */
 
-	function __construct($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao) {
-		$this->__setTitulo($titulo);
-		$this->__setAutor($autor);
-		$this->__setGenero($genero);
-		$this->__setEdicao($edicao);
-		$this->__setEditora($editora);
-		$this->__setVenda($venda);
-		$this->__setTroca($troca);
-		$this->__setEstado($estado);
-		$this->__setDescricao($descricao);
+	function __construct( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription ) {
+		$this->__setBookTitle( $bookTitle );
+		$this->__setBookAuthor( $bookAuthor );
+		$this->__setBookGenre( $bookGenre );
+		$this->__setBookEdition( $bookEdition );
+		$this->__setBookPublisher( $bookPublisher );
+		$this->__setBookSale( $bookSale );
+		$this->__setBookTrade( $bookTrade );
+		$this->__setBookStatus( $bookStatus );
+		$this->__setBookDescription( $bookDescription );
 	}
 
 	/**
-	 * The function __getTitulo() is the function to access the the atribute title value.
-	 * @return Object Book var $titulo
-	 * Returns $titulo of book.
+	 * The function __getBookTitle() is the function to access the the atribute title value.
+	 * @return Object Book var $bookTitle
+	 * Returns $bookTitle of book.
 	 */
 
-	public function __getTitulo() {
-		return $this->titulo;
+	public function __getBookTitle() {
+		return $this->bookTitle;
 	}
 
 	/**
-	 * The function __setTitulo() is the function to modify the value of atribute title.
+	 * The function __setBookTitle() is the function to modify the value of atribute title.
 	 * The only validation its of null title.
 	 * If the title value is null, the method throws the exception ExcessaoTituloInvalido().
-	 * @param $titulo
+	 * @param $bookTitle
 	 *
 	 */
 
-	public function __setTitulo($titulo) {
-		if(!ValidaDados::validaCamposnulos($titulo)){
+	public function __setBookTitle( $bookTitle ) {
+		if( !ValidaDados::validaCamposnulos( $bookTitle ) ){
 			throw new ExcessaoTituloInvalido("Titulo nao pode ser nulo!");
-		}else{
-			$this->titulo = $titulo;
+		} else{
+			$this->bookTitle = $bookTitle;
 		}
-
+		
 		/**
 		 * Nao tera tratamento de excessao, pois o titulo é pessoal e vai de cada autor,
 		 * logo pode ter qualquer tipo de caracter que o autor desejar.
@@ -98,13 +99,13 @@ class Livro {
 	}
 
 	/**
-	 * The function __getAutor() is the function to access the the atribute author value.
-	 * @return Object Book var $autor
+	 * The function __getBookAuthor() is the function to access the the atribute author value.
+	 * @return Object Book var $bookAuthor
 	 *
 	 */
 
-	public function __getAutor() {
-		return $this->autor;
+	public function __getBookAuthor() {
+		return $this->bookAuthor;
 	}
 
 	/**
@@ -113,104 +114,105 @@ class Livro {
 	 * contained invalid characters in author's name and consecutive <space> characters .
 	 * If the author value is null, contains space or invalid characters, 
 	 * the method throws the exception ExcessaoNomeInvalido().
-	 * @param $autor
+	 * @param $bookAuthor
 	 *
 	 */
 
-	public function __setAutor($autor) {
-		if(!ValidaDados::validaCamposNulos($autor)){
+	public function __setBookAuthor( $bookAuthor ) {
+		if( !ValidaDados::validaCamposNulos( $bookAuthor ) ){
 			throw new ExcessaoNomeInvalido("O nome do Autor nao pode ser nulo!");
-		}elseif(ValidaDados::validaNome($autor) == 1){
+		} elseif( ValidaDados::validaNome($bookAuthor) == 1 ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem caracteres invalidos!");
-		}elseif(ValidaDados::validaNome($autor) == 2){
+		} elseif( ValidaDados::validaNome($bookAuthor) == 2 ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem espaÃ§os seguidos!");
-		}else{
-			$this->autor = $autor;
+		} else{
+			$this->autor = $bookAuthor;
 		}
+		
 	}
 
 	/**
-	 * The function __getGenero() is the function to access the the atribute genre value.
-	 * @return Object Book var $genero
+	 * The function __getBookGenre() is the function to access the the atribute genre value.
+	 * @return Object Book var $bookGenre
 	 *
 	 */
 
-	public function __getGenero() {
-		return $this->genero;
+	public function __getBookGenre() {
+		return $this->bookGenre;
 	}
 
 	/**
-	 * The function __setGenero() is the function to modify the value of atribute genre.
+	 * The function __setBookGenre() is the function to modify the value of atribute genre.
 	 * No written validation.
-	 * @param $genero
+	 * @param $bookGenre
 	 *
 	 */
 	
-	public function __setGenero($genero) {
-		$this->genero = $genero;
+	public function __setBookGenre( $bookGenre ) {
+		$this->bookGenre = $bookGenre;
 	}
 
 	/**
-	 * The function __getTroca() is the function to access the the atribute trade value.
-	 * @return Object Book var $troca
+	 * The function __getBookTrade() is the function to access the the atribute trade value.
+	 * @return Object Book var $bookTrade
 	 *
 	 */
 
-	public function __getTroca() {
-		return $this->troca;
+	public function __getBookTrade() {
+		return $this->bookTrade;
 	}
 
 	/**
 	 * The function __setTroca() is the function to modify the value of atribute trade.
 	 * No written validation.
-	 * @param $troca
+	 * @param $bookTrade
 	 *
 	 */
 
-	public function __setTroca($troca) {
-		$this->troca = $troca;
+	public function __setBookTrade( $bookTrade ) {
+		$this->bookTrade = $bookTrade;
 	}
 
 	/**
-	 * The function __getVenda() is the function to access the the atribute sale value.
-	 * @return Object Book var $venda
+	 * The function __getBookSale() is the function to access the the atribute sale value.
+	 * @return Object Book var $bookSale
 	 *
 	 */
 
-	public function __getVenda() {
-		return $this->venda;
+	public function __getBookSale() {
+		return $this->bookSale;
 	}
 
 	/**
-	 * The function __setVenda() is the function to modify the value of atribute sale.
+	 * The function __setBookSale() is the function to modify the value of atribute sale.
 	 * No written validation.
-	 * @param $venda
+	 * @param $bookSale
 	 *
 	 */
 
-	public function __setVenda($venda) {
-		$this->venda = $venda;
+	public function __setBookSale( $bookSale ) {
+		$this->bookSale = $bookSale;
 	}
 
 	/**
-	 * The function __getDescricao() is the function to access the the atribute description value.
-	 * @return Object Book var $descricao
+	 * The function __getBookDescription() is the function to access the the atribute description value.
+	 * @return Object Book var $bookDescription
 	 *
 	 */
 
-	public function __getDescricao() {
-		return $this->descricao;
+	public function __getBookDescription() {
+		return $this->bookDescription;
 	}
 
 	/**
-	 * The function __setDescricao() is the function to modify the value of atribute description.
+	 * The function __setBookDescription() is the function to modify the value of atribute description.
 	 * No written validation.
-	 * @param $descricao
+	 * @param $bookDescription
 	 *
 	 */
 
-	public function __setDescricao($descricao) {
-		$this->descricao = $descricao;
+	public function __setBookDescription($bookDescription) {
+		$this->bookDescription = $bookDescription;
 	}
 
 	/**
@@ -219,7 +221,7 @@ class Livro {
 	 * @return ArrayObject string
 	 */
 
-	public function defineTiposDeGeneros() { //Genero por engenharia
+	public function defineGenreTypesPerEngineering() {
 		define("ENGENHARIA", "Engenharia", TRUE);
 		define("SOFTWARE", "Engenharia de Software", TRUE);
 		define("ELETRONICA", "Engenharia Eletronica", TRUE);
@@ -227,79 +229,82 @@ class Livro {
 		define("AUTOMOTIVA", "Engenharia Automotiva", TRUE);
 		define("AEROESPACIAL", "Engenharia Aeroespacial", TRUE);
 
-		return array(ENGENHARIA,SOFTWARE, ELETRONICA, ENERGIA, AUTOMOTIVA, AEROESPACIAL);
+
+		return array(ENGENHARIA, SOFTWARE, ELETRONICA, ENERGIA, AUTOMOTIVA, AEROESPACIAL);
+
 	}
 
 	/**
-	 * The function __getEdicao() is the function to access the the atribute edition value.
-	 * @return Object Book var $edicao
+	 * The function __getBookEdition() is the function to access the the atribute edition value.
+	 * @return Object Book var $bookEdition
 	 *
 	 */
 
-	public function __getEdicao() {
-		return $this->edicao;
+	public function __getBookEdition() {
+		return $this->bookEdition;
 	}
 
 	/**
-	 * The function __setEdicao() is the function to modify the value of atribute edition.
+	 * The function __setBookEdition() is the function to modify the value of atribute edition.
 	 * No written validation.
-	 * @param $edicao
+	 * @param $bookEdition
 	 *
 	 */
 	
-	public function __setEdicao($edicao){
-		$this->edicao = $edicao;
+	public function __setBookEdition( $bookEdition ){
+		$this->bookEdition = $bookEdition;
 		/**
 		 * Precisa validar entrada só de números.
 		 */
 	}
 
 	/**
-	 * The function __getEditora() is the function to access the the atribute publisher value.
-	 * @return Object Book var $editora
+	 * The function __getBookPublisher() is the function to access the the atribute publisher value.
+	 * @return Object Book var $bookPublisher
 	 *
 	 */
 
-	public function __getEditora(){
-		return $this->editora;
+	public function __getBookPublisher(){
+		return $this->bookPublisher;
 	}
 
 	/**
-	 * The function __setEditora() is the function to modify the value of atribute publisher.
+	 * The function __setBookPublisher() is the function to modify the value of atribute publisher.
 	 * The only validation its of null publisher.
 	 * If the title value is null, the method throws the exception ExcessaoEditoraInvalida().
-	 * @param $editora
+	 * @param $bookPublisher
 	 *
 	 */
 
-	public function __setEditora($editora){
+	public function __setBookPublisher( $bookPublisher ){
 
-		if(!ValidaDados::validaCamposNulos($editora)){
+		if( !ValidaDados::validaCamposNulos( $bookPublisher )){
 			throw new ExcessaoEditoraInvalida("A Editora do Livro nao pode ser nula!");
-		}else{
-			$this->editora = $editora;
+		} else{
+			$this->bookPublisher = $bookPublisher;
 		}
+		
 	}
 
 	/**
-	 * The function __getEstado() is the function to access the the atribute status value.
-	 * @return Object Book var $editora
+	 * The function __getBookPublisher() is the function to access the the atribute status value.
+	 * @return Object Book var $bookPublisher
 	 *
 	 */
 
-	public function __getEstado() {
-		return $this->estado;
+	public function __getBookPublisher() {
+		return $this->bookPublisher;
 	}
 
 	/**
-	 * The function __setEstado() is the function to modify the value of atribute status.
+	 * The function __setBookPublisher() is the function to modify the value of atribute status.
 	 * No written validation.
-	 * @param $estado
+	 * @param $bookStatus
 	 *
 	 */
 
-	public function __setEstado($estado){
-		$this->estado = $estado;
+	public function __setBookPublisher( $bookStatus ){
+		$this->bookPublisher = $bookStatus;
 	}
 
 }

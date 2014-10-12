@@ -1,46 +1,41 @@
 <?php
 session_start();
-$id_usuario = $_SESSION['id_usuario'];
+$userIdAuthentication = $_SESSION['id_usuario'];
 ?>
 <!DOCTYPE HTML>
 <html>
-<head>	
+<head>
+	<title>Sebo Eletrônico</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/css/UsuarioStyle.css" type="text/css" media="all">
-        <link rel="stylesheet" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/css/main.css" type="text/css" media="all">
-        <link rel="shortcut icon" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/img/android.ico">
-        <script src="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/Redireciona.js"></script> 
-        
-    <title>Sebo Eletronico</title>
-    
+	<link rel="stylesheet" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/css/UsuarioStyle.css" type="text/css" media="all">
+	<link rel="stylesheet" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/css/main.css" type="text/css" media="all">
+	<link rel="shortcut icon" href="http://localhost/TecProg2014-2/SeboEletronico/Visao/img/android.ico">
+	<script src="http://localhost/TecProg2014-2/SeboEletronico/Utilidades/Redireciona.js"></script> 
 </head>
 <body>
 	<?php
 		$_POST['mural'];			
 		$_POST['nome_comprador'];
 		$_POST ['id_livro'];
-                $mural = $_POST['mural'];
-		//$nome_comprador = $_POST['nome_comprador'];
+		
+        $boardOfSale = $_POST['mural'];
 			
-                include "..\Utilidades\ConexaoComBanco.php";
-                if(!$bd) die ("<h1>Falha no bd </h1>");
+		include "..\Utilidades\ConexaoComBanco.php";
+		if( !$dataBaseConnection ) die ("<h1>Falha no bd </h1>");
 
-                //Acessar Informações do comprador
-                $id_livro = $_POST['id_livro'];
+		//Acessar Informações do comprador
+		$bookId = $_POST['id_livro'];
+		$userEmail = $_SESSION["email"];
+		$searchAllUsersByEmail = "SELECT * FROM usuario WHERE email_usuario = '$userEmail' ";
+		$resultSearchAllUsersByEmail = mysql_query( $searchAllUsersByEmail );
 
-                $email_usuario = $_SESSION["email"];
+		while($arrayUser = mysql_fetch_array( $resultSearchAllUsersByEmail )) {
+			$customerName = $arrayUser['nome_usuario'];
+		}
+		
+		$insertNewBook = mysql_query("INSERT INTO mural (texto,nome_pergunta,id_livro) VALUES ('$boardOfSale', '$customerName', '$bookId')");
 
-                $strSQL4 = "SELECT * FROM usuario WHERE email_usuario = '$email_usuario' ";
-
-                $rs4 = mysql_query($strSQL4);
-
-                while($row = mysql_fetch_array($rs4)) {
-                    $nome_comprador = $row['nome_usuario'];
-                }
-                
-                $insere = mysql_query("INSERT INTO mural (texto,nome_pergunta,id_livro) VALUES ('$mural', '$nome_comprador', '$id_livro')");
-
-        ?>
+    ?>
   
     <div id="header">
 		<div id="logo"><img src="http://localhost/TecProg2014-2/SeboEletronico/Visao/img/sebo_header.png" class="imgHeader"/></div>
@@ -59,105 +54,92 @@ $id_usuario = $_SESSION['id_usuario'];
  
  
  <?php
-   
-   include "..\Utilidades\ConexaoComBanco.php";
-	if(!$bd) die ("<h1>Falha no bd </h1>");
-   
-  //Acessar Informações do comprador
-  
-  $strSQL2 = "SELECT * FROM usuario WHERE email_usuario = '".$email_usuario."' ";
-  
-   $rs2 = mysql_query($strSQL2);
-		
-		while($row = mysql_fetch_array($rs2)) {
+	   include "..\Utilidades\ConexaoComBanco.php";
+	   if( !$dataBaseConnection ) die ("<h1>Falha no bd </h1>");
 	   
-		$nome_comprador = $row['nome_usuario'] . "<br />";
-		$tel_comprador =  $row['telefone_usuario'] . "<br />";		
+		//Customer Information Acess
+		$searchAllUsersByUserEmail = "SELECT * FROM usuario WHERE email_usuario = '".$userEmail."' ";
+	  
+		$resultSearchAllUsersByUserEmail = mysql_query( $searchAllUsersByUserEmail );
+			
+		while( $arrayUser = mysql_fetch_array( $resultSearchAllUsersByUserEmail )) {
+			$customerName 	= $arrayUser['nome_usuario'] . "<br />";
+			$customerPhone	=  $arrayUser['telefone_usuario'] . "<br />";		
 		}
- 
-  //Acessando informações do livro escolhido
-   
-  $id_livro = $_POST["id_livro"];
- 
- 	$id_livro = 1;
- 
- $strSQL = "SELECT * FROM livro WHERE id_livro = '$id_livro' ";
- 
- $rs = mysql_query($strSQL);
-		
-		while($row = mysql_fetch_array($rs)) {
-	   
-		$titulo2 = $row['titulo_livro'] . "<br />";
-		$estado = $row['estado_conserv'] . "<br />";
- 		$editora = $row ['editora'] . "<br />"; 
-		$autor = $row ['autor'] . "<br />";
-		$descricao = $row ['descricao_livro'] . "<br />";
-		$id_dono = $row['id_dono'] . "<br />";
+	 
+		//Acessando informações do livro escolhido
+		$bookId 				= $_POST["id_livro"];
+		$bookId 				= 1;
+		$searchAllBookByBookId 	= "SELECT * FROM livro WHERE id_livro = '$bookId' ";
+	 
+		$resultSearchAllBookByBookId = mysql_query( $searchAllBookByBookId  );
+
+		while( $arrayBook = mysql_fetch_array( $resultSearchAllBookByBookId ) ) {
+			$bookTitleSale 			= $arrayBook['titulo_livro'] . "<br />";
+			$bookStatusSale 		= $arrayBook['estado_conserv'] . "<br />";
+			$bookPublisherSale 		= $arrayBook['editora'] . "<br />"; 
+			$bookAuthorSale 		= $arrayBook['autor'] . "<br />";
+			$bookDescriptionSale 	= $arrayBook['descricao_livro'] . "<br />";
+			$ownerId 				= $$arrayBook['id_dono'] . "<br />";
 		}
 
-  
-  //Exibir 
-   echo '<h6> <h1>' ;
-   echo $titulo2;
-   echo '</h1> </h6><br /><br />' ; 
-   
-   echo'<h6>Autor: '; 
-   echo $autor;
-   echo'</h6><br />';
-   
-   echo'<h6>Editora: ';
-   echo $editora;
-   echo'</h6><br />';
-   
-   
-   echo'<h6>Descricao: ';
-   echo $descricao;
-   echo'</h6><br /><br />';
-   
-   
-   
-   ?>
-    
-    <div id="formulario">
-  <form name="comprarlivro" method="post" action="compralivro.php">
-  
-   <input type = "hidden" name="nome_comprador" value= "<?php echo $nome_comprador; ?>" >
-   <input type="hidden" name="tel_comprador" value= " <?php echo $tel_comprador; ?>" >
-   <input type="hidden" name="id_livro" value=" <?php echo $id_livro; ?>" >
-   <input type="hidden" name="id_dono" value=" <?php echo $id_dono; ?>" >
-     <input type="submit" value="Comprar" />
-     <label for="pergunta"></label>
-  </form>
-    </div>
-    
-    
-   <div id="formulariotop"> 
-   <form name="enviarpergunta" method="post" action="detalheslivro.php"> 
-   <h6>Envie sua mensagem:</h6>
-   <br>
-   <textarea name="mural" value="mural" rows="5" cols="45" ></textarea>
-   <input type="hidden" value="nome_comprador" name="nome_comprador">
-   <input type="hidden" name="id_livro" value="<?php echo $id_livro; ?>">
-   <input type="submit" value="Enviar" />  
-   </form>
+	  
+		//Show Book Date
+		echo '<h6> <h1>' ;
+		echo $bookTitleSale;
+		echo '</h1> </h6><br /><br />' ; 
 
- <br/><br/><br/>
+		echo'<h6>Autor: '; 
+		echo $bookAuthorSale ;
+		echo'</h6><br />';
+
+		echo'<h6>Editora: ';
+		echo $bookPublisherSale;
+		echo'</h6><br />';
+
+
+		echo'<h6>Descricao: ';
+		echo $bookDescriptionSale;
+		echo'</h6><br /><br />';
+?>
+    
+	<div id="formulario">
+		<form name="comprarlivro" method="post" action="compralivro.php">
+			<input type = "hidden" name="nome_comprador" value= "<?php echo $customerName; ?>" >
+			<input type="hidden" name="tel_comprador" value= " <?php echo $customerPhone; ?>" >
+			<input type="hidden" name="id_livro" value=" <?php echo $bookId; ?>" >
+			<input type="hidden" name="id_dono" value=" <?php echo $ownerId; ?>" >
+			<input type="submit" value="Comprar" />
+			<label for="pergunta"></label>
+		</form>
+	</div>
+
+
+	<div id="formulariotop"> 
+		<form name="enviarpergunta" method="post" action="detalheslivro.php"> 
+			<h6>Envie sua mensagem:</h6>
+			<br />
+			<textarea name="mural" value="mural" rows="5" cols="45" ></textarea>
+			<input type="hidden" value="nome_comprador" name="nome_comprador">
+			<input type="hidden" name="id_livro" value="<?php echo $bookId; ?>">
+			<input type="submit" value="Enviar" />  
+		</form>
+
+	<br/><br/><br/>
  
- 	<?php
-	
-	include "..\Dao\conexao_bd.inc";
-             if(!$bd) die ("<h1>Falha no bd </h1>");
-	
-            $strSQL3 = "SELECT * FROM mural WHERE id_livro = '".$id_livro."' ORDER BY id_comentario DESC" ;
-						
-		$rs3 = mysql_query($strSQL3);
-		
-		while($row3 = mysql_fetch_array($rs3)) {
-                    echo $row3['nome_pergunta'];
-                    echo " disse: ";
-                    echo $row3['texto'];
-                    echo " <br /> <br />";
-                }
+	<?php
+		include "..\Dao\conexao_bd.inc";
+		if( !$dataBaseConnection ) die ("<h1>Falha no bd </h1>");
+
+		$searchAllBoardByBookIdOrderDesc 		= "SELECT * FROM mural WHERE id_livro = '".$bookId."' ORDER BY id_comentario DESC" ;
+		$resultSearchAllBoardByBookIdOrderDesc 	= mysql_query( $searchAllBoardByBookIdOrderDesc );
+
+		while($arrayBoard = mysql_fetch_array( $resultSearchAllBoardByBookIdOrderDesc )) {
+		echo $arrayBoard['nome_pergunta'];
+		echo " disse: ";
+		echo $arrayBoard['texto'];
+		echo " <br /> <br />";
+	}
 	?> 
       
    </div>

@@ -28,24 +28,24 @@ class CrimeController {
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
-	public function __construct( ) {
-		$this->crimeDAO = new CrimeDAO ( );
+	public function __construct() {
+		$this->crimeDAO = new CrimeDAO ();
 	}
 	
 	/**
 	 * Specific constroctor to unit test
 	 */
-	public function __constructTeste( ) {
-		$this->crimeDAO->__constructTeste ( );
+	public function __constructTest() {
+		$this->crimeDAO->__constructTest ();
 	}
 	
 	/**
 	 * Function to select all crimes
 	 * 
-	 * @return Array $resultado
+	 * @return Array $result
 	 */
-	public function _listarTodos( ) {
-		return $this->crimeDAO->listarTodos ( );
+	public function _getAllCrimes() {
+		return $this->crimeDAO->listAll ();
 	}
 	
 	/**
@@ -54,8 +54,8 @@ class CrimeController {
 	 * @param int $id        	
 	 * @return Object $crime
 	 */
-	public function _consultarPorId( $id ) {
-		return $this->crimeDAO->consultarPorId ( $id  );
+	public function _getCrimeById( $id ) {
+		return $this->crimeDAO->idFind ( $id  );
 	}
 	
 	/**
@@ -64,18 +64,17 @@ class CrimeController {
 	 * @param int $idNature        	
 	 * @return Object Crime
 	 */
-	public function _consultarPorIdNatureza( $natureza ) {
-		return $this->crimeDAO->consultarPorIdNatureza ( $natureza  );
+	public function _getCrimesByNatureId( $idNature ) {
 	}
 	
 	/**
 	 * Function to select crimes by the id of one period
 	 * 
-	 * @param int $idTempo        	
+	 * @param int $timeId        	
 	 * @return Object Crime
 	 */
-	public function _consultarPorIdTempo( $tempo ) {
-		return $this->crimeDAO->consultarPorIdNatureza ( $tempo  );
+	public function _getCrimesByTimeId( $timeId ) {
+		return $this->crimeDAO->timeIdFind ( $timeId  );
 	}
 	
 	/**
@@ -84,39 +83,39 @@ class CrimeController {
 	 * @param Crime $crime        	
 	 * @return boolean $registered *refactor
 	 */
-	public function _inserirCrime(Crime $crime ) {
-		return $this->crimeDAO->inserirCrime ( $crime  );
+	public function _saveCrime(Crime $crime ) {
+		return $this->crimeDAO->addCrime ( $crime  );
 	}
 	
 	/**
 	 * Function to return the sum of one type of nature crimes
 	 * 
-	 * @param String $natureza        	
+	 * @param String $nature        	
 	 * @return number $sumOfCrimes *refactor
 	 */
-	public function _somaDeCrimePorNatureza( $natureza ) {
-		return $this->crimeDAO->somaDeCrimePorNatureza ( $natureza  );
+	public function _sumCrimesByNature( $nature) {
+		return $this->crimeDAO->totalNatureCrime ( $nature );
 	}
 	
 	/**
 	 * Function to return the sum of one type of nature crimes in one period of time
 	 * 
-	 * @param String $natureza        	
-	 * @param String $ano        	
+	 * @param String $nature        	
+	 * @param String $year     	
 	 * @return number $sumOfCrimes *refactor
 	 */
-	public function _somaDeCrimePorNaturezaEmAno( $natureza, $ano ) {
-		return $this->crimeDAO->somaDeCrimePorNaturezaEmAno ( $natureza, $ano  );
+	public function _sumCrimesByNaturePerYear( $nature, $year ) {
+		return $this->crimeDAO->totalNatureInYearCrime ( $nature, $year  );
 	}
 	
 	/**
 	 * Funtion to return the sum of crimes per period of time
 	 * 
-	 * @param String $ano        	
+	 * @param String $year        	
 	 * @return number $sumOfCrimes *refactor
 	 */
-	public function _somaDeCrimePorAno( $ano ) {
-		return $this->crimeDAO->somaDeCrimePorAno ( $ano  );
+	public function _sumCrimesPerYear( $year ) {
+		return $this->crimeDAO->totalYearCrime ( $year  );
 	}
 	
 	/**
@@ -125,39 +124,39 @@ class CrimeController {
 	 * @return number $sumOfAllCrimes *refactor
 	 *        
 	 */
-	public function _somaCrimeTodosAnos( ) {
+	public function _sumCrimesOfAllYears() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTodosAnos [] = $this->_somaDeCrimePorAno ( $i  );
+			$sumOfCrimesOfAllYears [] = $this->_sumCrimesPerYear ( $i  );
 		}
 		
-		$retornoSomaTodosAnos = array_sum ( $somaTodosAnos  );
-		return $retornoSomaTodosAnos;
+		$returnSumOfCrimesOfAllYears = array_sum ( $sumOfCrimesOfAllYears  );
+		return $returnSumOfCrimesOfAllYears;
 	}
 	
 	/**
 	 * Function to insert in the database the separate values of an array of crimes
 	 * 
-	 * @param Array $arrayCrime        	
+	 * @param Array $crimeArray        	
 	 * @return number 0 *refactor
 	 */
-	public function _inserirCrimeArrayParseSerieHistorica( $arrayCrime ) {
-		for( $i = 0, $arrayKey = $arrayCrime, $inicio = 0; $i < count ( $arrayCrime  ); $i ++ ) {
-			$natureza = key ( $arrayKey  );
-			$dadosNatureza = new Natureza ( );
-			$naturezaDAO = new NaturezaDAO ( );
-			$dadosNatureza = $naturezaDAO->consultarPorNome ( $natureza  );
-			$arrayTempo = $arrayCrime [$natureza];
-			for( $j = 0; $j < count ( array_keys ( $arrayCrime [$natureza]  )  ); $j ++ ) {
-				$tempo = key ( $arrayTempo  );
-				$dadosTempo = new Tempo ( );
-				$tempoDAO = new TempoDAO ( );
-				$dadosTempo = $tempoDAO->consultarPorIntervalo ( $tempo  );
-				$dadosCrime = new Crime ( );
-				$dadosCrime->__setIdNatureza ( $dadosNatureza->__getIdNatureza ( )  );
-				$dadosCrime->__setIdTempo ( $dadosTempo->__getIdTempo ( )  );
-				$dadosCrime->__setQuantidade ( $arrayCrime [$natureza] [$tempo]  );
-				$this->_inserirCrime ( $dadosCrime  );
-				next ( $arrayTempo  );
+	public function _saveParseArrayOfCrimes( $crimeArray ) {
+		for( $i = 0, $arrayKey = $crimeArray, $inicio = 0; $i < count ( $crimeArray  ); $i ++ ) {
+			$nature = key ( $arrayKey  );
+			$natureData = new Natureza ();
+			$natureDAO = new NaturezaDAO ();
+			$natureData = $natureDAO->nameFind ( $nature  );
+			$timeArray = $crimeArray [$nature];
+			for( $j = 0; $j < count ( array_keys ( $crimeArray [$nature]  )  ); $j ++ ) {
+				$time = key ( $timeArray  );
+				$timeData = new Tempo ();
+				$timeDAO = new TempoDAO ();
+				$timeData = $timeDAO->intervalFind ( $time  );
+				$crimeData = new Crime ();
+				$crimeData->setNatureId ( $natureData->getNatureId ()  );
+				$crimeData->setTimeId ( $timeData->__getIdTempo ()  );
+				$crimeData->setAmount ( $crimeArray [$nature] [$time]  );
+				$this->_saveCrime ( $crimeData  );
+				next ( $timeArray  );
 			}
 			next ( $arrayKey  );
 		}
@@ -167,26 +166,26 @@ class CrimeController {
 	/**
 	 * Function to insert in the database the separate values of an array of crimes ordered by four months periods of time
 	 * 
-	 * @param Array $arrayCrime        	
+	 * @param Array $crimeArray        	
 	 */
-	public function _inserirCrimeArrayParseQuadrimestral( $arrayCrime ) {
-		for( $i = 0, $arrayKey = $arrayCrime, $inicio = 0; $i < count ( $arrayCrime  ); $i ++ ) {
-			$natureza = key ( $arrayKey  );
-			$dadosNatureza = new Natureza ( );
-			$naturezaDAO = new NaturezaDAO ( );
-			$dadosNatureza = $naturezaDAO->consultarPorNome ( $natureza  );
-			$arrayTempo = $arrayCrime [$natureza];
-			for( $j = 0; $j < count ( array_keys ( $arrayCrime [$natureza]  )  ); $j ++ ) {
-				$tempo = key ( $arrayTempo  );
-				$dadosTempo = new Tempo ( );
-				$tempoDAO = new TempoDAO ( );
-				$dadosTempo = $tempoDAO->consultarPorMes ( $tempo  );
-				$dadosCrime = new Crime ( );
-				$dadosCrime->__setIdNatureza ( $dadosNatureza->__getIdNatureza ( )  );
-				$dadosCrime->__setIdTempo ( $dadosTempo->__getIdTempo ( )  );
-				$dadosCrime->__setQuantidade ( $arrayCrime [$natureza] [$tempo]  );
-				$this->inserirCrime ( $dadosCrime  );
-				next ( $arrayTempo  );
+	public function saveQuarterlyParseArrayOfCrimes( $crimeArray ) {
+		for( $i = 0, $arrayKey = $crimeArray, $inicio = 0; $i < count ( $crimeArray  ); $i ++ ) {
+			$nature = key ( $arrayKey  );
+			$natureData = new Natureza ();
+			$natureDAO = new NaturezaDAO ();
+			$natureData = $natureDAO->nameFind ( $nature  );
+			$timeArray = $crimeArray [$nature];
+			for( $j = 0; $j < count ( array_keys ( $crimeArray [$nature]  )  ); $j ++ ) {
+				$time = key ( $timeArray  );
+				$timeData = new Tempo ();
+				$timeDAO = new TempoDAO ();
+				$timeData = $timeDAO->consultarPorMes ( $time  );
+				$crimeData = new Crime ();
+				$crimeData->setNatureId ( $natureData->getNatureId ()  );
+				$crimeData->setTimeId ( $timeData->__getIdTempo ()  );
+				$crimeData->setAmount ( $crimeArray [$nature] [$time]  );
+				$this->inserirCrime ( $crimeData  );
+				next ( $timeArray  );
 			}
 			next ( $arrayKey  );
 		}
@@ -195,33 +194,33 @@ class CrimeController {
 	/**
 	 * Function to insert in the database the separate values of an array of crimes ordered by administrative regions
 	 * 
-	 * @param Array $arrayCrime        	
+	 * @param Array $crimeArray        	
 	 */
-	public function _inserirCrimeArrayParseRA( $arrayCrime ) {
-		for( $i = 0, $arrayKey = $arrayCrime, $inicio = 0; $i < count ( $arrayCrime  ); $i ++ ) {
-			$natureza = key ( $arrayKey  );
-			$dadosNatureza = new Natureza ( );
-			$naturezaDAO = new NaturezaDAO ( );
-			$dadosNatureza = $naturezaDAO->consultarPorNome ( $natureza  );
-			$arrayRegiao = $arrayCrime [$natureza];
-			for( $j = 0; $j < count ( array_keys ( $arrayCrime [$natureza]  )  ); $j ++ ) {
+	public function saveParseArrayOfCrimesInOneAdministrativeRegion( $crimeArray ) {
+		for( $i = 0, $arrayKey = $crimeArray, $inicio = 0; $i < count ( $crimeArray  ); $i ++ ) {
+			$nature = key ( $arrayKey  );
+			$natureData = new Natureza ();
+			$natureDAO = new NaturezaDAO ();
+			$natureData = $natureDAO->nameFind ( $nature  );
+			$arrayRegiao = $crimeArray [$nature];
+			for( $j = 0; $j < count ( array_keys ( $crimeArray [$nature]  )  ); $j ++ ) {
 				$regiao = key ( $arrayRegiao  );
-				$dadosRegiao = new RegiaoAdministrativa ( );
-				$regiaoDAO = new RegiaoAdministrativaDAO ( );
-				$dadosRegiao = $regiaoDAO->consultarPorNome ( $regiao  );
-				$arrayTempo = $arrayCrime [$natureza] [$regiao];
-				for( $x = 0; $x < count ( array_keys ( $arrayCrime [$natureza] [$regiao]  )  ); $x ++ ) {
-					$tempo = key ( $arrayTempo  );
-					$dadosTempo = new Tempo ( );
-					$tempoDAO = new TempoDAO ( );
-					$dadosTempo = $tempoDAO->consultarPorIntervalo ( $tempo  );
-					$dadosCrime = new Crime ( );
-					$dadosCrime->__setIdNatureza ( $dadosNatureza->__getIdNatureza ( )  );
-					$dadosCrime->__setIdRegiaoAdministrativa ( $dadosRegiao->__getIdRegiaoAdministrativa ( )  );
-					$dadosCrime->__setIdTempo ( $dadosTempo->__getIdTempo ( )  );
-					$dadosCrime->__setQuantidade ( $arrayCrime [$natureza] [$regiao] [$tempo]  );
-					$this->crimeDAO->inserirCrime ( $dadosCrime  );
-					next ( $arrayTempo  );
+				$dadosRegiao = new RegiaoAdministrativa ();
+				$regiaoDAO = new RegiaoAdministrativaDAO ();
+				$dadosRegiao = $regiaoDAO->nameFind ( $regiao  );
+				$timeArray = $crimeArray [$nature] [$regiao];
+				for( $x = 0; $x < count ( array_keys ( $crimeArray [$nature] [$regiao]  )  ); $x ++ ) {
+					$time = key ( $timeArray  );
+					$timeData = new Tempo ();
+					$timeDAO = new TempoDAO ();
+					$timeData = $timeDAO->intervalFind ( $time  );
+					$crimeData = new Crime ();
+					$crimeData->setNatureId ( $natureData->getNatureId ()  );
+					$crimeData->__setIdRegiaoAdministrativa ( $dadosRegiao->__getIdRegiaoAdministrativa ()  );
+					$crimeData->setTimeId ( $timeData->__getIdTempo ()  );
+					$crimeData->setAmount ( $crimeArray [$nature] [$regiao] [$time]  );
+					$this->crimeDAO->inserirCrime ( $crimeData  );
+					next ( $timeArray  );
 				}
 				
 				next ( $arrayRegiao  );
@@ -233,22 +232,22 @@ class CrimeController {
 	/**
 	 * Function to return the sum of crimes that will be represented in a graph
 	 * 
-	 * @return string $dadosCrimeFormatado
+	 * @return string $FormatedCrimeData
 	 */
-	public function _retornarDadosDeSomaFormatoNovo( ) {
-		$tempoDAO = new TempoDAO ( );
-		$dadosTempo = new Tempo ( );
-		$arrayDadosTempo = $tempoDAO->listarTodos ( );
-		for( $i = 0; $i < count ( $arrayDadosTempo  ); $i ++ ) {
-			$dadosTempo = $arrayDadosTempo [$i];
-			$dados [$i] = $dadosTempo->__getIntervalo ( );
+	public function sumCrimesToGraph() {
+		$timeDAO = new TempoDAO ();
+		$timeData = new Tempo ();
+		$timeDataArray = $timeDAO->listAll ();
+		for( $i = 0; $i < count ( $timeDataArray  ); $i ++ ) {
+			$timeData = $timeDataArray [$i];
+			$dados [$i] = $timeData->__getInterval ();
 		}
 		for( $i = 0; $i < count ( $dados  ); $i ++ ) {
-			$dadosCrime [$i] = $this->_somaDeCrimePorAno ( $dados [$i]  );
-			$dadosCrimeTitle [$i] = number_format ( $dadosCrime [$i], 0, ',', '.'  );
+			$crimeData [$i] = $this->_sumCrimesPerYear ( $dados [$i]  );
+			$crimeDataTitle [$i] = number_format ( $crimeData [$i], 0, ',', '.'  );
 		}
 		
-		for( $i = 0; $i < count ( $dadosCrime  ); $i ++ ) {
+		for( $i = 0; $i < count ( $crimeData  ); $i ++ ) {
 			/**
 			 * Loop that defines what will be represented in the graph
 			 * the string ("\"bar\"" ) defines the graphs full bar and
@@ -261,111 +260,111 @@ class CrimeController {
 			} else {
 				$varbar = "\"bar simple\"";
 			}
-			$dadosCrimeFormatado [] = "<div class=" . $varbar . "title=\"" . $dadosCrimeTitle [$i] . " Ocorrencias\">
+			$FormatedCrimeData [] = "<div class=" . $varbar . "title=\"" . $crimeDataTitle [$i] . " Ocorrencias\">
 									   		<div class=\"title\">" . $dados [$i] . "</div>
-									   		<div class=\"value\">" . $dadosCrime [$i] . "</div>
+									   		<div class=\"value\">" . $crimeData [$i] . "</div>
 									   </div>";
 			if ($i != 0) {
-				$dadosCrimeFormatado [0] = $dadosCrimeFormatado [0] . $dadosCrimeFormatado [$i];
+				$FormatedCrimeData [0] = $FormatedCrimeData [0] . $FormatedCrimeData [$i];
 			} else {
 				//nothing to do here
 			}
 		}
 		
-		return $dadosCrimeFormatado [0];
+		return $FormatedCrimeData [0];
 	}
 	
 	/**
 	 * Function to sum all the homicides between 2010 and 2011
-	 * @return  int $retornoHomicidios2010_2011
+	 * @return  int $returnSumOfAllHomicides2010_2011
 	 */
-	public function _somaHomicidios2010_2011( ) {
+	public function _sumHomicides2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaHomicidios2010_2011 [] = $this->crimeDAO->somaTotalHomicidios ( $i  );
+			$sumOfAllHomicides2010_2011 [] = $this->crimeDAO->totalMurder ( $i  );
 		}
 		
-		$retornoHomicidios2010_2011 = array_sum ( $somaHomicidios2010_2011  );
-		return $retornoHomicidios2010_2011;
+		$returnSumOfAllHomicides2010_2011 = array_sum ( $sumOfAllHomicides2010_2011  );
+		return $returnSumOfAllHomicides2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the crimes between 2010 and 2011
-	 * @return int $retornoSomaCrime2010_2011
+	 * @return int $returnSumOfAllCrimes2010_2011
 	 */
-	public function _somaCrime2010_2011( ) {
+	public function _sumCrimes2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaCrime2010_2011 [] = $this->_somaDeCrimePorAno ( $i  );
+			$sumOfAllCrimes2010_2011 [] = $this->_sumCrimesPerYear ( $i  );
 		}
-		$retornoSomaCrime2010_2011 = array_sum ( $somaCrime2010_2011  );
-		return $retornoSomaCrime2010_2011;
+		$returnSumOfAllCrimes2010_2011 = array_sum ( $sumOfAllCrimes2010_2011  );
+		return $returnSumOfAllCrimes2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the homicides
-	 * @return int $retornoSomaTotalHomicidios
+	 * @return int $returnSumOfAllHomicides
 	 */
-	public function _somaTotalHomicidios( ) {
+	public function _sumAllHomicides() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaTotalHomicidios [] = $this->crimeDAO->somaTotalHomicidios ( $i  );
+			$sumOfAllHomicides [] = $this->crimeDAO->totalMurder ( $i  );
 		}
 		
-		$retornoSomaTotalHomicidios = array_sum ( $somaTotalHomicidios  );
-		return $retornoSomaTotalHomicidios;
+		$returnSumOfAllHomicides = array_sum ( $sumOfAllHomicides  );
+		return $returnSumOfAllHomicides;
 	}
 	
 	/**
 	 * Function to sum all the injury 
-	 * @return int $retornoSomaLesaoCorporal
+	 * @return int $retornSumOfAllInjury
 	 */
-	public function _somaLesaoCorporal( ) {
+	public function _sumAllInjury() {
 		for( $i = 2001; $i < 2012; $i ++ ) {
-			$somaLesaoCorporal [] = $this->crimeDAO->somaLesaoCorporal ( $i  );
+			$sumOfAllInjury [] = $this->crimeDAO->totalInjury ( $i  );
 		}
-		$retornoSomaLesaoCorporal = array_sum ( $somaLesaoCorporal  );
-		return $retornoSomaLesaoCorporal;
+		$retornSumOfAllInjury = array_sum ( $sumOfAllInjury  );
+		return $retornSumOfAllInjury;
 	}
 	
 	/**
 	 * Function to sum all the injury between 2010 and 2011
 	 * @return number
 	 */
-	public function _somaLesaoCorporal2010_2011( ) {
+	public function _sumIjnury2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaLesaoCorporal2010_2011 [] = $this->_somaLesaoCorporal ( $i  );
+			$sumOfAllInjury2010_2011 [] = $this->_somaLesaoCorporal ( $i  );
 		}
-		$retornoLesaoCorporal2010_2011 = array_sum ( $somaLesaoCorporal2010_2011  );
-		return $retornoLesaoCorporal2010_2011;
+		$retornSumOfAllInjury2010_2011 = array_sum ( $sumOfAllInjury2010_2011  );
+		return $retornSumOfAllInjury2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the murder attempts
-	 * @return int $retornoSomaTotalTentativasHomicidio
+	 * @return int $retornSumOfAllMurderAttempts
 	 */
-	public function _somaTotalTentativasHomicidio( ) {
+	public function _sumAllMurderAttempts() {
 		for( $j = 2001; $j < 2012; $j ++ ) {
-			$somaTotalTentativasHomicidio [] = $this->_somaTotalTentativasHomicidio ( $j  );
+			$sumOfAllMurderAttempts [] = $this->_sumAllMurderAttempts ( $j  );
 		}
-		$retornoSomaTotalTentativasHomicidio = array_sum ( $somaTotalTentativasHomicidio  );
-		return $retornoSomaTotalTentativasHomicidio;
+		$retornSumOfAllMurderAttempts = array_sum ( $sumOfAllMurderAttempts  );
+		return $retornSumOfAllMurderAttempts;
 	}
 	
 	/**
 	 * Function to sum all the murder attempts between 2010 and 2011
-	 * @return int $retornoSomaTotalTentativasHomicidio2010_2011
+	 * @return int $retornSumOfAllMurderAttempts2010_2011
 	 */
-	public function _somaTotalTentativasHomicidio2010_2011( ) {
+	public function _sumMurderAttempts2010_2011() {
 		for( $i = 2010; $i < 2012; $i ++ ) {
-			$somaTotalTentativasHomicidio2010_2011 [] = $this->crimeDAO->somaTotalTentativasHomicidio ( $i  );
+			$sumOfAllMurderAttempts2010_2011 [] = $this->crimeDAO->totalAttemptedMurder ( $i  );
 		}
-		$retornoSomaTotalTentativasHomicidio2010_2011 = array_sum ( $somaTotalTentativasHomicidio2010_2011  );
-		return $retornoSomaTotalTentativasHomicidio2010_2011;
+		$retornSumOfAllMurderAttempts2010_2011 = array_sum ( $sumOfAllMurderAttempts2010_2011  );
+		return $retornSumOfAllMurderAttempts2010_2011;
 	}
 	
 	/**
 	 * Function to sum all the crimes
 	 * @return int $totalCrimes
 	 */
-	public function _somarGeral( ) {
-		return $this->crimeDAO->somarGeral ( );
+	public function _sumAllCrimes() {
+		return $this->crimeDAO->totalCrime ();
 	}
 }

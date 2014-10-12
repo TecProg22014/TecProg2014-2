@@ -15,22 +15,22 @@ include_once "/exceptions/EConexaoFalha.php";
 class CategoriaDAO{
 	/**
 	 * Variable to instance a object to conect with the database
-	 * @var Conexao conexao
+	 * @var Conexao connection
 	 */
-	private $conexao;
+	private $connection;
 
 	/**
 	 * Constructor to instance the object that will percist in the database
 	 */
 	public function __construct( ){
-		$this->conexao = new Conexao( );
+		$this->connection = new Conexao( );
 	}
 
 	/**
 	 * Specific constroctor to unit test
 	 */
 	public function __constructTeste( ){
-		$this->conexao = new ConexaoTeste( );
+		$this->connection = new ConexaoTeste( );
 
 	}
 
@@ -38,181 +38,195 @@ class CategoriaDAO{
 	 * Function to list all categories of crimes
 	 * @return Array $retornaCategoria
 	 */
-	public function listarTodas( ){
+	public function listAll( ){
 		$sql = "SELECT * FROM categoria";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		while( $registro = $resultado->FetchNextObject( ) ){
-			$dadosCategoria = new Categoria( );
-			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
-			$retornaCategorias[] = $dadosCategoria;
+		$result = $this->connection->base->Execute( $sql ); //Show if the result of a function was successful
+		while( $register = $result->FetchNextObject( ) ){
+			$categoryData = new Categoria( ); //Instance of Category for use the datas
+			$categoryData->__constructOverload( $register->ID_CATEGORIA,
+												$register->NOME_CATEGORIA );
+			$categoryReturn[] = $categoryData; //Array for return all the categories
 		}
-		return $retornaCategorias;
+		return $categoryReturn;
 	}
 
 	/**
 	 * Function to alphabetically list all categories of crimes
 	 * @return Array $retornaCategoria
 	 */
-	public function listarTodasAlfabicamente( ){
+	public function alphabeticallyListAll( ){
 		$sql = "SELECT * FROM categoria ORDER BY nome_categoria ASC";
-		$resultado = $this->conexao->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		
 		/**
 	 	* While to alphabetically order of categories
 	 	*
 	 	*/
 		
-		while( $registro = $resultado->FetchNextObject( ) )
+		while( $register = $result->FetchNextObject( ) )
 		{
-			$dadosCategoria = new Categoria( );
-			$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
-			$retornaCategorias[] = $dadosCategoria;
+			$categoryData = new Categoria( );
+			$categoryData->__constructOverload( $register->ID_CATEGORIA,
+												$register->NOME_CATEGORIA );
+			$categoryReturn[] = $categoryData;
 		}
-		return $retornaCategorias;
+		return $categoryReturn;
 	}
 
 	/**
 	 * Function to select one category by the id
 	 * @param int $id
-	 * @return String $dadosCategoria
+	 * @return String $categoryData
 	 */
-	public function consultarPorId( $id ){
+	public function idFind( $categoryId ){
 		$sql = "SELECT * FROM categoria WHERE id_categoria = '".$id."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosCategoria = new Categoria( );
-		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
-		return $dadosCategoria;
-
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$categoryData = new Categoria( );
+		$categoryData->__constructOverload( $register->ID_CATEGORIA,
+											$register->NOME_CATEGORIA );
+		return $categoryData;
 	}
 
 	/**
 	 * Function to select one category by the name
-	 * @param String $nomeCategoria
-	 * @return String $dadosCategoria
+	 * @param String $categoryName
+	 * @return String $categoryData
 	 */ 
-	public function consultarPorNome( $nomeCategoria ){
-		$sql = "SELECT * FROM categoria WHERE nome_categoria = '".$nomeCategoria."'";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		$dadosCategoria = new Categoria( );
-		$dadosCategoria->__constructOverload( $registro->ID_CATEGORIA,$registro->NOME_CATEGORIA );
-		return $dadosCategoria;
+	public function nameFind( $categoryName ){
+		$sql = "SELECT * FROM categoria WHERE nome_categoria = '".$categoryName."'";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		$categoryData = new Categoria( );
+		$categoryData->__constructOverload( $register->ID_CATEGORIA,
+											$register->NOME_CATEGORIA );
+		return $categoryData;
 	}
 
 	/**
 	 * Function to insert one category in the database
-	 * @param Categoria $categoria
-	 * @return boolean $resultado
+	 * @param Categoria $category
+	 * @return boolean $result
 	 */
-	public function inserirCategoria(Categoria $categoria ){
-		$sql = "INSERT INTO categoria (nome_categoria ) values ('{$categoria->__getNomeCategoria( )}' )";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		return $resultado;
+	public function addCategory(Categoria $category ){
+		$sql = "INSERT INTO categoria (nome_categoria ) values 
+			   ('{$category->__getCategoryName( )}' )";
+		$result = $this->connection->base->Execute( $sql );
+		return $result;
 	}
 
 	/**
 	 * Function to count the number of crimes in person
-	 * @return int $registro
+	 * @return int $register
 	 */
-	
-	public function somaGeralCrimeContraPessoa( ){
-		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalCrimeInPerson( ){
+		$sql = "SELECT SUM( c.quantidade  ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 1 AND 3";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of police actions
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalAcaoPolicial( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 26 AND 29";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalPoliceAction( ){
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 26 AND 29";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of sexual crimes
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalDignidadeSexual( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 24 AND 25";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalSexual( ){
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 24 AND 25";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of robbery crimes
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalRoubo( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza BETWEEN 6 AND 18";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalTheft( ){
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza 
+				BETWEEN 6 AND 18";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of theft crimes
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalFurtos( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 19 AND 23";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalStealing( ){
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 19 AND 23";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of crimes in patrimony
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalContraPatrimonio( ){
+	public function totalPatrimony( ){
 		$sql = "SELECT SUM(total ) as total FROM totalcrimecontrapatrimonio";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to list all the categories
-	 * @return String $totalCategoria
+	 * @return String $categoryTotal
 	 */
-	public function listarTotalDeCategoria( ){
+	public function totalCategories( ){
 		$sql="SELECT * FROM totalgeralcategoria";
-		$resultado = $this->conexao->banco->Execute( $sql );
+		$result = $this->connection->base->Execute( $sql );
 		$i = 0;
-		while( $registro = $resultado->FetchNextObject( ) ){
-			$totalCategoria["nome"][$i] = $registro->NOME_CATEGORIA;
-			$totalCategoria["quantidade"][$i] = $registro->TOTAL;
+		while( $register = $result->FetchNextObject( ) ){
+			$categoryTotal["nome"][$i] = $register->NOME_CATEGORIA; //Amount of categories
+			$categoryTotal["quantidade"][$i] = $register->TOTAL;
 			$i++;
 		}
-		return $totalCategoria;
+		return $categoryTotal;
 	}
 
 	/**
 	 * Function to count the number of crimes in the traffic
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function somaTotalTransito( ){
-		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza BETWEEN 29 AND 30";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+	public function totalTraffic( ){
+		$sql = "SELECT SUM(c.quantidade ) AS total FROM crime c, natureza n 
+				WHERE c.natureza_id_natureza = n.id_natureza AND n.id_natureza 
+				BETWEEN 29 AND 30";
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 
 	/**
 	 * Function to count the number of crimes records
-	 * @return int $registro
+	 * @return int $register
 	 */
-	public function contarRegistros( ){
+	public function recordsCount( ){
 		$sql = "SELECT COUNT(id_categoria )AS total FROM categoria";
-		$resultado = $this->conexao->banco->Execute( $sql );
-		$registro = $resultado->FetchNextObject( );
-		return $registro->TOTAL;
+		$result = $this->connection->base->Execute( $sql );
+		$register = $result->FetchNextObject( );
+		return $register->TOTAL;
 	}
 }

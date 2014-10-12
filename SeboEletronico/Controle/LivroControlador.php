@@ -11,57 +11,62 @@ include "/Modelo/Livro.php";
 class LivroControlador {
 
 	/**
-	 * The public function salvaLivro is responsible to create and persist a new book.
+	 * The public function salvaLivro is responsible to create 
+	 * and persist a new book.
 	 * If the data is not valid, the book creation is not completed.
 	 *
-	 * @param string $titulo
-	 * @param string $autor
-	 * @param string $genero
-	 * @param string $edicao
-	 * @param string $editora
-	 * @param string $venda
-	 * @param string $troca
-	 * @param string $estado
-	 * @param string $descricao
-	 * @param string $id_dono
+	 * @param string $bookTitle
+	 * @param string $bookAuthor
+	 * @param string $bookGenre
+	 * @param string $bookEdition
+	 * @param string $bookPublisher
+	 * @param string $bookSale
+	 * @param string $bookTrade
+	 * @param string $bookStatus
+	 * @param string $bookDescription
+	 * @param string $ownerId
 	 * 
-	 * @return bool LivroDao::salvaLivro($livro, $id_dono)
+	 * @return bool LivroDao::insertBook( $livro, $ownerId )
 	 */
 
-	public function salvaLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono ){
-		if( empty( $venda ) && empty( $troca )){
-			$venda = "venda";
-			$troca = "troca";
+
+	public function insertBook( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription, $ownerId ){
+		if( empty( $bookSale ) && empty( $bookTrade )){
+			$bookSale = "venda";
+			$bookTrade = "troca";
 		} else{
 			//Nothing will run
 		}
 
 		try{
-			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+
+			$livro = new Livro( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription );
+
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-		return LivroDao::salvaLivro( $livro, $id_dono );
+		return LivroDao::insertBook( $livro, $ownerId );
 	}
 
 	/**
 	 * The function pesquisaLivro search books containing the $title,
 	 * new and used they can be traded or sold
 	 *
-	 * @param string $titulo
+	 * @param string $bookTitle
 	 * Title of the book sought
-	 * @param string $estadoNovo
-	 * @param string $estadoUsado
-	 * @param string $disponibilidadeVenda
-	 * @param string $disponibilidadeTroca
+	 * @param string $physicalConditionBookNew
+	 * @param string $physicalConditionBookWorn
+	 * @param string $availabilityForSale
+	 * @param string $availabilityForExchange
 	 * 
-	 * @return ArrayObject Livro LivroDao::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca)
+	 * @return ArrayObject Livro LivroDao::searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange )
 	 */
 
-	public function pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca ){
-		return LivroDao::pesquisaLivro( $titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca );
+	public function searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange ){
+		return LivroDao::searchBook( $bookTitle, $physicalConditionBookNew, $physicalConditionBookWorn, $availabilityForSale, $availabilityForExchange );
+
 	}
 	
 	/**
@@ -69,23 +74,23 @@ class LivroControlador {
 	 * 
 	 * @param string $id
 	 * 
-	 * @return ArrayObject Livro LivroDao::getLivroById($id)
+	 * @return ArrayObject Livro LivroDao::getBookById($bookId)
 	 */
 	
-	public function getLivroById( $id ){
-		return LivroDao::getLivroById( $id );
+	public function getBookById( $bookId ){
+		return LivroDao::getBookById( $bookId );
 	}
 	
 	/**
-	 * The function deletaLivro deletes the book that contains the passed $idLivro.
+	 * The function deletaLivro deletes the book that contains the passed $bookId.
 	 * 
-	 * @param string $idLivro
+	 * @param string $bookId
 	 * 
-	 * @return bool LivroDao::deletaLivro($idLivro)
+	 * @return bool LivroDao::deleteBook( $bookId )
 	 * The return is true if the book has been deleted.
 	 */
-	public function deletaLivro( $idLivro ){
-		return LivroDao::deletaLivro( $idLivro );
+	public function deleteBook( $bookId ){
+		return LivroDao::deletaLivro( $bookId );
 	}
 	
 	/**
@@ -103,47 +108,49 @@ class LivroControlador {
 	 * @param string $id_dono
 	 * @param string $id_usuario
 	 * 
-	 * @return bool LivroDao::alteraLivro($livro, $id_dono, $id_usuario)
+	 * @return bool LivroDao::updateBook( $livro, $ownerId, $userId )
 	 * Returns true if the book has been updated.
 	 */
 	
-	public function alteraLivro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono, $id_usuario ){
-		if(empty( $venda ) && empty( $troca )){
-			$venda = "venda";
-			$troca = "troca";
+<
+	public function updateBook( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription, $ownerId, $userId ){
+		if( empty( $bookSale ) && empty( $bookTrade )){
+			$bookSale = "venda";
+			$bookTrade = "troca";
 		}
 
 		try{
-			$livro = new Livro( $titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao );
+			$livro = new Livro(  $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription );
+
 		} catch( Exception $e ){
 			print"<script>alert('".$e->getMessage()."')</script>";
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarLivro.php';</script>";
 			exit;
 		}
-		return LivroDao::alteraLivro($livro, $id_dono, $id_usuario);
+		return LivroDao::updateBook( $livro, $ownerId, $userId );
 	}
 	
 	/**
-	 * The function getLivroByIdUsuario returns all books of one user.
+	 * The function getBookByUserId returns all books of one user.
 	 * 
-	 * @param string $idUsuario
+	 * @param string $userId
 	 * 
-	 * @return ArrayObject Livro LivroDao::getLivroByIdUsuario($idUsuario)
+	 * @return ArrayObject Livro LivroDao::getBookByUserId( $userId )
 	 * Returns an array of books.
 	 */
 	
-	public function getLivroByIdUsuario( $idUsuario ){
-		return LivroDao::getLivroByIdUsuario( $idUsuario );
+	public function getBookByUserId( $userId ){
+		return LivroDao::getBookByUserId( $userId );
 	}
 	
 	/**
-	 * The function getAllLivro returns all books registered in database.
+	 * The function getAllBook returns all books registered in database.
 	 * 
-	 * @return ArrayObject Livro LivroDao::getAllLivro()
+	 * @return ArrayObject Livro LivroDao::getAllBook()
 	 * Returns an array of books.
 	 */
-	public function getAllLivro(){
-		return LivroDao::getAllLivro();
+	public function getAllBook(){
+		return LivroDao::getAllBook();
 	}
 
 }
