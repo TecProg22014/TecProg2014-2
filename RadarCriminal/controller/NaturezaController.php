@@ -1,12 +1,13 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/persistence/NaturezaDAO.php";
-include_once "/persistence/CategoriaDAO.php";
-include_once "/model/Natureza.php";
-include_once "/model/Categoria.php";
-include_once "/controller/CrimeController.php";
-include_once "/exceptions/EErroConsulta.php";
-include_once "/exceptions/EFalhaNaturezaController.php";
+include_once $SERVER_ADRESS."/persistence/NaturezaDAO.php";
+include_once $SERVER_ADRESS."/persistence/CategoriaDAO.php";
+include_once $SERVER_ADRESS."/model/Natureza.php";
+include_once $SERVER_ADRESS."/model/Categoria.php";
+include_once $SERVER_ADRESS."/controller/CrimeController.php";
+include_once $SERVER_ADRESS."/exceptions/EErroConsulta.php";
+include_once $SERVER_ADRESS."/exceptions/EFalhaNaturezaController.php";
 
 /**
  * The NaturezaController class is the class that controls the CRUD of natures of crimes.

@@ -1,8 +1,9 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/persistence/RegiaoAdministrativaDAO.php";
-include_once "/exceptions/EErroConsulta.php";
-include_once "/model/RegiaoAdministrativa.php";
+include_once $SERVER_ADRESS."/persistence/RegiaoAdministrativaDAO.php";
+include_once $SERVER_ADRESS."/exceptions/EErroConsulta.php";
+include_once $SERVER_ADRESS."/model/RegiaoAdministrativa.php";
 
 /**
  * The RegiaoAdministrativaController class is the class that controls the CRUD of administrative
