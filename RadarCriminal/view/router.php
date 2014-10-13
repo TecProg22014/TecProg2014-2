@@ -1,24 +1,24 @@
 <?php
-
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
 $pagina = isset( $_GET['pag'] ) ? $_GET['pag'] : null;
 switch($pagina){
         case 'ano':
-                include "/front/year.php";
+                include $SERVER_ADRESS."/front/year.php";
                 break;
         case 'tipo':
-                include "/front/type.php";
+                include $SERVER_ADRESS."/front/type.php";
                 break;
         case 'tRA':
-        		include "/view/totalra.php";    
+        		include $SERVER_ADRESS."/view/totalra.php";    
         		break;
         case 'cCat':
-        		include "/view/crimeporcat.php";
+        		include $SERVER_ADRESS."/view/crimeporcat.php";
         		break;
         case 'u':
-        		include "/view/crimeporra.php";
+        		include $SERVER_ADRESS."/view/crimeporra.php";
         		break;
         default:
-                include "/view/initial.php";     
+                include $SERVER_ADRESS."/view/initial.php";     
                 break;   
 }

@@ -1,7 +1,9 @@
 <?php
-include_once "/controller/NaturezaController.php";
-include_once "/view/CategoriaView.php";
-include_once "/view/CrimeView.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+
+include_once $SERVER_ADRESS."/controller/NaturezaController.php";
+include_once $SERVER_ADRESS."/view/CategoriaView.php";
+include_once $SERVER_ADRESS."/view/CrimeView.php";
 
 class NaturezaView {
 	

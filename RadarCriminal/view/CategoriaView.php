@@ -1,6 +1,8 @@
 <?php
-include_once "/controller/CategoriaController.php";
-include_once "/exceptions/EErroConsulta.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+
+include_once $SERVER_ADRESS."/controller/CategoriaController.php";
+include_once $SERVER_ADRESS."/exceptions/EErroConsulta.php";
 
 class CategoriaView {
 	
