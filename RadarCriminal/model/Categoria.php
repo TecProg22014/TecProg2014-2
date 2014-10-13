@@ -1,6 +1,7 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/exceptions/ETipoErrado.php";
+include_once $SERVER_ADRESS."/exceptions/ETipoErrado.php";
 
 /**
  * The class Categoria is the model class of category.
