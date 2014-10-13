@@ -1,8 +1,9 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/model/RegiaoAdministrativa.php";
-include_once "/persistence/Conexao.php";
-include_once "/persistence/ConexaoTeste.php";
+include_once $SERVER_ADRESS."/model/RegiaoAdministrativa.php";
+include_once $SERVER_ADRESS."/persistence/Conexao.php";
+include_once $SERVER_ADRESS."/persistence/ConexaoTeste.php";
 
 /**
  * Class persistence of Regiao Administrativa

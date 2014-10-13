@@ -1,7 +1,8 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-require_once "/libs/adodb/adodb.inc.php";
-require_once "/exceptions/EConexaoFalha.php";
+require_once $SERVER_ADRESS."/libs/adodb/adodb.inc.php";
+require_once $SERVER_ADRESS."/exceptions/EConexaoFalha.php";
 
 /**
  * Class persistence of Conexao

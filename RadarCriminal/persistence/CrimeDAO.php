@@ -1,12 +1,13 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/model/Crime.php";
-include_once "/model/Tempo.php";
-include_once "/model/Natureza.php";
-include_once "/persistence/Conexao.php";
-include_once "/persistence/ConexaoTeste.php";
-include_once "/persistence/NaturezaDAO.php";
-include_once "/persistence/TempoDAO.php";
+include_once $SERVER_ADRESS."/model/Crime.php";
+include_once $SERVER_ADRESS."/model/Tempo.php";
+include_once $SERVER_ADRESS."/model/Natureza.php";
+include_once $SERVER_ADRESS."/persistence/Conexao.php";
+include_once $SERVER_ADRESS."/persistence/ConexaoTeste.php";
+include_once $SERVER_ADRESS."/persistence/NaturezaDAO.php";
+include_once $SERVER_ADRESS."/persistence/TempoDAO.php";
 
 /**
  * Class persistence of Crime
