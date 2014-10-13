@@ -1,11 +1,11 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-
-require_once "/util/Parse.php";
-include_once "/controller/CategoriaController.php";
-include_once "/controller/CrimeController.php";
-include_once "/controller/NaturezaController.php";
-include_once "/controller/TempoController.php";
+require_once $SERVER_ADRESS."/util/Parse.php";
+include_once $SERVER_ADRESS."/controller/CategoriaController.php";
+include_once $SERVER_ADRESS."/controller/CrimeController.php";
+include_once $SERVER_ADRESS."/controller/NaturezaController.php";
+include_once $SERVER_ADRESS."/controller/TempoController.php";
 
 class RunParse{
 	private $parse;
