@@ -49,7 +49,7 @@ function login(){
     window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/entrarLogin.php";
 }
 function sair(){
-    window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/site.php";
+    window.location="http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLogin.php";
 }
 function loginsuccessfully(id){
     window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/indexLogin.php?idUser=id';
