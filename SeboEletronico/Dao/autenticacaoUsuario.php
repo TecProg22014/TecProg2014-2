@@ -6,8 +6,8 @@
 
 
 	//Persistence Variables
-	$searchAllUserByEmail = mysql_query("SELECT * FROM usuario WHERE email_usuario = '".$email."'") or die(mysql_error());
-	$searchAllUserByPassword = mysql_query("SELECT * FROM senha WHERE codigo_senha ='".$senha."'");
+	$searchAllUserByEmail = mysql_query("SELECT * FROM usuario WHERE email_usuario = '".$userEmail."'") or die(mysql_error());
+	$searchAllUserByPassword = mysql_query("SELECT * FROM senha WHERE codigo_senha ='".$userPassword."'");
 	$resultSearchAllUserByEmail = mysql_num_rows( $searchAllUserByEmail );
 	$resultSearchAllUserByPassword = mysql_num_rows( $searchAllUserByPassword );
 

@@ -1,7 +1,7 @@
 <?php
 
 include "/Modelo/Usuario.php";
-
+include "/Dao/UsuarioDao.php";
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
  * This class is the interface for communication of the persistence with the view.
@@ -20,7 +20,7 @@ class UsuarioControlador {
 	 * @param string $userEmail;
 	 * @param string $userPassword;
 	 *
-	 * @return bool UsuarioDao::insertUser( $usuario )
+	 * @return bool $resultInsertUser
 	 */
 
 	public function salvaUsuario( $fullUserName, $userEmail, $userPhoneNumber, $userPassword ){
@@ -31,7 +31,9 @@ class UsuarioControlador {
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/cadastrarUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::insertUser( $usuario );
+		$userDAO = new UsuarioDao();
+		$resultInsertUser = $userDAO->insertUser( $usuario );
+		return $resultInsertUser;
 	}
 
 	/**
@@ -40,11 +42,13 @@ class UsuarioControlador {
 	 *
 	 * @param string $userId
 	 *
-	 * @return Usuario UsuarioDao::getVerifyRegisterById( $userId )
+	 * @return Usuario $resultSearchUserById
 	 */
 
 	public function verifyRegisterById( $userId ){
-		return UsuarioDao::getVerifyRegisterById( $userId );
+		$userDAO = new UsuarioDao();
+		$resultSearchUserById = $userDAO->getVerifyRegisterById( $userId );
+		return $resultSearchUserById;
 	}
 
 	/**
@@ -60,7 +64,7 @@ class UsuarioControlador {
 	 * @param string $lastPassword
 	 *
 	 * The return is true if the user has been updated.
-	 * @return bool UsuarioDao::alteraUsuario( $usuario, $userId, $lastPassword )
+	 * @return bool $resultUpdateUser
 	 * The return is true if the user has been updated.
 	 */
 
@@ -73,8 +77,9 @@ class UsuarioControlador {
 			echo "<script>window.location='http://localhost/TecProg2014-2/SeboEletronico/Visao/alteraUsuario.php'; </script>";
 			exit;
 		}
-		return UsuarioDao::updateUser( $usuario, $userId, $lastPassword );
-
+		$userDAO = new UsuarioDao();
+		$resultUpdateUser = $userDAO->updateUser( $usuario, $userId, $lastPassword );
+		return $resultUpdateUser;
 	}
 
 	/**
@@ -84,12 +89,14 @@ class UsuarioControlador {
 	 * @param string $email
 	 * @param string $senha
 	 * 
-	 * @return bool UsuarioDao::deletaUsuario( $userEmail, $userPassword ).
+	 * @return bool $resultDeleteUser
 	 * The return is true if the user has been deleted.
 	 */
 
-	public function deleteUser( $userEmail, $userPassword ){	
-		return UsuarioDao::deleteUser( $userEmail, $userPassword );	
+	public function deleteUser( $userEmail, $userPassword ){
+		$userDAO = new UsuarioDao();	
+		$resultDeleteUser = $userDAO->deleteUser( $userEmail, $userPassword );
+		return $resultDeleteUser;
 	}
 
 	/**
@@ -103,7 +110,9 @@ class UsuarioControlador {
 	 */
 
 	public function searchUser( $fullUserName ){
-		return UsuarioDao::searchUser( $fullUserName );
+		$userDAO = new UsuarioDao();
+		$resultSearchUser = $userDAO->searchUser( $fullUserName );
+		return $resultSearchUser;
 	}
 }
 

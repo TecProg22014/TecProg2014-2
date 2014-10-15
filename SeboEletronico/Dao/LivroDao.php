@@ -6,6 +6,13 @@ include "../Utilidades/ConexaoComBanco.php";
  * */
 class LivroDao {
 
+	/**
+	 * Constructor to permit instances for the class
+	 **/
+	public function __construct(){
+
+	}
+
 	public function insertBook( $livro, $ownerBookId ){
 		/**
 		 * Insertion method whose return is an object

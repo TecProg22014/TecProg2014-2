@@ -26,6 +26,7 @@ class Livro {
 	 * @var string $bookTrade;
 	 * @var string $bookStatus;
 	 * @var string $bookDescription;
+	 * @var Object ValidaDados $validator;
 	 */
 
 	private $bookTitle;
@@ -37,6 +38,7 @@ class Livro {
 	private $bookTrade;
 	private $bookStatus;
 	private $bookDescription;
+	private $validator;
 
 	/**
 	 * Constructor function of class Book.
@@ -56,6 +58,7 @@ class Livro {
 	 */
 
 	function __construct( $bookTitle, $bookAuthor, $bookGenre, $bookEdition, $bookPublisher, $bookSale, $bookTrade, $bookStatus, $bookDescription ) {
+		$this->validator = new ValidaDados();
 		$this->__setBookTitle( $bookTitle );
 		$this->__setBookAuthor( $bookAuthor );
 		$this->__setBookGenre( $bookGenre );
@@ -86,7 +89,7 @@ class Livro {
 	 */
 
 	public function __setBookTitle( $bookTitle ) {
-		if( !ValidaDados::validaCamposnulos( $bookTitle ) ){
+		if( !$this->validator->validateNullInputs( $bookTitle ) ){
 			throw new ExcessaoTituloInvalido("Titulo nao pode ser nulo!");
 		} else{
 			$this->bookTitle = $bookTitle;
@@ -119,11 +122,13 @@ class Livro {
 	 */
 
 	public function __setBookAuthor( $bookAuthor ) {
-		if( !ValidaDados::validaCamposNulos( $bookAuthor ) ){
+		define("INVALID_CHARACTERS_IN_NAME",1);
+        define("INVALID_NAME", 2);
+		if( !$this->validator->validateNullInputs( $bookAuthor ) ){
 			throw new ExcessaoNomeInvalido("O nome do Autor nao pode ser nulo!");
-		} elseif( ValidaDados::validaNome($bookAuthor) == 1 ){
+		} elseif( $this->validator->validateName( $bookAuthor ) == INVALID_CHARACTERS_IN_NAME ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem caracteres invalidos!");
-		} elseif( ValidaDados::validaNome($bookAuthor) == 2 ){
+		} elseif( $this->validator->validateName( $bookAuthor ) == INVALID_NAME ){
 			throw new ExcessaoNomeInvalido("Nome do Autor contem espaços seguidos!");
 		} else{
 			$this->autor = $bookAuthor;
@@ -278,7 +283,7 @@ class Livro {
 
 	public function __setBookPublisher( $bookPublisher ){
 
-		if( !ValidaDados::validaCamposNulos( $bookPublisher )){
+		if( !$this->validator->validateNullInputs( $bookPublisher )){
 			throw new ExcessaoEditoraInvalida("A Editora do Livro nao pode ser nula!");
 		} else{
 			$this->bookPublisher = $bookPublisher;
