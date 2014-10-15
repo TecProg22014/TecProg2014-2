@@ -1,5 +1,7 @@
 <?php
-include_once "/controller/RegiaoAdministrativaController.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+
+include_once $SERVER_ADRESS."/controller/RegiaoAdministrativaController.php";
 
 class RegiaoAdministrativaView {
 	/**

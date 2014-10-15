@@ -1,7 +1,8 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/persistence/TempoDAO.php";
-include_once "/model/Tempo.php";
+include_once $SERVER_ADRESS."/persistence/TempoDAO.php";
+include_once $SERVER_ADRESS."/model/Tempo.php";
 
 /**
  * The TempoController class is the class that controls the CRUD of times of crimes.

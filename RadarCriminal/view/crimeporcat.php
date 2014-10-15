@@ -1,10 +1,10 @@
 <?php 
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-
-include_once "/view/CrimeView.php";
-include_once "/view/TempoView.php";
-include_once "/view/NaturezaView.php";
-include_once "/view/CategoriaView.php";
+include_once $SERVER_ADRESS."/view/CrimeView.php";
+include_once $SERVER_ADRESS."/view/TempoView.php";
+include_once $SERVER_ADRESS."/view/NaturezaView.php";
+include_once $SERVER_ADRESS."/view/CategoriaView.php";
 $crimeVW = new CrimeView();
 $timeVW = new TempoView();
 $natureVW = new NaturezaView();

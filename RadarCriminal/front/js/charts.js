@@ -1133,11 +1133,11 @@ function charts() {
 
 	/* ---------- Pie chart ---------- */
 	<?php
+			$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 			
-			
-			include_once "/view/CategoriaView.php");
+			include_once $SERVER_ADRESS."/view/CategoriaView.php";
 			$categoriaVW = new CategoriaView();
-			echo utf8_encode($categoriaVW->_listarTotalDeCategoria());
+			echo utf8_encode($categoriaVW->_listCategoriesInLabels());
 	?>
 	
 	if($("#piechart").length)

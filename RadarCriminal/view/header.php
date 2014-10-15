@@ -62,8 +62,8 @@
 				</a>
 				</div>		
 <?php
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	
-	
-	include "/view/menu_top.php";
-	include "/view/menu_side.php";
+	include $SERVER_ADRESS."/view/menu_top.php";
+	include $SERVER_ADRESS."/view/menu_side.php";
 ?>

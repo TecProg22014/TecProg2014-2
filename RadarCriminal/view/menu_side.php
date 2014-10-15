@@ -1,8 +1,8 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
- 
-include "/view/RegiaoAdministrativaView.php";
-include "/view/CategoriaView.php";
+include $SERVER_ADRESS."/view/RegiaoAdministrativaView.php";
+include $SERVER_ADRESS."/view/CategoriaView.php";
 $RAVW = new RegiaoAdministrativaView();
 $categoryVW = new CategoriaView();
 

@@ -1,13 +1,15 @@
 <?php
-   include_once "/view/CrimeView.php";
-   include_once "/view/TempoView.php";
-   include_once "/view/NaturezaView.php";
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+
+	include_once $SERVER_ADRESS."/view/CrimeView.php";
+	include_once $SERVER_ADRESS."/view/TempoView.php";
+	include_once $SERVER_ADRESS."/view/NaturezaView.php";
    
-   $crimeVW = new CrimeView(); /**Instance of CrimeView*/
-   $categoryVW = new CategoriaView(); /**Instance of CategoriaView*/
-   $timeVW = new TempoView(); /**Instance of TempoView*/
-   $natureVW = new NaturezaView(); /**Instance of NaturezaView*/
-   ?>
+	$crimeVW = new CrimeView(); /**Instance of CrimeView*/
+	$categoryVW = new CategoriaView(); /**Instance of CategoriaView*/
+	$timeVW = new TempoView(); /**Instance of TempoView*/
+	$natureVW = new NaturezaView(); /**Instance of NaturezaView*/
+?>
 <!-- start: Content -->
 <div id="content" class="span10">
    <div class="row-fluid">

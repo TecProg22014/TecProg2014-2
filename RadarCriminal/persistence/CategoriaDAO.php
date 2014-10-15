@@ -1,13 +1,14 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "/model/Categoria.php";
-include_once "/persistence/Conexao.php";
-include_once "/persistence/ConexaoTeste.php";
-include_once "/exceptions/ECategoriaListarTodasVazio.php";
-include_once "/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php";
-include_once "/exceptions/ECategoriaListarConsultaPorIdVazio.php";
-include_once "/exceptions/ECategoriaConsultarPorNomeVazio.php";
-include_once "/exceptions/EConexaoFalha.php";
+include_once $SERVER_ADRESS."/model/Categoria.php";
+include_once $SERVER_ADRESS."/persistence/Conexao.php";
+include_once $SERVER_ADRESS."/persistence/ConexaoTeste.php";
+include_once $SERVER_ADRESS."/exceptions/ECategoriaListarTodasVazio.php";
+include_once $SERVER_ADRESS."/exceptions/ECategoriaListarTodasAlfabeticamenteVazio.php";
+include_once $SERVER_ADRESS."/exceptions/ECategoriaListarConsultaPorIdVazio.php";
+include_once $SERVER_ADRESS."/exceptions/ECategoriaConsultarPorNomeVazio.php";
+include_once $SERVER_ADRESS."/exceptions/EConexaoFalha.php";
 
 /**
  * Class persistence of Categoria

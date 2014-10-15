@@ -1,8 +1,9 @@
 <?php
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 
-include_once "persistence/CategoriaDAO.php";
-include_once "model/Categoria.php";
-include_once "exceptions/EErroConsulta.php";
+include_once $SERVER_ADRESS."/persistence/CategoriaDAO.php";
+include_once $SERVER_ADRESS."/model/Categoria.php";
+include_once $SERVER_ADRESS."/exceptions/EErroConsulta.php";
 /**
  * The CategoriaController class is the class that controls the CRUD of categories of crimes.
  * This class interfaces the view to the persistence in the database, and has only one atribbute
