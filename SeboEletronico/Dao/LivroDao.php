@@ -37,34 +37,67 @@ class LivroDao {
 
 		if( empty( $availabilityForExchange ) && !empty( $availabilityForSale )){
 			if( empty( $physicalConditionBookNew ) && !empty( $physicalConditionBookWorn )){
-				$searchAllBooksByID = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
-            	AND tipo_operacao = '".$disponibilidadeVenda."'";
+				$returnArrayOfBooks = getBookSaleWorn($bookTitle, $physicalConditionBookWorn, $availabilityForSale);
 			} elseif( !empty( $physicalConditionBookNew ) && empty( $physicalConditionBookWorn )) {
-				$sql = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookNew."'
-            AND tipo_operacao = '".$availabilityForSale."'";
+				$returnArrayOfBooks = getBookSaleNew( $bookTitle, $physicalConditionBookNew, $availabilityForSale );
 			}
 			
 		}else if( !empty( $availabilityForExchange ) && empty( $availabilityForSale )){
 			if( empty( $physicalConditionBookNew ) && !empty( $physicalConditionBookWorn )){
-				$searchAllBooksByConditionBookNew = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
-           	 	AND tipo_operacao = '".$availabilityForExchange."'";
+				$returnArrayOfBooks = getBookExchangeWorn( $bookTitle, $physicalConditionBookWorn, $availabilityForExchange );
 			} elseif( !empty( $physicalConditionBookNew ) && empty( $physicalConditionBookWorn )) {
-				$searchAllBooksByConditionBookWorn = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$estadoNovo."'
-            	AND tipo_operacao = '".$availabilityForExchange."'";
+				$returnArrayOfBooks = getBookExchangeNew( $bookTitle, $physicalConditionBookNew, $availabilityForExchange );
 			}
 		} else{
-			$searchAllBooksByBookTitle = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."'";
-		}
-
-		$returnSearchAllBooksByBookTitle = mysql_query( $searchAllBooksByBookTitle );
-		$returnArrayOfBooksByBookTitle = mysql_fetch_array( $returnSearchAllBooksByBookTitle );
-
-		if(!(empty( $returnArrayOfBooksByBookTitle ))){
-			return false;
-		} else{
-			return $returnArrayOfBooksByBookTitle;
+				$returnArrayOfBooks = getBookByTitle( $bookTitle );
 		}
 		
+		if(!(empty( $returnArrayOfBooks ))){
+			return false;
+		} else{
+			return $returnArrayOfBooks;
+		}
+		
+	}
+	
+	public function getBookByTitle( $bookTitle ){
+		$searchAllBooksByBookTitle = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."'";
+		$returnSearchAllBooksByBookTitle = mysql_query($searchAllBooksByBookTitle);
+		$returnArrayOfBooksByBookTitle = mysql_fetch_array( $returnSearchAllBooksByBookTitle );
+		return $returnArrayOfBooksByBookTitle;
+	}
+	
+	public function getBookSaleWorn( $bookTitle, $physicalConditionBookWorn, $availabilityForSale ){
+		
+		$searchAllBooksSaleWorn = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
+            	AND tipo_operacao = '".$availabilityForSale."'";
+		$returnSearchAllBooksSaleWorn = mysql_query($searchAllBooksSaleWorn);
+		$returnArrayOfBooksSaleWorn = mysql_fetch_array( $returnSearchAllBooksSaleWorn );
+		return $returnArrayOfBooksSaleWorn;
+	}
+	
+	public function getBookSaleNew( $bookTitle, $physicalConditionBookNew, $availabilityForSale ){
+		$searchAllBooksSaleNew = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookNew."'
+            AND tipo_operacao = '".$availabilityForSale."'";
+		$returnSearchAllBooksSaleNew = mysql_query($searchAllBooksSaleNew);
+		$returnArrayOfBooksSaleNew = mysql_fetch_array( $returnSearchAllBooksSaleNew );
+		return $returnArrayOfBooksSaleNew;
+	}
+	
+	public function getBookExchangeWorn( $bookTitle, $physicalConditionBookWorn, $availabilityForExchange ){
+		$searchAllBooksExchangeWorn = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookWorn."'
+           	 	AND tipo_operacao = '".$availabilityForExchange."'";
+		$returnSearchAllBooksExchangeWorn = mysql_query($searchAllBooksExchangeWorn);
+		$returnArrayOfBooksExchangeWorn = mysql_fetch_array( $returnSearchAllBooksExchangeWorn );
+		return $returnArrayOfBooksExchangeWorn;
+	}
+	
+	public function getBookExchangeNew( $bookTitle, $physicalConditionBookNew, $availabilityForExchange ){
+		$searchAllBooksExchangeNew = "SELECT * FROM livro WHERE titulo_livro = '".$bookTitle."' AND estado_conserv = '".$physicalConditionBookNew."'
+            	AND tipo_operacao = '".$availabilityForExchange."'";
+		$returnSearchAllBooksExchangeNew = mysql_query($searchAllBooksExchangeNew);
+		$returnArrayOfBooksExchangeNew = mysql_fetch_array( $returnSearchAllBooksExchangeNew );
+		return $returnArrayOfBooksExchangeNew;
 	}
 	
 	/**
