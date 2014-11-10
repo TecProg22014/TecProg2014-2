@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	include '../Controle/LivroControlador.php';
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+	include $SERVER_ADRESS.'/Controle/LivroControlador.php';
 	$bookIdAuthentication = $_SESSION['id_usuario'];
 	$bookArray = LivroControlador::getBookByUserId( $bookIdAuthentication );
 	

@@ -1,8 +1,9 @@
 <?php
 	session_start();
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
 	$userIdAuthentication = $_SESSION['id_usuario'];
 	$userPassword = $_SESSION['senha'];
-	include '../Controle/UsuarioControlador.php';
+	include $SERVER_ADRESS.'/Controle/UsuarioControlador.php';
 	$cadastro = UsuarioControlador::verifyRegisterById( $userIdAuthentication );
 	
 	include_once "Header.php";

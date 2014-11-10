@@ -1,8 +1,9 @@
 <?php 
 	session_start();
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
 	$userIdAuthentication = $_SESSION['id_usuario'];
 	
-	include '../Controle/UsuarioControlador.php';
+	include $SERVER_ADRESS.'/Controle/UsuarioControlador.php';
 	$fullUserName = $_REQUEST['nome'];
 	$resultSearchUserByName = UsuarioControlador::pesquisaUsuario( $fullUserName );
 	
