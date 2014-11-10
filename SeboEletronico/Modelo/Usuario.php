@@ -1,11 +1,11 @@
 ﻿<?php
 
-include "/Utilidades/ValidaDados.php";
-include "/Utilidades/ExcessaoNomeInvalido.php";
-include "/Utilidades/ExcessaoTelefoneInvalido.php";
-include "/Utilidades/ExcessaoEmailInvalido.php";
-include "/Utilidades/ExcessaoSenhaInvalida.php";
-include "/Dao/UsuarioDao.php";
+include "../Utilidades/ValidaDados.php";
+include "../Utilidades/ExcessaoNomeInvalido.php";
+include "../Utilidades/ExcessaoTelefoneInvalido.php";
+include "../Utilidades/ExcessaoEmailInvalido.php";
+include "../Utilidades/ExcessaoSenhaInvalida.php";
+include "../Dao/UsuarioDao.php";
 
 /**
  * The class Usuario is the model of users.
