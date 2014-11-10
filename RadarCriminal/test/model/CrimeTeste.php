@@ -1,10 +1,5 @@
 <?php
-	/**
-	 * @author Eliseu
-	 * Classe Crime Teste
-	 **/
-	
-	
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	require_once "/model/Crime.php";
 	
 	

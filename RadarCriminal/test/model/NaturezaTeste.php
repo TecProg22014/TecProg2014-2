@@ -1,6 +1,6 @@
 <?php
 	
-	
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	require_once "/model/Natureza.php";
 	
 	class NaturezaTeste extends PHPUnit_Framework_Testcase{
