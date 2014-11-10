@@ -50,24 +50,6 @@ class UsuarioDao {
 		}
 	}
 
-	public function updateUser( $usuario, $userId, $lastPassword ){
-		$auxiliaryPassword = $usuario->getPassword();
-		$passwordModified = $auxiliaryPassword[0];
-		$updatePassword = "UPDATE usuario SET nome_usuario = '".$usuario->getFullName()."' , telefone_usuario = '".$usuario->getUserPhoneNumber()."',
-				           email_usuario = '".$usuario->getUserEmail()."' WHERE id_usuario = '".$userId."'";
-		$returnUpdatePassword = mysql_query( $updatePassword );
-
-		if( $passwordModified != $lastPassword ){
-			$searchLastPasswordForUser = "SELECT id_senha FROM senha WHERE codigo_senha='".$lastPassword."'";
-			$resultSearchLastPasswordForUser = mysql_query( $searchLastPasswordForUser );
-			$passwordId = mysql_fetch_row( $resultSearchLastPasswordForUser );
-			$updatePassword = "UPDATE senha SET codigo_senha = '".$passwordModified."' WHERE id_senha = '".$passwordId[0]."'";
-			$resultUpdatePassword = mysql_query( $updatePassword );
-		} else{
-			return ( $usuario && $updatePassword );
-		}
-	}
-
 	public function searchUser( $usuario ){
 		$searchUserByUserArray = "SELECT * FROM usuario WHERE nome_usuario = '".$usuario."'";
 		$resultSearchUserByUserArray = mysql_query( $searchUserByUserArray );
