@@ -1,10 +1,10 @@
 <?php
 
-include "/Dao/LivroDao.php";
-include "/Utilidades/ValidaDados.php";
-include "/Utilidades/ExcessaoNomeInvalido.php";
-include "/Utilidades/ExcessaoTituloInvalido.php";
-include "/Utilidades/ExcessaoEditoraInvalida.php";
+include "../Dao/LivroDao.php";
+include "../Utilidades/ValidaDados.php";
+include "../Utilidades/ExcessaoNomeInvalido.php";
+include "../Utilidades/ExcessaoTituloInvalido.php";
+include "../Utilidades/ExcessaoEditoraInvalida.php";
 
 /**
  * The class Livro is the model of books.
@@ -96,7 +96,7 @@ class Livro {
 		}
 		
 		/**
-		 * Nao tera tratamento de excessao, pois o titulo é pessoal e vai de cada autor,
+		 * Nao tera tratamento de excessao, pois o titulo ï¿½ pessoal e vai de cada autor,
 		 * logo pode ter qualquer tipo de caracter que o autor desejar.
 		 */
 	}
@@ -259,7 +259,7 @@ class Livro {
 	public function __setBookEdition( $bookEdition ){
 		$this->bookEdition = $bookEdition;
 		/**
-		 * Precisa validar entrada só de números.
+		 * Precisa validar entrada sï¿½ de nï¿½meros.
 		 */
 	}
 
@@ -291,26 +291,6 @@ class Livro {
 		
 	}
 
-	/**
-	 * The function __getBookPublisher() is the function to access the the atribute status value.
-	 * @return Object Book var $bookPublisher
-	 *
-	 */
-
-	public function __getBookPublisher() {
-		return $this->bookPublisher;
-	}
-
-	/**
-	 * The function __setBookPublisher() is the function to modify the value of atribute status.
-	 * No written validation.
-	 * @param $bookStatus
-	 *
-	 */
-
-	public function __setBookPublisher( $bookStatus ){
-		$this->bookPublisher = $bookStatus;
-	}
 
 }
 ?>
