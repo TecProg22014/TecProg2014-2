@@ -1,5 +1,6 @@
 <?php
-	include "/Usuario.php";
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+	include $SERVER_ADRESS."/Usuario.php";
 
 	$receiverEmail = Usuario::getReceiverEmail();
 	$pageMessage ='<html>

@@ -1,10 +1,10 @@
 <?php
-
-include "../Dao/LivroDao.php";
-include "../Utilidades/ValidaDados.php";
-include "../Utilidades/ExcessaoNomeInvalido.php";
-include "../Utilidades/ExcessaoTituloInvalido.php";
-include "../Utilidades/ExcessaoEditoraInvalida.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS."/Dao/LivroDao.php";
+include $SERVER_ADRESS."/Utilidades/ValidaDados.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoNomeInvalido.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoTituloInvalido.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoEditoraInvalida.php";
 
 /**
  * The class Livro is the model of books.
