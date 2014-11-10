@@ -1,11 +1,11 @@
 ﻿<?php
-
-include "../Utilidades/ValidaDados.php";
-include "../Utilidades/ExcessaoNomeInvalido.php";
-include "../Utilidades/ExcessaoTelefoneInvalido.php";
-include "../Utilidades/ExcessaoEmailInvalido.php";
-include "../Utilidades/ExcessaoSenhaInvalida.php";
-include "../Dao/UsuarioDao.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS."/Utilidades/ValidaDados.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoNomeInvalido.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoTelefoneInvalido.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoEmailInvalido.php";
+include $SERVER_ADRESS."/Utilidades/ExcessaoSenhaInvalida.php";
+include $SERVER_ADRESS."/Dao/UsuarioDao.php";
 
 /**
  * The class Usuario is the model of users.
