@@ -1,6 +1,6 @@
 <?php
-
-include_once '../Controle/UsuarioControlador.php';
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS.'/Controle/UsuarioControlador.php';
 
 switch($_POST['tipo']){
       

@@ -1,6 +1,6 @@
 <?php
-
-include_once '../Controle/LivroControlador.php';
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS.'/Controle/LivroControlador.php';
 //require_once '';
 
 switch($_POST['tipo']){
