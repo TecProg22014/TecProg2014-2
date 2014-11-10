@@ -1,13 +1,13 @@
 <?php
 
-require_once "/Modelo/Usuario.php";
-require_once "/Dao/UsuarioDao.php";
-require_once "/Utilidades/ValidaDados.php";
-require_once "/Utilidades/ExcessaoNomeInvalido.php";
-require_once "/Utilidades/ExcessaoSenhaInvalida.php";
-require_once "/Utilidades/ExcessaoTelefoneInvalido.php";
-require_once "/Utilidades/ExcessaoEmailInvalido.php";
-require_once "/Utilidades/ConexaoComBanco.php";
+require_once "../..//Modelo/Usuario.php";
+require_once "../..//Dao/UsuarioDao.php";
+require_once "../..//Utilidades/ValidaDados.php";
+require_once "../..//Utilidades/ExcessaoNomeInvalido.php";
+require_once "../..//Utilidades/ExcessaoSenhaInvalida.php";
+require_once "../..//Utilidades/ExcessaoTelefoneInvalido.php";
+require_once "../..//Utilidades/ExcessaoEmailInvalido.php";
+require_once "../..//Utilidades/ConexaoComBanco.php";
 
 class UsuarioDaoTest extends PHPUnit_Framework_TestCase {
 
@@ -16,7 +16,7 @@ class UsuarioDaoTest extends PHPUnit_Framework_TestCase {
     
     protected function setUp() {
         $senha = array(123123,123123);
-        $this->usuario = new Usuario('lucas', 98989898, 'lucas@lucas.com', $senha);
+        $this->usuario = new User('lucas', 98989898, 'lucas@lucas.com', $senha);
         $this->usuarioDaoTest = new UsuarioDao();
     }
 
