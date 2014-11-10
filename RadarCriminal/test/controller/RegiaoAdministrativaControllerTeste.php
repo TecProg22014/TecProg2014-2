@@ -1,8 +1,8 @@
 <?php
 
-
-require_once "/controller/RegiaoAdministrativaController.php";
-require_once "/model/RegiaoAdministrativa.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+require_once $SERVER_ADRESS."/controller/RegiaoAdministrativaController.php";
+require_once $SERVER_ADRESS."/model/RegiaoAdministrativa.php";
 
 class RegiaoAdministrativaControllerTeste extends PHPUnit_Framework_Testcase{
 	public function testConstruct()

@@ -1,8 +1,8 @@
 <?php
 
-
-require_once "/controller/CrimeController.php";
-require_once "/model/Crime.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+require_once $SERVER_ADRESS."/controller/CrimeController.php";
+require_once $SERVER_ADRESS."/model/Crime.php";
 
 
 class CrimeControllerTeste extends PHPUnit_Framework_Testcase{

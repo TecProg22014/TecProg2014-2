@@ -1,8 +1,8 @@
 <?php
 
- 
-require_once "/controller/NaturezaController.php";
-require_once "/model/Natureza.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal"; 
+require_once $SERVER_ADRESS."/controller/NaturezaController.php";
+require_once $SERVER_ADRESS."/model/Natureza.php";
 
 class NaturezaControllerTeste extends PHPUnit_Framework_Testcase{
 

@@ -1,8 +1,8 @@
 <?php
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	
-	
-	require_once "/controller/CategoriaController.php";
-	require_once "/model/Categoria.php";
+	require_once "../../controller/CategoriaController.php";
+	require_once "../../model/Categoria.php";
 	
 	/**
 	 * Classe CategoriaControllerTeste
@@ -146,10 +146,10 @@
 			$this->assertEquals("
 		var data = [
 \t\t{ label: \"Criminalidade\",  data: 1194592},
-		{ label: \"Ação Policial\",  data: 111264},
-		{ label: \"Trânsito\",  data: 97467},
+		{ label: \"Aï¿½ï¿½o Policial\",  data: 111264},
+		{ label: \"Trï¿½nsito\",  data: 97467},
 		{ label: \"Contra a Pessoa\",  data: 39206},
-		{ label: \"Contra o Patrimônio\",  data: 69460}
+		{ label: \"Contra o Patrimï¿½nio\",  data: 69460}
 		];", $categoriaController->_listarTotalDeCategoria());
 		}
 	}

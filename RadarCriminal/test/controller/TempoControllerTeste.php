@@ -1,8 +1,8 @@
 <?php
 
-
-require_once "/controller/TempoController.php";
-require_once "/model/Tempo.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
+require_once $SERVER_ADRESS."/controller/TempoController.php";
+require_once $SERVER_ADRESS."/model/Tempo.php";
 
 class TempoControllerTeste extends PHPUnit_Framework_Testcase{
 	
