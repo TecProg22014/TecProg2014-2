@@ -1,7 +1,7 @@
 <?php
 
-include "/Modelo/Usuario.php";
-include "/Dao/UsuarioDao.php";
+include "../Modelo/Usuario.php";
+include "../Dao/UsuarioDao.php";
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
  * This class is the interface for communication of the persistence with the view.
