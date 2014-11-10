@@ -1,11 +1,11 @@
 <?php
 
-require_once "/Modelo/Usuario.php";
-require_once "/Utilidades/ValidaDados.php";
-require_once "/Utilidades/ExcessaoNomeInvalido.php";
-require_once "/Utilidades/ExcessaoSenhaInvalida.php";
-require_once "/Utilidades/ExcessaoTelefoneInvalido.php";
-require_once "/Utilidades/ExcessaoEmailInvalido.php";
+require_once "../../Modelo/Usuario.php";
+require_once "../../Utilidades/ValidaDados.php";
+require_once "../../Utilidades/ExcessaoNomeInvalido.php";
+require_once "../../Utilidades/ExcessaoSenhaInvalida.php";
+require_once "../../Utilidades/ExcessaoTelefoneInvalido.php";
+require_once "../../Utilidades/ExcessaoEmailInvalido.php";
 
 class UsuarioTest extends PHPUnit_Framework_TestCase{
 
@@ -13,7 +13,7 @@ class UsuarioTest extends PHPUnit_Framework_TestCase{
 
 	protected function setUp(){
                 $senha = array(123456, 123456);
-		$this->usuarioTeste = new Usuario('Lucas', 88888888, 'lucas-kanashiro@hotmail.com', $senha);
+		$this->usuarioTeste = new User('Lucas', 88888888, 'lucas-kanashiro@hotmail.com', $senha);
 	}	
 
 	protected function tearDown(){
