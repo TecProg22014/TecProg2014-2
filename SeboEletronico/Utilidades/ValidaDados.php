@@ -62,8 +62,8 @@ class ValidaDados {
                 if( !$character ){
                     return INVALID_CHARACTERS_IN_NAME;
                 }else if( $name[$iterator] == " " && $name[$iterator+1] == " " ){
-                    return INVALID_NAME
-                }else{
+                    return INVALID_NAME;
+                } else{
                 }
             }
         }
