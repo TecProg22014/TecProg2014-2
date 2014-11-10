@@ -1,7 +1,7 @@
 <?php
 
-include "/Modelo/Livro.php";
-include "/Dao/LivroDao.php";
+include "../Modelo/Livro.php";
+include "../Dao/LivroDao.php";
 /**
  * The LivroControlador class is the class that controls the CRUD of books.
  * this class is the interface for communication of the persistence with the view.
