@@ -1,7 +1,7 @@
 <?php
-
-include "../Modelo/Usuario.php";
-include "../Dao/UsuarioDao.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS."/Modelo/Usuario.php";
+include $SERVER_ADRESS."/Dao/UsuarioDao.php";
 /**
  * The UsuarioControlador class is the class that controls the CRUD of users.
  * This class is the interface for communication of the persistence with the view.

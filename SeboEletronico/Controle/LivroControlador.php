@@ -1,7 +1,7 @@
 <?php
-
-include "../Modelo/Livro.php";
-include "../Dao/LivroDao.php";
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/SeboEletronico";
+include $SERVER_ADRESS."/Modelo/Livro.php";
+include $SERVER_ADRESS."/Dao/LivroDao.php";
 /**
  * The LivroControlador class is the class that controls the CRUD of books.
  * this class is the interface for communication of the persistence with the view.
