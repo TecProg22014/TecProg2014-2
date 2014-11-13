@@ -7,86 +7,76 @@ require_once $SERVER_ADRESS."/model/Natureza.php";
 class NaturezaControllerTeste extends PHPUnit_Framework_Testcase{
 
 	function testConstruct(){
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
 	}
-	function testListarTodas(){
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertNotEmpty($naturezaController->_listarTodas());
+	function testeGetAllNatures(){
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertNotEmpty($natureController->_getAllNatures());
 	}
-	public function testListarTodasAlfabicamente()
+	public function testGetNaturesAlphabetically()
 	{
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertNotEmpty($naturezaController->_listarTodasAlfabicamente());
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertNotEmpty($natureController->_getNaturesAlphabetically());
 	}
-	public function testConsultarPorId()
+	public function testGetNatureById()
 	{
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertInstanceOf('Natureza', $naturezaController->_consultarPorId(1));
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertInstanceOf('Natureza', $natureController->_getNatureById(1));
 	}
-	public function testExceptionsConsultarPorId(){
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
+	public function testExceptionsGetNatureById(){
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
 		$this->setExpectedException('EErroConsulta');
-		$naturezaController->_consultarPorId('teste');
+		$natureController->_getNatureById('teste');
 	}
-	public function testConsultarPorNome()
+	public function testGetNatureByName()
 	{
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertInstanceOf('Natureza', $naturezaController->_consultarPorNome('Roubo de Carga'));
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertInstanceOf('Natureza', $natureController->_getNatureByName('Roubo de Carga'));
 	}
 	public function testConsultarPorIdCategoria()
 	{
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertArrayHasKey(1, $naturezaController->_consultarPorIdCategoria(1));
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertArrayHasKey(1, $natureController->_consultarPorIdCategoria(1));
 	}
 	
-	public function testInserirNatureza()
+	public function testSaveNature()
 	{
-		$naturezaController = new NaturezaController();
-		$naturezaController->__constructTeste();
-		$this->assertNull($naturezaController->_inserirNatureza(new Natureza()));
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-	}/*
-	public function testInserirNaturezaArrayParse()
-	{
-		$naturezaController = new NaturezaController();
-		$naturezaController->__constructTeste();
-		$natureza = new Natureza();
-		$array['Criminalidade'][0] = "testeNovo";
-		$this->assertInstanceOf('Categoria',$naturezaController->_inserirArrayParse($array)); 
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertInstanceOf('Natureza', $natureza);
-	}*/
-	public function testExceptionInserirNaturezaArrayParse()
-	{
-		$naturezaController = new NaturezaController();
-		$naturezaController->__constructTeste();
-		$this->setExpectedException('EFalhaNaturezaController');
-		$resultado = $naturezaController->_inserirArrayParse(1);
-		$this->assertEquals('Criminalidade', $resultado->__getNomeCategoria());
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
+		$natureController = new NaturezaController();
+		$natureController->__constructTeste();
+		$this->assertNull($natureController->_saveNature(new Natureza()));
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
 	}
-	public function testRetornarDadosDeNaturezaFormatado()
+	
+	public function testExceptionSaveNatureParseArray()
 	{
-		$naturezaController = new NaturezaController();
-		$this->assertObjectHasAttribute('naturezaDAO', $naturezaController);
-		$this->assertInstanceOf('NaturezaController', $naturezaController);
-		$this->assertArrayHasKey('tempo', $naturezaController->_retornarDadosDeNaturezaFormatado('Estupro'));
+		$natureController = new NaturezaController();
+		$natureController->__constructTeste();
+		$this->setExpectedException('EFalhaNaturezaController');
+		$resultado = $natureController->_saveNatureParseArray(1);
+		$this->assertEquals('Criminalidade', $resultado->__getCAtegoryName());
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+	}
+	public function testListFormatedNatures()
+	{
+		$natureController = new NaturezaController();
+		$this->assertObjectHasAttribute('natureDAO', $natureController);
+		$this->assertInstanceOf('NaturezaController', $natureController);
+		$this->assertArrayHasKey('tempo', $natureController->_listFormatedNatures('Estupro'));
 	}
 }
