@@ -5,152 +5,152 @@
 	require_once "../../model/Categoria.php";
 	
 	/**
-	 * Classe CategoriaControllerTeste
+	 * Class CategoriaControllerTeste
 	 **/
 	class CategoriaControllerTeste extends PHPUnit_Framework_Testcase{
 		
 		public function testConstruct()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 				
 		}
-		public function testListarTodas()
+		public function testGetAllCategories()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertNotEmpty($categoriaController->_listarTodas());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertNotEmpty($categoryController->_getAllCategories());
 		}
-		public function testListarTodasAlfabicamente()
+		public function testGetAlphabeticllyAllCategories()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertNotEmpty($categoriaController->_listarTodasAlfabicamente());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertNotEmpty($categoryController->_getAlphabeticallyAllCategories());
 		}
-		public function testConsultarPorId()
+		public function testGetCategoryById()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertInstanceOf('Categoria', $categoriaController->_consultarPorId(1));
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertInstanceOf('Categoria', $categoryController->_getCategoryById(1));
 		}
-		public function testExceptionConsultarPorId(){
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+		public function testExceptionGetCategoryById(){
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 			$this->setExpectedException('EErroConsulta');
-			$categoriaController->_consultarPorId('teste');
+			$categoryController->_getCategoryById('teste');
 		}
-		public function testConsultarPorNome()
+		public function testGetCategoryByName()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertInstanceOf('Categoria', $categoriaController->_consultarPorNome('Criminalidade'));
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertInstanceOf('Categoria', $categoryController->_getCategoryByName('Criminalidade'));
 		}
-		public function testExceptionConsultarPorNome(){
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+		public function testExceptionGetCategoryByName(){
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 			$this->setExpectedException('EErroConsulta');
-			$categoriaController->_consultarPorNome(1);
+			$categoryController->_getCategoryByName(1);
 		}
 		
-		public function testInserirCategoria()
+		public function testSaveCategory()
 		{
-			$categoriaController = new CategoriaController();
-			$categoriaController->__constructTeste();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertInstanceOf('ADORecordSet_empty',$categoriaController->_inserirCategoria(new Categoria()));
+			$categoryController = new CategoriaController();
+			$categoryController->__constructTeste();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertInstanceOf('ADORecordSet_empty',$categoryController->_saveCategory(new Categoria()));
 			
 		}
 		
-		public function testInserirCategoriaArrayParse()
+		public function testSaveCategoriesParseArray()
 		{
-			$categoriaController = new CategoriaController();
-			$categoriaController->__constructTeste();
-			$arrayCategoria[0] = "teste";	
-			$this->assertInstanceOf('ADORecordSet_empty',$categoriaController->_inserirCategoriaArrayParseSerie($arrayCategoria));
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+			$categoryController = new CategoriaController();
+			$categoryController->__constructTeste();
+			$arrayCategory[0] = "teste";	
+			$this->assertInstanceOf('ADORecordSet_empty',$categoryController->_saveCategoriesParseArray($categoryArray));
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 		}
-		public function testExceptionInserirCategoriaArrayParse()
+		public function testExceptionSaveCategoriesParseArray()
 		{
-			$categoriaController = new CategoriaController();
-			$categoriaController->__constructTeste();
-			$arrayCategoria[0] = "teste";
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+			$categoryController = new CategoriaController();
+			$categoryController->__constructTeste();
+			$arrayCategory[0] = "teste";
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 			$this->setExpectedException('EErroConsulta');
-			$categoriaController->_inserirCategoriaArrayParseSerie(10);
+			$categoryController->_saveCategoriesParseArray(10);
 			
 		}
-		public function testSomaTotalFurtos()
+		public function testSumAllStealing()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(1475370, $categoriaController->_somaTotalFurtos());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(1475370, $categoryController->_sumAllStealing());
 		}
-		public function testSomaTotalAcaoPolicial()
+		public function testSumAllCopsActions()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(216513, $categoriaController->_somaGeralCrimeContraPessoa());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(216513, $categoryController->_sumAllCopsActions());
 		}
-		public function testSomaGeralCrimeContraPessoa()
+		public function testSumAllCrimesAgainsCitizens()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(216513, $categoriaController->_somaGeralCrimeContraPessoa());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(216513, $categoryController->_sumAllCrimesAgainsCitizens());
 		}
-		public function testSomaGeralCrimeContraPessoa2010_2011()
+		public function testSumAllCrimesAgainsCitizens2010_2011()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(39366, $categoriaController->_somaGeralCrimeContraPessoa2010_2011());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(39366, $categoryController->_sumAllCrimesAgainsCitizens2010_2011());
 		}
-		public function testSomaTotalRoubo()
+		public function testSumAllTheft()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(938223, $categoriaController->_somaTotalRoubo());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(938223, $categoryController->_sumAllTheft());
 		}
-		public function testSomaTotalRoubo2010_2011()
+		public function testSumAllTheft2010_2011()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(1876446, $categoriaController->_somaTotalRoubo2010_2011());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(1876446, $categoryController->_sumAllTheft2010_2011());
 		}
-		public function testContarRegistros()
+		public function testCountCategories()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
-			$this->assertEquals(5, $categoriaController->_contarRegistros());
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
+			$this->assertEquals(5, $categoryController->_countCategories());
 		}
-		public function testListarTotalDeCategoria()
+		public function testListCategories()
 		{
-			$categoriaController = new CategoriaController();
-			$this->assertObjectHasAttribute('categoriaDAO', $categoriaController);
-			$this->assertInstanceOf('CategoriaController', $categoriaController);
+			$categoryController = new CategoriaController();
+			$this->assertObjectHasAttribute('categoryDAO', $categoryController);
+			$this->assertInstanceOf('CategoriaController', $categoryController);
 			$this->assertEquals("
-		var data = [
-\t\t{ label: \"Criminalidade\",  data: 1194592},
-		{ label: \"A��o Policial\",  data: 111264},
-		{ label: \"Tr�nsito\",  data: 97467},
-		{ label: \"Contra a Pessoa\",  data: 39206},
-		{ label: \"Contra o Patrim�nio\",  data: 69460}
-		];", $categoriaController->_listarTotalDeCategoria());
+				var data = [\t\t
+				{ label: \"Criminalidade\",  data: 1194592},
+				{ label: \"A��o Policial\",  data: 111264},
+				{ label: \"Tr�nsito\",  data: 97467},
+				{ label: \"Contra a Pessoa\",  data: 39206},
+				{ label: \"Contra o Patrim�nio\",  data: 69460}
+				];", $categoryController->_listCategories());
 		}
 	}
 ?>
