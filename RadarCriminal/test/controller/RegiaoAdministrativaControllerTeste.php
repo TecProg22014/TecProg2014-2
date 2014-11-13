@@ -7,68 +7,68 @@ require_once $SERVER_ADRESS."/model/RegiaoAdministrativa.php";
 class RegiaoAdministrativaControllerTeste extends PHPUnit_Framework_Testcase{
 	public function testConstruct()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
 	}
 	
-	public function testListarTodas()
+	public function testGetAllAdministrativeRegions()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
-		$this->assertNotEmpty($RAController->_listarTodas());
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
+		$this->assertNotEmpty($administrativeRegionController->_getAllAdministrativeRegions());
 	}
-	public function testListarTodasAlfabeticamente()
+	public function testGetAdministrativeRegionsAlphabetically()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
-		$this->assertNotEmpty($RAController->_listarTodasAlfabeticamente());
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
+		$this->assertNotEmpty($administrativeRegionController->_getAdministrativeRegionsAlphabetically());
 	}
-	public function testConsultarPorId()
+	public function testGetAdministrativeRegionById()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativa', $RAController->_consultarPorId(1));
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativa', $administrativeRegionController->_getAdministrativeRegionById(1));
 	}
-	public function testExceptionConsultarPorId()
+	public function testExceptionGetAdministrativeRegionById()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
 		$this->setExpectedException('EErroConsulta');
-		$RAController->_consultarPorId('teste');
+		$administrativeRegionController->_getAdministrativeRegionById('teste');
 	}
-	public function testConsultarPorNome()
+	public function testGetAdministrativeRegionByName()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativa', $RAController->_consultarPorNome('N BAND'));
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativa', $administrativeRegionController->_getAdministrativeRegionByName('N BAND'));
 	}
-	public function testExceptionConsultarPorNome()
+	public function testExceptionGetAdministrativeRegionByName()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
 		$this->setExpectedException('EErroConsulta');
-		$RAController->_consultarPorNome(1);
+		$administrativeRegionController->_getAdministrativeRegionByName(1);
 	}
-	public function testContarRegistrosRA()
+	public function testCountAdministrativeRegions()
 	{
-		$RAController = new RegiaoAdministrativaController();
-		$this->assertObjectHasAttribute('raDAO', $RAController);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $RAController);
-		$this->assertEquals(32, $RAController->_contarRegistrosRA());
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
+		$this->assertEquals(32, $administrativeRegionController->_countAdministrativeRegions());
 	}
-	public function testInserirRA()
+	public function testSaveAdministrativeRegion()
 	{
-		$raCO = new RegiaoAdministrativaController();
-		$raCO->__constructTeste();
-		$this->assertInstanceOf('ADORecordSet_empty',$raCO->_inserirRA(new RegiaoAdministrativa()));
-		$this->assertObjectHasAttribute('raDAO', $raCO);
-		$this->assertInstanceOf('RegiaoAdministrativaController', $raCO);
+		$administrativeRegionController = new RegiaoAdministrativaController();
+		$administrativeRegionController->__constructTeste();
+		$this->assertInstanceOf('ADORecordSet_empty',$administrativeRegionController->_saveAdministrativeRegion(new RegiaoAdministrativa()));
+		$this->assertObjectHasAttribute('administrativeRegionDAO', $administrativeRegionController);
+		$this->assertInstanceOf('RegiaoAdministrativaController', $administrativeRegionController);
 	}
 }
