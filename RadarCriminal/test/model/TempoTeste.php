@@ -9,34 +9,34 @@ $SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	class TempoTeste extends PHPUnit_Framework_Testcase{
 		
 		public function setUp(){
-			$this->tempo = new Tempo();
+			$this->time = new Tempo();
 		}
 		
-		public function testSetIdTempo(){
-			$this->tempo->__setIdTempo(1);
-			$this->assertEquals(1, $this->tempo->__getIdTempo());
+		public function testSetTimeId(){
+			$this->time->__setTimeId(1);
+			$this->assertEquals(1, $this->time->__getTimeId());
 		}
-		public function testExceptionIdTempo(){
+		public function testExceptionTimeId(){
 			$this->setExpectedException('ETipoErrado');
-			$this->tempo->__setIdTempo('erro');
+			$this->time->__setTimeId('erro');
 		}
-		public function testSetIntervalo(){
-			$this->tempo->__setIntervalo(1);
-			$this->assertEquals(1,$this->tempo->__getIntervalo());
+		public function testSetInterval(){
+			$this->time->__setInterval(1);
+			$this->assertEquals(1,$this->time->__getInterval());
 		}
-		public function testExceptionIntervalo(){
+		public function testExceptionInterval(){
 			$this->setExpectedException('ETipoErrado');
-			$this->tempo->__setIntervalo("erro");
+			$this->time->__setInterval("erro");
 		}
-		public function testSetMes(){
-			$this->tempo->__setMes('teste');
-			$this->assertEquals('teste',$this->tempo->__getMes());
+		public function testSetMonth(){
+			$this->time->__setMes('teste');
+			$this->assertEquals('teste',$this->time->__getMonth());
 		}
 		public function testConstructOverLoad(){
-			$this->tempo->__constructOverload(1, '2001','janeiro');
-			$this->assertEquals(1,$this->tempo->__getIdTempo());
-			$this->assertEquals('2001',$this->tempo->__getIntervalo());
-			$this->assertEquals('janeiro',$this->tempo->__getMes());
+			$this->time->__constructOverload(1, '2001','janeiro');
+			$this->assertEquals(1,$this->time->__getTimeId());
+			$this->assertEquals('2001',$this->time->__getInterval());
+			$this->assertEquals('janeiro',$this->time->__getMonth());
 		}
 	}
 ?>
