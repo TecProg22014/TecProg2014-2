@@ -1,38 +1,38 @@
 <?php
 	
 $SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
-	require_once "/model/RegiaoAdministrativa.php";
+	require_once "/model/AdministrativeRegion.php";
 	
 	/**
-	 * Classe RegiaoAdministrativa Teste
+	 * Classe AdministrativeRegion Teste
 	 **/
-	class RegiaoAdministrativaTeste extends PHPUnit_Framework_Testcase{
+	class AdministrativeRegionTeste extends PHPUnit_Framework_Testcase{
 		
-		private $regiaoAdministrativa;
+		private $administrativeRegion;
 		
 		public function setUp(){
-			$this->regiaoAdministrativa = new RegiaoAdministrativa();
+			$this->administrativeRegion = new AdministrativeRegion();
 		}
-		public function testeConstructOverLoad(){
-			$this->regiaoAdministrativa->__constructOverLoad(1, 'teste');
-			$this->assertEquals(1,$this->regiaoAdministrativa->__getIdRegiaoAdministrativa());
-			$this->assertEquals('teste',$this->regiaoAdministrativa->__getNomeRegiao());
+		public function testConstructOverLoad(){
+			$this->administrativeRegion->__constructOverLoad(1, 'test');
+			$this->assertEquals(1,$this->administrativeRegion->__getAdministrativeRegionId());
+			$this->assertEquals('test',$this->administrativeRegion->__getRegionName());
 		}
-		public function testSetIdRegiaoAdministriva(){
-			$this->regiaoAdministrativa->__setIdRegiaoAdministrativa(42);
-			$this->assertEquals(42, $this->regiaoAdministrativa ->__getIdRegiaoAdministrativa());
+		public function testSetAdministrativeRegionId(){
+			$this->administrativeRegion->__setAdministrativeRegionId(42);
+			$this->assertEquals(42, $this->administrativeRegion ->__getAdministrativeRegionId());
 		}
-		public function testExceptionSetIdRegiaoAdministrativa(){
+		public function testExceptionSetAdministrativeRegionId(){
 			$this->setExpectedException('ETipoErrado');
-			$this->regiaoAdministrativa->__setIdRegiaoAdministrativa("erro");
+			$this->administrativeRegion->__setAdministrativeRegionId("erro");
 		}
-		public function testSetNomeRegiaoAdministrativa(){
-			$this->regiaoAdministrativa ->__setNomeRegiao("Regiao Administrativa");
-			$this->assertEquals("Regiao Administrativa", $this->regiaoAdministrativa ->__getNomeRegiao());
+		public function testSetAdministrativeRegionName(){
+			$this->administrativeRegion ->__setNomeRegiao("Regiao Administrativa");
+			$this->assertEquals("Regiao Administrativa", $this->administrativeRegion ->__getRegionName());
 		}
-		public function testExceptionSetNomeRegiaoAdministrativa(){
+		public function testExceptionSetAdministrativeRegionName(){
 			$this->setExpectedException('ETipoErrado');
-			$this->regiaoAdministrativa->__setNomeRegiao(0);
+			$this->administrativeRegion->__setRegionName(0);
 		}
 	}
 ?>
