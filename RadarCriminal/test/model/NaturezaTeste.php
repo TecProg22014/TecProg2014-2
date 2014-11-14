@@ -1,60 +1,60 @@
 <?php
 	
-	
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	require_once "/model/Natureza.php";
 	
 	class NaturezaTeste extends PHPUnit_Framework_Testcase{
 		
 		public function setUp(){
-			$this->natureza = new Natureza();
+			$this->nature = new Natureza();
 		}
-		public function testeIdNatureza(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
-			$natureza->__setIdNatureza(12);
-			$this->assertEquals(12, $natureza->__getIdNatureza());
+		public function testNatureId(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
+			$nature->__setNatureId(12);
+			$this->assertEquals(12, $nature->__getNatureId());
 		}
-		public function testExceptionSetIdNatureza(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
+		public function testExceptionSetNatureId(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
 			$this->setExpectedException('ETipoErrado');
-			$natureza->__setIdNatureza("erro");
+			$nature->__setIdNatureza("erro");
 		}
-		public function testeNatureza(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
-			$natureza->__setNatureza("teste");
-			$this->assertEquals("teste", $natureza->__getNatureza());
+		public function testNature(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
+			$nature->__setNature("test");
+			$this->assertEquals("test", $nature->__getNature());
 		}
-		public function testExceptionSetNatureza(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
+		public function testExceptionSetNature(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
 			$this->setExpectedException('ETipoErrado');
-			$natureza->__setNatureza(10);
+			$nature->__setNature(10);
 		}
-		public function testExceptionSetIdCategoria(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
+		public function testExceptionSetCategoryId(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
 			$this->setExpectedException('ETipoErrado');
-			$natureza->__setIdCategoria("erro");
+			$nature->__setCategoryId("erro");
 		}
-		public function testeIdCategoria(){
-			$natureza = new Natureza();
-			$this->assertInstanceOf('Natureza',$natureza);
-			$this->assertObjectHasAttribute('idNatureza', $natureza);
-			$natureza->__setIdCategoria(10);
-			$this->assertEquals(10, $natureza->__getIdCategoria());
+		public function testCategoryId(){
+			$nature = new Natureza();
+			$this->assertInstanceOf('Natureza',$nature);
+			$this->assertObjectHasAttribute('natureId', $nature);
+			$nature->__setCategoryId(10);
+			$this->assertEquals(10, $nature->__getCategoryId());
 		}
-		public function testeConstructOverLoad(){
+		public function testConstructOverLoad(){
 			$this->natureza->__constructOverload(1, "natureza", 2);
-			$this->assertEquals(1, $this->natureza->__getIdNatureza());
-			$this->assertEquals("natureza", $this->natureza->__getNatureza());
-			$this->assertEquals(2, $this->natureza->__getIdCategoria());
+			$this->assertEquals(1, $this->natureza->__getNatureId());
+			$this->assertEquals("natureza", $this->natureza->__getNature());
+			$this->assertEquals(2, $this->natureza->__getCategoryId());
 		}
 	}
 ?>

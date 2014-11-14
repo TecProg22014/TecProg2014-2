@@ -1,6 +1,6 @@
 <?php
 	
-	
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	require_once "/model/Categoria.php";
 	
 	/**
@@ -12,41 +12,41 @@
 		 * @Before
 		 */
 		public function setUp(){
-			$this->categoria = new Categoria();
+			$this->category = new Categoria();
 		}
 			
-		public function testSetIdCategoria(){
-			$this->assertInstanceOf('Categoria',$this->categoria);
-			$this->assertObjectHasAttribute('idCategoria', $this->categoria);
-			$this->categoria->__setIdCategoria(10);
-			$this->assertEquals(10, $this->categoria->__getIdCategoria());
+		public function testSetCategoryId(){
+			$this->assertInstanceOf('Categoria',$this->category);
+			$this->assertObjectHasAttribute('categoryId', $this->category);
+			$this->category->__setCategoryId(10);
+			$this->assertEquals(10, $this->category->__getCategoryId());
 		}
-		public function testExceptionSetIdCategoria(){
-			$this->assertInstanceOf('Categoria',$this->categoria);
-			$this->assertObjectHasAttribute('idCategoria', $this->categoria);
+		public function testExceptionSetCategoryId(){
+			$this->assertInstanceOf('Categoria',$this->category);
+			$this->assertObjectHasAttribute('categoryId', $this->category);
 			$this->setExpectedException('ETipoErrado');
-			$this->categoria->__setIdCategoria('errado');
+			$this->category->__setCategoryId('errado');
 		}
-		public function testSetNomeCategoria(){
-			$this->assertInstanceOf('Categoria',$this->categoria);
-			$this->assertObjectHasAttribute('idCategoria', $this->categoria);
-			$this->categoria->__setNomeCategoria("NomeCategoria");
-			$this->assertEquals("NomeCategoria", $this->categoria->__getNomeCategoria());
+		public function testSetCategoryName(){
+			$this->assertInstanceOf('Categoria',$this->category);
+			$this->assertObjectHasAttribute('categoryId', $this->category);
+			$this->category->__setCategoryName("CategoryName");
+			$this->assertEquals("CategoryName", $this->category->__getCategoryName());
 		}
-		public function testExceptionSetNomeCategoria(){
-			$this->assertInstanceOf('Categoria',$this->categoria);
-			$this->assertObjectHasAttribute('idCategoria', $this->categoria);
+		public function testExceptionSetCategoryName(){
+			$this->assertInstanceOf('Categoria',$this->category);
+			$this->assertObjectHasAttribute('categoryId', $this->category);
 			$this->setExpectedException('ETipoErrado');
-			$this->categoria->__setNomeCategoria(13);
+			$this->category->__setCategoryName(13);
 		}
 		
 		public function testConstructOverLoad(){
-			$this->assertInstanceOf('Categoria',$this->categoria);
-			$this->assertObjectHasAttribute('idCategoria', $this->categoria);
-			$this->categoria->__constructOverload(2,"nomeCategoria");
-			$this->assertEquals(2,$this->categoria->__getIdCategoria());
-			$this->assertEquals("nomeCategoria",$this->categoria->__getNomeCategoria());
-			$this->assertInstanceOf('Categoria', $this->categoria);
+			$this->assertInstanceOf('Categoria',$this->category);
+			$this->assertObjectHasAttribute('categoryId', $this->category);
+			$this->category->__constructOverload(2,"nomeCategoria");
+			$this->assertEquals(2,$this->category->__getCategoryId());
+			$this->assertEquals("nomeCategoria",$this->category->__getCategoryName());
+			$this->assertInstanceOf('Categoria', $this->category);
 		}
 	}
 

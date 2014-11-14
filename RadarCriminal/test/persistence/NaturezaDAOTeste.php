@@ -1,12 +1,8 @@
 <?php
-	
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	
 	require_once  "/persistence/NaturezaDAO.php";
-/**
- * Classe de teste da classe NaturezaDAO
- * @author Lucas Andrade Ribeiro
- * @copyright RadarCriminal 2013
- */
+
 	class NaturezaDAOTeste extends PHPUnit_Framework_Testcase{
 		
 		public function testConstruct(){

@@ -1,10 +1,5 @@
 <?php
-	/**
-	 * @author Eliseu
-	 * Classe Crime Teste
-	 **/
-	
-	
+	$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 	require_once "/model/Crime.php";
 	
 	
@@ -14,50 +9,50 @@
 			$this->crime = new Crime();
 		}
 		
-		public function testeAtributoIdCrime(){
+		public function testAttributeCrimeId(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
-			$this->crime->__setIdCrime(15);
-			$this->assertEquals(15,$this->crime->__getIdCrime());
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
+			$this->crime->__setCrimeId(15);
+			$this->assertEquals(15,$this->crime->__getCrimeId());
 		}
-		public function testExceptionSetIdCrime(){
+		public function testExceptionSetCrimeId(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
 			$this->setExpectedException('ETipoErrado');
-			$this->crime->__setIdCrime("erro");
+			$this->crime->__setCrimeId("erro");
 		}
-		public function testeAtributoQuantidade(){
+		public function testAttributeAmount(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
-			$this->crime->__setQuantidade(15);
-			$this->assertEquals(15, $this->crime->__getQuantidade());
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
+			$this->crime->__setAmount(15);
+			$this->assertEquals(15, $this->crime->__getAmount());
 		}
-		public function testeIdTempo(){
+		public function testAttributeTimeId(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
-			$this->crime->__setIdTempo(15);
-			$this->assertEquals(15, $this->crime->__getIdTempo());
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
+			$this->crime->__setTimeId(15);
+			$this->assertEquals(15, $this->crime->__getTimeId());
 		}
-		public function testeIdNatureza(){
+		public function testAttributeNatureId(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
-			$this->crime->__setIdNatureza(15);
-			$this->assertEquals(15, $this->crime->__getIdNatureza());
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
+			$this->crime->__setNatureId(15);
+			$this->assertEquals(15, $this->crime->__getNatureId());
 		}
-		public function testeConstructOverLoad(){
+		public function testConstructOverLoad(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
 			$this->crime->__constructOverload(1,2,3,4);
-			$this->assertEquals(1, $this->crime->__getIdCrime());
-			$this->assertEquals(2, $this->crime->__getIdTempo());
-			$this->assertEquals(3, $this->crime->__getIdNatureza());
-			$this->assertEquals(4, $this->crime->__getQuantidade());
+			$this->assertEquals(1, $this->crime->__getCrimeId());
+			$this->assertEquals(2, $this->crime->__getTimeId());
+			$this->assertEquals(3, $this->crime->__getNatureId());
+			$this->assertEquals(4, $this->crime->__getAmount());
 		}
-		public function testeIdRA(){
+		public function testRaId(){
 			$this->assertInstanceOf('Crime',$this->crime);
-			$this->assertObjectHasAttribute('idCrime', $this->crime);
-			$this->crime->__setIdRegiaoAdministrativa(1);
-			$this->assertEquals(1, $this->crime->__getIdRegiaoAdministrativa());
+			$this->assertObjectHasAttribute('crimeId', $this->crime);
+			$this->crime->__setRaId(1);
+			$this->assertEquals(1, $this->crime->__getRaId());
 		}
 	}
 ?>

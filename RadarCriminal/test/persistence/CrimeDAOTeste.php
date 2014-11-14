@@ -1,13 +1,9 @@
 <?php
 
-
+$SERVER_ADRESS = $_SERVER['DOCUMENT_ROOT']."/Tecprog2014-2/radarcriminal";
 require_once "/persistence/CrimeDAO.php";
 include_once "/persistence/Conexao.php";
-/**
- * Classe de teste da classe CrimeDAO
- * @author Lucas Andrade Ribeiro
- * @copyright RadarCriminal 2013
- */
+
 class CrimeDAOTeste extends PHPUnit_Framework_TestCase{
 	
 	function testConstruct(){
