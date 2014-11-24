@@ -31,7 +31,7 @@ class Parse{
 	public function __construct($planilha){
 	
 		$this->dados = new Spreadsheet_Excel_Reader($SERVER_ADRESS."/files/".$planilha,"UTF-8");
-		if($planilha == "série histórica - 2001 - 2012 2.xls"){
+		if($planilha == "sÃ©rie histÃ³rica - 2001 - 2012 2.xls"){
 			$this->parseDeSerieHistorica();
 		}
 		else if($planilha == "JAN_SET_2011_12  POR REGIAO ADM_2.xls"){
@@ -48,48 +48,72 @@ class Parse{
 		
 			$numeroLinhas = 40;
 			$numeroColunas = 15;
-			//loop que pega a natureza
-			for($i=0,$indexOfCategory=0;$i<$numeroLinhas;$i++){
+			
+			/**
+			 * Constants to auxiliate the first loop, all the costants values represents one line of the historical series spreadsheet
+			 */
+			define("FIRST_TABLE_COLUN", 1);
+			define("MURDER", 2);
+			define("DRUGS_TRAFFIC", 33);
+			define("INJURY", 38);
+			/**
+			 * Loop to get the category of crime name
+			 * @var $rowForCategory - Local variable that represent the row of the spreadsheet analyzed
+			 */
+			for($rowForCategory=0,$indexOfCategory=0;$rowForCategory<$numeroLinhas;$rowForCategory++){
 				
-				if($i == 2){
-					$this->categoria[$indexOfCategory] = $this->dados->val($i,1,0);
+				if($rowForCategory == MURDER){
+					$this->categoria[$indexOfCategory] = $this->dados->val($rowForCategory,FIRST_TABLE_COLUN);
 					$indexOfCategory++;
 				}
-				if($i == 33){
-					$this->categoria[$indexOfCategory] =  $this->dados->val($i,1,0);
+				if($rowForCategory == DRUGS_TRAFFIC){
+					$this->categoria[$indexOfCategory] =  $this->dados->val($rowForCategory,FIRST_TABLE_COLUN);
 					$indexOfCategory++;
 				}
-				if($i == 38){
-					$this->categoria[$indexOfCategory] =  $this->dados->val($i,1,0);
+				if($rowForCategory == INJURY){
+					$this->categoria[$indexOfCategory] =  $this->dados->val($rowForCategory,FIRST_TABLE_COLUN);
 				}
 			}
-			//loop que pega natureza do crime
-			for($i=1,$indexOfNature=0; $i<$numeroLinhas; $i++){
-				if(($i == 1)||($i == 5)||($i == 21)||($i == 27)||($i == 28)||($i == 31)||($i == 32)||($i == 37)||($i == 40)){
-					continue;
-				}
-				else{	
-					if($i>32){
-						if($i<37){
-							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($i,'B',0);
+			
+			/**
+			 * Constants to auxiliate the second loop
+			 */
+			
+			define("SPREADSHEET_COLUMN_B", 'B');
+			define("SPREADSHEET_COLUMN_C", 'C');
+			
+			/**
+			 * Loop to get the nature of one commited crime.
+			 * The lines 1,5,21,27,28,31,32,37 and 40 will be ignored because they have total values
+			 * @var $rowForNature
+			 */
+			for($rowForNature=1,$indexOfNature=0; $rowForNature<$numeroLinhas; $rowForNature++){
+				$notTotalLine = $this->isNotLineOfTotal($rowForNature);
+				if($notTotalLine){
+					if($rowForNature>32){
+						if($rowForNature<37){
+							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($rowForNature,'SPREADSHEET_COLUMN_B');
 						}else{
-							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($i,'B',0);
+							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($rowForNature,'SPREADSHEET_COLUMN_B');
 						}
 					}else{
-						if($i<32){
-							$this->natureza[$this->__getCategoria()[0]][$indexOfNature]= $this->dados->val($i,'C',0);
-						}else if($i>32 && $i<37){
-							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($i,'C',0);
+						if($rowForNature<32){
+							$this->natureza[$this->__getCategoria()[0]][$indexOfNature]= $this->dados->val($rowForNature,'SPREADSHEET_COLUMN_C');
+						}else if($rowForNature>32 && $rowForNature<37){
+							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($rowForNature,'SPREADSHEET_COLUMN_C');
 						}else{
-							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($i,'C',0);
+							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($rowForNature,'SPREADSHEET_COLUMN_C');
 						}
 					}
 					$indexOfNature++;
 				}
+				else{	
+					
+				}
 			}
 			$criminalidade = utf8_encode("Criminalidade");
-			$acao = utf8_encode("Ação Policial");
-			$transito = utf8_encode("Trânsito");
+			$acao = utf8_encode("AÃ§Ã£o Policial");
+			$transito = utf8_encode("TrÃ¢nsito");
 			//loop que pega os anos disponiveis
 			for($i=1,$auxTempo = 0; $i<$numeroColunas; $i++){
 				if(($i == 1)||($i == 2)||($i == 3)){
@@ -122,14 +146,13 @@ class Parse{
 				}
 			}
 		
-		
 	}//fim do metodo parseDeSerieHistorica
 	
 	/**
-	*	Desenvolvimento do método para efetuar parse da planilha de crimes por Região Administrativa
+	*	Desenvolvimento do mï¿½todo para efetuar parse da planilha de crimes por Regiï¿½o Administrativa
 	*	@access public
 	*	@author Lucas Carvalho
-	*	@tutorial Método realizado durante sprint 4, atualizando arrays para cada campo, para depois ir para persistência.
+	*	@tutorial Mï¿½todo realizado durante sprint 4, atualizando arrays para cada campo, para depois ir para persistï¿½ncia.
 	*/
 	public function parsePorRegiao(){
 		/**
@@ -185,7 +208,7 @@ class Parse{
 		//print_r($this->__getTempo());
 		echo "<br>";
 		/**
-		* Loop para pegar os nomes das regiões contidas na planilha RA
+		* Loop para pegar os nomes das regiï¿½es contidas na planilha RA
 		* @author Lucas Carvalho
 		*/
 		for($i=0, $auxRegiao = 0; $i<3; $i++ ){
@@ -322,7 +345,7 @@ class Parse{
 		//print_r($this->__getCrime());
 	}
 	/**
-	*	Desenvolvimento do método para efetuar parse da planilha de quadrimestre
+	*	Desenvolvimento do mï¿½todo para efetuar parse da planilha de quadrimestre
 	*	@access public
 	*/
 	public function parseDeQuadrimestre(){
@@ -331,7 +354,7 @@ class Parse{
 		/**
 		* Loop para pegar os nomes das categorias contidas na planilha
 		* @author Lucas Carvalho
-		* @tutorial Refatoração do metodo antes implementados por outros autores 	 
+		* @tutorial Refatoraï¿½ï¿½o do metodo antes implementados por outros autores 	 
 		*/	
 		for($i=0,$indexOfCategory=0;$i<$numeroLinhas;$i++){
 			if(($i == 8) || ($i == 12) || ($i == 34) || ($i == 35) || ($i == 36) || ($i == 37) || ($i == 39) ){
@@ -345,8 +368,8 @@ class Parse{
 		/**
 		* Loop para pegar os nomes das naturezas contidas na planilha
 		* @author Lucas Carvalho
-		* @author Sérgio Bezerra
-		* @tutorial Refatoração para ajustar dimenções do vetor natureza para diminuir a complexidade de população do vetor
+		* @author Sï¿½rgio Bezerra
+		* @tutorial Refatoraï¿½ï¿½o para ajustar dimenï¿½ï¿½es do vetor natureza para diminuir a complexidade de populaï¿½ï¿½o do vetor
 		*/
 		for($i=8,$indexOfNature=0;$i< $numeroLinhas;$i++){
 		 		// Val ÃƒÂ© o valor da cÃƒÂ©lula que esta sendo armazenado na nova tabela val(linha, coluna, sheet)
@@ -377,7 +400,7 @@ class Parse{
 		}
 	
 		/**		 
-		* Loop que pega as informações sobre tempo da planilha
+		* Loop que pega as informaï¿½ï¿½es sobre tempo da planilha
 		* @author Lucas Carvalho
 		*/
 		for($i=6, $auxTempo = 0; $i<$numeroColunas; $i++){
@@ -387,7 +410,7 @@ class Parse{
 			}
 		}
 		/**
-		* Loop que pega as informações do crime da planilha
+		* Loop que pega as informaï¿½ï¿½es do crime da planilha
 		* @author Lucas Carvalho 
 		*/
 		for($i = 0, $auxLinha = 0; $i<$numeroLinhas; $i++){
@@ -420,6 +443,61 @@ class Parse{
 			}	
 		}
 	}
+	
+	/**
+	 * Function to validate if one line of historiacal series spreadsheet is not a line of total values.
+	 * The lines 1,5,21,27,28,31,32,37 and 40 will be ignored because they have total values
+	 * @param int $line_to_search
+	 * @return TRUE if the line is not a line of totals
+	 */
+	public function isNotLineOfTotal($line_to_search){
+		define("TITLES", 1);
+		define("TOTAL_CRIMES_AGAINST_CITIZENS", 5);
+		define("TOTAL_THEFT", 21);
+		define("TOTAL_STEALING", 27);
+		define("TOTAL_AGAINST_PUBLIC_HERITAGE", 28);
+		define("TOTAL_CRIMES_AGAINST_SEXUAL_DIGINITY", 31);
+		define("SUM_TOTAL_CRIMINALITY", 32);
+		define("TOTAL_COPS_ACTIONS", 37);
+		define("TOTAL_TRANSIT_CRIMES", 40);
+		/**
+		 * SWITCH to see if the line passed is one of the lines of total values
+		 */
+		switch ($line_to_search){
+			case TITLES: 
+						$totalLine = FALSE;
+						break;
+			case TOTAL_CRIMES_AGAINST_CITIZENS: 
+						$totalLine = FALSE;
+						break;
+			case TOTAL_THEFT:
+						$totalLine = FALSE;
+						break;
+			case TOTAL_STEALING:
+						$totalLine = FALSE;
+						break;
+			case TOTAL_AGAINST_PUBLIC_HERITAGE:
+						$totalLine = FALSE;
+						break;
+			case TOTAL_CRIMES_AGAINST_SEXUAL_DIGINITY:
+						$totalLine = FALSE;
+						break;
+			case SUM_TOTAL_CRIMINALITY:
+						$totalLine = FALSE;
+						break;
+			case TOTAL_COPS_ACTIONS:
+						$totalLine = FALSE;
+						break;
+			case TOTAL_TRANSIT_CRIMES:
+						$totalLine = FALSE;
+						break;
+			default:	$totalLine = TRUE;
+		}
+		
+		return $totalLine;
+	}
+	
+	
 	public function __setNatureza($natureza){
 		$this->natureza = $natureza;
 	}
