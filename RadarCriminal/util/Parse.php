@@ -58,7 +58,7 @@ class Parse{
 					$this->category[$indexOfCategory] =  $this->data->val($i,1,0);
 				}
 			}
-			//loop que pega natureza do crime
+			//loop to count the nature of the crime
 			for($i=1,$indexOfNature=0; $i<$numeroLinhas; $i++){
 				if(($i == 1)||($i == 5)||($i == 21)||($i == 27)||($i == 28)||($i == 31)||($i == 32)||($i == 37)||($i == 40)){
 					continue;
@@ -66,22 +66,23 @@ class Parse{
 				else{	
 					if($i>32){
 						if($i<37){
-							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($i,'B',0);
+							$this->nature[$this->__getCategory()[1]][$indexOfNature]= $this->data->val($i,'B',0);
 						}else{
-							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($i,'B',0);
+							$this->nature[$this->__getCategory()[2]][$indexOfNature]= $this->data->val($i,'B',0);
 						}
 					}else{
 						if($i<32){
-							$this->natureza[$this->__getCategoria()[0]][$indexOfNature]= $this->dados->val($i,'C',0);
+							$this->nature[$this->__getCategory()[0]][$indexOfNature]= $this->data->val($i,'C',0);
 						}else if($i>32 && $i<37){
-							$this->natureza[$this->__getCategoria()[1]][$indexOfNature]= $this->dados->val($i,'C',0);
+							$this->nature[$this->__getCategory()[1]][$indexOfNature]= $this->data->val($i,'C',0);
 						}else{
-							$this->natureza[$this->__getCategoria()[2]][$indexOfNature]= $this->dados->val($i,'C',0);
+							$this->nature[$this->__getCategory()[2]][$indexOfNature]= $this->data->val($i,'C',0);
 						}
 					}
 					$indexOfNature++;
 				}
 			}
+			
 			$criminalidade = utf8_encode("Criminalidade");
 			$acao = utf8_encode("Ação Policial");
 			$transito = utf8_encode("Trânsito");
