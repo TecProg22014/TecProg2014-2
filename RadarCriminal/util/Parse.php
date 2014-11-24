@@ -306,10 +306,7 @@ class Parse{
 		echo "<br>";
 		//print_r($this->__getCrime());
 	}
-	/**
-	*	Desenvolvimento do método para efetuar parse da planilha de quadrimestre
-	*	@access public
-	*/
+
 	public function parseDeQuadrimestre(){
 		$numeroLinhas = 41;
 		$numeroColunas = 14;
