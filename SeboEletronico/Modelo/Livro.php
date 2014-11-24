@@ -66,7 +66,7 @@ class Livro {
 		$this->__setBookPublisher( $bookPublisher );
 		$this->__setBookSale( $bookSale );
 		$this->__setBookTrade( $bookTrade );
-		$this->__setBookStatus( $bookStatus );
+		//$this->__setBookStatus( $bookStatus );
 		$this->__setBookDescription( $bookDescription );
 	}
 
