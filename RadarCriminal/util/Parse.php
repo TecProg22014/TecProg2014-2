@@ -15,24 +15,24 @@ class Parse{
 	 * Variables that contains the analyzed data.
 	 * @var string $natureOfCrime
 	 */
-	private $natureza;
-	private $tempo;
+	private $nature;
+	private $time;
 	private $crime;
-	private $categoria;
-	private $dados;
+	private $category;
+	private $data;
 	private $total;
-	private $regiao;
+	private $region;
 	
-	public function __construct($planilha){
+	public function __construct($file){
 	
-		$this->dados = new Spreadsheet_Excel_Reader($SERVER_ADRESS."/files/".$planilha,"UTF-8");
-		if($planilha == "série histórica - 2001 - 2012 2.xls"){
-			$this->parseDeSerieHistorica();
+		$this->data = new Spreadsheet_Excel_Reader($SERVER_ADRESS."/files/".$planilha,"UTF-8");
+		if($file == "série histórica - 2001 - 2012 2.xls"){
+			$this->parseByHistorySerie();
 		}
-		else if($planilha == "JAN_SET_2011_12  POR REGIAO ADM_2.xls"){
-			$this->parsePorRegiao();
+		else if($file == "JAN_SET_2011_12  POR REGIAO ADM_2.xls"){
+			$this->parseByRegion();
 		}
-		else if($planilha == "Quadrimestre_final.2013.xls"){
+		else if($file == "Quadrimestre_final.2013.xls"){
 			$this->parseDeQuadrimestre();
 		}	
 		
