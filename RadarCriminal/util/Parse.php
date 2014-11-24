@@ -38,24 +38,24 @@ class Parse{
 		
 	
 	}
-	//ParsePorSerieHistorica 
-	public function parseDeSerieHistorica(){
+	
+	public function parseByHistorySerie(){
 		
-			$numeroLinhas = 40;
-			$numeroColunas = 15;
-			//loop que pega a natureza
-			for($i=0,$indexOfCategory=0;$i<$numeroLinhas;$i++){
+			$lines = 40;
+			$columns = 15;
+			//loop for count the nature
+			for($i=0,$indexOfCategory=0;$i<$lines;$i++){
 				
 				if($i == 2){
-					$this->categoria[$indexOfCategory] = $this->dados->val($i,1,0);
+					$this->category[$indexOfCategory] = $this->data->val($i,1,0);
 					$indexOfCategory++;
 				}
 				if($i == 33){
-					$this->categoria[$indexOfCategory] =  $this->dados->val($i,1,0);
+					$this->category[$indexOfCategory] =  $this->data->val($i,1,0);
 					$indexOfCategory++;
 				}
 				if($i == 38){
-					$this->categoria[$indexOfCategory] =  $this->dados->val($i,1,0);
+					$this->category[$indexOfCategory] =  $this->data->val($i,1,0);
 				}
 			}
 			//loop que pega natureza do crime
