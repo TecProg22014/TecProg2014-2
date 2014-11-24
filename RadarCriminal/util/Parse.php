@@ -124,9 +124,9 @@ class Parse{
 	}//fim do metodo parseDeSerieHistorica
 	
 	
-	public function parsePorRegiao(){
+	public function parseByRegion(){
 		/**
-		* Loop para pegar os nomes das categorias na planilha
+		* Loop for read the names in the file
 		*/	
 		for($i = 0, $indexOfCategory = 0;$i<45;$i++){
 			if(($i==8)||($i==12)||($i==34)||($i==38)||($i==43)){
@@ -139,7 +139,7 @@ class Parse{
 		
 		echo "<br>";
 		/**
-		* Loop para pegar os nomes das naturezas de crimes contidas na planilha de RA
+		* Loop for read the natures of the crimes in the file
 		*/
 		for($i=0,$indexOfNature=0;$i<45;$i++){
 		 		// Val Ã© o valor da cÃ©lula que esta sendo armazenado na nova tabela val(linha, coluna, sheet)
@@ -165,7 +165,7 @@ class Parse{
 		
 		echo "<br>";
 		/**
-		 * Loop para pegar os nomes dos tempos contidas na planilha de RA
+		 * Loop for read the time of the crimes in the file
 		 */
 		for ($i=6, $auxTempo = 0; $i<8 ; $i++){ 
 			$this->tempo[$auxTempo] = $this->dados->val(7,$i,1); 
@@ -174,7 +174,7 @@ class Parse{
 		
 		echo "<br>";
 		/**
-		* Loop para pegar os nomes das regi�es contidas na planilha RA
+		* Loop to read the regions names in the file
 		*/
 		for($i=0, $auxRegiao = 0; $i<3; $i++ ){
 			if ($i==0) {
@@ -198,10 +198,9 @@ class Parse{
 				}
 			}
 		}
-		//print_r($this->__getRegiao());
 		echo "<br>";
 		/**
-		* Loop para pegar os dados de crime contidas na planila de RA da primeira parte
+		* Loop to read the data of the crimes in the part 1 of the file
 		*/
 		for($i = 8, $auxLinha = 0, $auxRegiao = -1; $i<45; $i++){
 			if(($i == 11) || ($i == 26) || ($i == 32) || ($i == 33) || ($i == 36) || ($i == 37) || ($i == 42)) {
@@ -236,7 +235,7 @@ class Parse{
 			}	
 		}
 		/**
-		 * Loop para pegar os dados de crime contidas na planila de RA da segunda parte
+		 * Loop to read the data of the crimes in the part 2 of the file
 		 */
 		for($i = 57, $auxLinha = 0, $auxRegiao = 9; $i<94; $i++){
 			if(($i == 60) || ($i == 75) || ($i == 81) || ($i == 82) || ($i == 85) || ($i == 86) || ($i == 91)) {
@@ -270,7 +269,7 @@ class Parse{
 			}
 		}
 		/**
-		 * Loop para pegar os dados de crime contidas na planila de RA da terceira parte
+		 * Loop to read the data of the crimes in the part 3 of the file
 		 */
 		for($i = 106, $auxLinha = 0, $auxRegiao = 19; $i<143; $i++){
 			if(($i == 109) || ($i == 124) || ($i == 130) || ($i == 124) || ($i == 130) || ($i == 131) || ($i == 134) || ($i == 135) || ($i == 140)){
@@ -304,7 +303,6 @@ class Parse{
 			}
 		}
 		echo "<br>";
-		//print_r($this->__getCrime());
 	}
 
 	public function parseDeQuadrimestre(){
