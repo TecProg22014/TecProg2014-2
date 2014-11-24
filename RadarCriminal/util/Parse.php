@@ -9,11 +9,6 @@ require_once $SERVER_ADRESS."/exceptions/EFalhaLeituraSerieTempo.php";
 require_once $SERVER_ADRESS."/exceptions/EFalhaLeituraSerieCrime.php";
 require_once $SERVER_ADRESS."/libs/excel_reader2.php";
 
-/**
- * This class is responsible for analyzing / reading 
- * the crime data provided by the secretary of state for public safety.
- *
- */
 
 class Parse{
 	/**
@@ -125,16 +120,10 @@ class Parse{
 		
 	}//fim do metodo parseDeSerieHistorica
 	
-	/**
-	*	Desenvolvimento do método para efetuar parse da planilha de crimes por Região Administrativa
-	*	@access public
-	*	@author Lucas Carvalho
-	*	@tutorial Método realizado durante sprint 4, atualizando arrays para cada campo, para depois ir para persistência.
-	*/
+	
 	public function parsePorRegiao(){
 		/**
 		* Loop para pegar os nomes das categorias na planilha
-		* @author Lucas Carvalho 
 		*/	
 		for($i = 0, $indexOfCategory = 0;$i<45;$i++){
 			if(($i==8)||($i==12)||($i==34)||($i==38)||($i==43)){
@@ -144,11 +133,10 @@ class Parse{
 				continue;
 			}
 		}
-		//print_r($this->__getCategoria());
+		
 		echo "<br>";
 		/**
 		* Loop para pegar os nomes das naturezas de crimes contidas na planilha de RA
-		* @author Lucas Carvalho 
 		*/
 		for($i=0,$indexOfNature=0;$i<45;$i++){
 		 		// Val ÃƒÂ© o valor da cÃƒÂ©lula que esta sendo armazenado na nova tabela val(linha, coluna, sheet)
@@ -171,22 +159,19 @@ class Parse{
 		 			continue;
 		 		}
 		}
-		//print_r($this->__getNatureza());
+		
 		echo "<br>";
 		/**
 		 * Loop para pegar os nomes dos tempos contidas na planilha de RA
-		 * @author Lucas Carvalho
 		 */
 		for ($i=6, $auxTempo = 0; $i<8 ; $i++){ 
 			$this->tempo[$auxTempo] = $this->dados->val(7,$i,1); 
 			$auxTempo++;
 		}
 		
-		//print_r($this->__getTempo());
 		echo "<br>";
 		/**
 		* Loop para pegar os nomes das regiões contidas na planilha RA
-		* @author Lucas Carvalho
 		*/
 		for($i=0, $auxRegiao = 0; $i<3; $i++ ){
 			if ($i==0) {
@@ -214,7 +199,6 @@ class Parse{
 		echo "<br>";
 		/**
 		* Loop para pegar os dados de crime contidas na planila de RA da primeira parte
-		* @author Lucas Carvalho
 		*/
 		for($i = 8, $auxLinha = 0, $auxRegiao = -1; $i<45; $i++){
 			if(($i == 11) || ($i == 26) || ($i == 32) || ($i == 33) || ($i == 36) || ($i == 37) || ($i == 42)) {
@@ -250,7 +234,6 @@ class Parse{
 		}
 		/**
 		 * Loop para pegar os dados de crime contidas na planila de RA da segunda parte
-		 * @author Lucas Carvalho
 		 */
 		for($i = 57, $auxLinha = 0, $auxRegiao = 9; $i<94; $i++){
 			if(($i == 60) || ($i == 75) || ($i == 81) || ($i == 82) || ($i == 85) || ($i == 86) || ($i == 91)) {
@@ -285,7 +268,6 @@ class Parse{
 		}
 		/**
 		 * Loop para pegar os dados de crime contidas na planila de RA da terceira parte
-		 * @author Lucas Carvalho
 		 */
 		for($i = 106, $auxLinha = 0, $auxRegiao = 19; $i<143; $i++){
 			if(($i == 109) || ($i == 124) || ($i == 130) || ($i == 124) || ($i == 130) || ($i == 131) || ($i == 134) || ($i == 135) || ($i == 140)){
@@ -330,8 +312,6 @@ class Parse{
 		$numeroColunas = 14;
 		/**
 		* Loop para pegar os nomes das categorias contidas na planilha
-		* @author Lucas Carvalho
-		* @tutorial Refatoração do metodo antes implementados por outros autores 	 
 		*/	
 		for($i=0,$indexOfCategory=0;$i<$numeroLinhas;$i++){
 			if(($i == 8) || ($i == 12) || ($i == 34) || ($i == 35) || ($i == 36) || ($i == 37) || ($i == 39) ){
@@ -344,9 +324,6 @@ class Parse{
 		}
 		/**
 		* Loop para pegar os nomes das naturezas contidas na planilha
-		* @author Lucas Carvalho
-		* @author Sérgio Bezerra
-		* @tutorial Refatoração para ajustar dimenções do vetor natureza para diminuir a complexidade de população do vetor
 		*/
 		for($i=8,$indexOfNature=0;$i< $numeroLinhas;$i++){
 		 		// Val ÃƒÂ© o valor da cÃƒÂ©lula que esta sendo armazenado na nova tabela val(linha, coluna, sheet)
@@ -378,7 +355,6 @@ class Parse{
 	
 		/**		 
 		* Loop que pega as informações sobre tempo da planilha
-		* @author Lucas Carvalho
 		*/
 		for($i=6, $auxTempo = 0; $i<$numeroColunas; $i++){
 			if(($i % 2) == 0){
@@ -388,7 +364,6 @@ class Parse{
 		}
 		/**
 		* Loop que pega as informações do crime da planilha
-		* @author Lucas Carvalho 
 		*/
 		for($i = 0, $auxLinha = 0; $i<$numeroLinhas; $i++){
 			if(($i < 8)||($i == 11)|| ($i == 26) || ($i == 31) || ($i == 32) || ($i == 33)|| ($i == 38)|| ($i == 41)){
