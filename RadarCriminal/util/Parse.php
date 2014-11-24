@@ -86,6 +86,7 @@ class Parse{
 			$criminalidade = utf8_encode("Criminalidade");
 			$acao = utf8_encode("Ação Policial");
 			$transito = utf8_encode("Trânsito");
+
 			//loop que pega os anos disponiveis
 			for($i=1,$auxTempo = 0; $i<$numeroColunas; $i++){
 				if(($i == 1)||($i == 2)||($i == 3)){
@@ -98,12 +99,13 @@ class Parse{
 			if(($this->__getTempo() ==  null) || (count($this->__getTempo()) !=11)){
 				throw EFalhaLeituraSerieTempo();
 			}
-			//loop que pega os dados do crime
-			for($i=1,$auxLinha=0; $i<$numeroLinhas; $i++){	
+			
+			//loop for save the data crimes
+			for($i=1,$line=0; $i<$lines; $i++){	
 				if(($i == 1)||($i == 5)||($i == 21)||($i == 27)||($i == 28)||($i == 31)||($i == 32)||($i == 37)||($i == 40)){
 					continue;
 				}else{	
-					for($j=4,$auxColuna=0,$indexOfCategory; $j<$numeroColunas; $j++){
+					for($j=4,$column=0,$indexOfCategory; $j<$columns; $j++){
 							if($i<32){
 								$indexOfCategory = 0;
 							}else if($i>32 && $i<37){
@@ -111,7 +113,7 @@ class Parse{
 							}else{
 								$indexOfCategory = 2;
 							}
-							$this->crime[$this->__getNatureza()[$this->__getCategoria()[$indexOfCategory]][$auxLinha]][$this->__getTempo()[$auxColuna]] = $this->dados->raw($i,$j,0);
+							$this->crime[$this->__getNature()[$this->__getCategory()[$indexOfCategory]][$line]][$this->__getTime()[$column]] = $this->data->raw($i,$j,0);
 							$auxColuna++;
 					}
 					$auxLinha++;
@@ -396,6 +398,7 @@ class Parse{
 			}	
 		}
 	}
+	
 	public function __setNature($nature){
 		$this->nature = $nature;
 	}
