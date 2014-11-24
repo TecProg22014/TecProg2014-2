@@ -396,20 +396,20 @@ class Parse{
 			}	
 		}
 	}
-	public function __setNatureza($natureza){
-		$this->natureza = $natureza;
+	public function __setNature($nature){
+		$this->nature = $nature;
 	}
 	
-	public function __getNatureza(){
-		return $this->natureza;
+	public function __getNature(){
+		return $this->nature;
 	}
 	
-	public function __setTempo($tempo){
-		$this->tempo = $tempo;
+	public function __setTime($time){
+		$this->time = $time;
 	}
 	
-	public function __getTempo(){
-		return $this->tempo;
+	public function __getTimeo(){
+		return $this->time;
 	}
 	
 	public function __setCrime($crime){
@@ -420,19 +420,19 @@ class Parse{
 		return $this->crime;
 	}
 	
-	public function __setCategoria($categoria){
-		$this->categoria = $categoria;
+	public function __setCategory($category){
+		$this->category = $category;
 	}
 	
-	public function __getCategoria(){
-		return $this->categoria;
+	public function __getCategory(){
+		return $this->category;
 	}
 
-	public function __setRegiao($regiao){
-		$this->regiao = $regiao;
+	public function __setRegion($region){
+		$this->region = $region;
 	}
 
-	public function __getRegiao(){
-		return $this->regiao;
+	public function __getRegion(){
+		return $this->region;
 	}
 }
