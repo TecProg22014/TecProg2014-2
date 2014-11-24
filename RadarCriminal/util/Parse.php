@@ -87,16 +87,16 @@ class Parse{
 			$acao = utf8_encode("Ação Policial");
 			$transito = utf8_encode("Trânsito");
 
-			//loop que pega os anos disponiveis
-			for($i=1,$auxTempo = 0; $i<$numeroColunas; $i++){
+			//loop to save the avaliable years
+			for($i=1,$actualTime = 0; $i<$columns; $i++){
 				if(($i == 1)||($i == 2)||($i == 3)){
 					continue;
 				}else{
-					$this->tempo[$auxTempo] = $this->dados->val(1,$i,0);
-					$auxTempo++;
+					$this->tempo[$actualTime] = $this->data->val(1,$i,0);
+					$actualTime++;
 				}
 			}
-			if(($this->__getTempo() ==  null) || (count($this->__getTempo()) !=11)){
+			if(($this->__getTime() ==  null) || (count($this->__getTime()) !=11)){
 				throw EFalhaLeituraSerieTempo();
 			}
 			
