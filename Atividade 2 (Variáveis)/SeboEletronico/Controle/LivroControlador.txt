@@ -1,0 +1,55 @@
+LivroControlador
+
+	salvaLivro
+		$titulo
+		$autor
+		$genero
+		$edicao 
+		$editora 
+		$venda 
+		$troca 
+		$estado 
+		$descricao 
+		$id_dono
+		$livro 
+		$e
+		LivroDao::salvaLivro
+
+	pesquisaLivro
+		$titulo
+		$estadoNovo
+		$estadoUsado
+		$disponibilidadeVenda
+		$disponibilidadeTroca
+		LivroDao::pesquisaLivro
+
+	getLivroById
+		$id
+		LivroDao::getLivroById
+
+	deletaLivro
+		$idLivro
+		LivroDao::deletaLivro
+
+	alteraLivro
+		$titulo
+		$autor
+		$genero
+		$edicao
+		$editora
+		$venda
+		$troca
+		$estado
+		$descricao
+		$id_dono
+		$id_usuario
+		$livro
+		$e
+		LivroDao::alteraLivro
+
+	getLivroByIdUsuario
+		$idUsuario
+		LivroDao::getLivroByIdUsuario
+
+	getAllLivro
+		LivroDao::getAllLivro
